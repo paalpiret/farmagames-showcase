@@ -325,13 +325,53 @@
     font-size: 0.85rem;
     color: var(--muted-foreground);
   }
+
+  /* ── Language toggle ────────────────────────────────────── */
+  .lang-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 0.3rem;
+    box-shadow: 0 1px 3px rgba(31, 44, 61, 0.08);
+  }
+
+  .lang-btn {
+    font-family: inherit;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--muted-foreground);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.3rem 0.6rem;
+    border-radius: 999px;
+    transition: color 0.15s ease, background 0.15s ease, font-weight 0.15s ease;
+  }
+
+  .lang-btn.active {
+    color: var(--primary-dark);
+    background: var(--secondary);
+    font-weight: 800;
+  }
 </style>
 </head>
 <body>
 
+<div class="lang-toggle" role="group" aria-label="Language">
+  <button type="button" class="lang-btn" data-lang="en">EN</button>
+  <button type="button" class="lang-btn" data-lang="fi">FI</button>
+</div>
+
 <header>
   <h1>Piret Paal</h1>
-  <p>MediProjects — nursing education game prototypes</p>
+  <p data-i18n="tagline">MediProjects — nursing education game prototypes</p>
 </header>
 
 <nav class="band quick-play-band" aria-label="Quick play">
@@ -355,8 +395,8 @@
   <div class="container">
     <span class="game-tag">MyDay</span>
     <h2>MyDay</h2>
-    <p>A day-in-the-life nursing simulation.</p>
-    <a class="play-btn" href="myday/">Play now &rarr;</a>
+    <p data-i18n="myday_desc">A day-in-the-life nursing simulation.</p>
+    <a class="play-btn" href="myday/"><span data-i18n="play_now">Play now &rarr;</span></a>
   </div>
 </section>
 
@@ -364,8 +404,8 @@
   <div class="container">
     <span class="game-tag">FarmaRush</span>
     <h2>FarmaRush</h2>
-    <p>Fast-paced medication matching game.</p>
-    <a class="play-btn" href="farmarush/">Play now &rarr;</a>
+    <p data-i18n="farmarush_desc">Fast-paced medication matching game.</p>
+    <a class="play-btn" href="farmarush/"><span data-i18n="play_now">Play now &rarr;</span></a>
   </div>
 </section>
 
@@ -373,8 +413,8 @@
   <div class="container">
     <span class="game-tag">MediChain</span>
     <h2>MediChain</h2>
-    <p>Medication safety and process training.</p>
-    <a class="play-btn" href="medichain/">Play now &rarr;</a>
+    <p data-i18n="medichain_desc">Medication safety and process training.</p>
+    <a class="play-btn" href="medichain/"><span data-i18n="play_now">Play now &rarr;</span></a>
   </div>
 </section>
 
@@ -382,26 +422,26 @@
   <div class="container">
     <span class="game-tag">Medilink</span>
     <h2>Medilink</h2>
-    <p>Connecting nursing knowledge in practice.</p>
-    <a class="play-btn" href="medilink/">Play now &rarr;</a>
+    <p data-i18n="medilink_desc">Connecting nursing knowledge in practice.</p>
+    <a class="play-btn" href="medilink/"><span data-i18n="play_now">Play now &rarr;</span></a>
   </div>
 </section>
 
 <section class="band why-band">
   <div class="container">
-    <h2>Why</h2>
+    <h2 data-i18n="why_heading">Why</h2>
     <div class="why-grid">
       <div class="why-card coral">
-        <p class="why-statement">&ldquo;Over half of surveyed nurses have caused a medication-related safety incident; half have given medicines without knowing their effects.&rdquo;</p>
-        <p class="why-citation">&mdash; Luokkam&auml;ki et al., 2016</p>
+        <p class="why-statement" data-i18n="why1_statement">&ldquo;Over half of surveyed nurses have caused a medication-related safety incident; half have given medicines without knowing their effects.&rdquo;</p>
+        <p class="why-citation" data-i18n="why1_citation">&mdash; Luokkam&auml;ki et al., 2016</p>
       </div>
       <div class="why-card teal">
-        <p class="why-statement">&ldquo;Nursing students often see pharmacology as a &lsquo;necessary evil&rsquo; rather than essential knowledge.&rdquo;</p>
-        <p class="why-citation">&mdash; Mauldin, 2021</p>
+        <p class="why-statement" data-i18n="why2_statement">&ldquo;Nursing students often see pharmacology as a &lsquo;necessary evil&rsquo; rather than essential knowledge.&rdquo;</p>
+        <p class="why-citation" data-i18n="why2_citation">&mdash; Mauldin, 2021</p>
       </div>
       <div class="why-card yellow">
-        <p class="why-statement">&ldquo;Online and gamified methods are among the most effective ways to teach pharmacology.&rdquo;</p>
-        <p class="why-citation">&mdash; Gill et al., 2019</p>
+        <p class="why-statement" data-i18n="why3_statement">&ldquo;Online and gamified methods are among the most effective ways to teach pharmacology.&rdquo;</p>
+        <p class="why-citation" data-i18n="why3_citation">&mdash; Gill et al., 2019</p>
       </div>
     </div>
   </div>
@@ -411,15 +451,15 @@
   <div class="container">
     <span class="game-tag">Farmadiary</span>
     <h2>Farmadiary</h2>
-    <p>A companion diary for reflecting on medication learning, in practice.</p>
-    <a class="play-btn on-light" href="https://farmadiary.com" target="_blank" rel="noopener noreferrer">Visit Farmadiary &rarr;</a>
+    <p data-i18n="farmadiary_desc">A companion diary for reflecting on medication learning, in practice.</p>
+    <a class="play-btn on-light" href="https://farmadiary.com" target="_blank" rel="noopener noreferrer"><span data-i18n="farmadiary_cta">Visit Farmadiary &rarr;</span></a>
   </div>
 </section>
 
 <section class="band about-band">
   <div class="container">
-    <h2>About Me</h2>
-    <p>
+    <h2 data-i18n="about_heading">About Me</h2>
+    <p data-i18n="about_text">
       <!-- Placeholder — real bio content to follow separately -->
       About me text coming soon.
     </p>
@@ -428,31 +468,118 @@
 
 <section class="band contact-band">
   <div class="container">
-    <h2>Contact</h2>
+    <h2 data-i18n="contact_heading">Contact</h2>
     <!-- Replace this Formspree endpoint with the real form ID before going live -->
     <form class="contact-form" action="https://formspree.io/f/REPLACE_WITH_FORM_ID" method="POST">
       <div>
-        <label for="contact-name">Name</label>
+        <label for="contact-name" data-i18n="label_name">Name</label>
         <input type="text" id="contact-name" name="name" required>
       </div>
       <div>
-        <label for="contact-email">Email</label>
+        <label for="contact-email" data-i18n="label_email">Email</label>
         <input type="email" id="contact-email" name="email" required>
       </div>
       <div>
-        <label for="contact-message">Message</label>
+        <label for="contact-message" data-i18n="label_message">Message</label>
         <textarea id="contact-message" name="message" required></textarea>
       </div>
-      <button type="submit" class="submit-btn">Send message</button>
+      <button type="submit" class="submit-btn"><span data-i18n="submit_btn">Send message</span></button>
     </form>
     <!-- Replace with the real LinkedIn profile URL -->
-    <a class="linkedin-btn" href="https://www.linkedin.com/in/REPLACE_WITH_PROFILE" target="_blank" rel="noopener noreferrer">Connect on LinkedIn &rarr;</a>
+    <a class="linkedin-btn" href="https://www.linkedin.com/in/REPLACE_WITH_PROFILE" target="_blank" rel="noopener noreferrer"><span data-i18n="linkedin_btn">Connect on LinkedIn &rarr;</span></a>
   </div>
 </section>
 
 <footer>
   &copy; 2026 Piret Paal
 </footer>
+
+<script>
+  // Every piece of switchable copy lives here, keyed by section.
+  // Entries without an "fi" property simply fall back to English
+  // until real Finnish copy is added — nothing shows blank.
+  var translations = {
+    tagline: { en: "MediProjects — nursing education game prototypes" },
+
+    myday_desc: { en: "A day-in-the-life nursing simulation." },
+    farmarush_desc: { en: "Fast-paced medication matching game." },
+    medichain_desc: { en: "Medication safety and process training." },
+    medilink_desc: { en: "Connecting nursing knowledge in practice." },
+    play_now: { en: "Play now →" },
+
+    why_heading: { en: "Why" },
+    why1_statement: {
+      en: "“Over half of surveyed nurses have caused a medication-related safety incident; half have given medicines without knowing their effects.”",
+      fi: "“Vuonna 2016 julkaistun tutkimuksen mukaan yli puolet tutkimukseen osallistuneet sairaanhoitajista ovat joskus aiheuttanut potilaalle lääkehoidon virheen takia vaaratilanteen ja puolet ovat antaneet lääkkeitä, joiden vaikutuksia he eivät tietäneet (Luokkamäki ym. 2016: 30).”"
+    },
+    why1_citation: { en: "— Luokkamäki et al., 2016", fi: "" },
+    why2_statement: {
+      en: "“Nursing students often see pharmacology as a ‘necessary evil’ rather than essential knowledge.”",
+      fi: "“Tutkimuksen mukaan sairaanhoitajaopiskelijat ajattelevat farmakologiakurssin \"pakollisena pahana\" sen sijaan, että sen sisältö olisi tärkeä hallita (Mauldin 2021).”"
+    },
+    why2_citation: { en: "— Mauldin, 2021", fi: "" },
+    why3_statement: {
+      en: "“Online and gamified methods are among the most effective ways to teach pharmacology.”",
+      fi: "“Vuonna 2019 tehdyn tutkimuksen mukaan on todettu online-menetelmien olevan yksi parhaimpia tapoja farmakologian opettamisessa opiskelijatyytyväisyyden ja tiedon hankinnan kannalta (Gill ym. 2019:1).”"
+    },
+    why3_citation: { en: "— Gill et al., 2019", fi: "" },
+
+    farmadiary_desc: { en: "A companion diary for reflecting on medication learning, in practice." },
+    farmadiary_cta: { en: "Visit Farmadiary →" },
+
+    about_heading: { en: "About Me" },
+    about_text: { en: "About me text coming soon." },
+
+    contact_heading: { en: "Contact" },
+    label_name: { en: "Name" },
+    label_email: { en: "Email" },
+    label_message: { en: "Message" },
+    submit_btn: { en: "Send message" },
+    linkedin_btn: { en: "Connect on LinkedIn →" }
+  };
+
+  var LANG_KEY = 'fg-lang';
+
+  function t(key, lang) {
+    var entry = translations[key];
+    if (!entry) return '';
+    if (lang === 'fi' && Object.prototype.hasOwnProperty.call(entry, 'fi')) {
+      return entry.fi;
+    }
+    return entry.en;
+  }
+
+  function applyLanguage(lang) {
+    var nodes = document.querySelectorAll('[data-i18n]');
+    for (var i = 0; i < nodes.length; i++) {
+      var el = nodes[i];
+      var text = t(el.getAttribute('data-i18n'), lang);
+      el.textContent = text;
+      el.style.display = text === '' ? 'none' : '';
+    }
+    document.documentElement.setAttribute('lang', lang);
+    var buttons = document.querySelectorAll('.lang-btn');
+    for (var j = 0; j < buttons.length; j++) {
+      buttons[j].classList.toggle('active', buttons[j].getAttribute('data-lang') === lang);
+    }
+  }
+
+  function setLanguage(lang) {
+    try { localStorage.setItem(LANG_KEY, lang); } catch (e) {}
+    applyLanguage(lang);
+  }
+
+  var langButtons = document.querySelectorAll('.lang-btn');
+  for (var k = 0; k < langButtons.length; k++) {
+    langButtons[k].addEventListener('click', function () {
+      setLanguage(this.getAttribute('data-lang'));
+    });
+  }
+
+  var savedLang = 'en';
+  try { savedLang = localStorage.getItem(LANG_KEY) || 'en'; } catch (e) {}
+  applyLanguage(savedLang);
+</script>
 
 </body>
 </html>
