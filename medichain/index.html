@@ -1,32 +1,1741 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MediChain — FarmaGames</title>
+<title>MediChain</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-  body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: #f4faf9;
-    color: #1c2b2a;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    text-align: center;
+  :root{
+    --mint-bg:#e6f7ef;
+    --mint-text:#1f8f63;
+    --mint-strong:#16a673;
+    --card-bg:#ffffff;
+    --page-bg:#f4f6f8;
+    --navy:#13202b;
+    --gray:#6b7785;
+    --purple-bg:#f1ecfb;
+    --purple-text:#6c4fd1;
+    --blue-bg:#e3f7ff;
+    --blue-text:#2b8fc2;
+    --amber-bg:#fdf1d8;
+    --amber-text:#a8761b;
+    --red:#e0554f;
+    --border:#e7eaee;
   }
-  main { padding: 2rem; }
-  h1 { color: #0f7a72; margin-bottom: 0.5rem; }
-  p { color: #5a6b6a; }
-  a { color: #0f7a72; }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    background:var(--page-bg);
+    color:var(--navy);
+    display:flex;
+    justify-content:center;
+    padding:16px;
+    -webkit-tap-highlight-color:transparent;
+  }
+  @media (min-width:700px){ body{ padding:32px 24px; } }
+  .phone{ width:100%; max-width:430px; transition:max-width .2s ease; }
+  @media (min-width:700px){ .phone{ max-width:560px; } }
+  @media (min-width:1000px){ .phone{ max-width:680px; } }
+  @media (min-width:1400px){ .phone{ max-width:760px; } }
+
+  .topbar{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:8px 4px 14px;
+  }
+  .topbar .icon{
+    width:34px;height:34px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--navy); font-size:18px;
+  }
+  .topbar-title{
+    font-weight:800; font-size:17px; color:var(--navy);
+    display:flex; align-items:center; gap:6px;
+  }
+  .topbar-pill-icon{ width:20px; height:20px; display:inline-flex; }
+  .topbar-pill-icon svg{ width:100%; height:100%; }
+  .info-icon-v2{
+    border:none; background:none;
+  }
+  .tavoite-banner{
+    display:flex; align-items:center; gap:12px;
+    background:linear-gradient(160deg, var(--mint-bg) 0%, #f0fbf6 100%);
+    border:1px solid #cdeede;
+    border-radius:16px;
+    padding:10px 14px;
+    margin:0 2px 8px;
+    position:relative;
+  }
+  .floating-info{
+    position:absolute;
+    top:8px; right:10px;
+    width:26px; height:26px;
+  }
+  .tavoite-icon{
+    width:32px; height:32px; flex-shrink:0;
+    background:#ffffff; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    padding:6px;
+    box-shadow:0 1px 3px rgba(20,30,40,0.08);
+  }
+  .tavoite-icon svg{ width:100%; height:100%; }
+  .tavoite-label{
+    font-size:10.5px; font-weight:800; letter-spacing:0.05em;
+    color:var(--mint-strong); margin-bottom:2px;
+  }
+  .tavoite-desc{
+    font-size:14.5px; line-height:1.4; color:var(--navy); font-weight:600;
+    padding-right:20px;
+  }
+  .stats-card{
+    display:flex; align-items:stretch;
+    background:var(--card-bg); border:1px solid var(--border);
+    border-radius:16px; padding:10px 8px;
+    margin:0 2px 8px;
+    box-shadow:0 1px 3px rgba(20,30,40,0.04);
+  }
+  .stat-col{
+    flex:1; display:flex; flex-direction:column; align-items:center; gap:5px;
+  }
+  .stat-divider{ width:1px; background:var(--border); margin:2px 0; }
+  .stat-label{
+    font-size:9.5px; font-weight:800; letter-spacing:0.05em; color:var(--gray);
+  }
+  .stat-value-row{
+    display:flex; align-items:center; gap:6px;
+  }
+  .stat-icon{ width:28px; height:28px; flex-shrink:0; display:inline-flex; }
+  .stat-icon.stat-icon-wide{ width:74px; height:27px; }
+  .stat-icon svg{ width:100%; height:100%; }
+  .stat-value{ font-size:20px; font-weight:800; color:var(--navy); }
+  .stat-value-sub{ font-size:13px; font-weight:700; color:var(--gray); }
+
+  .base-stack{
+    position:relative;
+    padding-top:60px;
+    margin-bottom:14px;
+  }
+  .depth-stack{
+    position:absolute;
+    top:0; left:50%;
+    transform:translateX(-50%);
+    width:min(92%, 420px);
+    height:14px;
+  }
+  .depth-bar{
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    height:5px;
+    border-radius:8px 8px 0 0;
+    background:var(--gray);
+  }
+  .table-shadow{
+    position:absolute;
+    bottom:-10px; left:50%;
+    transform:translateX(-50%);
+    width:88%;
+    height:14px;
+    background:radial-gradient(ellipse at center, rgba(20,30,40,0.10), transparent 75%);
+    z-index:0;
+  }
+  .play-card{
+    width:min(92%, 420px);
+    border-radius:22px;
+    margin:0 auto;
+  }
+  .prev-card{
+    position:absolute;
+    top:14px; left:50%;
+    transform:translateX(-50%);
+    width:calc(min(92%, 420px) - 22px);
+    height:70px;
+    overflow:hidden;
+    background:var(--card-bg);
+    border:1.5px solid var(--border);
+    border-radius:22px 22px 0 0;
+    box-shadow:0 4px 14px -6px rgba(20,30,40,0.10);
+    z-index:1;
+    filter:brightness(0.93) saturate(0.85);
+    opacity:0.85;
+    padding:11px 22px 0;
+    cursor:pointer;
+    transition:opacity .15s ease;
+  }
+  .prev-card:hover{ opacity:1; }
+  .prev-card .chain-chevron{
+    position:absolute; top:14px; right:18px;
+    font-size:13px; color:var(--gray); opacity:0.7;
+  }
+  .prev-card .label{
+    font-size:9.5px; text-transform:uppercase; letter-spacing:0.06em;
+    color:var(--gray); font-weight:700; margin-bottom:2px;
+  }
+  .prev-card .name{
+    font-size:16px; font-weight:800; color:var(--navy); opacity:0.6;
+  }
+  .current-card{
+    position:relative;
+    height:auto;
+    background:var(--card-bg);
+    border:1.5px solid var(--border);
+    box-shadow:0 2px 6px rgba(20,30,40,0.06), 0 14px 28px -12px rgba(20,30,40,0.16);
+    z-index:2;
+    padding:clamp(14px, 4vw, 26px) clamp(16px, 5vw, 30px) clamp(14px, 3.5vw, 22px);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .current-card.drop-highlight{
+    box-shadow:0 0 0 3px var(--mint-strong), 0 14px 28px -12px rgba(20,30,40,0.2);
+    transform:scale(1.02);
+  }
+  .current-card .label{
+    font-size:11px; text-transform:uppercase; letter-spacing:0.06em;
+    color:var(--gray); font-weight:700; margin-bottom:4px; text-align:center;
+  }
+  .table-badge{
+    position:absolute;
+    width:30px; height:30px;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:13px; font-weight:800;
+    background:var(--mint-bg); color:var(--mint-strong);
+  }
+  .table-badge.tl{ top:clamp(16px, 4vw, 22px); left:clamp(16px, 4vw, 22px); }
+  .table-badge.tr{
+    top:clamp(16px, 4vw, 22px); right:clamp(16px, 4vw, 22px);
+    border-radius:10px; width:34px; height:34px; font-size:16px;
+  }
+  .table-icon{
+    width:54px; height:54px;
+    margin:2px auto 6px;
+  }
+  .table-icon svg{ width:100%; height:100%; display:block; }
+  .current-card h1{
+    font-size:clamp(22px, 5.5vw, 32px);
+    margin:0 0 10px; font-weight:800; letter-spacing:-0.01em;
+    word-break:break-word; line-height:1.18;
+    text-align:center;
+  }
+  .current-card h1.long-name{
+    font-size:clamp(18px, 4.3vw, 24px);
+  }
+  .current-card h1.extra-long-name{
+    font-size:clamp(15px, 3.6vw, 20px);
+  }
+  .table-divider{
+    width:88%;
+    height:1px;
+    background:var(--border);
+    margin:0 auto 9px;
+  }
+  .tag{
+    display:inline-block; padding:7px 14px; border-radius:18px;
+    font-size:13px; font-weight:600; margin:0 7px 6px 0;
+  }
+  .tag.class{background:var(--mint-bg);color:var(--mint-text);}
+  .tag.indication{background:var(--blue-bg);color:var(--blue-text);}
+  .section-title{
+    font-size:10.5px; text-transform:uppercase; letter-spacing:0.06em;
+    color:var(--gray); font-weight:700; margin:8px 0 5px;
+  }
+  .score-flash{
+    position:absolute; inset:0; border-radius:20px;
+    background:rgba(22,166,115,0.14);
+    display:flex; align-items:center; justify-content:center;
+    font-size:15px; font-weight:800; color:var(--mint-strong);
+    opacity:0; pointer-events:none; z-index:5;
+  }
+  .score-flash.show{ animation:flashok 0.9s ease; }
+  .score-flash.bad{ background:rgba(224,85,79,0.12); color:var(--red); }
+  @keyframes flashok{
+    0%{opacity:0;} 20%{opacity:1;} 80%{opacity:1;} 100%{opacity:0;}
+  }
+
+  .section-panel{
+    background:#fbfcfd;
+    border:1.5px solid var(--border);
+    border-radius:18px;
+    padding:11px 12px 10px;
+    margin-bottom:10px;
+  }
+  .table-panel{
+    background:linear-gradient(180deg, #f0faf4 0%, #fbfdfc 100%);
+    border-color:#dcefe3;
+  }
+  .hand-panel{
+    padding-bottom:4px;
+    margin-bottom:0;
+  }
+  .section-label{
+    font-size:12px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    color:var(--gray);
+    margin:0 4px 10px;
+    text-align:center;
+  }
+  .source-note{
+    font-size:10.5px;
+    color:var(--gray);
+    text-align:center;
+    margin:6px 8px 60px;
+    opacity:0.75;
+  }
+  .hand-row{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:8px;
+    padding:4px 4px 4px;
+  }
+  @media (max-width: 360px){
+    .hand-row{ grid-template-columns:repeat(3, 1fr); }
+  }
+  @media (min-width:700px){
+    .hand-row{ gap:12px; }
+    .pill-name{ font-size:13.5px; }
+    .pill-name.name-long{ font-size:11.5px; }
+    .pill-name.name-extra-long{ font-size:10px; }
+    .card-glyph{ width:42px; height:42px; }
+    .card-footer{ font-size:10.5px; }
+    .table-icon{ width:70px; height:70px; }
+    .table-badge.tl, .table-badge.tr{ width:36px; height:36px; font-size:15px; }
+  }
+  @media (min-width:1000px){
+    .pill-name{ font-size:14.5px; }
+    .pill-name.name-long{ font-size:12.5px; }
+    .pill-name.name-extra-long{ font-size:11px; }
+    .card-glyph{ width:50px; height:50px; }
+    .card-footer{ font-size:11px; }
+    .table-icon{ width:80px; height:80px; }
+    .table-badge.tl, .table-badge.tr{ width:40px; height:40px; font-size:17px; }
+  }
+
+  .card-shape{
+    width:100%;
+    aspect-ratio:0.62 / 1;
+    border-radius:16px;
+    background:linear-gradient(160deg,#ffffff 0%, #fbfcfd 100%);
+    border:1.5px solid var(--border);
+    box-shadow:0 2px 4px rgba(20,30,40,0.05), 0 6px 14px -8px rgba(20,30,40,0.12);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    position:relative;
+    cursor:grab;
+    user-select:none;
+    touch-action:none;
+    padding:10px 8px 0;
+    overflow:hidden;
+    transition:box-shadow .15s ease, transform .15s ease;
+  }
+  .card-shape:active{ cursor:grabbing; }
+  .card-shape.dragging{
+    box-shadow:0 18px 30px -10px rgba(20,30,40,0.3);
+    z-index:100;
+  }
+  .card-badge{
+    position:absolute;
+    width:24px; height:24px;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:10px; font-weight:800;
+    background:var(--mint-bg); color:var(--mint-strong);
+    padding:5px;
+  }
+  .card-badge svg{ width:100%; height:100%; display:block; }
+  .card-badge.tl{ top:8px; left:8px; }
+  .card-badge.tr{ top:8px; right:8px; border-radius:7px; width:22px; height:22px; font-size:11px; }
+  .card-shape.special .card-badge{ background:var(--amber-bg); color:var(--amber-text); }
+  .card-shape.switchcard .card-badge{ background:var(--purple-bg); color:var(--purple-text); }
+  .card-content{
+    flex:1;
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+  }
+  .card-glyph{
+    width:34px;
+    height:34px;
+    margin-bottom:6px;
+  }
+  .card-glyph svg{ width:100%; height:100%; display:block; }
+  .pill-name{
+    font-size:12.5px;
+    font-weight:600;
+    color:var(--navy);
+    text-align:center;
+    line-height:1.18;
+    padding:0 3px;
+    width:100%;
+    overflow-wrap:break-word;
+    word-break:break-word;
+    hyphens:auto;
+  }
+  .pill-name.name-long{ font-size:10.5px; }
+  .pill-name.name-extra-long{ font-size:9px; line-height:1.1; }
+  .card-divider{
+    width:78%;
+    height:1px;
+    background:var(--border);
+    margin:8px auto 0;
+  }
+  .card-shape.special .card-divider{ background:#ecdca8; }
+  .card-shape.switchcard .card-divider{ background:#dccdf6; }
+  .card-footer{
+    margin:auto -8px 0;
+    width:calc(100% + 16px);
+    text-align:center;
+    font-size:9.5px;
+    font-weight:800;
+    letter-spacing:0.02em;
+    padding:6px 4px;
+    background:var(--mint-bg);
+    color:var(--mint-strong);
+  }
+  .card-shape.special .card-footer{ background:var(--amber-bg); color:var(--amber-text); }
+  .card-shape.switchcard .card-footer{ background:var(--purple-bg); color:var(--purple-text); }
+  .card-shape.special{ background:#ffffff; border-color:#f1deab; }
+  .card-shape.special .pill-name{ color:var(--navy); }
+  .card-shape.switchcard{ background:#ffffff; border-color:#ddcdf6; }
+  .card-shape.infocard{ background:#ffffff; border-color:#d7dde2; }
+  .card-shape.infocard .pill-name{ color:var(--navy); }
+  .card-shape.infocard .card-footer{ background:#eceff2; color:#5b6b7a; }
+  .card-shape.switchcard .pill-name{ color:var(--navy); }
+  .card-shape.disabled{ opacity:0.4; filter:grayscale(0.6); pointer-events:none; }
+  .card-shape.hint-marked{ border-color:var(--red); border-width:2px; }
+  .hint-x{ position:absolute; top:6px; right:7px; width:16px; height:16px; }
+  .hint-x svg{ width:100%; height:100%; display:block; }
+
+  .overlay{
+    position:fixed;inset:0; background:rgba(15,20,25,0.45);
+    display:none; align-items:flex-end; justify-content:center; z-index:50;
+  }
+  .overlay.show{display:flex;}
+  .sheet{
+    background:var(--card-bg); width:100%; max-width:430px;
+    border-radius:24px 24px 0 0; padding:24px 20px 28px;
+    animation:slideup .25s ease;
+    max-height:80vh; overflow-y:auto;
+  }
+  @keyframes slideup{
+    from{transform:translateY(40px);opacity:0;} to{transform:translateY(0);opacity:1;}
+  }
+  .sheet h3{ margin:0 0 4px; font-size:18px; }
+  .sheet p.sub{ margin:0 0 18px; color:var(--gray); font-size:13px; }
+  .choice-btn{
+    width:100%; text-align:left; border:1.5px solid var(--border); background:var(--page-bg);
+    border-radius:16px; padding:14px 16px; margin-bottom:10px; font-size:14px; font-weight:600;
+    color:var(--navy); cursor:pointer;
+  }
+  .choice-btn:hover{ border-color:var(--mint-strong); }
+  .choice-btn .small{ display:block; font-size:12px; font-weight:400; color:var(--gray); margin-top:2px; }
+  .choice-btn.lakeryhma{ background:var(--mint-bg); border-color:#cdeede; }
+  .choice-btn.lakeryhma:hover{ border-color:var(--mint-strong); }
+  .choice-btn.kayttoaihe{ background:var(--blue-bg); border-color:#c5e8f5; }
+  .choice-btn.kayttoaihe:hover{ border-color:var(--blue-text); }
+  .choice-btn.result-correct{
+    border-color:var(--mint-strong); border-width:2px;
+    box-shadow:0 0 0 1px var(--mint-strong); cursor:default;
+  }
+  .choice-btn.result-wrong{
+    border-color:var(--red); border-width:2px;
+    box-shadow:0 0 0 1px var(--red); cursor:default;
+    background:#fdeceb;
+  }
+  .choice-btn:disabled{ opacity:1; }
+  .sheet-extra-note{
+    font-size:12.5px; color:var(--gray); line-height:1.45; margin:0 0 12px;
+  }
+  .sheet-hint-note{
+    font-size:12.5px; color:var(--mint-strong); font-weight:600; line-height:1.4; margin:0 0 12px;
+  }
+  button.continue-btn{
+    background:var(--mint-strong); color:#fff; font-weight:700;
+    border-radius:14px; padding:12px; margin-top:4px;
+  }
+  .switch-picker-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:10px;
+  }
+  .switch-pick-btn{
+    margin-bottom:0; text-align:center; padding:16px 10px;
+  }
+  .cancel-btn{
+    width:100%; text-align:center; background:none; border:none; color:var(--gray);
+    font-size:14px; padding:10px; cursor:pointer;
+  }
+  .chain-list{
+    max-height:50vh; overflow-y:auto; display:flex; flex-direction:column; gap:8px;
+  }
+  .chain-row{
+    display:flex; align-items:center; gap:12px;
+    background:var(--page-bg); border:1.5px solid var(--border);
+    border-radius:14px; padding:10px 14px;
+  }
+  .chain-row-current{
+    background:var(--mint-bg); border-color:var(--mint-strong);
+  }
+  .chain-row-wrong{
+    background:#fdeceb; border-color:var(--red);
+  }
+  .chain-row-wrong .chain-num{
+    border-color:var(--red); color:var(--red);
+  }
+  .chain-num{
+    width:24px; height:24px; border-radius:50%;
+    background:var(--card-bg); border:1.5px solid var(--border);
+    display:flex; align-items:center; justify-content:center;
+    font-size:11px; font-weight:800; color:var(--gray); flex-shrink:0;
+  }
+  .chain-row-current .chain-num{ border-color:var(--mint-strong); color:var(--mint-strong); }
+  .chain-name{ font-size:14px; font-weight:700; color:var(--navy); }
+  .chain-via{ font-size:11.5px; color:var(--gray); margin-top:1px; }
+
+  .feedback{
+    position:fixed; bottom:24px; left:50%;
+    transform:translateX(-50%) translateY(20px);
+    background:var(--navy); color:white; padding:14px 18px; border-radius:16px;
+    font-size:14px; max-width:380px; width:calc(100% - 32px);
+    box-shadow:0 10px 30px -10px rgba(0,0,0,0.4); z-index:60;
+    opacity:0; pointer-events:none; transition:all .25s ease;
+  }
+  .feedback.show{ opacity:1; transform:translateX(-50%) translateY(0); pointer-events:auto; }
+  .feedback.ok{background:var(--mint-strong);}
+  .feedback.bad{background:var(--red);}
+  .feedback.info{background:#3b4754;}
+  .fact-note{
+    margin-top:4px;
+    margin-bottom:12px;
+    padding:12px 14px;
+    background:var(--mint-bg);
+    border-radius:14px;
+    font-size:13px;
+    line-height:1.45;
+    color:var(--navy);
+  }
+  .fact-label{
+    display:block;
+    font-weight:800;
+    font-size:13px;
+    margin-bottom:3px;
+    color:var(--mint-strong);
+  }
+
+  .win-screen{ text-align:center; padding:60px 20px; }
+  .win-screen .emoji{font-size:54px;margin-bottom:10px;}
+  .win-screen h2{margin:0 0 8px;}
+  .win-screen p{color:var(--gray);margin:0 0 20px;}
+  .restart-btn{
+    background:var(--mint-strong); color:white; border:none; padding:14px 28px;
+    border-radius:20px; font-size:15px; font-weight:700; cursor:pointer;
+    width:100%; display:block; text-align:center;
+  }
+
+  .drag-ghost{
+    position:fixed;
+    z-index:200;
+    pointer-events:none;
+    transform-origin:center;
+  }
+  /* LANDING SCREEN */
+  #landingScreen{ padding-bottom:8px; }
+  .landing-hero{ text-align:center; padding:18px 8px 8px; position:relative; }
+  .landing-bg-deco{
+    position:absolute; top:-10px; left:0; right:0; height:160px;
+    pointer-events:none; z-index:0; opacity:0.7;
+  }
+  .landing-bg-deco svg{ width:100%; height:100%; }
+  .landing-logo{ width:140px; height:70px; margin:0 auto 10px; position:relative; z-index:1; }
+  .landing-logo svg{ width:100%; height:100%; }
+  .landing-title{
+    font-size:30px; font-weight:800; letter-spacing:-0.01em; margin:0 0 8px;
+    position:relative; z-index:1;
+  }
+  .title-navy{ color:var(--navy); }
+  .title-green{ color:var(--mint-strong); }
+  .landing-tagline{ font-size:13.5px; color:var(--gray); margin:0 0 18px; line-height:1.4; position:relative; z-index:1; }
+  .rules-card{
+    background:var(--card-bg);
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:0;
+    margin:0 4px 14px;
+    box-shadow:0 1px 3px rgba(20,30,40,0.04);
+    position:relative; z-index:1;
+    overflow:hidden;
+  }
+  .card-heading{
+    display:flex; align-items:center; gap:10px;
+    background:linear-gradient(160deg, var(--mint-bg) 0%, #f0fbf6 100%);
+    padding:14px 18px;
+  }
+  .card-heading-icon{ width:28px; height:28px; flex-shrink:0; }
+  .card-heading-icon svg{ width:100%; height:100%; }
+  .card-heading h3{ margin:0; font-size:12px; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; color:var(--gray); }
+  .rules-card .card-heading h3{ margin:0; color:var(--gray); }
+  .card-body{ padding:16px 18px; }
+  .rules-card h3{ margin:0 0 8px; font-size:15px; color:var(--navy); }
+  .rules-card p, .rules-card li{ font-size:13.5px; line-height:1.55; color:var(--navy); margin:0; }
+  .rules-card ol{ margin:0; padding-left:20px; }
+  .rules-card ol li{ margin-bottom:8px; }
+  .rules-card i{ color:var(--gray); }
+  .num-list{ display:flex; flex-direction:column; gap:10px; }
+  .num-row{ display:flex; align-items:flex-start; gap:10px; }
+  .num-badge{
+    flex-shrink:0; width:20px; height:20px; border-radius:50%;
+    background:var(--mint-bg); color:var(--mint-strong);
+    display:flex; align-items:center; justify-content:center;
+    font-size:11.5px; font-weight:800; margin-top:1px;
+  }
+  .num-row span:last-child{ font-size:13.5px; line-height:1.5; color:var(--navy); }
+  .rule-tag{
+    display:inline-block; padding:4px 10px; border-radius:10px; font-weight:700; font-size:12.5px;
+  }
+  .rule-tag.switchcard{ background:var(--purple-bg); color:var(--purple-text); }
+  .rule-tag.special{ background:var(--amber-bg); color:var(--amber-text); }
+  .expand-toggle{
+    display:flex; align-items:center; gap:6px;
+    width:100%; margin-top:14px; padding:9px 12px;
+    background:var(--mint-bg); border:1px solid #cdeede;
+    border-radius:12px; color:var(--mint-strong); font-weight:700; font-size:13px;
+    cursor:pointer; text-align:left; transition:background .15s ease;
+  }
+  .expand-toggle:hover{ background:#d8f2e6; }
+  .expand-toggle .expand-icon{ display:inline-flex; width:16px; height:16px; transition:transform .2s ease; flex-shrink:0; }
+  .expand-toggle .expand-icon svg{ width:100%; height:100%; display:block; }
+  .expand-toggle.open .expand-icon{ transform:rotate(180deg); }
+  .expand-content{
+    max-height:0; overflow:hidden; opacity:0;
+    transition:max-height .25s ease, opacity .2s ease, margin .25s ease;
+    margin-top:0;
+  }
+  .expand-content.open{
+    max-height:600px; opacity:1; margin-top:12px;
+  }
+  .hint-card{
+    background:linear-gradient(160deg, var(--mint-bg) 0%, #f0fbf6 100%);
+    border:1px solid #cdeedd;
+    border-radius:18px;
+    padding:16px 18px;
+    margin:0 4px 18px;
+  }
+  .hint-card h3{ margin:0 0 8px; font-size:15px; color:var(--mint-strong); }
+  .hint-card p{ font-size:13.5px; line-height:1.55; color:var(--navy); margin:0; }
+  .start-btn{ width:calc(100% - 8px); margin:0 4px 8px; display:flex; align-items:center; justify-content:center; }
 </style>
 </head>
 <body>
-  <main>
-    <h1>MediChain</h1>
-    <p>This game is coming soon.</p>
-    <p><a href="../">&larr; Back to FarmaGames</a></p>
-  </main>
+<div class="phone">
+
+  <!-- LANDING / RULES SCREEN -->
+  <div id="landingScreen">
+    <div class="landing-hero">
+      <div class="landing-bg-deco">
+        <svg viewBox="0 0 360 200" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="40,10 70,28 70,62 40,80 10,62 10,28" fill="none" stroke="#e3e9ec" stroke-width="2"/>
+          <polygon points="300,90 335,110 335,148 300,168 265,148 265,110" fill="none" stroke="#e3e9ec" stroke-width="2"/>
+          <g fill="#cdeede">
+            <rect x="18" y="95" width="22" height="11" rx="5.5" transform="rotate(-30 29 100)"/>
+            <circle cx="335" cy="40" r="9" fill="#e7eaee"/>
+          </g>
+        </svg>
+      </div>
+      <div class="landing-logo">
+        <svg viewBox="0 0 160 80" xmlns="http://www.w3.org/2000/svg">
+          <rect x="6" y="20" width="50" height="40" rx="20" fill="none" stroke="#9fe3c4" stroke-width="12"/>
+          <rect x="104" y="20" width="50" height="40" rx="20" fill="none" stroke="#16a673" stroke-width="12"/>
+          <rect x="46" y="35" width="68" height="10" rx="5" fill="#cdeede"/>
+          <g transform="translate(80,40)">
+            <rect x="-24" y="-12" width="48" height="24" rx="12" fill="#ffffff"/>
+            <path d="M-24 -12 H0 V12 H-24 a12 12 0 0 1 0 -24 Z" fill="#9fe3c4"/>
+            <line x1="0" y1="-12" x2="0" y2="12" stroke="#16a673" stroke-width="1.4"/>
+          </g>
+        </svg>
+      </div>
+      <h1 class="landing-title"><span class="title-navy">Medi</span><span class="title-green">Chain</span></h1>
+      <p class="landing-tagline">Yhdistä lääkkeet ketjuksi lääkeryhmän tai käyttöaiheen perusteella.</p>
+    </div>
+
+    <div class="rules-card">
+      <div class="card-heading">
+        <div class="card-heading-icon"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><circle cx="30" cy="34" r="20" fill="none" stroke="#16a673" stroke-width="3.5"/><circle cx="30" cy="34" r="13" fill="none" stroke="#16a673" stroke-width="3.5"/><circle cx="30" cy="34" r="5.5" fill="#16a673"/><path d="M40 16 L50 6 M50 6 L50 13 M50 6 L43 6" stroke="#0e9c68" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+        <h3>Tavoite</h3>
+      </div>
+      <div class="card-body">
+        <p>Rakenna mahdollisimman pitkä lääkeketju yhdistämällä kortteja toisiinsa lääkeryhmän tai käyttöaiheen perusteella. Pisteesi on ketjun pituus — kuinka monta korttia onnistut liittämään ketjuun ennen kuin kortit tai erikoiskortit loppuvat.</p>
+      </div>
+    </div>
+
+    <div class="rules-card">
+      <div class="card-heading">
+        <div class="card-heading-icon"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><rect x="14" y="10" width="36" height="46" rx="6" fill="none" stroke="#16a673" stroke-width="4"/><rect x="24" y="6" width="16" height="8" rx="3" fill="#16a673"/><line x1="22" y1="26" x2="42" y2="26" stroke="#16a673" stroke-width="3.5" stroke-linecap="round"/><line x1="22" y1="36" x2="42" y2="36" stroke="#16a673" stroke-width="3.5" stroke-linecap="round"/><line x1="22" y1="46" x2="34" y2="46" stroke="#16a673" stroke-width="3.5" stroke-linecap="round"/></svg></div>
+        <h3>Säännöt</h3>
+      </div>
+      <div class="card-body">
+        <div class="num-list">
+          <div class="num-row"><span class="num-badge">1</span><span>Pöydällä on aina yksi "perusteena" toimiva lääkekortti.</span></div>
+          <div class="num-row"><span class="num-badge">2</span><span>Kädessäsi on 5 lääkekorttia + 2 erikoiskorttia.</span></div>
+          <div class="num-row"><span class="num-badge">3</span><span>Vedä kädestä kortti pöydän kortin päälle. Valitse, perustuuko yhteys <b>lääkeryhmään</b> vai <b>käyttöaiheeseen</b>.</span></div>
+          <div class="num-row"><span class="num-badge">4</span><span>Oikea yhteys → kortti siirtyy pöydälle uudeksi perustaksi, ketju kasvaa. Saat uuden kortin pakasta.<br>Väärä yhteys → kortti palaa käteen ja sinun pitää yrittää uudestaan. Virheitä saa tehdä korkeintaan 3 — kolmas virhe päättää pelin, joten käytä "Vinkki" ennen kuin arvaat.</span></div>
+        </div>
+        <button class="expand-toggle" onclick="toggleExpand(this, 'example-content')">
+          <span class="expand-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6 9 L12 15 L18 9" fill="none" stroke="#16a673" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Esimerkki pelivuorosta
+        </button>
+        <div class="expand-content" id="example-content">
+          <p>Pöydällä on <b>Bisoprololi</b> (Beetasalpaaja / HTA, Angina Pectoris...). Kädessäsi on <b>Atenololi</b>. Vedät sen pöydälle ja valitset "Lääkeryhmä" — molemmat ovat beetasalpaajia, yhteys hyväksytään. Atenololista tulee uusi perusta.</p>
+          <p style="margin-top:10px;">Myöhemmin pöydällä on <b>Furosemidi</b> (Diureetti / Sydämen vajaatoiminta...). Kädessäsi on <b>Empagliflotsiini</b> — eri lääkeryhmä (SGLT2-estäjä), mutta valitset "Käyttöaihe": molemmat hoitavat sydämen vajaatoimintaa. Yhteys hyväksytään, vaikka lääkeryhmä on eri.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="rules-card">
+      <div class="card-heading">
+        <div class="card-heading-icon"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path d="M32 6 L39 25 L59 25 L43 37 L49 57 L32 45 L15 57 L21 37 L5 25 L25 25 Z" fill="#16a673" stroke="#16a673" stroke-width="7" stroke-linejoin="round"/></svg></div>
+        <h3>Erikoiskortit</h3>
+      </div>
+      <div class="card-body">
+        <p><span class="rule-tag switchcard">Vaihda aihe</span> — käytettävissä <b>3 kertaa per peli</b>. Hylkää nykyinen perusta ja valitse itse, mikä kädessäsi olevista korteista aloittaa uuden ketjun.<br>
+        <i>Esimerkki: jos kädessäsi ei ole mitään, joka liittyy Parasetamoliin, voit vaihtaa aiheen ja valita esim. verenpainelääkkeen uudeksi aloituskortiksi.</i></p>
+        <p style="margin-top:14px;"><span class="rule-tag special">Vinkki</span> — käytettävissä <b>3 kertaa per peli</b>. Näyttää vihjeen, mitä kortteja voit sulkea pois, paljastamatta suoraa vastausta.</p>
+        <button class="expand-toggle" onclick="toggleExpand(this, 'hint-content')">
+          <span class="expand-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6 9 L12 15 L18 9" fill="none" stroke="#16a673" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Vinkki: miten käytän erikoiskortteja viisaasti?
+        </button>
+        <div class="expand-content" id="hint-content">
+          <p>Jotkut kortit toimivat siltoina kahden lääkeryhmän välillä (esim. Empagliflotsiini yhdistää diabeteslääkkeet ja sydänlääkkeet). Älä käytä siltakortteja hätäisesti — jos pelaat sen väärässä järjestyksessä, voit jäädä jumiin ja joutua käyttämään arvokkaan "Vaihda aihe" -kortin turhaan.</p>
+          <p style="margin-top:10px;"><b>Mieti aina:</b> <i>onko kädessäni jokin kortti, joka kannattaisi pelata ENNEN tätä, jotta säästän siltakortin oikeaan kohtaan?</i></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="source-note" style="margin:0 8px 16px;">Lääketiedot: laakeinfo.fi (Fimea/EMA-hyväksytyt pakkausselosteet) · prototyyppi, ei korvaa asiantuntijatarkistusta</div>
+
+    <button class="restart-btn start-btn" onclick="startGameFromLanding()">
+      Aloita peli
+    </button>
+  </div>
+
+  <!-- GAME SCREEN -->
+  <div id="gameScreen" style="display:none;">
+    <div class="tavoite-banner" id="tavoiteBanner">
+      <div class="tavoite-icon"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><circle cx="30" cy="34" r="20" fill="none" stroke="#16a673" stroke-width="3.5"/><circle cx="30" cy="34" r="13" fill="none" stroke="#16a673" stroke-width="3.5"/><circle cx="30" cy="34" r="5.5" fill="#16a673"/><path d="M40 16 L50 6 M50 6 L50 13 M50 6 L43 6" stroke="#0e9c68" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+      <div class="tavoite-text">
+        <div class="tavoite-desc">Rakenna mahdollisimman pitkä lääkeketju yhdistämällä lääkkeitä lääkeryhmän tai käyttöaiheen perusteella.</div>
+      </div>
+    </div>
+
+    <div class="stats-card" id="topStatsCard">
+      <div class="stat-col">
+        <div class="stat-label">KETJU</div>
+        <div class="stat-value-row">
+          <span class="stat-icon stat-icon-wide"><svg viewBox="0 0 100 30" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke-linecap="round"><rect x="2" y="8" width="18" height="14" rx="7" stroke="#9fe3c4" stroke-width="4.5"/><rect x="16" y="8" width="18" height="14" rx="7" stroke="#5fcb9e" stroke-width="4.5"/><rect x="30" y="8" width="18" height="14" rx="7" stroke="#16a673" stroke-width="4.5"/><rect x="44" y="8" width="18" height="14" rx="7" stroke="#5fcb9e" stroke-width="4.5"/><rect x="58" y="8" width="18" height="14" rx="7" stroke="#9fe3c4" stroke-width="4.5"/></g></svg></span>
+          <span class="stat-value"><b id="chainLen">1</b></span>
+        </div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-col">
+        <div class="stat-label">PAKASSA</div>
+        <div class="stat-value-row">
+          <span class="stat-icon"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><rect x="20" y="8" width="24" height="34" rx="4" fill="#9fe3c4" transform="rotate(-8 32 25)"/><rect x="22" y="14" width="24" height="34" rx="4" fill="#16a673"/></svg></span>
+          <span class="stat-value"><b id="deckCount">0</b></span>
+        </div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-col">
+        <div class="stat-label">VIRHEET</div>
+        <div class="stat-value-row">
+          <span class="stat-icon"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><circle cx="32" cy="32" r="22" fill="#e0554f"/><path d="M24 24 L40 40 M40 24 L24 40" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round"/></svg></span>
+          <span class="stat-value"><b id="mistakes">0</b><span class="stat-value-sub">/3</span></span>
+        </div>
+      </div>
+    </div>
+
+    <div id="gameArea"></div>
+  </div>
+</div>
+
+<div class="overlay" id="overlay">
+  <div class="sheet" id="sheetContent"></div>
+</div>
+
+<div class="feedback" id="feedback"></div>
+
+<script>
+// Sourced from laakeinfo.fi (official Fimea/EMA-approved package leaflets,
+// compiled by Pharmaca Health Intelligence Oy) plus sydan.fi / Käypä hoito
+// for class-grouping context. Curated 23.6.2026 — cardiology-focused set.
+// This is a study prototype — content should be reviewed by a pharmacology
+// professional before being distributed to students.
+// Manual hyphenation hints for long compound drug names — uses the
+// soft-hyphen character (\u00AD), which is invisible unless the browser
+// actually needs to break the line there, in which case it shows a hyphen
+// exactly at that point. Break points are chosen at real word/morpheme
+// boundaries (e.g. "Asetyylisalisyyli" + "happo"), not arbitrary syllables.
+// When adding new long drug names later, add a matching entry here.
+const NAME_HYPHENS = {
+  'spironolaktoni': 'Spirono\u00ADlaktoni',
+  'simvastatiini': 'Simva\u00ADstatiini',
+  'atorvastatiini': 'Atorva\u00ADstatiini',
+  'empagliflotsiini': 'Empa\u00ADgliflotsiini',
+  'dapagliflotsiini': 'Dapa\u00ADgliflotsiini',
+  'klopidogreeli': 'Klopido\u00ADgreeli',
+  'diklofenaakki': 'Diklo\u00ADfenaakki',
+  'asa': 'Asetyyli\u00ADsalisyyli\u00ADhappo',
+};
+
+function displayName(card){
+  return NAME_HYPHENS[card.id] || card.name;
+}
+
+const DECK = [
+  {id:'bisoprolol', name:'Bisoprololi', class:'Beetasalpaaja', indications:['HTA','Angina Pectoris','Rytmihäiriöt','Sydämen vajaatoiminta','Sepelvaltimotauti']},
+  {id:'metoprolol', name:'Metoprololi', class:'Beetasalpaaja', indications:['HTA','Angina Pectoris','Rytmihäiriöt','Sydämen vajaatoiminta','Sepelvaltimotauti']},
+  {id:'atenololi', name:'Atenololi', class:'Beetasalpaaja', indications:['HTA','Angina Pectoris','Sepelvaltimotauti']},
+  {id:'amlodipiini', name:'Amlodipiini', class:'Kalsiumkanavan salpaaja', indications:['HTA','Angina Pectoris','Sepelvaltimotauti']},
+  {id:'enalapriili', name:'Enalapriili', class:'ACE:n estäjä', indications:['HTA','Sydämen vajaatoiminta','Sepelvaltimotauti']},
+  {id:'losartaani', name:'Losartaani', class:'ATII-reseptorin salpaaja', indications:['HTA','Sydämen vajaatoiminta']},
+  {id:'furosemidi', name:'Furosemidi', class:'Diureetti', indications:['Sydämen vajaatoiminta','Turvotus','HTA']},
+  {id:'spironolaktoni', name:'Spironolaktoni', class:'Aldosteroniantagonisti', indications:['Sydämen vajaatoiminta','HTA','Turvotus'],
+    fact:'Tiesitkö? Spironolaktoni on diureetti, mutta eri tavalla kuin Furosemidi — se ei aiheuta kaliumin menetystä, vaan saattaa nostaa kaliumarvoa.'},
+  {id:'simvastatiini', name:'Simvastatiini', class:'Statiini', indications:['Hyperkolesterolemia','Sepelvaltimotauti']},
+  {id:'atorvastatiini', name:'Atorvastatiini', class:'Statiini', indications:['Hyperkolesterolemia','Sepelvaltimotauti'],
+    fact:'Tiesitkö? Kaikille sepelvaltimotautipotilaille aloitetaan statiinihoito riippumatta lähtökolesterolista.'},
+  {id:'empagliflotsiini', name:'Empagliflotsiini', class:'SGLT2-estäjä', indications:['Tyypin 2 diabetes','Sydämen vajaatoiminta','Sepelvaltimotauti'],
+    fact:'Tiesitkö? Empagliflotsiini kehitettiin alun perin diabeteslääkkeeksi, mutta se auttaa nykyään yhtä lailla sydämen vajaatoiminnassa — myös potilailla, joilla ei ole diabetesta.'},
+  {id:'dapagliflotsiini', name:'Dapagliflotsiini', class:'SGLT2-estäjä', indications:['Tyypin 2 diabetes','Sydämen vajaatoiminta'],
+    fact:'Tiesitkö? Dapagliflotsiini kuuluu samaan SGLT2-estäjien ryhmään kuin Empagliflotsiini, ja sillä on samat kaksoiskäyttöaiheet: diabetes ja sydämen vajaatoiminta.'},
+  {id:'metformiini', name:'Metformiini', class:'Biguanidi', indications:['Tyypin 2 diabetes']},
+  {id:'asa', name:'Asetyylisalisyylihappo', class:'Verihiutaleiden estäjä', indications:['Sepelvaltimotauti','Kipu','Kuume'],
+    fact:'Tiesitkö? ASA (aspiriini) oli alun perin kipu- ja kuumelääke, mutta nykyään sitä käytetään sydäntautipotilailla pieninä annoksina estämään verihyytymiä — eri käyttötarkoitus, eri annos.'},
+  {id:'klopidogreeli', name:'Klopidogreeli', class:'Verihiutaleiden estäjä', indications:['Sepelvaltimotauti']},
+  {id:'varfariini', name:'Varfariini', class:'Antikoagulantti (K-vitamiiniantagonisti)', indications:['Eteisvärinä','Laskimotukos'],
+    fact:'Tiesitkö? Varfariini ja Apiksabaani hoitavat samoja tilanteita, mutta eri mekanismilla — Varfariini estää K-vitamiinin toimintaa, Apiksabaani salpaa suoraan hyytymistekijä Xa:ta.'},
+  {id:'apiksabaani', name:'Apiksabaani', class:'Antikoagulantti (suora, FXa-estäjä)', indications:['Eteisvärinä','Laskimotukos']},
+  {id:'ibuprofeeni', name:'Ibuprofeeni', class:'NSAID', indications:['Kipu','Tulehdus','Kuume']},
+  {id:'diklofenaakki', name:'Diklofenaakki', class:'NSAID', indications:['Kipu','Tulehdus']},
+  {id:'parasetamoli', name:'Parasetamoli', class:'Analgeetti', indications:['Kipu','Kuume']},
+  {id:'omepratsoli', name:'Omepratsoli', class:'Protonipumpun estäjä', indications:['Refluksitauti','Mahahaava']},
+  {id:'loratadiini', name:'Loratadiini', class:'Antihistamiini', indications:['Allerginen nuha','Nokkosihottuma']},
+];
+
+let deck = [];
+let hand = [];
+let baseCard = null;
+let previousBase = null;
+let mistakes = 0;
+let switchesUsed = 0;
+let dontknowUsed = 0;
+let placedCount = 0; // chain length: total drug cards successfully placed (match or switch)
+let gameEndReason = null; // 'full' | 'stuck' | null (still playing)
+let chainHistory = []; // ordered list of {card, via} for the full played chain
+let wrongAttempts = []; // ordered list of {cardName, baseName, detail} for mistakes made
+let hintMarked = []; // ids of hand cards currently flagged red by "Vinkki" as guaranteed-wrong
+const TOTAL_DRUGS = DECK.length;
+const MAX_SWITCHES = 3;
+const MAX_DONTKNOW = 3;
+const MAX_MISTAKES = 3;
+
+function shuffle(arr){
+  const a = [...arr];
+  for(let i=a.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+}
+
+function cardMatches(a, b){
+  const byClass = a.class === b.class;
+  const sharedIndications = a.indications.filter(i => b.indications.includes(i));
+  return {byClass, sharedIndications};
+}
+
+function cardConnects(a, b){
+  const m = cardMatches(a, b);
+  return m.byClass || m.sharedIndications.length > 0;
+}
+
+function initGame(){
+  const shuffled = shuffle(DECK);
+  baseCard = shuffled[0];
+  previousBase = null;
+  deck = shuffled.slice(1);
+  hand = [];
+  mistakes = 0;
+  switchesUsed = 0;
+  dontknowUsed = 0;
+  placedCount = 0; // chain length starts at 0 — the dealt starting card doesn't count until a real connection is made
+  gameEndReason = null;
+  chainHistory = [{ id: baseCard.id, name: baseCard.name, via: 'start' }];
+  wrongAttempts = [];
+  hintMarked = [];
+  fillHandFromDeck();
+  ensureGuaranteedHand();
+  checkGameOver();
+  render();
+}
+
+function fillHandFromDeck(){
+  while(hand.filter(c=>!c.special).length < 5 && deck.length > 0){
+    hand.push(deck.shift());
+  }
+  if(!hand.find(c=>c.special==='dontknow')){
+    hand.push({special:'dontknow', name:"Vinkki", id:'dontknow_'+Math.random()});
+  }
+  if(!hand.find(c=>c.special==='switch')){
+    hand.push({special:'switch', name:"Vaihda aihe", id:'switch_'+Math.random()});
+  }
+  if(!hand.find(c=>c.special==='info')){
+    hand.push({special:'info', name:"Info", id:'info_'+Math.random()});
+  }
+}
+
+// Core fix: guarantee that if a card connecting to the current base card
+// exists ANYWHERE (hand or remaining deck), it is present in the hand.
+// Returns true if the current "cluster" (topic) is genuinely exhausted —
+// i.e. no connecting card exists anywhere — meaning "Vaihda aihe" is the
+// correct and necessary next move, not a dealing accident.
+function ensureGuaranteedHand(){
+  if(!baseCard) return false;
+  const regularInHand = hand.filter(c=>!c.special);
+  const hasMatchInHand = regularInHand.some(c => cardConnects(c, baseCard));
+  if(hasMatchInHand) return false;
+
+  const deckIdx = deck.findIndex(c => cardConnects(c, baseCard));
+  if(deckIdx === -1){
+    // Genuinely no connecting card left anywhere — topic is exhausted.
+    return true;
+  }
+
+  const guaranteedCard = deck.splice(deckIdx, 1)[0];
+  const regularIdxs = [];
+  hand.forEach((c, i) => { if(!c.special) regularIdxs.push(i); });
+
+  if(regularIdxs.length > 0){
+    const swapIdx = regularIdxs[Math.floor(Math.random()*regularIdxs.length)];
+    deck.push(hand[swapIdx]);
+    hand[swapIdx] = guaranteedCard;
+  } else {
+    hand.push(guaranteedCard);
+  }
+  return false;
+}
+
+// Returns true if the game has ended (sets gameEndReason + baseCard=null).
+// Two ways a game ends:
+//   'full'  — every card in the deck got chained. Best possible outcome.
+//   'stuck' — no card anywhere connects to the current base, and all
+//             "Vaihda aihe" switches are used up, so the chain cannot
+//             continue. Score is simply how long the chain got.
+let lastExhausted = false;
+
+function checkGameOver(){
+  const regularInHand = hand.filter(c=>!c.special).length;
+  if(deck.length === 0 && regularInHand === 0){
+    gameEndReason = 'full';
+    baseCard = null;
+    lastExhausted = false;
+    return true;
+  }
+  lastExhausted = ensureGuaranteedHand();
+  if(lastExhausted && switchesUsed >= MAX_SWITCHES){
+    gameEndReason = 'stuck';
+    baseCard = null;
+    return true;
+  }
+  return false;
+}
+
+// Small solitaire-style hint of how many cards are already chained behind
+// the current one — purely visual, capped so it never grows large on screen.
+function renderDepthStack(){
+  const played = chainHistory.length; // includes current card
+  const numBars = played >= 12 ? 3 : played >= 6 ? 2 : played >= 2 ? 1 : 0;
+  if(numBars === 0) return '';
+  let bars = '';
+  for(let i = 0; i < numBars; i++){
+    // i=0 is the bar closest to the prev-card (widest, darkest);
+    // higher i = further back (narrower, lighter).
+    const widthShrink = 30 + i * 14;
+    const opacity = 0.5 - i * 0.13;
+    bars += `<div class="depth-bar" style="width:calc(min(92%, 420px) - ${widthShrink}px); bottom:${i * 5}px; opacity:${opacity};"></div>`;
+  }
+  return `<div class="depth-stack">${bars}</div>`;
+}
+
+// Custom illustrated icons matching the card mockup style (gradient shield
+// with pill, glowing sparkly lightbulb, bold two-tone cycle arrows) —
+// replacing generic emoji glyphs.
+function iconShieldPill(uid){
+  return `
+<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="shieldGrad${uid}" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#22d399"/>
+      <stop offset="1" stop-color="#0e9c68"/>
+    </linearGradient>
+  </defs>
+  <path d="M32 4 L55 12 V29 C55 45 45 55 32 60 C19 55 9 45 9 29 V12 Z" fill="url(#shieldGrad${uid})"/>
+  <g transform="translate(34,29) rotate(-45) scale(0.83)">
+    <rect x="-12" y="-6.5" width="24" height="13" rx="6.5" fill="#ffffff"/>
+    <path d="M-12 -6.5 H0 V6.5 H-12 a6.5 6.5 0 0 1 0 -13 Z" fill="#dff5ea"/>
+    <line x1="0" y1="-6.5" x2="0" y2="6.5" stroke="#0e9c68" stroke-width="1.3"/>
+  </g>
+</svg>`;
+}
+
+function iconLightbulb(uid){
+  return `
+<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <g stroke="#e0a829" stroke-width="3" stroke-linecap="round">
+    <line x1="32" y1="2" x2="32" y2="9"/>
+    <line x1="13" y1="9" x2="18" y2="14"/>
+    <line x1="51" y1="9" x2="46" y2="14"/>
+    <line x1="5" y1="27" x2="12" y2="27"/>
+    <line x1="59" y1="27" x2="52" y2="27"/>
+  </g>
+  <path d="M32 11 C23 11 17 18 17 26 C17 32.5 20.5 36.5 24 39.5 V44 a2.5 2.5 0 0 0 2.5 2.5 h11 A2.5 2.5 0 0 0 40 44 V39.5 C43.5 36.5 47 32.5 47 26 C47 18 41 11 32 11 Z"
+        fill="#ffd866" stroke="#d99a1f" stroke-width="2.2"/>
+  <rect x="25.5" y="47.5" width="13" height="5" rx="2.2" fill="#d99a1f"/>
+  <rect x="27.5" y="53.5" width="9" height="3.5" rx="1.6" fill="#b9741a"/>
+  <path d="M27 23 L32 31 L37 23" fill="none" stroke="#a8761b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="#ffd866">
+    <path d="M50 12 l1.8 4 4 1.8 -4 1.8 -1.8 4 -1.8 -4 -4 -1.8 4 -1.8 z"/>
+    <path d="M11 36 l1.3 3 3 1.3 -3 1.3 -1.3 3 -1.3 -3 -3 -1.3 3 -1.3 z"/>
+  </g>
+</svg>`;
+}
+
+function iconSwitch(uid){
+  return `
+<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <g stroke="#6c4fd1" stroke-width="3.5" stroke-linecap="round" fill="none">
+    <path d="M16.20 25.73 A17 17 0 0 1 48.99 31.35"/>
+    <path d="M47.97 37.81 A17 17 0 0 1 15.11 33.91"/>
+  </g>
+  <path d="M48.99 31.35 L44.06 20.53 L53.07 20.18 Z" fill="#6c4fd1"/>
+  <path d="M15.11 33.91 L20.83 44.34 L11.87 45.35 Z" fill="#6c4fd1"/>
+  <g fill="#a78bdb">
+    <path d="M52 12 l1.8 4 4 1.8 -4 1.8 -1.8 4 -1.8 -4 -4 -1.8 4 -1.8 z"/>
+    <path d="M9 22 l1.3 3 3 1.3 -3 1.3 -1.3 3 -1.3 -3 -3 -1.3 3 -1.3 z"/>
+    <path d="M11 50 l1 2.2 2.2 1 -2.2 1 -1 2.2 -1 -2.2 -2.2 -1 2.2 -1 z"/>
+  </g>
+</svg>`;
+}
+
+function render(){
+  document.getElementById('chainLen').textContent = placedCount;
+  document.getElementById('deckCount').textContent = deck.length;
+  document.getElementById('mistakes').textContent = mistakes;
+
+  const tavoiteBanner = document.getElementById('tavoiteBanner');
+  const topStatsCard = document.getElementById('topStatsCard');
+  if(tavoiteBanner) tavoiteBanner.style.display = baseCard ? '' : 'none';
+  if(topStatsCard) topStatsCard.style.display = baseCard ? '' : 'none';
+
+  const area = document.getElementById('gameArea');
+
+  if(!baseCard){
+    const isFull = gameEndReason === 'full';
+    const isMistakes = gameEndReason === 'mistakes';
+    const isStopped = gameEndReason === 'stopped';
+    const title = isFull ? 'Täysi ketju!' : isMistakes ? 'Liikaa virheitä' : isStopped ? 'Peli lopetettu' : 'Ketju katkesi';
+    let bodyText;
+    if(isFull){
+      bodyText = `Yhdistit kaikki ${TOTAL_DRUGS} lääkettä yhdeksi ketjuksi.`;
+    } else if(isMistakes){
+      bodyText = `Kolme väärää arvausta riitti lopettamaan pelin. Ensi kerralla: käytä "Vinkki", kun et ole varma!`;
+    } else if(isStopped){
+      bodyText = `Lopetit pelin kesken.`;
+    } else {
+      bodyText = `Kortit tai vaihdot loppuivat kesken.`;
+    }
+
+    const correctSteps = chainHistory.filter(s => s.via !== 'start');
+    const correctRows = correctSteps.length > 0 ? correctSteps.map((step, i) => `
+      <div class="chain-row">
+        <div class="chain-num">${i + 1}</div>
+        <div class="chain-info">
+          <div class="chain-name">${NAME_HYPHENS[step.id] || step.name}</div>
+          <div class="chain-via">${step.via === 'Vaihda aihe' ? 'Vaihda aihe' : (step.detail ? (step.bonus ? `${step.detail} ${step.bonus}` : step.detail) : `Yhteys: ${step.via}`)}</div>
+        </div>
+      </div>`).join('') : `<p class="sheet-extra-note" style="margin:0;">Ei vielä yhtään oikeaa yhteyttä.</p>`;
+
+    const wrongRows = wrongAttempts.length > 0 ? wrongAttempts.map((w, i) => `
+      <div class="chain-row chain-row-wrong">
+        <div class="chain-num">${i + 1}</div>
+        <div class="chain-info">
+          <div class="chain-name">${w.cardName} → ${w.baseName}</div>
+          <div class="chain-via">${w.detail}</div>
+        </div>
+      </div>`).join('') : `<p class="sheet-extra-note" style="margin:0;">Ei yhtään virhettä — hyvä suoritus!</p>`;
+
+    area.innerHTML = `
+      <div class="section-panel table-panel">
+        <div class="section-label">${title}</div>
+        <p style="text-align:center; font-size:13px; color:var(--navy); margin:0 4px 14px;">${bodyText}</p>
+        <div class="stats-card" style="margin:0;">
+          <div class="stat-col">
+            <div class="stat-label">KETJU</div>
+            <div class="stat-value-row">
+              <span class="stat-icon stat-icon-wide"><svg viewBox="0 0 100 30" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke-linecap="round"><rect x="2" y="8" width="18" height="14" rx="7" stroke="#9fe3c4" stroke-width="4.5"/><rect x="16" y="8" width="18" height="14" rx="7" stroke="#5fcb9e" stroke-width="4.5"/><rect x="30" y="8" width="18" height="14" rx="7" stroke="#16a673" stroke-width="4.5"/><rect x="44" y="8" width="18" height="14" rx="7" stroke="#5fcb9e" stroke-width="4.5"/><rect x="58" y="8" width="18" height="14" rx="7" stroke="#9fe3c4" stroke-width="4.5"/></g></svg></span>
+              <span class="stat-value"><b>${placedCount}</b></span>
+            </div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-col">
+            <div class="stat-label">VAIHDOT</div>
+            <div class="stat-value-row">
+              <span class="stat-icon">${iconSwitch('end')}</span>
+              <span class="stat-value"><b>${switchesUsed}</b><span class="stat-value-sub">/3</span></span>
+            </div>
+          </div>
+          ${dontknowUsed > 0 ? `
+          <div class="stat-divider"></div>
+          <div class="stat-col">
+            <div class="stat-label">VINKKI</div>
+            <div class="stat-value-row">
+              <span class="stat-icon">${iconLightbulb('end')}</span>
+              <span class="stat-value"><b>${dontknowUsed}</b><span class="stat-value-sub">/${MAX_DONTKNOW}</span></span>
+            </div>
+          </div>` : ''}
+          <div class="stat-divider"></div>
+          <div class="stat-col">
+            <div class="stat-label">VIRHEET</div>
+            <div class="stat-value-row">
+              <span class="stat-icon"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><circle cx="32" cy="32" r="22" fill="#e0554f"/><path d="M24 24 L40 40 M40 24 L24 40" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round"/></svg></span>
+              <span class="stat-value"><b>${mistakes}</b><span class="stat-value-sub">/3</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-panel">
+        <div class="section-label">Mikä meni hyvin</div>
+        <div class="chain-list">${correctRows}</div>
+      </div>
+
+      <div class="section-panel">
+        <div class="section-label">Mikä meni pieleen</div>
+        <div class="chain-list">${wrongRows}</div>
+      </div>
+
+      <button class="restart-btn" onclick="initGame()" style="width:calc(100% - 4px); margin:0 2px;">Pelaa uudelleen</button>
+    `;
+    return;
+  }
+
+  area.innerHTML = `
+    <div class="section-panel table-panel">
+      <div class="section-label">Pöydällä nyt</div>
+      <div class="base-stack">
+        <div class="table-shadow"></div>
+        ${previousBase ? renderDepthStack() : ''}
+        ${previousBase ? `
+          <div class="play-card prev-card" onclick="showChainSheet()">
+            <div class="label">Pöydällä ennen</div>
+            <div class="name">${displayName(previousBase)}</div>
+            <span class="chain-chevron">Ketju ⌃</span>
+          </div>` : ''}
+        <div class="play-card current-card" id="currentCardEl">
+          <div class="score-flash" id="scoreFlash"></div>
+          <div class="table-badge tl">✓</div>
+          <div class="table-icon">${iconShieldPill('table')}</div>
+          <h1 class="${baseCard.name.length >= 18 ? 'extra-long-name' : (baseCard.name.length >= 13 ? 'long-name' : '')}">${displayName(baseCard)}</h1>
+          <div class="table-divider"></div>
+          <div class="section-title">Käyttöaiheet</div>
+          ${baseCard.indications.map(i=>`<span class="tag indication">${i}</span>`).join('')}
+          <div class="section-title">Lääkeryhmä</div>
+          <span class="tag class">${baseCard.class}</span>
+        </div>
+      </div>
+    </div>
+    <div class="section-panel hand-panel">
+      <div class="section-label">Kädessäsi — raahaa kortti pöydälle</div>
+      <div class="hand-row" id="handEl"></div>
+    </div>
+    <div class="source-note">Lääketiedot: laakeinfo.fi (Fimea/EMA-hyväksytyt pakkausselosteet) · prototyyppi, ei korvaa asiantuntijatarkistusta</div>
+  `;
+
+  const handEl = document.getElementById('handEl');
+  // Display order is independent of the underlying hand array order — Info
+  // always renders last (bottom-right), since it's a fixed UI control, not
+  // a real playable card. We still use the card's true index (idx) for all
+  // event handlers, so gameplay logic is unaffected by this re-ordering.
+  const displayOrder = (c) => c.special === 'info' ? 3 : c.special === 'switch' ? 2 : c.special === 'dontknow' ? 1 : 0;
+  const sortedHand = hand.map((c, idx) => ({ c, idx })).sort((a, b) => displayOrder(a.c) - displayOrder(b.c));
+  sortedHand.forEach(({ c, idx }) => {
+    const div = document.createElement('div');
+    div.dataset.idx = idx;
+    if(c.special === 'dontknow'){
+      const left = MAX_DONTKNOW - dontknowUsed;
+      div.className = 'card-shape special' + (left <= 0 ? ' disabled' : '');
+      div.innerHTML = `
+        <div class="card-badge tl">${iconLightbulb('b'+idx)}</div>
+        <div class="card-content">
+          <div class="card-glyph">${iconLightbulb('h'+idx)}</div>
+          <div class="pill-name">Vinkki</div>
+        </div>
+        <div class="card-footer">${left} / ${MAX_DONTKNOW} JÄLJELLÄ</div>`;
+    } else if(c.special === 'switch'){
+      const left = MAX_SWITCHES - switchesUsed;
+      div.className = 'card-shape switchcard' + (left <= 0 ? ' disabled' : '');
+      div.innerHTML = `
+        <div class="card-badge tl">${iconSwitch('b'+idx)}</div>
+        <div class="card-content">
+          <div class="card-glyph">${iconSwitch('h'+idx)}</div>
+          <div class="pill-name">Vaihda aihe</div>
+        </div>
+        <div class="card-footer">${left} / ${MAX_SWITCHES} JÄLJELLÄ</div>`;
+    } else if(c.special === 'info'){
+      div.className = 'card-shape infocard';
+      div.innerHTML = `
+        <div class="card-content">
+          <div class="card-glyph"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><circle cx="32" cy="32" r="26" fill="none" stroke="#5b6b7a" stroke-width="4.5"/><circle cx="32" cy="20.5" r="3" fill="#5b6b7a"/><line x1="32" y1="29" x2="32" y2="45" stroke="#5b6b7a" stroke-width="4.5" stroke-linecap="round"/></svg></div>
+          <div class="pill-name">Info</div>
+        </div>
+        <div class="card-footer">Säännöt &amp; peli</div>`;
+    } else {
+      const isHinted = hintMarked.includes(c.id);
+      div.className = 'card-shape' + (isHinted ? ' hint-marked' : '');
+      div.innerHTML = `
+        <div class="card-badge tl">✓</div>
+        <div class="card-content">
+          <div class="card-glyph">${iconShieldPill('h'+idx)}</div>
+          <div class="pill-name${c.name.length >= 18 ? ' name-extra-long' : (c.name.length >= 13 ? ' name-long' : '')}">${displayName(c)}</div>
+        </div>
+        <div class="card-footer">&nbsp;</div>
+        ${isHinted ? `<div class="hint-x"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="11" fill="#e0554f"/><line x1="8" y1="8" x2="16" y2="16" stroke="white" stroke-width="2" stroke-linecap="round"/><line x1="16" y1="8" x2="8" y2="16" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>` : ''}`;
+    }
+    handEl.appendChild(div);
+    makeDraggable(div, idx);
+  });
+}
+
+let dragState = null;
+
+function makeDraggable(el, idx){
+  el.addEventListener('pointerdown', (e) => {
+    e.preventDefault();
+    const rect = el.getBoundingClientRect();
+    dragState = {
+      idx,
+      startX: e.clientX,
+      startY: e.clientY,
+      origRect: rect,
+      moved: false,
+      ghost: null,
+      sourceEl: el
+    };
+    el.style.opacity = '0.25';
+
+    const ghost = el.cloneNode(true);
+    ghost.classList.add('drag-ghost', 'dragging');
+    ghost.style.width = rect.width + 'px';
+    ghost.style.height = rect.height + 'px';
+    ghost.style.left = rect.left + 'px';
+    ghost.style.top = rect.top + 'px';
+    document.body.appendChild(ghost);
+    dragState.ghost = ghost;
+
+    document.addEventListener('pointermove', onPointerMove);
+    document.addEventListener('pointerup', onPointerUp);
+  });
+}
+
+function onPointerMove(e){
+  if(!dragState) return;
+  const dx = e.clientX - dragState.startX;
+  const dy = e.clientY - dragState.startY;
+  if(Math.abs(dx) > 4 || Math.abs(dy) > 4) dragState.moved = true;
+
+  dragState.ghost.style.left = (dragState.origRect.left + dx) + 'px';
+  dragState.ghost.style.top = (dragState.origRect.top + dy) + 'px';
+  dragState.ghost.style.transform = `rotate(${Math.max(-12, Math.min(12, dx/8))}deg)`;
+
+  const dropZone = document.getElementById('currentCardEl');
+  if(dropZone){
+    const dz = dropZone.getBoundingClientRect();
+    const overlap = !(e.clientX < dz.left || e.clientX > dz.right || e.clientY < dz.top || e.clientY > dz.bottom);
+    dropZone.classList.toggle('drop-highlight', overlap);
+  }
+}
+
+function onPointerUp(e){
+  if(!dragState) return;
+  document.removeEventListener('pointermove', onPointerMove);
+  document.removeEventListener('pointerup', onPointerUp);
+
+  const dropZone = document.getElementById('currentCardEl');
+  let droppedOnBase = false;
+  if(dropZone){
+    const dz = dropZone.getBoundingClientRect();
+    droppedOnBase = !(e.clientX < dz.left || e.clientX > dz.right || e.clientY < dz.top || e.clientY > dz.bottom);
+    dropZone.classList.remove('drop-highlight');
+  }
+
+  dragState.ghost.remove();
+  dragState.sourceEl.style.opacity = '1';
+
+  const idx = dragState.idx;
+  const moved = dragState.moved;
+  dragState = null;
+
+  const card = hand[idx];
+  if(!card) return;
+
+  if(!moved){
+    handleCardActivate(idx);
+    return;
+  }
+
+  if(droppedOnBase){
+    handleCardActivate(idx);
+  }
+}
+
+function handleCardActivate(idx){
+  const card = hand[idx];
+  if(card.special === 'dontknow'){
+    handleDontKnow(idx);
+    return;
+  }
+  if(card.special === 'switch'){
+    handleSwitch(idx);
+    return;
+  }
+  if(card.special === 'info'){
+    showInfoSheet();
+    return;
+  }
+  openMatchSheet(idx);
+}
+
+let chosenHandIndex = null;
+
+function openMatchSheet(idx){
+  chosenHandIndex = idx;
+  const card = hand[idx];
+  const sheet = document.getElementById('sheetContent');
+  sheet.innerHTML = `
+    <h3>Miten ${displayName(card)} liittyy ${displayName(baseCard)}-korttiin?</h3>
+    <p class="sub">Valitse mihin perusteeseen vetoat</p>
+    <button class="choice-btn lakeryhma" data-mode="class">
+      <b>Lääkeryhmä</b>
+      <span class="small">Sama ryhmä kuin ${displayName(baseCard)}: "${baseCard.class}"</span>
+    </button>
+    <button class="choice-btn kayttoaihe" data-mode="indication">
+      <b>Käyttöaihe</b>
+      <span class="small">Sama käyttöaihe kuin jokin: ${baseCard.indications.join(', ')}</span>
+    </button>
+    <button class="cancel-btn" id="cancelBtn">Peruuta</button>
+  `;
+  sheet.querySelectorAll('.choice-btn').forEach(btn=>{
+    btn.onclick = () => evaluateChoice(btn.dataset.mode);
+  });
+  sheet.querySelector('#cancelBtn').onclick = closeSheet;
+  document.getElementById('overlay').classList.add('show');
+}
+
+function closeSheet(){
+  document.getElementById('overlay').classList.remove('show');
+  chosenHandIndex = null;
+}
+
+function evaluateChoice(mode){
+  const idx = chosenHandIndex;
+  const card = hand[idx];
+  if(!card) return;
+  const sheet = document.getElementById('sheetContent');
+  const match = cardMatches(card, baseCard);
+  const correct = mode === 'class' ? match.byClass : match.sharedIndications.length > 0;
+  const otherCorrect = mode === 'class' ? (match.sharedIndications.length > 0) : match.byClass;
+
+  let detail;
+  if(mode === 'class'){
+    detail = correct
+      ? `${displayName(card)} ja ${displayName(baseCard)} kuuluvat samaan lääkeryhmään: ${baseCard.class}.`
+      : `Lääkeryhmät eivät täsmää. ${displayName(card)} on ${card.class} ja ${displayName(baseCard)} on ${baseCard.class}.`;
+  } else {
+    detail = correct
+      ? `${displayName(card)} ja ${displayName(baseCard)}: sama käyttöaihe — ${match.sharedIndications.join(', ')}.`
+      : `${displayName(card)}:n käyttöaiheet (${card.indications.join(', ')}) eivät osu yhteen ${displayName(baseCard)}:n käyttöaiheiden kanssa.`;
+  }
+
+  // Bonus teaching note: when matched by one dimension, also surface the
+  // other dimension's actual relationship (same or different) for richer
+  // "Mikä meni hyvin" review later.
+  let bonus = '';
+  if(correct){
+    if(mode === 'class'){
+      bonus = `Käyttöaiheet: ${displayName(card)} — ${card.indications.join(', ')}; ${displayName(baseCard)} — ${baseCard.indications.join(', ')}.`;
+    } else if(card.class === baseCard.class){
+      bonus = `Myös sama lääkeryhmä: ${baseCard.class}.`;
+    } else {
+      bonus = `Eri lääkeryhmät: ${displayName(card)} on ${card.class}, ${displayName(baseCard)} on ${baseCard.class}.`;
+    }
+  }
+
+  const chosenClass = mode === 'class' ? 'lakeryhma' : 'kayttoaihe';
+  const otherMode = mode === 'class' ? 'indication' : 'class';
+  const otherClass = mode === 'class' ? 'kayttoaihe' : 'lakeryhma';
+  const otherLabel = mode === 'class' ? 'Käyttöaihe' : 'Lääkeryhmä';
+  const otherClaim = mode === 'class'
+    ? `Sama käyttöaihe kuin jokin: ${baseCard.indications.join(', ')}`
+    : `Sama ryhmä kuin ${displayName(baseCard)}: "${baseCard.class}"`;
+  const chosenLabel = mode === 'class' ? 'Lääkeryhmä' : 'Käyttöaihe';
+
+  if(correct){
+    flashBase('ok');
+    hand.splice(idx, 1);
+    previousBase = baseCard;
+    baseCard = card;
+    placedCount++;
+    hintMarked = [];
+    chainHistory.push({ id: card.id, name: card.name, via: chosenLabel, detail, bonus });
+    fillHandFromDeck();
+    const gameOver = checkGameOver();
+    render();
+
+    const factText = card.fact ? card.fact.replace(/^Tiesitkö\?\s*/i, '') : '';
+    const factNote = factText ? `<div class="fact-note"><span class="fact-label">Tiesitkö?</span>${factText}</div>` : '';
+    const switchesLeft = MAX_SWITCHES - switchesUsed;
+    const exhaustedNote = (!gameOver && lastExhausted)
+      ? `<p class="sheet-extra-note">Tämä aihe on käyty läpi — paina "Vaihda aihe" (${switchesLeft} jäljellä).</p>`
+      : '';
+
+    sheet.innerHTML = `
+      <h3>Oikein!</h3>
+      <button class="choice-btn ${chosenClass} result-correct" disabled>
+        <b>${chosenLabel}</b>
+        <span class="small">${detail}</span>
+      </button>
+      <p class="sheet-extra-note" style="margin:-2px 0 12px;">${bonus}</p>
+      ${factNote}
+      ${exhaustedNote}
+      <button class="cancel-btn continue-btn" id="continueBtn">Jatka</button>
+    `;
+    sheet.querySelector('#continueBtn').onclick = closeSheet;
+  } else {
+    mistakes++;
+    wrongAttempts.push({ cardName: displayName(card), baseName: displayName(baseCard), detail });
+    flashBase('bad');
+    if(mistakes >= MAX_MISTAKES){
+      gameEndReason = 'mistakes';
+      baseCard = null;
+      render();
+      sheet.innerHTML = `
+        <h3>Väärin — peli päättyi</h3>
+        <button class="choice-btn ${chosenClass} result-wrong" disabled>
+          <b>${chosenLabel}</b>
+          <span class="small">${detail}</span>
+        </button>
+        <p class="sheet-extra-note">Kolme virhettä riitti lopettamaan pelin.</p>
+        <button class="cancel-btn continue-btn" id="continueBtn">Jatka</button>
+      `;
+      sheet.querySelector('#continueBtn').onclick = closeSheet;
+      return;
+    }
+    render();
+    const mistakesLeft = MAX_MISTAKES - mistakes;
+    const hintNote = otherCorrect
+      ? `<p class="sheet-hint-note">Vihje: kokeile toista vaihtoehtoa — tämä kortti saattaa silti liittyä korttiin toisella perusteella.</p>`
+      : '';
+    sheet.innerHTML = `
+      <h3>Ei täsmää</h3>
+      <button class="choice-btn ${chosenClass} result-wrong" data-mode="${mode}">
+        <b>${chosenLabel}</b>
+        <span class="small">${detail}</span>
+      </button>
+      <button class="choice-btn ${otherClass}" data-mode="${otherMode}">
+        <b>${otherLabel}</b>
+        <span class="small">${otherClaim}</span>
+      </button>
+      ${hintNote}
+      <p class="sheet-extra-note">Kortti palaa käteen — yritä uudestaan. (${mistakesLeft} virhettä jäljellä) Jos et tiedä, käytä "Vinkki"-korttia ennen kuin arvaat.</p>
+      <button class="cancel-btn" id="cancelBtn">Peruuta</button>
+    `;
+    sheet.querySelectorAll('.choice-btn').forEach(btn=>{
+      btn.onclick = () => evaluateChoice(btn.dataset.mode);
+    });
+    sheet.querySelector('#cancelBtn').onclick = closeSheet;
+  }
+}
+
+function showChainSheet(){
+  const sheet = document.getElementById('sheetContent');
+  const rows = chainHistory.map((step, i) => {
+    const isLast = i === chainHistory.length - 1;
+    let viaLabel;
+    if(step.via === 'start'){
+      viaLabel = 'Aloituskortti';
+    } else if(step.via === 'Vaihda aihe'){
+      viaLabel = 'Vaihda aihe';
+    } else if(step.detail){
+      viaLabel = step.bonus ? `${step.detail} ${step.bonus}` : step.detail;
+    } else {
+      viaLabel = `Yhteys: ${step.via}`;
+    }
+    return `
+      <div class="chain-row${isLast ? ' chain-row-current' : ''}">
+        <div class="chain-num">${i + 1}</div>
+        <div class="chain-info">
+          <div class="chain-name">${NAME_HYPHENS[step.id] || step.name}</div>
+          <div class="chain-via">${viaLabel}</div>
+        </div>
+      </div>`;
+  }).join('');
+
+  sheet.innerHTML = `
+    <h3>Ketjusi tähän mennessä</h3>
+    <p class="sub" style="margin-bottom:14px;">${chainHistory.length} / ${TOTAL_DRUGS} lääkettä ketjussa.</p>
+    <div class="chain-list">${rows}</div>
+    <button class="cancel-btn" id="cancelBtn" style="margin-top:14px;">Sulje</button>
+  `;
+  sheet.querySelector('#cancelBtn').onclick = closeSheet;
+  document.getElementById('overlay').classList.add('show');
+}
+
+function showInfoSheet(){
+  const sheet = document.getElementById('sheetContent');
+  sheet.innerHTML = `
+    <h3>Säännöt</h3>
+    <p class="sub" style="margin-bottom:10px;">Tavoite: rakenna mahdollisimman pitkä lääkeketju lääkeryhmän tai käyttöaiheen perusteella.</p>
+    <ol style="margin:0 0 16px; padding-left:20px; font-size:13.5px; line-height:1.55; color:var(--navy);">
+      <li style="margin-bottom:8px;">Pöydällä on aina yksi "perusteena" toimiva lääkekortti.</li>
+      <li style="margin-bottom:8px;">Vedä kädestä kortti pöydän kortin päälle. Valitse, perustuuko yhteys <b>lääkeryhmään</b> vai <b>käyttöaiheeseen</b>.</li>
+      <li style="margin-bottom:8px;">Oikea yhteys → kortti siirtyy pöydälle uudeksi perustaksi, ketju kasvaa. Saat uuden kortin pakasta.<br>Väärä yhteys → kortti palaa käteen ja sinun pitää yrittää uudestaan. Virheitä saa tehdä korkeintaan 3 — kolmas virhe päättää pelin, joten käytä "Vinkki" ennen kuin arvaat.</li>
+    </ol>
+    <h3>Erikoiskortit</h3>
+    <p style="font-size:13.5px; line-height:1.55; color:var(--navy); margin:0 0 10px;">
+      <span class="rule-tag switchcard">Vaihda aihe</span> — <b>3 kertaa per peli</b>. Hylkää nykyinen perusta ja valitse itse, mikä kädessäsi olevista korteista aloittaa uuden ketjun.
+    </p>
+    <p style="font-size:13.5px; line-height:1.55; color:var(--navy); margin:0 0 16px;">
+      <span class="rule-tag special">Vinkki</span> — <b>3 kertaa per peli</b>. Näyttää vihjeen, mitä kortteja voit sulkea pois, paljastamatta suoraa vastausta.
+    </p>
+    <div style="background:var(--mint-bg); border-radius:14px; padding:12px 14px; margin-bottom:16px;">
+      <p style="font-size:13px; line-height:1.5; color:var(--navy); margin:0;">Jotkut kortit toimivat siltoina kahden lääkeryhmän välillä. Älä käytä siltakortteja hätäisesti — mieti aina, kannattaisiko jokin toinen kortti pelata ensin.</p>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:10px;">
+      <button class="choice-btn" id="restartBtn" style="margin-bottom:0; text-align:center;">Aloita uudestaan</button>
+      <button class="choice-btn" id="quitBtn" style="margin-bottom:0; text-align:center; color:var(--red);">Lopeta peli</button>
+    </div>
+    <button class="cancel-btn" id="cancelBtn">Sulje</button>
+  `;
+  sheet.querySelector('#cancelBtn').onclick = closeSheet;
+  sheet.querySelector('#restartBtn').onclick = () => confirmAction(
+    'Aloita uudestaan?',
+    'Nykyinen ketju ja edistymisesi häviävät. Tätä ei voi perua.',
+    'Aloita uudestaan',
+    () => { closeSheet(); initGame(); }
+  );
+  sheet.querySelector('#quitBtn').onclick = () => confirmAction(
+    'Lopeta peli?',
+    `Ketjusi pituus jää ${placedCount}. Tätä ei voi perua.`,
+    'Lopeta peli',
+    () => { closeSheet(); stopGame(); }
+  );
+  document.getElementById('overlay').classList.add('show');
+}
+
+function confirmAction(title, desc, confirmLabel, onConfirm){
+  const sheet = document.getElementById('sheetContent');
+  sheet.innerHTML = `
+    <h3>${title}</h3>
+    <p class="sub" style="margin-bottom:18px;">${desc}</p>
+    <button class="choice-btn" id="confirmActionBtn" style="text-align:center; color:var(--red); border-color:var(--red);">${confirmLabel}</button>
+    <button class="cancel-btn" id="cancelBtn">Peruuta</button>
+  `;
+  sheet.querySelector('#confirmActionBtn').onclick = onConfirm;
+  sheet.querySelector('#cancelBtn').onclick = closeSheet;
+}
+
+function stopGame(){
+  gameEndReason = 'stopped';
+  baseCard = null;
+  render();
+}
+
+
+function handleDontKnow(idx){
+  if(dontknowUsed >= MAX_DONTKNOW){
+    showFeedback('"Vinkki"-kortit on jo käytetty kaikki tässä pelissä.', 'info');
+    return;
+  }
+
+  const exhausted = ensureGuaranteedHand();
+  dontknowUsed++;
+
+  if(exhausted){
+    const switchesLeft = MAX_SWITCHES - switchesUsed;
+    showFeedback(`Tämä aihe on käyty kokonaan läpi — ei ole enää yhtään korttia, joka liittyisi ${baseCard.name}:iin. Paina "Vaihda aihe" (${switchesLeft} jäljellä).`, 'info');
+    render();
+    return;
+  }
+
+  // Real, useful hint: process of elimination. Mark 2 cards in hand that
+  // are GUARANTEED not to connect (different class, no shared indication),
+  // so the player can rule them out rather than guessing blindly.
+  let regularInHand = hand.filter(c=>!c.special);
+  let wrongCards = regularInHand.filter(c => !cardConnects(c, baseCard));
+
+  // If fewer than 2 wrong cards happen to be in hand, pull replacements from
+  // the deck so the hint always marks 2 — but never touch the single
+  // guaranteed connecting card (ensureGuaranteedHand already put it there),
+  // only swap out any *extra* correct cards beyond that first one.
+  const needed = 2 - wrongCards.length;
+  if(needed > 0){
+    const correctInHand = regularInHand.filter(c => cardConnects(c, baseCard));
+    const swappablePool = correctInHand.slice(1);
+    for(let i = 0; i < needed && swappablePool.length > 0; i++){
+      const wrongDeckIdx = deck.findIndex(c => !cardConnects(c, baseCard));
+      if(wrongDeckIdx === -1) break;
+      const wrongFromDeck = deck.splice(wrongDeckIdx, 1)[0];
+      const swapOut = swappablePool.shift();
+      const handIdx = hand.findIndex(c => c.id === swapOut.id);
+      deck.push(hand[handIdx]);
+      hand[handIdx] = wrongFromDeck;
+    }
+    regularInHand = hand.filter(c=>!c.special);
+    wrongCards = regularInHand.filter(c => !cardConnects(c, baseCard));
+  }
+
+  const shuffledWrong = shuffle(wrongCards).slice(0, 2);
+  hintMarked = shuffledWrong.map(c => c.id);
+  render();
+
+  if(shuffledWrong.length === 2){
+    showFeedback('Kaksi korttia merkitty punaisella — ne eivät sovi tähän.', 'info');
+  } else if(shuffledWrong.length === 1){
+    showFeedback('Yksi kortti merkitty punaisella — se ei sovi tähän.', 'info');
+  } else {
+    showFeedback('Kaikki kädessäsi olevat kortit voisivat sopia — tarkista lääkeryhmät ja käyttöaiheet tarkasti.', 'info');
+  }
+}
+
+
+function handleSwitch(idx){
+  if(switchesUsed >= MAX_SWITCHES){
+    showFeedback('"Vaihda aihe" -kortit on jo käytetty kaikki tässä pelissä.', 'info');
+    return;
+  }
+  const regularInHand = hand.filter(c=>!c.special);
+  const stillConnected = regularInHand.some(c => cardConnects(c, baseCard));
+
+  if(regularInHand.length === 0){
+    // Should only ever happen at the literal end of the deck — checkGameOver
+    // catches that case before this point, but kept as a safety net.
+    showFeedback('Ei enää lääkkeitä jäljellä vaihdettavaksi.', 'info');
+    return;
+  }
+
+  if(stillConnected){
+    openForceSwitchConfirm(regularInHand);
+    return;
+  }
+
+  openSwitchPicker(regularInHand);
+}
+
+function openForceSwitchConfirm(regularInHand){
+  const sheet = document.getElementById('sheetContent');
+  sheet.innerHTML = `
+    <h3>Kädessäsi on yhä sopiva kortti</h3>
+    <p class="sub">Ainakin yksi kortti kädessäsi liittyisi vielä ${baseCard.name}:iin. Vaihdot ovat rajallisia (vain 3 per peli) — kannattaako käyttää yksi nyt?</p>
+    <button class="choice-btn" id="forceSwitchBtn">
+      Vaihda aihe silti
+      <span class="small">Käytä yksi vaihto, vaikka kädessä on sopiva kortti</span>
+    </button>
+    <button class="cancel-btn" id="cancelBtn">Peruuta — pelaa sopiva kortti ensin</button>
+  `;
+  sheet.querySelector('#forceSwitchBtn').onclick = () => {
+    closeSheet();
+    openSwitchPicker(regularInHand);
+  };
+  sheet.querySelector('#cancelBtn').onclick = closeSheet;
+  document.getElementById('overlay').classList.add('show');
+}
+
+function openSwitchPicker(options){
+  const sheet = document.getElementById('sheetContent');
+  sheet.innerHTML = `
+    <h3>Valitse uusi aihe</h3>
+    <p class="sub">Mikä kädessäsi olevista korteista aloittaa uuden ketjun?</p>
+    <div class="switch-picker-grid">
+      ${options.map((c, i) => `
+        <button class="choice-btn switch-pick-btn" data-pickid="${c.id}">
+          <span class="pill-name" style="font-size:14px;">${displayName(c)}</span>
+        </button>
+      `).join('')}
+    </div>
+    <button class="cancel-btn" id="cancelBtn">Peruuta</button>
+  `;
+  sheet.querySelectorAll('.switch-pick-btn').forEach(btn=>{
+    btn.onclick = () => confirmSwitch(btn.dataset.pickid);
+  });
+  sheet.querySelector('#cancelBtn').onclick = closeSheet;
+  document.getElementById('overlay').classList.add('show');
+}
+
+function confirmSwitch(pickId){
+  closeSheet();
+  const newBase = hand.find(c => c.id === pickId);
+  if(!newBase) return;
+  hand = hand.filter(c => c.id !== pickId);
+
+  previousBase = baseCard;
+  baseCard = newBase;
+  switchesUsed++;
+  placedCount++;
+  hintMarked = [];
+  chainHistory.push({ id: newBase.id, name: newBase.name, via: 'Vaihda aihe' });
+  fillHandFromDeck();
+  if(checkGameOver()){
+    render();
+    return;
+  }
+  const switchesLeft = MAX_SWITCHES - switchesUsed;
+  showFeedback(`Aihe vaihdettu — ${newBase.name} on uusi perusta. (${switchesLeft} vaihtoa jäljellä)`, 'info');
+  render();
+}
+
+function flashBase(type){
+  const el = document.getElementById('scoreFlash');
+  if(!el) return;
+  el.textContent = type === 'ok' ? 'Oikein!' : 'Ei täsmää';
+  el.className = 'score-flash show ' + (type==='bad' ? 'bad' : '');
+  setTimeout(()=>{ el.className='score-flash'; }, 900);
+}
+
+function showFeedback(msg, type){
+  const fb = document.getElementById('feedback');
+  fb.innerHTML = msg;
+  fb.className = 'feedback show ' + type;
+  const duration = msg.length > 90 ? 6500 : 2800;
+  setTimeout(()=>{ fb.className = 'feedback ' + type; }, duration);
+}
+
+function toggleExpand(btn, contentId){
+  const content = document.getElementById(contentId);
+  const isOpen = content.classList.contains('open');
+  content.classList.toggle('open', !isOpen);
+  btn.classList.toggle('open', !isOpen);
+}
+
+function showLanding(){
+  document.getElementById('landingScreen').style.display = '';
+  document.getElementById('gameScreen').style.display = 'none';
+}
+
+function startGameFromLanding(){
+  document.getElementById('landingScreen').style.display = 'none';
+  document.getElementById('gameScreen').style.display = '';
+  initGame();
+}
+</script>
 </body>
 </html>
