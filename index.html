@@ -4,137 +4,249 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FarmaGames</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --teal: #0f7a72;
-    --teal-dark: #0a5a54;
-    --bg: #f4faf9;
-    --card-bg: #ffffff;
-    --text: #1c2b2a;
-    --muted: #5a6b6a;
-    --border: #d9ece9;
+    /* Core tokens */
+    --background: #F6FBF9;
+    --foreground: #1F2C3D;
+    --card: #FFFFFF;
+    --card-foreground: #1F2C3D;
+    --primary: #20A386;
+    --primary-dark: #167B65;
+    --primary-gradient-mid: #38BDF8;
+    --primary-gradient-end: #1D9E75;
+    --secondary: #EAF3F0;
+    --accent: #EAF3F0;
+    --muted: #D6E7E1;
+    --muted-foreground: #6B7280;
+    --border: #DBE9E4;
+    --destructive: #DC2E2E;
+
+    /* Per-game accents */
+    --accent-myday: #A78BFA;
+    --accent-farmarush: #FF9F1A;
+    --accent-medichain: #38BDF8;
+    --accent-medilink: #3ED07A;
+    --accent-yellow: #F5C51F;
+    --accent-yellow-foreground: #2E1F0F;
+
+    /* Shape */
+    --radius: 0.75rem;
+    --radius-lg: 1rem;
+
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   }
 
   * { box-sizing: border-box; }
 
   body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: var(--bg);
-    color: var(--text);
+    font-family: var(--font-sans);
+    background: var(--background);
+    color: var(--foreground);
     line-height: 1.6;
   }
 
+  a { color: var(--primary); }
+
+  /* ── Header ─────────────────────────────────────────────── */
   header {
-    background: linear-gradient(135deg, var(--teal), var(--teal-dark));
-    color: #fff;
-    padding: 3rem 1.5rem 2.5rem;
+    padding: 3.5rem 1.5rem 2rem;
     text-align: center;
   }
 
   header h1 {
+    display: inline-block;
     margin: 0 0 0.5rem;
-    font-size: 2.5rem;
+    font-size: 2.75rem;
+    font-weight: 800;
     letter-spacing: -0.02em;
+    background: linear-gradient(135deg, var(--primary), var(--primary-gradient-mid), var(--primary-gradient-end));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: var(--primary);
   }
 
   header p {
     margin: 0;
     font-size: 1.1rem;
-    opacity: 0.9;
+    color: var(--muted-foreground);
   }
 
+  /* ── Quick play row ─────────────────────────────────────── */
+  .quick-play {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1.5rem 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+
+  .quick-play-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--foreground);
+    padding: 0.65rem 1.15rem;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.92rem;
+    box-shadow: 0 1px 2px rgba(31, 44, 61, 0.05);
+    transition: border-color 0.15s ease, transform 0.15s ease, background 0.15s ease;
+  }
+
+  .quick-play-btn .dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .quick-play-btn:hover {
+    border-color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 12%, var(--card));
+    transform: translateY(-2px);
+  }
+
+  /* ── Layout ─────────────────────────────────────────────── */
   main {
     max-width: 900px;
     margin: 0 auto;
-    padding: 2.5rem 1.5rem 4rem;
+    padding: 1.5rem 1.5rem 4rem;
   }
 
   section {
-    margin-bottom: 3rem;
+    margin-bottom: 1.75rem;
   }
 
   h2 {
-    font-size: 1.5rem;
-    border-left: 4px solid var(--teal);
-    padding-left: 0.75rem;
-    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0 0 0.6rem;
   }
 
-  .about p {
-    color: var(--muted);
-  }
-
-  .games-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1.25rem;
-  }
-
-  .game-card {
-    display: block;
-    background: var(--card-bg);
+  /* ── Game sections ──────────────────────────────────────── */
+  .game-section {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    background: var(--secondary);
     border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.5rem;
-    text-decoration: none;
-    color: var(--text);
-    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
-    position: relative;
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
   }
 
-  .game-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(15, 122, 114, 0.12);
-    border-color: var(--teal);
+  .game-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--card);
+    border: 2px solid var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    flex-shrink: 0;
   }
 
-  .game-card h3 {
-    margin: 0 0 0.4rem;
-    font-size: 1.2rem;
-  }
+  .game-body { flex: 1; min-width: 0; }
 
-  .game-card p {
-    margin: 0;
-    font-size: 0.9rem;
-    color: var(--muted);
-  }
-
-  .badge {
+  .game-tag {
     display: inline-block;
-    margin-top: 0.75rem;
-    font-size: 0.75rem;
-    font-weight: 600;
+    font-size: 0.72rem;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.03em;
-    color: var(--teal-dark);
-    background: #e3f3f1;
-    padding: 0.25rem 0.6rem;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 16%, white);
+    padding: 0.3rem 0.7rem;
     border-radius: 999px;
+    margin-bottom: 0.7rem;
   }
 
-  .external-link {
+  .game-body h2 { margin-bottom: 0.35rem; }
+
+  .game-body p {
+    margin: 0 0 1.1rem;
+    color: var(--muted-foreground);
+    font-size: 0.95rem;
+  }
+
+  .play-btn {
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
-    background: var(--teal);
-    color: #fff;
-    text-decoration: none;
-    padding: 0.7rem 1.4rem;
-    border-radius: 8px;
+    background: var(--accent);
+    color: #ffffff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    padding: 0.6rem 1.3rem;
+    border-radius: var(--radius);
     font-weight: 600;
-    transition: background 0.15s ease;
+    text-decoration: none;
+    transition: filter 0.15s ease, transform 0.15s ease;
   }
 
-  .external-link:hover {
-    background: var(--teal-dark);
+  .play-btn:hover {
+    filter: brightness(0.93);
+    transform: translateY(-1px);
   }
 
+  /* ── About ──────────────────────────────────────────────── */
+  .about {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+  }
+
+  .about p {
+    margin: 0;
+    color: var(--muted-foreground);
+  }
+
+  /* ── Footer ─────────────────────────────────────────────── */
   footer {
     text-align: center;
-    color: var(--muted);
+    padding: 2rem 1.5rem 2.5rem;
+  }
+
+  .farmadiary-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: color-mix(in srgb, var(--accent-yellow) 22%, white);
+    color: var(--accent-yellow-foreground);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.6rem 1.3rem;
+    border-radius: var(--radius);
+    transition: background 0.15s ease, transform 0.15s ease;
+  }
+
+  .farmadiary-link:hover {
+    background: color-mix(in srgb, var(--accent-yellow) 35%, white);
+    transform: translateY(-1px);
+  }
+
+  footer .copyright {
+    display: block;
+    margin-top: 1.1rem;
     font-size: 0.85rem;
-    padding: 1.5rem;
+    color: var(--muted-foreground);
+  }
+
+  @media (max-width: 520px) {
+    .game-section { flex-direction: column; align-items: flex-start; }
   }
 </style>
 </head>
@@ -145,7 +257,62 @@
   <p>Nursing education game prototypes</p>
 </header>
 
+<nav class="quick-play" aria-label="Quick play">
+  <a class="quick-play-btn" style="--accent: var(--accent-myday);" href="myday/">
+    <span class="dot"></span> MyDay
+  </a>
+  <a class="quick-play-btn" style="--accent: var(--accent-farmarush);" href="farmarush/">
+    <span class="dot"></span> FarmaRush
+  </a>
+  <a class="quick-play-btn" style="--accent: var(--accent-medichain);" href="medichain/">
+    <span class="dot"></span> MediChain
+  </a>
+  <a class="quick-play-btn" style="--accent: var(--accent-medilink);" href="medilink/">
+    <span class="dot"></span> Medilink
+  </a>
+</nav>
+
 <main>
+
+  <section class="game-section" style="--accent: var(--accent-myday);">
+    <div class="game-icon" aria-hidden="true">🏥</div>
+    <div class="game-body">
+      <span class="game-tag">MyDay</span>
+      <h2>MyDay</h2>
+      <p>A day-in-the-life nursing simulation.</p>
+      <a class="play-btn" href="myday/">Play now &rarr;</a>
+    </div>
+  </section>
+
+  <section class="game-section" style="--accent: var(--accent-farmarush);">
+    <div class="game-icon" aria-hidden="true">💊</div>
+    <div class="game-body">
+      <span class="game-tag">FarmaRush</span>
+      <h2>FarmaRush</h2>
+      <p>Fast-paced medication matching game.</p>
+      <a class="play-btn" href="farmarush/">Play now &rarr;</a>
+    </div>
+  </section>
+
+  <section class="game-section" style="--accent: var(--accent-medichain);">
+    <div class="game-icon" aria-hidden="true">⛓️</div>
+    <div class="game-body">
+      <span class="game-tag">MediChain</span>
+      <h2>MediChain</h2>
+      <p>Medication safety and process training.</p>
+      <a class="play-btn" href="medichain/">Play now &rarr;</a>
+    </div>
+  </section>
+
+  <section class="game-section" style="--accent: var(--accent-medilink);">
+    <div class="game-icon" aria-hidden="true">🩺</div>
+    <div class="game-body">
+      <span class="game-tag">Medilink</span>
+      <h2>Medilink</h2>
+      <p>Connecting nursing knowledge in practice.</p>
+      <a class="play-btn" href="medilink/">Play now &rarr;</a>
+    </div>
+  </section>
 
   <section class="about">
     <h2>About Me</h2>
@@ -156,48 +323,13 @@
     </p>
   </section>
 
-  <section class="games">
-    <h2>Games</h2>
-    <div class="games-grid">
-
-      <a class="game-card" href="myday/">
-        <h3>MyDay</h3>
-        <p>A day-in-the-life nursing simulation.</p>
-        <span class="badge">Play now</span>
-      </a>
-
-      <a class="game-card" href="farmarush/">
-        <h3>FarmaRush</h3>
-        <p>Fast-paced medication matching game.</p>
-        <span class="badge">Play now</span>
-      </a>
-
-      <a class="game-card" href="medichain/">
-        <h3>MediChain</h3>
-        <p>Medication safety and process training.</p>
-        <span class="badge">Play now</span>
-      </a>
-
-      <a class="game-card" href="medilink/">
-        <h3>Medilink</h3>
-        <p>Connecting nursing knowledge in practice.</p>
-        <span class="badge">Play now</span>
-      </a>
-
-    </div>
-  </section>
-
-  <section class="more">
-    <h2>More from FarmaGames</h2>
-    <a class="external-link" href="https://farmadiary.com" target="_blank" rel="noopener noreferrer">
-      Visit Farmadiary &rarr;
-    </a>
-  </section>
-
 </main>
 
 <footer>
-  &copy; 2026 FarmaGames
+  <a class="farmadiary-link" href="https://farmadiary.com" target="_blank" rel="noopener noreferrer">
+    Visit Farmadiary &rarr;
+  </a>
+  <span class="copyright">&copy; 2026 FarmaGames</span>
 </footer>
 
 </body>
