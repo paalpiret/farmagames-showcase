@@ -6,9 +6,10 @@ This file tracks the design decisions, content, and status for this repo, so bot
 https://paalpiret.github.io/farmagames-showcase/
 
 ## Page name & identity
-- Page title: **"Piret Paal"** (not "FarmaGames" or "MediProjects" — both were dropped, including from `<title>` and meta description)
-- Subtitle: "Nursing education game prototypes"
-- Tagline (italic, below subtitle): "A portfolio of interactive projects exploring medication learning, clinical reasoning and nursing practice."
+- Page title: **"Piret Paal"** (not "FarmaGames" or "MediProjects" — both were dropped, including from `<title>` and meta description). Name is unchanged in both EN and FI.
+- Heading size: 50px, weight 700.
+- No subtitle line anymore (the old "Nursing education game prototypes" line was dropped as redundant).
+- Tagline (italic, only supporting line under the name): "A portfolio of interactive projects exploring medication learning, clinical reasoning and nursing practice." Has a real Finnish translation, shown when the FI toggle is active.
 - "Farma" was avoided as a page-level brand name since it originates from Piret's bachelor's thesis, co-authored with Christina Lindberg — not solely hers to brand with.
 
 ## Purpose
@@ -58,7 +59,7 @@ No colored pill/chip badges anywhere on the page (including Farmadiary's, which 
 
 ## Language (FI/EN)
 - **Current status: toggle is built and live.** Fixed pill top-right (`EN`/`FI`), active language bolded/highlighted, choice persists via `localStorage`, full text swap via JS with no reload.
-- **Real Finnish content exists for:** the Why section (Piret's own thesis wording — see below; citation lines are hidden in FI mode since the Finnish statements already embed the citation inline), and the five section descriptions (MyDay, FarmaRush, MediChain, Medilink, Farmadiary).
+- **Real Finnish content exists for:** the hero tagline, the Why section (Piret's own thesis wording — see below; citation lines are hidden in FI mode since the Finnish statements already embed the citation inline), and the five section descriptions (MyDay, FarmaRush, MediChain, Medilink, Farmadiary).
 - **Everywhere else falls back to English automatically** when FI is selected (game descriptions, Farmadiary, About Me, Contact, footer) — the `translations` dictionary in `index.html` only has an `en` key for these, and the fallback logic shows English rather than blank text. Game names are never translated (treated like proper nouns).
 
 ## Content — final/ready to use, all live on the page
