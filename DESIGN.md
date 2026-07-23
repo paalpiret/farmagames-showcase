@@ -66,12 +66,22 @@ In FI mode, the four numbered labels become `Peli 01 · EN`, `Peli 02 · FI/EN`,
 
 ## Content — final/ready to use, all live on the page
 
-### Game descriptions
+### Game descriptions (EN, live)
 - **MyDay**: "A day in the life of a nursing student on a cardiology ward — from morning handover to medication rounds to end-of-shift documentation. Built to capture the rhythm of a real shift, one room at a time."
 - **FarmaRush**: "Medication requests arrive from hospital wards, one shift at a time. Catch the right drugs before they're dispatched — work fast, but don't let the wrong medication through."
 - **MediChain** (never call it "Mediketju" on the page — that name only exists as an internal image filename): "Build the longest possible medicine chain by linking drugs that share an indication or drug class. A quick, focused way to test how well those connections actually stick."
 - **Medilink**: "Match medicines to their active ingredients, indications, and drug classes — link by link. Built to reinforce the kind of pattern-recognition real prescribing depends on."
 - **Farmadiary**: "A personal medicine notebook — log the drugs you encounter on placement, quiz yourself on what you've logged, and watch your own knowledge base grow shift by shift."
+
+### Game descriptions (FI, live)
+- **MyDay**: "Päivä sairaanhoitajaopiskelijana kardiologian osastolla — aamuraportista lääkkeiden jakoon ja työvuoron päättävään kirjaamiseen. Peli etenee aidon työvuoron tavoin, yksi tehtävä kerrallaan."
+- **FarmaRush**: "Eri osastoilta saapuu työvuoron aikana lääketilauksia. Kerää oikeat lääkkeet mahdollisimman nopeasti, mutta vältä vääriä valintoja."
+- **MediChain**: "Rakenna mahdollisimman pitkä lääkeketju yhdistämällä lääkkeitä, joilla on sama käyttöaihe tai lääkeryhmä. Nopea tapa testata, miten hyvin lääkkeet ovat jääneet mieleen."
+- **Medilink**: "Yhdistä lääkkeet niiden vaikuttaviin aineisiin, käyttöaiheisiin ja lääkeryhmiin kortti kerrallaan. Peli auttaa hahmottamaan lääketiedon kokonaisuuksia ja eri käsitteiden välisiä yhteyksiä."
+- **Farmadiary**: "Henkilökohtainen lääkepäiväkirja, johon kirjaat opinnoissa ja harjoitteluissa kohtaamasi lääkkeet. Testaa osaamistasi omiin merkintöihisi perustuvilla kysymyksillä ja seuraa, miten osaamisesi kehittyy ajan myötä."
+
+### Why section — card styling
+Statement text is regular weight (400) in the same muted gray (`#6B7280`) as every other body paragraph on the page (game descriptions, About Me, etc.) — it was originally semi-bold (600) and dark navy, which stood out as the only body text styled that way; fixed for consistency. Citation line below stays smaller, italic, same gray. Font is Inter throughout, no separate font-family for this section.
 
 ### Why section (EN)
 1. "Over half of surveyed nurses have caused a medication-related safety incident; half have given medicines without knowing their effects." — Luokkamäki et al., 2016
