@@ -57,15 +57,15 @@
 
   /* ── Header ─────────────────────────────────────────────── */
   header {
-    padding: 3.5rem 1.5rem 2rem;
+    padding: 4.5rem 1.5rem 3rem;
     text-align: center;
   }
 
   header h1 {
     display: inline-block;
-    margin: 0 0 0.5rem;
-    font-size: 2.75rem;
-    font-weight: 800;
+    margin: 0 0 0.6rem;
+    font-size: 2.5rem;
+    font-weight: 700;
     letter-spacing: -0.02em;
     background: linear-gradient(135deg, var(--primary), var(--primary-gradient-mid), var(--primary-gradient-end));
     -webkit-background-clip: text;
@@ -161,6 +161,17 @@
     background: color-mix(in srgb, var(--accent) 16%, white);
     padding: 0.3rem 0.7rem;
     border-radius: 999px;
+    margin-bottom: 0.7rem;
+  }
+
+  /* Plain-text label for numbered game sections (no pill/background) */
+  .game-label {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
     margin-bottom: 0.7rem;
   }
 
@@ -447,7 +458,7 @@
       </div>
     </div>
     <div class="game-text">
-      <span class="game-tag">MyDay</span>
+      <span class="game-label">Game 01 · EN</span>
       <h2>MyDay</h2>
       <p data-i18n="myday_desc">A day-in-the-life nursing simulation.</p>
       <a class="play-btn" href="myday/"><span data-i18n="play_now">Play now &rarr;</span></a>
@@ -463,7 +474,7 @@
       </div>
     </div>
     <div class="game-text">
-      <span class="game-tag">FarmaRush</span>
+      <span class="game-label">Game 02 · FI/EN</span>
       <h2>FarmaRush</h2>
       <p data-i18n="farmarush_desc">Fast-paced medication matching game.</p>
       <a class="play-btn" href="farmarush/"><span data-i18n="play_now">Play now &rarr;</span></a>
@@ -479,7 +490,7 @@
       </div>
     </div>
     <div class="game-text">
-      <span class="game-tag">MediChain</span>
+      <span class="game-label">Game 03 · FI</span>
       <h2>MediChain</h2>
       <p data-i18n="medichain_desc">Medication safety and process training.</p>
       <a class="play-btn" href="medichain/"><span data-i18n="play_now">Play now &rarr;</span></a>
@@ -495,7 +506,7 @@
       </div>
     </div>
     <div class="game-text">
-      <span class="game-tag">Medilink</span>
+      <span class="game-label">Game 04 · FI</span>
       <h2>Medilink</h2>
       <p data-i18n="medilink_desc">Connecting nursing knowledge in practice.</p>
       <a class="play-btn" href="medilink/"><span data-i18n="play_now">Play now &rarr;</span></a>
