@@ -84,11 +84,8 @@
     color: rgba(255, 255, 255, 0.75);
   }
 
-  .hero-scroll-cue {
-    margin: 0.85rem 0 0;
-    font-size: 0.75rem;
-    font-weight: 400;
-    color: rgba(255, 255, 255, 0.5);
+  .hero-farmadiary {
+    margin-top: 0.85rem;
   }
 
   /* ── Full-width bands ───────────────────────────────────────
@@ -136,14 +133,15 @@
     margin-bottom: 0.7rem;
   }
 
-  /* Plain-text label for numbered game sections (no pill/background) */
+  /* Plain-text label for numbered game sections (no pill/background) —
+     uses one consistent teal, not the per-game accent color. */
   .game-label {
     display: block;
     font-size: 0.72rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: var(--accent);
+    color: var(--primary-dark);
     margin-bottom: 0.7rem;
   }
 
@@ -155,11 +153,14 @@
     font-size: 0.95rem;
   }
 
+  /* One consistent teal for every game's Play button, not the
+     per-game accent color. Farmadiary is the exception (see .on-light
+     below), since it isn't one of the four numbered games. */
   .play-btn {
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
-    background: var(--accent);
+    background: var(--primary);
     color: #ffffff;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     padding: 0.6rem 1.3rem;
@@ -178,6 +179,7 @@
      better with dark text than the white text used on the darker
      per-game accent colors. */
   .play-btn.on-light {
+    background: var(--accent);
     color: var(--accent-yellow-foreground);
     text-shadow: none;
   }
@@ -401,7 +403,7 @@
   <h1>Piret Paal</h1>
   <p data-i18n="tagline">Nursing education game prototypes</p>
   <p class="hero-games">MyDay &middot; FarmaRush &middot; MediChain &middot; Medilink</p>
-  <p class="hero-scroll-cue" data-i18n="hero_scroll_cue">Scroll to explore each project</p>
+  <p class="hero-games hero-farmadiary">Farmadiary</p>
 </header>
 
 <section class="band game-band bg-tint" style="--accent: var(--accent-myday);">
@@ -551,7 +553,6 @@
   // until real Finnish copy is added — nothing shows blank.
   var translations = {
     tagline: { en: "Nursing education game prototypes" },
-    hero_scroll_cue: { en: "Scroll to explore each project" },
 
     myday_desc: { en: "A day-in-the-life nursing simulation." },
     farmarush_desc: { en: "Fast-paced medication matching game." },
