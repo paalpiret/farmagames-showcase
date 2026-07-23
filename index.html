@@ -120,19 +120,6 @@
     padding-bottom: 3.75rem;
   }
 
-  .game-tag {
-    display: inline-block;
-    font-size: 0.72rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--accent);
-    background: color-mix(in srgb, var(--accent) 16%, white);
-    padding: 0.3rem 0.7rem;
-    border-radius: 999px;
-    margin-bottom: 0.7rem;
-  }
-
   /* Plain-text label for numbered game sections (no pill/background) —
      uses one consistent teal, not the per-game accent color. */
   .game-label {
@@ -283,8 +270,12 @@
 
   /* ── About ──────────────────────────────────────────────── */
   .about-band p {
-    margin: 0;
+    margin: 0 0 1.1rem;
     color: var(--muted-foreground);
+  }
+
+  .about-band p:last-child {
+    margin-bottom: 0;
   }
 
   /* ── Contact ────────────────────────────────────────────── */
@@ -478,7 +469,7 @@
       </div>
     </div>
     <div class="game-text">
-      <span class="game-tag">Farmadiary</span>
+      <span class="game-label">Learning tool &middot; EN</span>
       <h2>Farmadiary</h2>
       <p data-i18n="farmadiary_desc">A personal medicine notebook — log the drugs you encounter on placement, quiz yourself on what you've logged, and watch your own knowledge base grow shift by shift.</p>
       <a class="play-btn on-light" href="https://farmadiary.com" target="_blank" rel="noopener noreferrer"><span data-i18n="farmadiary_cta">Visit Farmadiary &rarr;</span></a>
@@ -514,10 +505,9 @@
 <section class="band about-band bg-tint">
   <div class="container">
     <h2 data-i18n="about_heading">About Me</h2>
-    <p data-i18n="about_text">
-      <!-- Placeholder — real bio content to follow separately -->
-      About me text coming soon.
-    </p>
+    <p data-i18n="about_text_1">I'm a nursing student from Finland with a particular interest in cardiology and pharmacology. Before nursing, I trained as a fashion designer at the Estonian Academy of Arts and spent some time working in software for design tools across Northern Europe.</p>
+    <p data-i18n="about_text_2">Somewhere along the way, design and healthcare started to overlap, and I've worked, for example, with researchers at the University of Helsinki on a service for parents navigating early childhood. In 2025, my bachelor's thesis looked at medication safety among student nurses — and found what research keeps finding: pharmacology is hard to teach, and harder to make stick.</p>
+    <p data-i18n="about_text_3">That's what led me here — building games and digital learning tools instead of just writing about the problem. I started experimenting with vibe-coding and playing around with these subjects, and it grew from there — each one a focused prototype, not a finished product, but a genuine attempt to make pharmacology a little less abstract and a little more memorable, for students like me.</p>
   </div>
 </section>
 
@@ -581,7 +571,9 @@
     farmadiary_cta: { en: "Visit Farmadiary →" },
 
     about_heading: { en: "About Me" },
-    about_text: { en: "About me text coming soon." },
+    about_text_1: { en: "I'm a nursing student from Finland with a particular interest in cardiology and pharmacology. Before nursing, I trained as a fashion designer at the Estonian Academy of Arts and spent some time working in software for design tools across Northern Europe." },
+    about_text_2: { en: "Somewhere along the way, design and healthcare started to overlap, and I've worked, for example, with researchers at the University of Helsinki on a service for parents navigating early childhood. In 2025, my bachelor's thesis looked at medication safety among student nurses — and found what research keeps finding: pharmacology is hard to teach, and harder to make stick." },
+    about_text_3: { en: "That's what led me here — building games and digital learning tools instead of just writing about the problem. I started experimenting with vibe-coding and playing around with these subjects, and it grew from there — each one a focused prototype, not a finished product, but a genuine attempt to make pharmacology a little less abstract and a little more memorable, for students like me." },
 
     contact_heading: { en: "Contact" },
     label_name: { en: "Name" },
