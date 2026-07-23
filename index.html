@@ -270,6 +270,15 @@
     object-fit: contain;
   }
 
+  /* MyDay's illustration is a slightly different aspect ratio than the
+     16:9 frame, which left pale bars down each side under object-fit:
+     contain. Cover fills the frame instead, trimming a small sliver off
+     the top/bottom (safe — the art has headroom there) rather than
+     showing empty space on the sides. */
+  .game-media-box img.fill-crop {
+    object-fit: cover;
+  }
+
   @media (max-width: 720px) {
     .game-flex,
     .game-flex.reverse {
@@ -471,7 +480,7 @@
   <div class="container game-flex">
     <div class="game-media">
       <div class="game-media-box">
-        <img src="images/myday%20promo%20image.png" alt="MyDay nurse illustration with a medication checklist and ward supply cart">
+        <img class="fill-crop" src="images/myday%20promo%20image.png" alt="MyDay nurse illustration with a medication checklist and ward supply cart">
       </div>
     </div>
     <div class="game-text">
