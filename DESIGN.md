@@ -102,7 +102,7 @@ Luokkamäki, Sanna & Vehviläinen-Julkunen, Katri & Saano, Susanna & Härkänen,
 - **FarmaRush** → `FarmaRush promo image.png` (key-art illustration: pharmacy chute, shelves, nurse)
 - **MediChain** → `Medichain promo image.png` (illustrated chain-card diagram)
 - **Medilink** → `Medilink promo image.png` (chain-link logo + card-matching UI)
-- **Farmadiary** → `FarmaDiary track progress.png` (still the original stats + donut chart screenshot — no replacement illustration provided yet)
+- **Farmadiary** → `FarmaDiary promo image.png` (branded illustration: quiz cards + progress dashboard)
 
 **Frame treatment (live):** each image sits in a fixed 16:9 box, `border-radius: 20px`, `box-shadow: 0 8px 24px rgba(0,0,0,0.08)`. Fill is `object-fit: contain`, with the frame's background tinted in that game's accent color for any image that doesn't exactly fill the box.
 
@@ -121,4 +121,3 @@ Each of the four games (MyDay, FarmaRush, MediChain, Medilink) has a small, unob
 - [ ] Translate remaining sections to Finnish (About Me, Contact, footer) — Why and all 5 section descriptions already have real FI copy
 - [ ] Decide on screenshot cropping/framing treatment (square + tilted vs. current fixed-16:9 boxes)
 - [ ] Custom domain (optional, future) — just needs a `CNAME` file + DNS records + Pages settings once purchased; no rebuild required
-- [ ] Get a matching promo illustration for Farmadiary (still using its original screenshot)
