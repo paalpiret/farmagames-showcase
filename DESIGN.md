@@ -58,7 +58,7 @@ No colored pill/chip badges anywhere on the page (including Farmadiary's, which 
 
 ## Language (FI/EN)
 - **Current status: toggle is built and live.** Fixed pill top-right (`EN`/`FI`), active language bolded/highlighted, choice persists via `localStorage`, full text swap via JS with no reload.
-- **Real Finnish content exists only for the Why section** (Piret's own thesis wording — see below). Its citation lines are hidden in FI mode since the Finnish statements already embed the citation inline.
+- **Real Finnish content exists for:** the Why section (Piret's own thesis wording — see below; citation lines are hidden in FI mode since the Finnish statements already embed the citation inline), and the five section descriptions (MyDay, FarmaRush, MediChain, Medilink, Farmadiary).
 - **Everywhere else falls back to English automatically** when FI is selected (game descriptions, Farmadiary, About Me, Contact, footer) — the `translations` dictionary in `index.html` only has an `en` key for these, and the fallback logic shows English rather than blank text. Game names are never translated (treated like proper nouns).
 
 ## Content — final/ready to use, all live on the page
@@ -118,7 +118,7 @@ Each of the four games (MyDay, FarmaRush, MediChain, Medilink) has a small, unob
 
 ## Open / deferred items
 - [ ] Set up real Formspree account + swap in the real endpoint
-- [ ] Translate remaining sections to Finnish (game descriptions, Farmadiary, About Me, Contact, footer) — only Why has real FI copy so far
+- [ ] Translate remaining sections to Finnish (About Me, Contact, footer) — Why and all 5 section descriptions already have real FI copy
 - [ ] Decide on screenshot cropping/framing treatment (square + tilted vs. current fixed-16:9 boxes)
 - [ ] Custom domain (optional, future) — just needs a `CNAME` file + DNS records + Pages settings once purchased; no rebuild required
 - [ ] Get a matching promo illustration for Farmadiary (still using its original screenshot)
