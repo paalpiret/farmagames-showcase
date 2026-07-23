@@ -56,10 +56,73 @@
 
   /* ── Header ─────────────────────────────────────────────── */
   header {
+    position: relative;
     width: 100%;
     padding: 4.5rem 1.5rem 3.5rem;
     text-align: center;
-    background: linear-gradient(135deg, var(--hero-gradient-start), var(--primary), var(--primary-dark));
+    background: var(--primary-dark);
+    overflow: hidden;
+  }
+
+  /* Mesh-gradient effect: blurred color blobs over the dark-teal base,
+     contained by the header's own overflow:hidden. */
+  .hero-mesh {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(70px);
+  }
+
+  .hero-blob-1 {
+    top: -90px;
+    left: -80px;
+    width: 380px;
+    height: 380px;
+    background: var(--hero-gradient-start);
+    opacity: 0.7;
+  }
+
+  .hero-blob-2 {
+    bottom: -120px;
+    right: -70px;
+    width: 440px;
+    height: 440px;
+    background: #38BDF8;
+    opacity: 0.35;
+    filter: blur(80px);
+  }
+
+  .hero-blob-3 {
+    top: -70px;
+    right: 12%;
+    width: 320px;
+    height: 320px;
+    background: var(--primary);
+    opacity: 0.6;
+    filter: blur(60px);
+  }
+
+  .hero-glow {
+    position: absolute;
+    top: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 620px;
+    max-width: 90%;
+    height: 220px;
+    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0) 70%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
   }
 
   header h1 {
@@ -76,6 +139,14 @@
     color: #ffffff;
   }
 
+  .hero-tagline {
+    margin: 0.85rem auto 0;
+    max-width: 34rem;
+    font-size: 0.95rem;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.75);
+  }
+
   .hero-games {
     margin: 2.25rem 0 0;
     font-size: 0.85rem;
@@ -86,6 +157,7 @@
 
   .hero-farmadiary {
     margin-top: 0.85rem;
+    visibility: hidden;
   }
 
   /* ── Full-width bands ───────────────────────────────────────
@@ -380,10 +452,19 @@
 </div>
 
 <header>
-  <h1>Piret Paal</h1>
-  <p data-i18n="tagline">Nursing education game prototypes</p>
-  <p class="hero-games">MyDay &middot; FarmaRush &middot; MediChain &middot; Medilink</p>
-  <p class="hero-games hero-farmadiary">Farmadiary</p>
+  <div class="hero-mesh" aria-hidden="true">
+    <div class="hero-blob hero-blob-1"></div>
+    <div class="hero-blob hero-blob-2"></div>
+    <div class="hero-blob hero-blob-3"></div>
+    <div class="hero-glow"></div>
+  </div>
+  <div class="hero-content">
+    <h1>Piret Paal</h1>
+    <p data-i18n="tagline">Nursing education game prototypes</p>
+    <p class="hero-tagline" data-i18n="hero_tagline">A portfolio of interactive projects exploring medication learning, clinical reasoning and nursing practice.</p>
+    <p class="hero-games">MyDay &middot; FarmaRush &middot; MediChain &middot; Medilink &middot; Farmadiary</p>
+    <p class="hero-games hero-farmadiary" aria-hidden="true">&nbsp;</p>
+  </div>
 </header>
 
 <section class="band game-band bg-tint" style="--accent: var(--accent-myday);">
@@ -532,6 +613,7 @@
   // until real Finnish copy is added — nothing shows blank.
   var translations = {
     tagline: { en: "Nursing education game prototypes" },
+    hero_tagline: { en: "A portfolio of interactive projects exploring medication learning, clinical reasoning and nursing practice." },
 
     myday_desc: { en: "A day in the life of a nursing student on a cardiology ward — from morning handover to medication rounds to end-of-shift documentation. Built to capture the rhythm of a real shift, one room at a time." },
     farmarush_desc: { en: "Medication requests arrive from hospital wards, one shift at a time. Catch the right drugs before they're dispatched — work fast, but don't let the wrong medication through." },
