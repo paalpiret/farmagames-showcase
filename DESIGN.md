@@ -80,12 +80,12 @@ No colored pill/chip badges anywhere on the page (including Farmadiary's, which 
 2. "Tutkimuksen mukaan sairaanhoitajaopiskelijat ajattelevat farmakologiakurssin "pakollisena pahana" sen sijaan, että sen sisältö olisi tärkeä hallita (Mauldin 2021)."
 3. "Vuonna 2019 tehdyn tutkimuksen mukaan on todettu online-menetelmien olevan yksi parhaimpia tapoja farmakologian opettamisessa opiskelijatyytyväisyyden ja tiedon hankinnan kannalta (Gill ym. 2019:1)."
 
-### Why section — full citations (small gray `#6B7280` text, below the cards, live)
+### Why section — full citations (small gray `#6B7280` text, below the cards, live, alphabetical order)
 Gill, Manu & Andersen, Elizabeth & Hilsmann, Norma. 2019. Best practices for teaching pharmacology to undergraduate nursing students: A systematic review of the literature.
 
-Mauldin, Betsy 2023. Bringing Clinical Context to the Classroom in Nursing Pharmacology: A Case Study.
-
 Luokkamäki, Sanna & Vehviläinen-Julkunen, Katri & Saano, Susanna & Härkänen, Marja 2016. "Sairaanhoitajien lääkehoidon osaaminen heidän itsensä arvioimana", Tutkiva Hoitotyö, vol. 14, no. 2, pp. 23–32.
+
+Mauldin, Betsy 2023. Bringing Clinical Context to the Classroom in Nursing Pharmacology: A Case Study.
 
 ### About Me (final, live)
 > I'm a nursing student from Finland with a particular interest in cardiology and pharmacology. Before nursing, I trained as a fashion designer at the Estonian Academy of Arts and spent some time working in software for design tools across Northern Europe.
