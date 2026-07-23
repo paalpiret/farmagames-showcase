@@ -140,9 +140,13 @@
     margin: 0 0 0.6rem;
   }
 
-  /* ── Game sections ──────────────────────────────────────── */
-  .game-band { background: var(--secondary); }
+  /* ── Alternating section backgrounds ────────────────────────
+     Every band down the page alternates white / teal-tint so no
+     two consecutive sections share a background. */
+  .bg-white { background: #FFFFFF; }
+  .bg-tint { background: var(--secondary); }
 
+  /* ── Game sections ──────────────────────────────────────── */
   .game-band .container {
     padding-top: 3.75rem;
     padding-bottom: 3.75rem;
@@ -243,8 +247,6 @@
   }
 
   /* ── Why section ────────────────────────────────────────── */
-  .why-band { background: var(--background); }
-
   .why-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -279,16 +281,12 @@
   }
 
   /* ── About ──────────────────────────────────────────────── */
-  .about-band { background: var(--card); }
-
   .about-band p {
     margin: 0;
     color: var(--muted-foreground);
   }
 
   /* ── Contact ────────────────────────────────────────────── */
-  .contact-band { background: var(--background); }
-
   .contact-form {
     display: flex;
     flex-direction: column;
@@ -371,6 +369,7 @@
 
   /* ── Footer ─────────────────────────────────────────────── */
   footer {
+    border-top: 1px solid var(--border);
     text-align: center;
     padding: 2rem 1.5rem;
     font-size: 0.85rem;
@@ -425,7 +424,7 @@
   <p data-i18n="tagline">MediProjects — nursing education game prototypes</p>
 </header>
 
-<nav class="band quick-play-band" aria-label="Quick play">
+<nav class="band quick-play-band bg-white" aria-label="Quick play">
   <div class="container">
     <a class="quick-play-btn" style="--accent: var(--accent-myday);" href="myday/">
       <span class="dot"></span> MyDay
@@ -442,7 +441,7 @@
   </div>
 </nav>
 
-<section class="band game-band" style="--accent: var(--accent-myday);">
+<section class="band game-band bg-tint" style="--accent: var(--accent-myday);">
   <div class="container game-flex">
     <div class="game-media">
       <div class="game-media-box">
@@ -458,7 +457,7 @@
   </div>
 </section>
 
-<section class="band game-band" style="--accent: var(--accent-farmarush);">
+<section class="band game-band bg-white" style="--accent: var(--accent-farmarush);">
   <div class="container game-flex reverse">
     <div class="game-media">
       <div class="game-media-box">
@@ -474,7 +473,7 @@
   </div>
 </section>
 
-<section class="band game-band" style="--accent: var(--accent-medichain);">
+<section class="band game-band bg-tint" style="--accent: var(--accent-medichain);">
   <div class="container game-flex">
     <div class="game-media">
       <div class="game-media-box">
@@ -490,7 +489,7 @@
   </div>
 </section>
 
-<section class="band game-band" style="--accent: var(--accent-medilink);">
+<section class="band game-band bg-white" style="--accent: var(--accent-medilink);">
   <div class="container game-flex reverse">
     <div class="game-media">
       <div class="game-media-box">
@@ -506,7 +505,7 @@
   </div>
 </section>
 
-<section class="band why-band">
+<section class="band why-band bg-tint">
   <div class="container">
     <h2 data-i18n="why_heading">Why</h2>
     <div class="why-grid">
@@ -526,7 +525,7 @@
   </div>
 </section>
 
-<section class="band game-band" style="--accent: var(--accent-yellow);">
+<section class="band game-band bg-white" style="--accent: var(--accent-yellow);">
   <div class="container game-flex">
     <div class="game-media">
       <div class="game-media-box">
@@ -542,7 +541,7 @@
   </div>
 </section>
 
-<section class="band about-band">
+<section class="band about-band bg-tint">
   <div class="container">
     <h2 data-i18n="about_heading">About Me</h2>
     <p data-i18n="about_text">
@@ -552,7 +551,7 @@
   </div>
 </section>
 
-<section class="band contact-band">
+<section class="band contact-band bg-white">
   <div class="container">
     <h2 data-i18n="contact_heading">Contact</h2>
     <!-- Replace this Formspree endpoint with the real form ID before going live -->
@@ -576,7 +575,7 @@
   </div>
 </section>
 
-<footer>
+<footer class="bg-tint">
   &copy; 2026 Piret Paal
 </footer>
 
