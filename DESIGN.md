@@ -134,7 +134,7 @@ Note: the FI version splits into 4 paragraphs in Piret's original text; paragrap
 **Open idea, not decided:** cropping images square and applying a tilted/framed treatment (inspired by the Sonder portfolio template) instead of the current fixed-16:9 boxes.
 
 ## Cross-links back to this page
-Each of the four games (FarmaRush, MediChain, MediLink, MyDay) has a small, unobtrusive "← Back to FarmaGames" link pointing to the live site URL, visible only on that game's own start/landing screen (never during gameplay). Styled to match each game's own visual language, not this page's design system.
+Each of the four games (FarmaRush, MediChain, MediLink, MyDay) has a small, unobtrusive "← Back to main page" link pointing to the live site URL, visible only on that game's own start/landing screen (never during gameplay). Styled to match each game's own visual language, not this page's design system.
 
 ## Contact section
 - Simple form (name, email, message) via **Formspree, live at `https://formspree.io/f/xjgnavqw`**. Submits via `fetch` with `Accept: application/json` (no page reload) — on success the form is replaced with a confirmation message; on failure the form stays visible with an error message so the user can retry.
