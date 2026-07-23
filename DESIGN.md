@@ -113,7 +113,7 @@ Note: Piret is Estonian, not Finnish — the bio must never say "nursing student
 Note: the FI version splits into 4 paragraphs in Piret's original text; paragraphs 3 and 4 were merged into one on the page to keep the same 3-paragraph structure as the English version (no wording changed, just the paragraph break removed).
 > Olen sairaanhoitajaopiskelija ja erikoisaloista minua kiinnostavat erityisesti kardiologia ja farmakologia. Ennen hoitoalalle siirtymistä kouluttauduin vaatesuunnittelijaksi Eesti Kunstiakademiassa ja työskentelin muotiin liittyvien suunnitteluohjelmistojen parissa Pohjoismaissa.
 >
-> Jossain vaiheessa huomasin, että voin yhdistää muotoilun taustani ja sairaanhoitajuuden. Olen esimerkiksi työskennellyt Helsingin yliopiston tutkijoiden kanssa palvelun parissa, joka tukee vanhempia varhaislapsuuden haasteissa. Vuonna 2025 opinnäytetyöni käsitteli aihetta, miten sairaanhoitajaopiskelijat opiskelevat lääkehoitoa ja miten sitä kannattaisi opettaa. Opinnäytetyössä totesimme, että farmakologiaa on vaikea opettaa, ja vielä vaikeampaa on opiskelijan saada opittu tieto jäämään mieleen.
+> Jossain vaiheessa muotoilu ja terveydenhuolto alkoivat luontevasti yhdistyä tekemisessäni. Olen esimerkiksi työskennellyt Helsingin yliopiston tutkijoiden kanssa palvelun parissa, joka tukee vanhempia varhaislapsuuden haasteissa. Vuonna 2025 opinnäytetyöni käsitteli aihetta, miten sairaanhoitajaopiskelijat opiskelevat lääkehoitoa ja miten sitä kannattaisi opettaa. Opinnäytetyössä totesimme, että farmakologiaa on vaikea opettaa, ja vielä vaikeampaa on opiskelijan saada opittu tieto jäämään mieleen.
 >
 > Inspiroituin opinnäytetyöstäni ja aloin rakentamaan pelejä ja digitaalisia oppimistyökaluja aluksi vain itselleni, helpottaakseni omaa oppimistani. Kokeilin niin sanottua vibe coding -työskentelyä ja kehitin erilaisten aiheiden ympärille pelillisiä ideoita. Tällä sivulla pääset tutustumaan kehittämiini oppimispeleihin. Jokainen peli on tässä vaiheessa vielä prototyyppi, ei valmis tuote. Ne ovat yrityksiä tehdä farmakologiasta hieman vähemmän abstraktia ja helpommin muistettavaa sairaanhoitajaopiskelijoille.
 
@@ -137,12 +137,11 @@ Note: the FI version splits into 4 paragraphs in Piret's original text; paragrap
 Each of the four games (MyDay, FarmaRush, MediChain, Medilink) has a small, unobtrusive "← Back to FarmaGames" link pointing to the live site URL, visible only on that game's own start/landing screen (never during gameplay). Styled to match each game's own visual language, not this page's design system.
 
 ## Contact section
-- Simple form (name, email, message) via **Formspree** (needs a real account + endpoint — currently placeholder: `https://formspree.io/f/REPLACE_WITH_FORM_ID`)
+- Simple form (name, email, message) via **Formspree, live at `https://formspree.io/f/xjgnavqw`**. Submits via `fetch` with `Accept: application/json` (no page reload) — on success the form is replaced with a confirmation message ("Thanks — I'll get back to you soon."); on failure the form stays visible with an error message so the user can retry.
 - **No LinkedIn button.** One was added, then explicitly removed at Piret's request — don't re-add it unless asked again.
 - **Hard rule: never display Piret's personal email address anywhere in visible content or page source.**
-- **FI translation (live):** heading "Ota yhteyttä", labels "Nimi" / "Sähköposti" / "Viesti", submit button "Lähetä".
+- **FI translation (live):** heading "Ota yhteyttä", labels "Nimi" / "Sähköposti" / "Viesti", submit button "Lähetä". Confirmation/error messages are EN-only so far (no FI copy requested yet).
 
 ## Open / deferred items
-- [ ] Set up real Formspree account + swap in the real endpoint
 - [ ] Decide on screenshot cropping/framing treatment (square + tilted vs. current fixed-16:9 boxes)
 - [ ] Custom domain (optional, future) — just needs a `CNAME` file + DNS records + Pages settings once purchased; no rebuild required
