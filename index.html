@@ -397,6 +397,29 @@
     transform: translateY(-1px);
   }
 
+  .form-hidden {
+    display: none;
+  }
+
+  .contact-success,
+  .contact-error {
+    margin: 1rem 0 0;
+    max-width: 480px;
+    padding: 0.85rem 1.1rem;
+    border-radius: var(--radius);
+    font-size: 0.95rem;
+  }
+
+  .contact-success {
+    background: var(--secondary);
+    color: var(--primary-dark);
+  }
+
+  .contact-error {
+    background: color-mix(in srgb, var(--destructive) 12%, white);
+    color: var(--destructive);
+  }
+
   /* ── Footer ─────────────────────────────────────────────── */
   footer {
     text-align: center;
@@ -627,8 +650,7 @@
 <section class="band contact-band bg-white">
   <div class="container">
     <h2 data-i18n="contact_heading">Contact</h2>
-    <!-- Replace this Formspree endpoint with the real form ID before going live -->
-    <form class="contact-form" action="https://formspree.io/f/REPLACE_WITH_FORM_ID" method="POST">
+    <form class="contact-form" id="contact-form" action="https://formspree.io/f/xjgnavqw" method="POST">
       <div>
         <label for="contact-name" data-i18n="label_name">Name</label>
         <input type="text" id="contact-name" name="name" required>
@@ -643,6 +665,8 @@
       </div>
       <button type="submit" class="submit-btn"><span data-i18n="submit_btn">Send message</span></button>
     </form>
+    <p id="contact-success" class="contact-success form-hidden" data-i18n="contact_success">Thanks — I'll get back to you soon.</p>
+    <p id="contact-error" class="contact-error form-hidden" data-i18n="contact_error">Something went wrong — please try again, or reach out directly.</p>
   </div>
 </section>
 
@@ -728,7 +752,9 @@
     label_name: { en: "Name", fi: "Nimi" },
     label_email: { en: "Email", fi: "Sähköposti" },
     label_message: { en: "Message", fi: "Viesti" },
-    submit_btn: { en: "Send message", fi: "Lähetä" }
+    submit_btn: { en: "Send message", fi: "Lähetä" },
+    contact_success: { en: "Thanks — I'll get back to you soon." },
+    contact_error: { en: "Something went wrong — please try again, or reach out directly." }
   };
 
   var LANG_KEY = 'fg-lang';
@@ -803,6 +829,31 @@
 
   document.addEventListener('keydown', function (event) {
     if (event.key === 'Escape') closeLightbox();
+  });
+
+  // ── Contact form (Formspree AJAX) ───────────────────────
+  var contactForm = document.getElementById('contact-form');
+  var contactSuccess = document.getElementById('contact-success');
+  var contactError = document.getElementById('contact-error');
+
+  contactForm.addEventListener('submit', function (event) {
+    event.preventDefault();
+    contactError.classList.add('form-hidden');
+
+    fetch(contactForm.action, {
+      method: 'POST',
+      body: new FormData(contactForm),
+      headers: { 'Accept': 'application/json' }
+    }).then(function (response) {
+      if (response.ok) {
+        contactForm.classList.add('form-hidden');
+        contactSuccess.classList.remove('form-hidden');
+      } else {
+        contactError.classList.remove('form-hidden');
+      }
+    }).catch(function () {
+      contactError.classList.remove('form-hidden');
+    });
   });
 </script>
 
