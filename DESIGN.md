@@ -61,8 +61,8 @@ In FI mode, the four numbered labels become `Peli 01 · EN`, `Peli 02 · FI/EN`,
 
 ## Language (FI/EN)
 - **Current status: toggle is built and live.** Fixed pill top-right (`EN`/`FI`), active language bolded/highlighted, choice persists via `localStorage`, full text swap via JS with no reload.
-- **Real Finnish content exists for:** the hero tagline, the Why section (Piret's own thesis wording — see below; each card's citation is its own small gray line below the quote, same structure as the English cards), the five section descriptions (MyDay, FarmaRush, MediChain, Medilink, Farmadiary), the "Game"/"Play now" → "Peli"/"Pelaa" swap on game labels and buttons, and the Contact section (heading, field labels, submit button).
-- **Everywhere else falls back to English automatically** when FI is selected (Farmadiary's "Learning tool" label, About Me, footer) — the `translations` dictionary in `index.html` only has an `en` key for these, and the fallback logic shows English rather than blank text. Game names and "Piret Paal" are never translated (treated like proper nouns). Footer is intentionally identical in both languages, not a fallback gap.
+- **Real Finnish content exists for:** the hero tagline, the Why section (Piret's own thesis wording — see below; each card's citation is its own small gray line below the quote, with no trailing page number, same structure as the English cards), the five section descriptions (MyDay, FarmaRush, MediChain, Medilink, Farmadiary), the "Game"/"Play now" → "Peli"/"Pelaa" swap on game labels and buttons, the Contact section (heading, field labels, submit button), and About Me.
+- **Everywhere else falls back to English automatically** when FI is selected (Farmadiary's "Learning tool" label, footer) — the `translations` dictionary in `index.html` only has an `en` key for these, and the fallback logic shows English rather than blank text. Game names and "Piret Paal" are never translated (treated like proper nouns). Footer is intentionally identical in both languages, not a fallback gap.
 
 ## Content — final/ready to use, all live on the page
 
@@ -80,9 +80,9 @@ In FI mode, the four numbered labels become `Peli 01 · EN`, `Peli 02 · FI/EN`,
 
 ### Why section (FI — Piret's original thesis wording, live)
 Each statement's citation is stripped out of the sentence and shown as its own small gray line below (matching the English cards), not embedded inline:
-1. "Vuonna 2016 julkaistun tutkimuksen mukaan yli puolet tutkimukseen osallistuneet sairaanhoitajista ovat joskus aiheuttanut potilaalle lääkehoidon virheen takia vaaratilanteen ja puolet ovat antaneet lääkkeitä, joiden vaikutuksia he eivät tietäneet." — Luokkamäki ym. 2016: 30
+1. "Vuonna 2016 julkaistun tutkimuksen mukaan yli puolet tutkimukseen osallistuneet sairaanhoitajista ovat joskus aiheuttanut potilaalle lääkehoidon virheen takia vaaratilanteen ja puolet ovat antaneet lääkkeitä, joiden vaikutuksia he eivät tietäneet." — Luokkamäki ym. 2016
 2. "Tutkimuksen mukaan sairaanhoitajaopiskelijat ajattelevat farmakologiakurssin "pakollisena pahana" sen sijaan, että sen sisältö olisi tärkeä hallita." — Mauldin 2021
-3. "Vuonna 2019 tehdyn tutkimuksen mukaan on todettu online-menetelmien olevan yksi parhaimpia tapoja farmakologian opettamisessa opiskelijatyytyväisyyden ja tiedon hankinnan kannalta." — Gill ym. 2019:1
+3. "Vuonna 2019 tehdyn tutkimuksen mukaan on todettu online-menetelmien olevan yksi parhaimpia tapoja farmakologian opettamisessa opiskelijatyytyväisyyden ja tiedon hankinnan kannalta." — Gill ym. 2019
 
 ### Why section — full citations (small gray `#6B7280` text, below the cards, live, alphabetical order)
 Gill, Manu & Andersen, Elizabeth & Hilsmann, Norma. 2019. Best practices for teaching pharmacology to undergraduate nursing students: A systematic review of the literature.
@@ -91,12 +91,21 @@ Luokkamäki, Sanna & Vehviläinen-Julkunen, Katri & Saano, Susanna & Härkänen,
 
 Mauldin, Betsy 2023. Bringing Clinical Context to the Classroom in Nursing Pharmacology: A Case Study.
 
-### About Me (final, live)
-> I'm a nursing student from Finland with a particular interest in cardiology and pharmacology. Before nursing, I trained as a fashion designer at the Estonian Academy of Arts and spent some time working in software for design tools across Northern Europe.
+### About Me (final, live — EN)
+Note: Piret is Estonian, not Finnish — the bio must never say "nursing student from Finland" or similar; it previously did and was corrected.
+> I'm a nursing student with a particular interest in cardiology and pharmacology. Before nursing, I trained as a fashion designer at the Estonian Academy of Arts and spent some time working in software for design tools across Northern Europe.
 >
 > Somewhere along the way, design and healthcare started to overlap, and I've worked, for example, with researchers at the University of Helsinki on a service for parents navigating early childhood. In 2025, my bachelor's thesis looked at medication safety among student nurses — and found what research keeps finding: pharmacology is hard to teach, and harder to make stick.
 >
 > That's what led me here — building games and digital learning tools instead of just writing about the problem. I started experimenting with vibe-coding and playing around with these subjects, and it grew from there — each one a focused prototype, not a finished product, but a genuine attempt to make pharmacology a little less abstract and a little more memorable, for students like me.
+
+### About Me (FI, live)
+Note: the FI version splits into 4 paragraphs in Piret's original text; paragraphs 3 and 4 were merged into one on the page to keep the same 3-paragraph structure as the English version (no wording changed, just the paragraph break removed).
+> Olen sairaanhoitajaopiskelija ja erikoisaloista minua kiinnostavat erityisesti kardiologia ja farmakologia. Ennen hoitoalalle siirtymistä kouluttauduin vaatesuunnittelijaksi Eesti Kunstiakademiassa ja työskentelin muotiin liittyvien suunnitteluohjelmistojen parissa Pohjoismaissa.
+>
+> Jossain vaiheessa huomasin, että voin yhdistää muotoilun taustani ja sairaanhoitajuuden. Olen esimerkiksi työskennellyt Helsingin yliopiston tutkijoiden kanssa palvelun parissa, joka tukee vanhempia varhaislapsuuden haasteissa. Vuonna 2025 opinnäytetyöni käsitteli aihetta, miten sairaanhoitajaopiskelijat opiskelevat lääkehoitoa ja miten sitä kannattaisi opettaa. Opinnäytetyössä totesimme, että farmakologiaa on vaikea opettaa, ja vielä vaikeampaa on opiskelijan saada opittu tieto jäämään mieleen.
+>
+> Inspiroituin opinnäytetyöstäni ja aloin rakentamaan pelejä ja digitaalisia oppimistyökaluja aluksi vain itselleni, helpottaakseni omaa oppimistani. Kokeilin niin sanottua vibe coding -työskentelyä ja kehitin erilaisten aiheiden ympärille pelillisiä ideoita. Tällä sivulla pääset tutustumaan kehittämiini oppimispeleihin. Jokainen peli on tässä vaiheessa vielä prototyyppi, ei valmis tuote. Ne ovat yrityksiä tehdä farmakologiasta hieman vähemmän abstraktia ja helpommin muistettavaa sairaanhoitajaopiskelijoille.
 
 ## Images
 `/images/` holds exactly the 5 files actually referenced on the page — the original 13 raw screenshots (plus unused spares) were deleted once replaced.
@@ -125,6 +134,5 @@ Each of the four games (MyDay, FarmaRush, MediChain, Medilink) has a small, unob
 
 ## Open / deferred items
 - [ ] Set up real Formspree account + swap in the real endpoint
-- [ ] Translate About Me to Finnish (last major section without real FI copy; footer is intentionally untranslated, not a gap)
 - [ ] Decide on screenshot cropping/framing treatment (square + tilted vs. current fixed-16:9 boxes)
 - [ ] Custom domain (optional, future) — just needs a `CNAME` file + DNS records + Pages settings once purchased; no rebuild required
