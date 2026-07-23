@@ -191,6 +191,40 @@
     text-shadow: none;
   }
 
+  .game-flex {
+    display: flex;
+    align-items: center;
+    gap: 2.25rem;
+  }
+
+  .game-text {
+    flex: 1 1 320px;
+    min-width: 0;
+  }
+
+  .game-media {
+    flex: 1 1 320px;
+    max-width: 420px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .game-media img {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 340px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 16px rgba(31, 44, 61, 0.1);
+  }
+
+  @media (max-width: 720px) {
+    .game-flex { flex-direction: column; }
+    .game-media { max-width: 100%; }
+  }
+
   /* ── Why section ────────────────────────────────────────── */
   .why-band { background: var(--background); }
 
@@ -392,38 +426,58 @@
 </nav>
 
 <section class="band game-band" style="--accent: var(--accent-myday);">
-  <div class="container">
-    <span class="game-tag">MyDay</span>
-    <h2>MyDay</h2>
-    <p data-i18n="myday_desc">A day-in-the-life nursing simulation.</p>
-    <a class="play-btn" href="myday/"><span data-i18n="play_now">Play now &rarr;</span></a>
+  <div class="container game-flex">
+    <div class="game-text">
+      <span class="game-tag">MyDay</span>
+      <h2>MyDay</h2>
+      <p data-i18n="myday_desc">A day-in-the-life nursing simulation.</p>
+      <a class="play-btn" href="myday/"><span data-i18n="play_now">Play now &rarr;</span></a>
+    </div>
+    <div class="game-media">
+      <img src="images/MyDay%20gamemap.png" alt="MyDay hospital map with the nurse walking between rooms">
+    </div>
   </div>
 </section>
 
 <section class="band game-band" style="--accent: var(--accent-farmarush);">
-  <div class="container">
-    <span class="game-tag">FarmaRush</span>
-    <h2>FarmaRush</h2>
-    <p data-i18n="farmarush_desc">Fast-paced medication matching game.</p>
-    <a class="play-btn" href="farmarush/"><span data-i18n="play_now">Play now &rarr;</span></a>
+  <div class="container game-flex">
+    <div class="game-text">
+      <span class="game-tag">FarmaRush</span>
+      <h2>FarmaRush</h2>
+      <p data-i18n="farmarush_desc">Fast-paced medication matching game.</p>
+      <a class="play-btn" href="farmarush/"><span data-i18n="play_now">Play now &rarr;</span></a>
+    </div>
+    <div class="game-media">
+      <img src="images/Farmarush%20game.png" alt="FarmaRush gameplay: nurse catching medicine on the pharmacy chute">
+    </div>
   </div>
 </section>
 
 <section class="band game-band" style="--accent: var(--accent-medichain);">
-  <div class="container">
-    <span class="game-tag">MediChain</span>
-    <h2>MediChain</h2>
-    <p data-i18n="medichain_desc">Medication safety and process training.</p>
-    <a class="play-btn" href="medichain/"><span data-i18n="play_now">Play now &rarr;</span></a>
+  <div class="container game-flex">
+    <div class="game-text">
+      <span class="game-tag">MediChain</span>
+      <h2>MediChain</h2>
+      <p data-i18n="medichain_desc">Medication safety and process training.</p>
+      <a class="play-btn" href="medichain/"><span data-i18n="play_now">Play now &rarr;</span></a>
+    </div>
+    <div class="game-media">
+      <img src="images/Medichain%20game.png" alt="MediChain gameplay: building a medicine chain with the Apiksabaani card">
+    </div>
   </div>
 </section>
 
 <section class="band game-band" style="--accent: var(--accent-medilink);">
-  <div class="container">
-    <span class="game-tag">Medilink</span>
-    <h2>Medilink</h2>
-    <p data-i18n="medilink_desc">Connecting nursing knowledge in practice.</p>
-    <a class="play-btn" href="medilink/"><span data-i18n="play_now">Play now &rarr;</span></a>
+  <div class="container game-flex">
+    <div class="game-text">
+      <span class="game-tag">Medilink</span>
+      <h2>Medilink</h2>
+      <p data-i18n="medilink_desc">Connecting nursing knowledge in practice.</p>
+      <a class="play-btn" href="medilink/"><span data-i18n="play_now">Play now &rarr;</span></a>
+    </div>
+    <div class="game-media">
+      <img src="images/Medilink%20game.png" alt="Medilink gameplay: matching the Furosemidi card to its group">
+    </div>
   </div>
 </section>
 
@@ -448,11 +502,16 @@
 </section>
 
 <section class="band game-band" style="--accent: var(--accent-yellow);">
-  <div class="container">
-    <span class="game-tag">Farmadiary</span>
-    <h2>Farmadiary</h2>
-    <p data-i18n="farmadiary_desc">A companion diary for reflecting on medication learning, in practice.</p>
-    <a class="play-btn on-light" href="https://farmadiary.com" target="_blank" rel="noopener noreferrer"><span data-i18n="farmadiary_cta">Visit Farmadiary &rarr;</span></a>
+  <div class="container game-flex">
+    <div class="game-text">
+      <span class="game-tag">Farmadiary</span>
+      <h2>Farmadiary</h2>
+      <p data-i18n="farmadiary_desc">A companion diary for reflecting on medication learning, in practice.</p>
+      <a class="play-btn on-light" href="https://farmadiary.com" target="_blank" rel="noopener noreferrer"><span data-i18n="farmadiary_cta">Visit Farmadiary &rarr;</span></a>
+    </div>
+    <div class="game-media">
+      <img src="images/FarmaDiary%20track%20progress.png" alt="Farmadiary Track Progress dashboard with stats and a donut chart">
+    </div>
   </div>
 </section>
 
