@@ -46,7 +46,7 @@ Pulled directly from FarmaDiary's design system for visual consistency across th
 3. **Farmadiary** — its own full section, same treatment as the game sections (moved to directly follow the four games)
 4. **Why** — three cards with research-based quotes + citations, plus a small full-citation reference list below the cards (see Content below) — now sits after Farmadiary, not before it
 5. **About Me** — full bio text, live (see Content below)
-6. **Contact** — form via Formspree (placeholder endpoint); **no LinkedIn button** (added once, then explicitly removed — do not re-add without being asked); no personal email ever displayed in visible content or source
+6. **Contact** — form via Formspree, live (see Contact section below for the endpoint and confirmation-message details); **no LinkedIn button** (added once, then explicitly removed — do not re-add without being asked); no personal email ever displayed in visible content or source
 7. **Footer** — © 2026 Piret Paal, nothing else
 
 ## Section label style
@@ -137,10 +137,12 @@ Note: the FI version splits into 4 paragraphs in Piret's original text; paragrap
 Each of the four games (MyDay, FarmaRush, MediChain, Medilink) has a small, unobtrusive "← Back to FarmaGames" link pointing to the live site URL, visible only on that game's own start/landing screen (never during gameplay). Styled to match each game's own visual language, not this page's design system.
 
 ## Contact section
-- Simple form (name, email, message) via **Formspree, live at `https://formspree.io/f/xjgnavqw`**. Submits via `fetch` with `Accept: application/json` (no page reload) — on success the form is replaced with a confirmation message ("Thanks — I'll get back to you soon."); on failure the form stays visible with an error message so the user can retry.
+- Simple form (name, email, message) via **Formspree, live at `https://formspree.io/f/xjgnavqw`**. Submits via `fetch` with `Accept: application/json` (no page reload) — on success the form is replaced with a confirmation message; on failure the form stays visible with an error message so the user can retry.
+- Confirmation message (live, both languages): EN "Thank you for contacting me. I will get back to you soon." / FI "Kiitos yhteydenotostasi. Vastaan sinulle pian"
+- Error message (EN only so far, no FI requested yet): "Something went wrong — please try again, or reach out directly."
 - **No LinkedIn button.** One was added, then explicitly removed at Piret's request — don't re-add it unless asked again.
 - **Hard rule: never display Piret's personal email address anywhere in visible content or page source.**
-- **FI translation (live):** heading "Ota yhteyttä", labels "Nimi" / "Sähköposti" / "Viesti", submit button "Lähetä". Confirmation/error messages are EN-only so far (no FI copy requested yet).
+- **FI translation (live):** heading "Ota yhteyttä", labels "Nimi" / "Sähköposti" / "Viesti", submit button "Lähetä", confirmation message (see above).
 
 ## Open / deferred items
 - [ ] Decide on screenshot cropping/framing treatment (square + tilted vs. current fixed-16:9 boxes)
