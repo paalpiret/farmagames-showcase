@@ -23,14 +23,14 @@ Pulled directly from FarmaDiary's design system for visual consistency across th
 | background | `#F6FBF9` | page background |
 | foreground | `#1F2C3D` | body text |
 | card | `#FFFFFF` | card backgrounds |
-| primary (teal) | `#20A386` | all "Play now" / "Visit Farmadiary" buttons |
+| primary (teal) | `#20A386` | all "Play now" / "Visit FarmaDiary" buttons |
 | primary-dark | `#167B65` | all "GAME 0X · [LANG]" / "Learning tool · [LANG]" labels, hero base color |
 | secondary/accent tint | `#EAF3F0` | alternating section background |
 | muted | `#D6E7E1` | muted surfaces |
 | muted-foreground | `#6B7280` | secondary/supporting text |
 | border | `#DBE9E4` | dividers, borders |
 
-**Decision: single teal accent for labels + buttons (done).** FarmaDiary's colorful per-activity accents (purple `#A78BFA`, blue `#38BDF8`, green `#3ED07A`, orange `#FF9F1A`, yellow `#F5C51F`) were tried per-game, then dropped for section labels and buttons — they carried no real meaning here (they were activity-type colors in FarmaDiary, not game identifiers) and made the page feel less cohesive. All game labels now use `#167B65`, all buttons (including Farmadiary's) use `#20A386`.
+**Decision: single teal accent for labels + buttons (done).** FarmaDiary's colorful per-activity accents (purple `#A78BFA`, blue `#38BDF8`, green `#3ED07A`, orange `#FF9F1A`, yellow `#F5C51F`) were tried per-game, then dropped for section labels and buttons — they carried no real meaning here (they were activity-type colors in FarmaDiary, not game identifiers) and made the page feel less cohesive. All game labels now use `#167B65`, all buttons (including FarmaDiary's) use `#20A386`.
 
 **Per-game accent colors still exist in one place:** the subtle background tint inside each game's screenshot frame (`.game-media-box`, `color-mix(... var(--accent) 10%, white)`), so portrait-shaped screenshots don't letterbox into plain white. This was an intentional, narrower exception — the accent variables (`--accent-myday`, `--accent-farmarush`, `--accent-medichain`, `--accent-medilink`) are still defined in `:root` for this purpose only.
 
@@ -42,43 +42,43 @@ Pulled directly from FarmaDiary's design system for visual consistency across th
 
 ## Layout structure (current, live)
 1. **Header/hero** — mesh-gradient banner, name, italic tagline, language toggle top-right (the project-names line that used to sit below the tagline, and the old subtitle line, were both removed)
-2. **Game sections** (×4: MyDay, FarmaRush, MediChain, Medilink) — alternating white/`#EAF3F0` backgrounds, image-beside-text layout alternating sides per section (left/right/left/right), image in a fixed 16:9 box with rounded corners, full-bleed section color with content in a centered `max-width: ~1000px` column, generous responsive padding (not fixed height)
-3. **Farmadiary** — its own full section, same treatment as the game sections (moved to directly follow the four games)
-4. **Why** — three cards with research-based quotes + citations, plus a small full-citation reference list below the cards (see Content below) — now sits after Farmadiary, not before it
+2. **Game sections** (×4, in this order: **FarmaRush, MediChain, MediLink, MyDay**) — alternating white/`#EAF3F0` backgrounds, image-beside-text layout alternating sides per section (left/right/left/right), image in a fixed 16:9 box with rounded corners, full-bleed section color with content in a centered `max-width: ~1000px` column, generous responsive padding (not fixed height). **MyDay is deliberately placed last** (not first) since it's the least-finished prototype and Piret didn't want it to be the first thing visitors click.
+3. **FarmaDiary** — its own full section, same treatment as the game sections (sits directly after the four games)
+4. **Why** — three cards with research-based quotes + citations, plus a small full-citation reference list below the cards (see Content below) — sits after FarmaDiary, not before it
 5. **About Me** — full bio text, live (see Content below)
 6. **Contact** — form via Formspree, live (see Contact section below for the endpoint and confirmation-message details); **no LinkedIn button** (added once, then explicitly removed — do not re-add without being asked); no personal email ever displayed in visible content or source
 7. **Footer** — © 2026 Piret Paal, nothing else
 
 ## Section label style
-No colored pill/chip badges anywhere on the page (including Farmadiary's, which used to have a yellow pill). Small plain text label above each name, in `#167B65`:
-- `Game 01 · EN` (MyDay)
-- `Game 02 · FI/EN` (FarmaRush — the game itself has an in-game EN/FI toggle)
-- `Game 03 · FI` (MediChain)
-- `Game 04 · FI` (Medilink)
-- `Learning tool · EN` (Farmadiary — intentionally not numbered as a "game"; this one has no FI translation yet)
+No colored pill/chip badges anywhere on the page (including FarmaDiary's, which used to have a yellow pill). Small plain text label above each name, in `#167B65`:
+- `Game 01 · FI/EN` (FarmaRush — the game itself has an in-game EN/FI toggle)
+- `Game 02 · FI` (MediChain)
+- `Game 03 · FI` (MediLink)
+- `Game 04 · EN` (MyDay — numbered last on purpose, see Layout structure above)
+- `Learning tool · EN` (FarmaDiary — intentionally not numbered as a "game"; this one has no FI translation yet)
 
-In FI mode, the four numbered labels become `Peli 01 · EN`, `Peli 02 · FI/EN`, `Peli 03 · FI`, `Peli 04 · FI` ("Game" → "Peli"), and every "Play now" button becomes "Pelaa".
+In FI mode, the four numbered labels become `Peli 01 · FI/EN`, `Peli 02 · FI`, `Peli 03 · FI`, `Peli 04 · EN` ("Game" → "Peli"), and every "Play now" button becomes "Pelaa".
 
 ## Language (FI/EN)
 - **Current status: toggle is built and live.** Fixed pill top-right (`EN`/`FI`), active language bolded/highlighted, choice persists via `localStorage`, full text swap via JS with no reload.
-- **Real Finnish content exists for:** the hero tagline, the Why section (Piret's own thesis wording — see below; each card's citation is its own small gray line below the quote, with no trailing page number, same structure as the English cards), the five section descriptions (MyDay, FarmaRush, MediChain, Medilink, Farmadiary), the "Game"/"Play now" → "Peli"/"Pelaa" swap on game labels and buttons, the Contact section (heading, field labels, submit button), and About Me.
-- **Everywhere else falls back to English automatically** when FI is selected (Farmadiary's "Learning tool" label, footer) — the `translations` dictionary in `index.html` only has an `en` key for these, and the fallback logic shows English rather than blank text. Game names and "Piret Paal" are never translated (treated like proper nouns). Footer is intentionally identical in both languages, not a fallback gap.
+- **Real Finnish content exists for:** the hero tagline, the Why section (Piret's own thesis wording — see below; each card's citation is its own small gray line below the quote, with no trailing page number, same structure as the English cards), the five section descriptions (FarmaRush, MediChain, MediLink, MyDay, FarmaDiary), the "Game"/"Play now" → "Peli"/"Pelaa" swap on game labels and buttons, the Contact section (heading, field labels, submit button), and About Me.
+- **Everywhere else falls back to English automatically** when FI is selected (FarmaDiary's "Learning tool" label, footer) — the `translations` dictionary in `index.html` only has an `en` key for these, and the fallback logic shows English rather than blank text. Game names and "Piret Paal" are never translated (treated like proper nouns). Footer is intentionally identical in both languages, not a fallback gap.
 
 ## Content — final/ready to use, all live on the page
 
 ### Game descriptions (EN, live)
-- **MyDay**: "A day in the life of a nursing student on a cardiology ward — from morning handover to medication rounds to end-of-shift documentation. Built to capture the rhythm of a real shift, one room at a time."
 - **FarmaRush**: "Medication requests arrive from hospital wards, one shift at a time. Catch the right drugs before they're dispatched — work fast, but don't let the wrong medication through."
 - **MediChain** (never call it "Mediketju" on the page — that name only exists as an internal image filename): "Build the longest possible medicine chain by linking drugs that share an indication or drug class. A quick, focused way to test how well those connections actually stick."
-- **Medilink**: "Match medicines to their active ingredients, indications, and drug classes — link by link. Built to reinforce the kind of pattern-recognition real prescribing depends on."
-- **Farmadiary**: "A personal medicine notebook — log the drugs you encounter on placement, quiz yourself on what you've logged, and watch your own knowledge base grow shift by shift."
+- **MediLink**: "Match medicines to their active ingredients, indications, and drug classes — link by link. Built to reinforce the kind of pattern-recognition real prescribing depends on."
+- **MyDay**: "A day in the life of a nursing student on a cardiology ward — from morning handover to medication rounds to end-of-shift documentation. Built to capture the rhythm of a real shift, one room at a time."
+- **FarmaDiary**: "A personal medicine notebook — log the drugs you encounter on placement, quiz yourself on what you've logged, and watch your own knowledge base grow shift by shift."
 
 ### Game descriptions (FI, live)
-- **MyDay**: "Päivä sairaanhoitajaopiskelijana kardiologian osastolla — aamuraportista lääkkeiden jakoon ja työvuoron päättävään kirjaamiseen. Peli etenee aidon työvuoron tavoin, yksi tehtävä kerrallaan."
 - **FarmaRush**: "Eri osastoilta saapuu työvuoron aikana lääketilauksia. Kerää oikeat lääkkeet mahdollisimman nopeasti, mutta vältä vääriä valintoja."
 - **MediChain**: "Rakenna mahdollisimman pitkä lääkeketju yhdistämällä lääkkeitä, joilla on sama käyttöaihe tai lääkeryhmä. Nopea tapa testata, miten hyvin lääkkeet ovat jääneet mieleen."
-- **Medilink**: "Yhdistä lääkkeet niiden vaikuttaviin aineisiin, käyttöaiheisiin ja lääkeryhmiin kortti kerrallaan. Peli auttaa hahmottamaan lääketiedon kokonaisuuksia ja eri käsitteiden välisiä yhteyksiä."
-- **Farmadiary**: "Henkilökohtainen lääkepäiväkirja, johon kirjaat opinnoissa ja harjoitteluissa kohtaamasi lääkkeet. Testaa osaamistasi omiin merkintöihisi perustuvilla kysymyksillä ja seuraa, miten osaamisesi kehittyy ajan myötä."
+- **MediLink**: "Yhdistä lääkkeet niiden vaikuttaviin aineisiin, käyttöaiheisiin ja lääkeryhmiin kortti kerrallaan. Peli auttaa hahmottamaan lääketiedon kokonaisuuksia ja eri käsitteiden välisiä yhteyksiä."
+- **MyDay**: "Päivä sairaanhoitajaopiskelijana kardiologian osastolla — aamuraportista lääkkeiden jakoon ja työvuoron päättävään kirjaamiseen. Peli etenee aidon työvuoron tavoin, yksi tehtävä kerrallaan."
+- **FarmaDiary**: "Henkilökohtainen lääkepäiväkirja, johon kirjaat opinnoissa ja harjoitteluissa kohtaamasi lääkkeet. Testaa osaamistasi omiin merkintöihisi perustuvilla kysymyksillä ja seuraa, miten osaamisesi kehittyy ajan myötä."
 
 ### Why section — card styling
 Statement text is regular weight (400) in the same muted gray (`#6B7280`) as every other body paragraph on the page (game descriptions, About Me, etc.) — it was originally semi-bold (600) and dark navy, which stood out as the only body text styled that way; fixed for consistency. Citation line below stays smaller, italic, same gray. Font is Inter throughout, no separate font-family for this section.
@@ -120,12 +120,12 @@ Note: the FI version splits into 4 paragraphs in Piret's original text; paragrap
 ## Images
 `/images/` holds exactly the 5 files actually referenced on the page — the original 13 raw screenshots (plus unused spares) were deleted once replaced.
 
-**In use (lead image per section):**
-- **MyDay** → `myday promo image.png` (illustrated nurse + medication cart scene)
+**In use (lead image per section, in page order):**
 - **FarmaRush** → `FarmaRush promo image.png` (key-art illustration: pharmacy chute, shelves, nurse)
 - **MediChain** → `Medichain promo image.png` (illustrated chain-card diagram)
-- **Medilink** → `Medilink promo image.png` (chain-link logo + card-matching UI)
-- **Farmadiary** → `FarmaDiary promo image.png` (branded illustration: quiz cards + progress dashboard)
+- **MediLink** → `Medilink promo image.png` (chain-link logo + card-matching UI; filename stays lowercase "Medilink" — only the on-page display text was recapitalized to "MediLink")
+- **MyDay** → `myday promo image.png` (illustrated nurse + medication cart scene)
+- **FarmaDiary** → `FarmaDiary promo image.png` (branded illustration: quiz cards + progress dashboard)
 
 **Frame treatment (live):** each image sits in a fixed 16:9 box, `border-radius: 20px`, `box-shadow: 0 8px 24px rgba(0,0,0,0.08)`. Fill is `object-fit: contain` (MyDay uses `cover` specifically — its illustration's aspect ratio didn't match the 16:9 frame and left pale bars on the sides), with the frame's background tinted in that game's accent color for any image that doesn't exactly fill the box.
 
@@ -134,7 +134,7 @@ Note: the FI version splits into 4 paragraphs in Piret's original text; paragrap
 **Open idea, not decided:** cropping images square and applying a tilted/framed treatment (inspired by the Sonder portfolio template) instead of the current fixed-16:9 boxes.
 
 ## Cross-links back to this page
-Each of the four games (MyDay, FarmaRush, MediChain, Medilink) has a small, unobtrusive "← Back to FarmaGames" link pointing to the live site URL, visible only on that game's own start/landing screen (never during gameplay). Styled to match each game's own visual language, not this page's design system.
+Each of the four games (FarmaRush, MediChain, MediLink, MyDay) has a small, unobtrusive "← Back to FarmaGames" link pointing to the live site URL, visible only on that game's own start/landing screen (never during gameplay). Styled to match each game's own visual language, not this page's design system.
 
 ## Contact section
 - Simple form (name, email, message) via **Formspree, live at `https://formspree.io/f/xjgnavqw`**. Submits via `fetch` with `Accept: application/json` (no page reload) — on success the form is replaced with a confirmation message; on failure the form stays visible with an error message so the user can retry.
