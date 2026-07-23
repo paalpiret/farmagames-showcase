@@ -9,7 +9,7 @@ https://paalpiret.github.io/farmagames-showcase/
 - Page title: **"Piret Paal"** (not "FarmaGames" or "MediProjects" — both were dropped, including from `<title>` and meta description). Name is unchanged in both EN and FI.
 - Heading size: 50px, weight 700.
 - No subtitle line anymore (the old "Nursing education game prototypes" line was dropped as redundant).
-- Tagline (italic, only supporting line under the name): "A portfolio of interactive projects exploring medication learning, clinical reasoning and nursing practice." Has a real Finnish translation, shown when the FI toggle is active.
+- Tagline (italic, only supporting line under the name): "A portfolio of interactive projects exploring medication learning, clinical reasoning and nursing practice." FI: "Interaktiivisia oppimisprojekteja, jotka tekevät lääkeoppimisesta, kliinisestä päättelystä ja hoitotyön arjesta selkeämpää, kiinnostavampaa ja helpommin muistettavaa."
 - "Farma" was avoided as a page-level brand name since it originates from Piret's bachelor's thesis, co-authored with Christina Lindberg — not solely hers to brand with.
 
 ## Purpose
@@ -41,7 +41,7 @@ Pulled directly from FarmaDiary's design system for visual consistency across th
 - Radius scale: `--radius: 0.75rem`, `--radius-lg: 1rem`
 
 ## Layout structure (current, live)
-1. **Header/hero** — mesh-gradient banner, name, subtitle, italic tagline, language toggle top-right (the project-names line that used to sit below the tagline was removed)
+1. **Header/hero** — mesh-gradient banner, name, italic tagline, language toggle top-right (the project-names line that used to sit below the tagline, and the old subtitle line, were both removed)
 2. **Game sections** (×4: MyDay, FarmaRush, MediChain, Medilink) — alternating white/`#EAF3F0` backgrounds, image-beside-text layout alternating sides per section (left/right/left/right), image in a fixed 16:9 box with rounded corners, full-bleed section color with content in a centered `max-width: ~1000px` column, generous responsive padding (not fixed height)
 3. **Farmadiary** — its own full section, same treatment as the game sections (moved to directly follow the four games)
 4. **Why** — three cards with research-based quotes + citations, plus a small full-citation reference list below the cards (see Content below) — now sits after Farmadiary, not before it
@@ -55,12 +55,14 @@ No colored pill/chip badges anywhere on the page (including Farmadiary's, which 
 - `Game 02 · FI/EN` (FarmaRush — the game itself has an in-game EN/FI toggle)
 - `Game 03 · FI` (MediChain)
 - `Game 04 · FI` (Medilink)
-- `Learning tool · EN` (Farmadiary — intentionally not numbered as a "game")
+- `Learning tool · EN` (Farmadiary — intentionally not numbered as a "game"; this one has no FI translation yet)
+
+In FI mode, the four numbered labels become `Peli 01 · EN`, `Peli 02 · FI/EN`, `Peli 03 · FI`, `Peli 04 · FI` ("Game" → "Peli"), and every "Play now" button becomes "Pelaa".
 
 ## Language (FI/EN)
 - **Current status: toggle is built and live.** Fixed pill top-right (`EN`/`FI`), active language bolded/highlighted, choice persists via `localStorage`, full text swap via JS with no reload.
-- **Real Finnish content exists for:** the hero tagline, the Why section (Piret's own thesis wording — see below; citation lines are hidden in FI mode since the Finnish statements already embed the citation inline), and the five section descriptions (MyDay, FarmaRush, MediChain, Medilink, Farmadiary).
-- **Everywhere else falls back to English automatically** when FI is selected (game descriptions, Farmadiary, About Me, Contact, footer) — the `translations` dictionary in `index.html` only has an `en` key for these, and the fallback logic shows English rather than blank text. Game names are never translated (treated like proper nouns).
+- **Real Finnish content exists for:** the hero tagline, the Why section (Piret's own thesis wording — see below; each card's citation is its own small gray line below the quote, same structure as the English cards), the five section descriptions (MyDay, FarmaRush, MediChain, Medilink, Farmadiary), the "Game"/"Play now" → "Peli"/"Pelaa" swap on game labels and buttons, and the Contact section (heading, field labels, submit button).
+- **Everywhere else falls back to English automatically** when FI is selected (Farmadiary's "Learning tool" label, About Me, footer) — the `translations` dictionary in `index.html` only has an `en` key for these, and the fallback logic shows English rather than blank text. Game names and "Piret Paal" are never translated (treated like proper nouns). Footer is intentionally identical in both languages, not a fallback gap.
 
 ## Content — final/ready to use, all live on the page
 
@@ -77,9 +79,10 @@ No colored pill/chip badges anywhere on the page (including Farmadiary's, which 
 3. "Online and gamified methods are among the most effective ways to teach pharmacology." — Gill et al., 2019
 
 ### Why section (FI — Piret's original thesis wording, live)
-1. "Vuonna 2016 julkaistun tutkimuksen mukaan yli puolet tutkimukseen osallistuneet sairaanhoitajista ovat joskus aiheuttanut potilaalle lääkehoidon virheen takia vaaratilanteen ja puolet ovat antaneet lääkkeitä, joiden vaikutuksia he eivät tietäneet (Luokkamäki ym. 2016: 30)."
-2. "Tutkimuksen mukaan sairaanhoitajaopiskelijat ajattelevat farmakologiakurssin "pakollisena pahana" sen sijaan, että sen sisältö olisi tärkeä hallita (Mauldin 2021)."
-3. "Vuonna 2019 tehdyn tutkimuksen mukaan on todettu online-menetelmien olevan yksi parhaimpia tapoja farmakologian opettamisessa opiskelijatyytyväisyyden ja tiedon hankinnan kannalta (Gill ym. 2019:1)."
+Each statement's citation is stripped out of the sentence and shown as its own small gray line below (matching the English cards), not embedded inline:
+1. "Vuonna 2016 julkaistun tutkimuksen mukaan yli puolet tutkimukseen osallistuneet sairaanhoitajista ovat joskus aiheuttanut potilaalle lääkehoidon virheen takia vaaratilanteen ja puolet ovat antaneet lääkkeitä, joiden vaikutuksia he eivät tietäneet." — Luokkamäki ym. 2016: 30
+2. "Tutkimuksen mukaan sairaanhoitajaopiskelijat ajattelevat farmakologiakurssin "pakollisena pahana" sen sijaan, että sen sisältö olisi tärkeä hallita." — Mauldin 2021
+3. "Vuonna 2019 tehdyn tutkimuksen mukaan on todettu online-menetelmien olevan yksi parhaimpia tapoja farmakologian opettamisessa opiskelijatyytyväisyyden ja tiedon hankinnan kannalta." — Gill ym. 2019:1
 
 ### Why section — full citations (small gray `#6B7280` text, below the cards, live, alphabetical order)
 Gill, Manu & Andersen, Elizabeth & Hilsmann, Norma. 2019. Best practices for teaching pharmacology to undergraduate nursing students: A systematic review of the literature.
@@ -105,7 +108,9 @@ Mauldin, Betsy 2023. Bringing Clinical Context to the Classroom in Nursing Pharm
 - **Medilink** → `Medilink promo image.png` (chain-link logo + card-matching UI)
 - **Farmadiary** → `FarmaDiary promo image.png` (branded illustration: quiz cards + progress dashboard)
 
-**Frame treatment (live):** each image sits in a fixed 16:9 box, `border-radius: 20px`, `box-shadow: 0 8px 24px rgba(0,0,0,0.08)`. Fill is `object-fit: contain`, with the frame's background tinted in that game's accent color for any image that doesn't exactly fill the box.
+**Frame treatment (live):** each image sits in a fixed 16:9 box, `border-radius: 20px`, `box-shadow: 0 8px 24px rgba(0,0,0,0.08)`. Fill is `object-fit: contain` (MyDay uses `cover` specifically — its illustration's aspect ratio didn't match the 16:9 frame and left pale bars on the sides), with the frame's background tinted in that game's accent color for any image that doesn't exactly fill the box.
+
+**Click-to-enlarge (live):** every section image shows `cursor: zoom-in` and opens in a simple lightbox on click — dark overlay, image centered at up to 90% viewport width/height. Closes via background click, the × button, or Escape. No gallery/navigation between images.
 
 **Open idea, not decided:** cropping images square and applying a tilted/framed treatment (inspired by the Sonder portfolio template) instead of the current fixed-16:9 boxes.
 
@@ -116,9 +121,10 @@ Each of the four games (MyDay, FarmaRush, MediChain, Medilink) has a small, unob
 - Simple form (name, email, message) via **Formspree** (needs a real account + endpoint — currently placeholder: `https://formspree.io/f/REPLACE_WITH_FORM_ID`)
 - **No LinkedIn button.** One was added, then explicitly removed at Piret's request — don't re-add it unless asked again.
 - **Hard rule: never display Piret's personal email address anywhere in visible content or page source.**
+- **FI translation (live):** heading "Ota yhteyttä", labels "Nimi" / "Sähköposti" / "Viesti", submit button "Lähetä".
 
 ## Open / deferred items
 - [ ] Set up real Formspree account + swap in the real endpoint
-- [ ] Translate remaining sections to Finnish (About Me, Contact, footer) — Why and all 5 section descriptions already have real FI copy
+- [ ] Translate About Me to Finnish (last major section without real FI copy; footer is intentionally untranslated, not a gap)
 - [ ] Decide on screenshot cropping/framing treatment (square + tilted vs. current fixed-16:9 boxes)
 - [ ] Custom domain (optional, future) — just needs a `CNAME` file + DNS records + Pages settings once purchased; no rebuild required
