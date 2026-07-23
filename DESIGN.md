@@ -6,7 +6,7 @@ This file tracks the design decisions, content, and status for this repo, so bot
 https://paalpiret.github.io/farmagames-showcase/
 
 ## Page name & identity
-- Page title: **"Piret Paal"** (not "FarmaGames" or "MediProjects" — both were dropped)
+- Page title: **"Piret Paal"** (not "FarmaGames" or "MediProjects" — both were dropped, including from `<title>` and meta description)
 - Subtitle: "Nursing education game prototypes"
 - Tagline (italic, below subtitle): "A portfolio of interactive projects exploring medication learning, clinical reasoning and nursing practice."
 - "Farma" was avoided as a page-level brand name since it originates from Piret's bachelor's thesis, co-authored with Christina Lindberg — not solely hers to brand with.
@@ -22,46 +22,51 @@ Pulled directly from FarmaDiary's design system for visual consistency across th
 | background | `#F6FBF9` | page background |
 | foreground | `#1F2C3D` | body text |
 | card | `#FFFFFF` | card backgrounds |
-| primary (teal) | `#20A386` | primary accent — buttons, links |
-| primary-dark | `#167B65` | deeper teal, labels |
+| primary (teal) | `#20A386` | all "Play now" / "Visit Farmadiary" buttons |
+| primary-dark | `#167B65` | all "GAME 0X · [LANG]" / "Learning tool · [LANG]" labels, hero base color |
 | secondary/accent tint | `#EAF3F0` | alternating section background |
 | muted | `#D6E7E1` | muted surfaces |
 | muted-foreground | `#6B7280` | secondary/supporting text |
 | border | `#DBE9E4` | dividers, borders |
 
-**Decision: single teal accent only.** FarmaDiary's colorful per-activity accents (purple `#A78BFA`, blue `#38BDF8`, green `#3ED07A`, orange `#FF9F1A`, yellow `#F5C51F`) were tried per-game but dropped — they carried no real meaning in this context (they were activity-type colors in FarmaDiary, not game identifiers here) and made the page feel less cohesive. All buttons and labels now use `#20A386` / `#167B65` consistently.
+**Decision: single teal accent for labels + buttons (done).** FarmaDiary's colorful per-activity accents (purple `#A78BFA`, blue `#38BDF8`, green `#3ED07A`, orange `#FF9F1A`, yellow `#F5C51F`) were tried per-game, then dropped for section labels and buttons — they carried no real meaning here (they were activity-type colors in FarmaDiary, not game identifiers) and made the page feel less cohesive. All game labels now use `#167B65`, all buttons (including Farmadiary's) use `#20A386`.
 
-**Hero banner background:** mesh-gradient effect (not flat linear) — base `#167B65` with blurred color blobs (`#2FC9A6`, `#38BDF8`, `#20A386` at varying opacity) for depth, plus a soft white radial glow behind the "Piret Paal" heading text.
+**Per-game accent colors still exist in one place:** the subtle background tint inside each game's screenshot frame (`.game-media-box`, `color-mix(... var(--accent) 10%, white)`), so portrait-shaped screenshots don't letterbox into plain white. This was an intentional, narrower exception — the accent variables (`--accent-myday`, `--accent-farmarush`, `--accent-medichain`, `--accent-medilink`) are still defined in `:root` for this purpose only.
+
+**Hero banner background (done):** mesh-gradient effect (not flat linear) — base `#167B65` with three blurred color blobs (`#2FC9A6` top-left, `#38BDF8` bottom-right, `#20A386` upper-right, varying opacity, `blur(60–80px)`), plus a soft white radial glow (`rgba(255,255,255,0.18)`, ellipse shape to avoid a hard-edge clipping bug) centered behind the "Piret Paal" heading. `header` uses `overflow: hidden` so blobs stay contained on small screens.
 
 ## Typography
 - Font: **Inter** (headings + body)
-- Radius scale: lg `0.75rem`, md `0.625rem`, sm `0.5rem` — cards use `rounded-2xl`/`rounded-xl`
+- Radius scale: `--radius: 0.75rem`, `--radius-lg: 1rem`
 
-## Layout structure (current)
-1. **Header/hero** — mesh-gradient banner, name, subtitle, tagline, project names as plain non-clickable text (`MyDay · FarmaRush · MediChain · Medilink` on one line, `Farmadiary` on its own line below to preserve banner height), language toggle top-right
-2. **Game sections** (×4) — alternating white/`#EAF3F0` backgrounds, image-beside-text layout alternating sides per section, full-bleed section color with content in a centered `max-width: ~1000px` column, generous responsive padding (not fixed height)
-3. **Why** — three cards with research-based quotes + citations (see Content below)
-4. **Farmadiary** — own full section (not a footer link), same treatment as game sections
-5. **About Me** — full bio text (see Content below)
-6. **Contact** — form via Formspree (placeholder endpoint) + LinkedIn button; no personal email ever displayed in visible content or source
-7. **Footer** — © [year] Piret Paal
-
-**Under discussion, not yet sent:** reordering to Header → Games → Farmadiary → Why → About Me → Contact → Footer (groups "things built" together, moves Why to a reflective closing note rather than upfront justification).
+## Layout structure (current, live)
+1. **Header/hero** — mesh-gradient banner, name, subtitle, italic tagline, project names as plain non-clickable text on one line (`MyDay · FarmaRush · MediChain · Medilink · Farmadiary`), with an invisible spacer line below it (preserves the banner height from an earlier two-line layout), language toggle top-right
+2. **Game sections** (×4: MyDay, FarmaRush, MediChain, Medilink) — alternating white/`#EAF3F0` backgrounds, image-beside-text layout alternating sides per section (left/right/left/right), image in a fixed 16:9 box with rounded corners, full-bleed section color with content in a centered `max-width: ~1000px` column, generous responsive padding (not fixed height)
+3. **Farmadiary** — its own full section, same treatment as the game sections (moved to directly follow the four games)
+4. **Why** — three cards with research-based quotes + citations, plus a small full-citation reference list below the cards (see Content below) — now sits after Farmadiary, not before it
+5. **About Me** — full bio text, live (see Content below)
+6. **Contact** — form via Formspree (placeholder endpoint); **no LinkedIn button** (added once, then explicitly removed — do not re-add without being asked); no personal email ever displayed in visible content or source
+7. **Footer** — © 2026 Piret Paal, nothing else
 
 ## Section label style
-No colored pill/chip badges. Small plain text label above each game name: `GAME 01 · EN`, `GAME 02 · FI/EN`, etc. — sequential number + the game's actual language.
+No colored pill/chip badges anywhere on the page (including Farmadiary's, which used to have a yellow pill). Small plain text label above each name, in `#167B65`:
+- `Game 01 · EN` (MyDay)
+- `Game 02 · FI/EN` (FarmaRush — the game itself has an in-game EN/FI toggle)
+- `Game 03 · FI` (MediChain)
+- `Game 04 · FI` (Medilink)
+- `Learning tool · EN` (Farmadiary — intentionally not numbered as a "game")
 
 ## Language (FI/EN)
-- **Current status: English-only build.** FI toggle structure to be added later.
-- Toggle requirements (for later): top-right corner, persists across visits (localStorage), visible active-state indicator, full two-language text swap via JS (no page reload).
-- **Exception:** the Why section already has real Finnish text ready (Piret's own thesis wording, not placeholder — see below). Everywhere else should fall back to English when FI is toggled, not show blank/placeholder text.
+- **Current status: toggle is built and live.** Fixed pill top-right (`EN`/`FI`), active language bolded/highlighted, choice persists via `localStorage`, full text swap via JS with no reload.
+- **Real Finnish content exists only for the Why section** (Piret's own thesis wording — see below). Its citation lines are hidden in FI mode since the Finnish statements already embed the citation inline.
+- **Everywhere else falls back to English automatically** when FI is selected (game descriptions, Farmadiary, About Me, Contact, footer) — the `translations` dictionary in `index.html` only has an `en` key for these, and the fallback logic shows English rather than blank text. Game names are never translated (treated like proper nouns).
 
-## Content — final/ready to use
+## Content — final/ready to use, all live on the page
 
 ### Game descriptions
 - **MyDay**: "A day in the life of a nursing student on a cardiology ward — from morning handover to medication rounds to end-of-shift documentation. Built to capture the rhythm of a real shift, one room at a time."
 - **FarmaRush**: "Medication requests arrive from hospital wards, one shift at a time. Catch the right drugs before they're dispatched — work fast, but don't let the wrong medication through."
-- **MediChain** (never call it "Mediketju" on the page): "Build the longest possible medicine chain by linking drugs that share an indication or drug class. A quick, focused way to test how well those connections actually stick."
+- **MediChain** (never call it "Mediketju" on the page — that name only exists as an internal image filename): "Build the longest possible medicine chain by linking drugs that share an indication or drug class. A quick, focused way to test how well those connections actually stick."
 - **Medilink**: "Match medicines to their active ingredients, indications, and drug classes — link by link. Built to reinforce the kind of pattern-recognition real prescribing depends on."
 - **Farmadiary**: "A personal medicine notebook — log the drugs you encounter on placement, quiz yourself on what you've logged, and watch your own knowledge base grow shift by shift."
 
@@ -70,50 +75,53 @@ No colored pill/chip badges. Small plain text label above each game name: `GAME 
 2. "Nursing students often see pharmacology as a 'necessary evil' rather than essential knowledge." — Mauldin, 2021
 3. "Online and gamified methods are among the most effective ways to teach pharmacology." — Gill et al., 2019
 
-### Why section (FI — Piret's original thesis wording, ready to use)
+### Why section (FI — Piret's original thesis wording, live)
 1. "Vuonna 2016 julkaistun tutkimuksen mukaan yli puolet tutkimukseen osallistuneet sairaanhoitajista ovat joskus aiheuttanut potilaalle lääkehoidon virheen takia vaaratilanteen ja puolet ovat antaneet lääkkeitä, joiden vaikutuksia he eivät tietäneet (Luokkamäki ym. 2016: 30)."
 2. "Tutkimuksen mukaan sairaanhoitajaopiskelijat ajattelevat farmakologiakurssin "pakollisena pahana" sen sijaan, että sen sisältö olisi tärkeä hallita (Mauldin 2021)."
 3. "Vuonna 2019 tehdyn tutkimuksen mukaan on todettu online-menetelmien olevan yksi parhaimpia tapoja farmakologian opettamisessa opiskelijatyytyväisyyden ja tiedon hankinnan kannalta (Gill ym. 2019:1)."
 
-### Why section — full citations (small gray text, below the cards)
+### Why section — full citations (small gray `#6B7280` text, below the cards, live)
 Gill, Manu & Andersen, Elizabeth & Hilsmann, Norma. 2019. Best practices for teaching pharmacology to undergraduate nursing students: A systematic review of the literature.
 
 Mauldin, Betsy 2023. Bringing Clinical Context to the Classroom in Nursing Pharmacology: A Case Study.
 
 Luokkamäki, Sanna & Vehviläinen-Julkunen, Katri & Saano, Susanna & Härkänen, Marja 2016. "Sairaanhoitajien lääkehoidon osaaminen heidän itsensä arvioimana", Tutkiva Hoitotyö, vol. 14, no. 2, pp. 23–32.
 
-### About Me (final)
+### About Me (final, live)
 > I'm a nursing student from Finland with a particular interest in cardiology and pharmacology. Before nursing, I trained as a fashion designer at the Estonian Academy of Arts and spent some time working in software for design tools across Northern Europe.
 >
 > Somewhere along the way, design and healthcare started to overlap, and I've worked, for example, with researchers at the University of Helsinki on a service for parents navigating early childhood. In 2025, my bachelor's thesis looked at medication safety among student nurses — and found what research keeps finding: pharmacology is hard to teach, and harder to make stick.
 >
 > That's what led me here — building games and digital learning tools instead of just writing about the problem. I started experimenting with vibe-coding and playing around with these subjects, and it grew from there — each one a focused prototype, not a finished product, but a genuine attempt to make pharmacology a little less abstract and a little more memorable, for students like me.
 
-*Note: this text has not yet been sent to Claude Code — still pending.*
-
 ## Images
-Real screenshots for all games + Farmadiary have been uploaded to the repo. Recommended lead image per section:
-- **MyDay** → hospital game-map overview (nurse running through rooms)
-- **FarmaRush** → active gameplay shot (conveyor belt, catching medicine)
-- **MediChain** → chain-building gameplay screenshot ("Apiksabaani" card)
-- **Medilink** → card-matching gameplay screenshot ("Furosemidi" card)
-- **Farmadiary** → "Track Progress" dashboard screenshot (stats + donut chart)
+Real screenshots are wired into every section. `/images/` holds 14 uploaded files; 5 are in use, 9 are still spare for future use.
 
-Open idea, not decided: cropping screenshots square and applying a tilted/framed treatment (inspired by the Sonder portfolio template) instead of keeping them landscape/16:9.
+**In use (lead image per section):**
+- **MyDay** → `MyDay gamemap.png` (hospital game-map, nurse running through rooms)
+- **FarmaRush** → `Farmarush game.png` (active gameplay, pharmacy chute)
+- **MediChain** → `Medichain game.png` ("Apiksabaani" card gameplay)
+- **Medilink** → `Medilink game.png` ("Furosemidi" card gameplay)
+- **Farmadiary** → `FarmaDiary track progress.png` (stats + donut chart dashboard)
 
-**Status: not yet wired into the page** — images are in the repo but placeholders are still showing in most sections.
+**Spare, not yet used anywhere — ask Piret before using:**
+`FarmaDiary Logged out landing.png`, `FarmaRush landing page-no texts.png`, `FarmaRush logo.png`, `Farmarush level complete.png`, `Farmarush start.png`, `Farmarush visaul.png`, `Mediketju icon.png`, `Medilink logo.png`, `Myday medicine shelves.png`
+
+**Frame treatment (live):** each image sits in a fixed 16:9 box with rounded corners. Landscape screenshots (MyDay, FarmaRush, Farmadiary) fill it via `object-fit: contain` almost edge-to-edge; portrait screenshots (MediChain, Medilink) letterbox inside it, with the frame's background tinted in that game's accent color so the letterboxing reads as intentional rather than empty space.
+
+**Open idea, not decided:** cropping screenshots square and applying a tilted/framed treatment (inspired by the Sonder portfolio template) instead of the current fixed-16:9 boxes.
+
+## Cross-links back to this page
+Each of the four games (MyDay, FarmaRush, MediChain, Medilink) has a small, unobtrusive "← Back to FarmaGames" link pointing to the live site URL, visible only on that game's own start/landing screen (never during gameplay). Styled to match each game's own visual language, not this page's design system.
 
 ## Contact section
-- Simple form (name, email, message) via **Formspree** (needs a real account + endpoint — currently placeholder)
-- "Connect on LinkedIn" button alongside/below the form
+- Simple form (name, email, message) via **Formspree** (needs a real account + endpoint — currently placeholder: `https://formspree.io/f/REPLACE_WITH_FORM_ID`)
+- **No LinkedIn button.** One was added, then explicitly removed at Piret's request — don't re-add it unless asked again.
 - **Hard rule: never display Piret's personal email address anywhere in visible content or page source.**
 
 ## Open / deferred items
-- [ ] Wire real screenshots into game/Farmadiary sections (currently placeholders)
-- [ ] Send About Me text to Claude Code
-- [ ] Decide on and possibly send section reordering (Games → Farmadiary → Why → About Me)
-- [ ] Confirm latest header prompt (mesh gradient, tagline, Farmadiary line) is fully deployed
-- [ ] Set up real Formspree account + swap in real endpoint
-- [ ] Build FI language toggle mechanism + translate remaining sections (Farmadiary, About Me, Contact, footer copy)
-- [ ] Decide on screenshot cropping/framing treatment (square + tilted vs. current landscape)
+- [ ] Set up real Formspree account + swap in the real endpoint
+- [ ] Translate remaining sections to Finnish (game descriptions, Farmadiary, About Me, Contact, footer) — only Why has real FI copy so far
+- [ ] Decide on screenshot cropping/framing treatment (square + tilted vs. current fixed-16:9 boxes)
 - [ ] Custom domain (optional, future) — just needs a `CNAME` file + DNS records + Pages settings once purchased; no rebuild required
+- [ ] Decide what (if anything) to do with the 9 spare images in `/images/`
