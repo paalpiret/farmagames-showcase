@@ -140,9 +140,7 @@
     font-size: 0.95rem;
   }
 
-  /* One consistent teal for every game's Play button, not the
-     per-game accent color. Farmadiary is the exception (see .on-light
-     below), since it isn't one of the four numbered games. */
+  /* One consistent teal for every Play button, including Farmadiary's. */
   .play-btn {
     display: inline-flex;
     align-items: center;
@@ -160,15 +158,6 @@
   .play-btn:hover {
     filter: brightness(0.93);
     transform: translateY(-1px);
-  }
-
-  /* Farmadiary's button sits on a pastel-yellow accent, so it reads
-     better with dark text than the white text used on the darker
-     per-game accent colors. */
-  .play-btn.on-light {
-    background: var(--accent);
-    color: var(--accent-yellow-foreground);
-    text-shadow: none;
   }
 
   .game-flex {
@@ -472,7 +461,7 @@
       <span class="game-label">Learning tool &middot; EN</span>
       <h2>Farmadiary</h2>
       <p data-i18n="farmadiary_desc">A personal medicine notebook — log the drugs you encounter on placement, quiz yourself on what you've logged, and watch your own knowledge base grow shift by shift.</p>
-      <a class="play-btn on-light" href="https://farmadiary.com" target="_blank" rel="noopener noreferrer"><span data-i18n="farmadiary_cta">Visit Farmadiary &rarr;</span></a>
+      <a class="play-btn" href="https://farmadiary.com" target="_blank" rel="noopener noreferrer"><span data-i18n="farmadiary_cta">Visit Farmadiary &rarr;</span></a>
     </div>
   </div>
 </section>
