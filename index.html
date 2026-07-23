@@ -127,7 +127,7 @@
 
   header h1 {
     margin: 0 0 0.6rem;
-    font-size: 2.5rem;
+    font-size: 3.125rem;
     font-weight: 700;
     letter-spacing: -0.02em;
     color: #ffffff;
@@ -456,7 +456,6 @@
   </div>
   <div class="hero-content">
     <h1>Piret Paal</h1>
-    <p data-i18n="tagline">Nursing education game prototypes</p>
     <p class="hero-tagline" data-i18n="hero_tagline">A portfolio of interactive projects exploring medication learning, clinical reasoning and nursing practice.</p>
   </div>
 </header>
@@ -606,8 +605,10 @@
   // Entries without an "fi" property simply fall back to English
   // until real Finnish copy is added — nothing shows blank.
   var translations = {
-    tagline: { en: "Nursing education game prototypes" },
-    hero_tagline: { en: "A portfolio of interactive projects exploring medication learning, clinical reasoning and nursing practice." },
+    hero_tagline: {
+      en: "A portfolio of interactive projects exploring medication learning, clinical reasoning and nursing practice.",
+      fi: "Portfolio interaktiivisista projekteista, jotka käsittelevät lääkehoidon oppimista, kliinistä päättelyä ja hoitotyön käytäntöä."
+    },
 
     myday_desc: {
       en: "A day in the life of a nursing student on a cardiology ward — from morning handover to medication rounds to end-of-shift documentation. Built to capture the rhythm of a real shift, one room at a time.",
