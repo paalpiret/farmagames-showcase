@@ -57,7 +57,7 @@
   /* ── Header ─────────────────────────────────────────────── */
   header {
     width: 100%;
-    padding: 4.5rem 1.5rem 3rem;
+    padding: 4.5rem 1.5rem 3.5rem;
     text-align: center;
     background: linear-gradient(135deg, var(--hero-gradient-start), var(--primary), var(--primary-dark));
   }
@@ -76,6 +76,21 @@
     color: #ffffff;
   }
 
+  .hero-games {
+    margin: 2.25rem 0 0;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  .hero-scroll-cue {
+    margin: 0.85rem 0 0;
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
   /* ── Full-width bands ───────────────────────────────────────
      Every section below the header is a full-bleed band: the
      background spans edge-to-edge, while a centered .container
@@ -88,45 +103,6 @@
     max-width: 1000px;
     margin: 0 auto;
     padding: 2.75rem 1.5rem;
-  }
-
-  /* ── Quick play row ─────────────────────────────────────── */
-  .quick-play-band .container {
-    padding: 1.25rem 1.5rem;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.75rem;
-  }
-
-  .quick-play-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.55rem;
-    background: var(--card);
-    border: 1px solid var(--border);
-    color: var(--foreground);
-    padding: 0.65rem 1.15rem;
-    border-radius: 999px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.92rem;
-    box-shadow: 0 1px 2px rgba(31, 44, 61, 0.05);
-    transition: border-color 0.15s ease, transform 0.15s ease, background 0.15s ease;
-  }
-
-  .quick-play-btn .dot {
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    background: var(--accent);
-    flex-shrink: 0;
-  }
-
-  .quick-play-btn:hover {
-    border-color: var(--accent);
-    background: color-mix(in srgb, var(--accent) 12%, var(--card));
-    transform: translateY(-2px);
   }
 
   h2 {
@@ -424,24 +400,9 @@
 <header>
   <h1>Piret Paal</h1>
   <p data-i18n="tagline">Nursing education game prototypes</p>
+  <p class="hero-games">MyDay &middot; FarmaRush &middot; MediChain &middot; Medilink</p>
+  <p class="hero-scroll-cue" data-i18n="hero_scroll_cue">Scroll to explore each project</p>
 </header>
-
-<nav class="band quick-play-band bg-white" aria-label="Quick play">
-  <div class="container">
-    <a class="quick-play-btn" style="--accent: var(--accent-myday);" href="myday/">
-      <span class="dot"></span> MyDay
-    </a>
-    <a class="quick-play-btn" style="--accent: var(--accent-farmarush);" href="farmarush/">
-      <span class="dot"></span> FarmaRush
-    </a>
-    <a class="quick-play-btn" style="--accent: var(--accent-medichain);" href="medichain/">
-      <span class="dot"></span> MediChain
-    </a>
-    <a class="quick-play-btn" style="--accent: var(--accent-medilink);" href="medilink/">
-      <span class="dot"></span> Medilink
-    </a>
-  </div>
-</nav>
 
 <section class="band game-band bg-tint" style="--accent: var(--accent-myday);">
   <div class="container game-flex">
@@ -590,6 +551,7 @@
   // until real Finnish copy is added — nothing shows blank.
   var translations = {
     tagline: { en: "Nursing education game prototypes" },
+    hero_scroll_cue: { en: "Scroll to explore each project" },
 
     myday_desc: { en: "A day-in-the-life nursing simulation." },
     farmarush_desc: { en: "Fast-paced medication matching game." },
