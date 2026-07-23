@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Piret Paal — MediProjects</title>
-<meta name="description" content="Piret Paal — MediProjects: nursing education game prototypes.">
+<title>Piret Paal</title>
+<meta name="description" content="Piret Paal: nursing education game prototypes.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -17,8 +17,7 @@
     --card-foreground: #1F2C3D;
     --primary: #20A386;
     --primary-dark: #167B65;
-    --primary-gradient-mid: #38BDF8;
-    --primary-gradient-end: #1D9E75;
+    --hero-gradient-start: #2FC9A6;
     --secondary: #EAF3F0;
     --accent: #EAF3F0;
     --muted: #D6E7E1;
@@ -57,27 +56,24 @@
 
   /* ── Header ─────────────────────────────────────────────── */
   header {
+    width: 100%;
     padding: 4.5rem 1.5rem 3rem;
     text-align: center;
+    background: linear-gradient(135deg, var(--hero-gradient-start), var(--primary), var(--primary-dark));
   }
 
   header h1 {
-    display: inline-block;
     margin: 0 0 0.6rem;
     font-size: 2.5rem;
     font-weight: 700;
     letter-spacing: -0.02em;
-    background: linear-gradient(135deg, var(--primary), var(--primary-gradient-mid), var(--primary-gradient-end));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: var(--primary);
+    color: #ffffff;
   }
 
   header p {
     margin: 0;
     font-size: 1.1rem;
-    color: var(--muted-foreground);
+    color: #ffffff;
   }
 
   /* ── Full-width bands ───────────────────────────────────────
@@ -357,26 +353,6 @@
     transform: translateY(-1px);
   }
 
-  .linkedin-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    margin-top: 1.5rem;
-    background: transparent;
-    color: var(--primary);
-    border: 1px solid var(--primary);
-    padding: 0.6rem 1.3rem;
-    border-radius: var(--radius);
-    font-weight: 600;
-    text-decoration: none;
-    transition: background 0.15s ease, transform 0.15s ease;
-  }
-
-  .linkedin-btn:hover {
-    background: color-mix(in srgb, var(--primary) 10%, transparent);
-    transform: translateY(-1px);
-  }
-
   /* ── Footer ─────────────────────────────────────────────── */
   footer {
     text-align: center;
@@ -430,7 +406,7 @@
 
 <header>
   <h1>Piret Paal</h1>
-  <p data-i18n="tagline">MediProjects — nursing education game prototypes</p>
+  <p data-i18n="tagline">Nursing education game prototypes</p>
 </header>
 
 <nav class="band quick-play-band bg-white" aria-label="Quick play">
@@ -579,8 +555,6 @@
       </div>
       <button type="submit" class="submit-btn"><span data-i18n="submit_btn">Send message</span></button>
     </form>
-    <!-- Replace with the real LinkedIn profile URL -->
-    <a class="linkedin-btn" href="https://www.linkedin.com/in/REPLACE_WITH_PROFILE" target="_blank" rel="noopener noreferrer"><span data-i18n="linkedin_btn">Connect on LinkedIn &rarr;</span></a>
   </div>
 </section>
 
@@ -593,7 +567,7 @@
   // Entries without an "fi" property simply fall back to English
   // until real Finnish copy is added — nothing shows blank.
   var translations = {
-    tagline: { en: "MediProjects — nursing education game prototypes" },
+    tagline: { en: "Nursing education game prototypes" },
 
     myday_desc: { en: "A day-in-the-life nursing simulation." },
     farmarush_desc: { en: "Fast-paced medication matching game." },
@@ -628,8 +602,7 @@
     label_name: { en: "Name" },
     label_email: { en: "Email" },
     label_message: { en: "Message" },
-    submit_btn: { en: "Send message" },
-    linkedin_btn: { en: "Connect on LinkedIn →" }
+    submit_btn: { en: "Send message" }
   };
 
   var LANG_KEY = 'fg-lang';
