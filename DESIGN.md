@@ -95,21 +95,18 @@ Luokkamäki, Sanna & Vehviläinen-Julkunen, Katri & Saano, Susanna & Härkänen,
 > That's what led me here — building games and digital learning tools instead of just writing about the problem. I started experimenting with vibe-coding and playing around with these subjects, and it grew from there — each one a focused prototype, not a finished product, but a genuine attempt to make pharmacology a little less abstract and a little more memorable, for students like me.
 
 ## Images
-Real screenshots are wired into every section. `/images/` holds 14 uploaded files; 5 are in use, 9 are still spare for future use.
+`/images/` holds exactly the 5 files actually referenced on the page — the original 13 raw screenshots (plus unused spares) were deleted once replaced.
 
 **In use (lead image per section):**
-- **MyDay** → `MyDay gamemap.png` (hospital game-map, nurse running through rooms)
-- **FarmaRush** → `Farmarush game.png` (active gameplay, pharmacy chute)
-- **MediChain** → `Medichain game.png` ("Apiksabaani" card gameplay)
-- **Medilink** → `Medilink game.png` ("Furosemidi" card gameplay)
-- **Farmadiary** → `FarmaDiary track progress.png` (stats + donut chart dashboard)
+- **MyDay** → `myday promo image.png` (illustrated nurse + medication cart scene)
+- **FarmaRush** → `FarmaRush promo image.png` (key-art illustration: pharmacy chute, shelves, nurse)
+- **MediChain** → `Medichain promo image.png` (illustrated chain-card diagram)
+- **Medilink** → `Medilink promo image.png` (chain-link logo + card-matching UI)
+- **Farmadiary** → `FarmaDiary track progress.png` (still the original stats + donut chart screenshot — no replacement illustration provided yet)
 
-**Spare, not yet used anywhere — ask Piret before using:**
-`FarmaDiary Logged out landing.png`, `FarmaRush landing page-no texts.png`, `FarmaRush logo.png`, `Farmarush level complete.png`, `Farmarush start.png`, `Farmarush visaul.png`, `Mediketju icon.png`, `Medilink logo.png`, `Myday medicine shelves.png`
+**Frame treatment (live):** each image sits in a fixed 16:9 box, `border-radius: 20px`, `box-shadow: 0 8px 24px rgba(0,0,0,0.08)`. Fill is `object-fit: contain`, with the frame's background tinted in that game's accent color for any image that doesn't exactly fill the box.
 
-**Frame treatment (live):** each image sits in a fixed 16:9 box with rounded corners. Landscape screenshots (MyDay, FarmaRush, Farmadiary) fill it via `object-fit: contain` almost edge-to-edge; portrait screenshots (MediChain, Medilink) letterbox inside it, with the frame's background tinted in that game's accent color so the letterboxing reads as intentional rather than empty space.
-
-**Open idea, not decided:** cropping screenshots square and applying a tilted/framed treatment (inspired by the Sonder portfolio template) instead of the current fixed-16:9 boxes.
+**Open idea, not decided:** cropping images square and applying a tilted/framed treatment (inspired by the Sonder portfolio template) instead of the current fixed-16:9 boxes.
 
 ## Cross-links back to this page
 Each of the four games (MyDay, FarmaRush, MediChain, Medilink) has a small, unobtrusive "← Back to FarmaGames" link pointing to the live site URL, visible only on that game's own start/landing screen (never during gameplay). Styled to match each game's own visual language, not this page's design system.
@@ -124,4 +121,4 @@ Each of the four games (MyDay, FarmaRush, MediChain, Medilink) has a small, unob
 - [ ] Translate remaining sections to Finnish (game descriptions, Farmadiary, About Me, Contact, footer) — only Why has real FI copy so far
 - [ ] Decide on screenshot cropping/framing treatment (square + tilted vs. current fixed-16:9 boxes)
 - [ ] Custom domain (optional, future) — just needs a `CNAME` file + DNS records + Pages settings once purchased; no rebuild required
-- [ ] Decide what (if anything) to do with the 9 spare images in `/images/`
+- [ ] Get a matching promo illustration for Farmadiary (still using its original screenshot)
