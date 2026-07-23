@@ -6,7 +6,7 @@ This file tracks the design decisions, content, and status for this repo, so bot
 https://paalpiret.github.io/farmagames-showcase/
 
 ## Page name & identity
-- Page title: **"Piret Paal"** (not "FarmaGames" or "MediProjects" — both were dropped, including from `<title>` and meta description). Name is unchanged in both EN and FI.
+- Browser tab title: **"Piret Paal — Interactive Nursing Projects"** and meta description "Piret Paal: interactive nursing projects and game prototypes." (not "FarmaGames" or "MediProjects" — both were dropped from these). The on-page `<h1>` itself stays just "Piret Paal" in both EN and FI — this "Interactive Nursing Projects" wording is tab-title/meta only, not visible page copy.
 - Heading size: 50px, weight 700.
 - No subtitle line anymore (the old "Nursing education game prototypes" line was dropped as redundant).
 - Tagline (italic, only supporting line under the name): "A portfolio of interactive projects exploring medication learning, clinical reasoning and nursing practice." FI: "Interaktiivisia oppimisprojekteja, jotka tekevät lääkeoppimisesta, kliinisestä päättelystä ja hoitotyön arjesta selkeämpää, kiinnostavampaa ja helpommin muistettavaa."
