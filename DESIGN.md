@@ -40,7 +40,7 @@ Pulled directly from FarmaDiary's design system for visual consistency across th
 - Radius scale: `--radius: 0.75rem`, `--radius-lg: 1rem`
 
 ## Layout structure (current, live)
-1. **Header/hero** — mesh-gradient banner, name, subtitle, italic tagline, project names as plain non-clickable text on one line (`MyDay · FarmaRush · MediChain · Medilink · Farmadiary`), with an invisible spacer line below it (preserves the banner height from an earlier two-line layout), language toggle top-right
+1. **Header/hero** — mesh-gradient banner, name, subtitle, italic tagline, language toggle top-right (the project-names line that used to sit below the tagline was removed)
 2. **Game sections** (×4: MyDay, FarmaRush, MediChain, Medilink) — alternating white/`#EAF3F0` backgrounds, image-beside-text layout alternating sides per section (left/right/left/right), image in a fixed 16:9 box with rounded corners, full-bleed section color with content in a centered `max-width: ~1000px` column, generous responsive padding (not fixed height)
 3. **Farmadiary** — its own full section, same treatment as the game sections (moved to directly follow the four games)
 4. **Why** — three cards with research-based quotes + citations, plus a small full-citation reference list below the cards (see Content below) — now sits after Farmadiary, not before it
