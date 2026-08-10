@@ -3,7 +3,7 @@
 This file tracks the design decisions, content, and status for this repo, so both Claude Code and Piret have one shared source of truth instead of re-explaining things each session.
 
 ## Live site
-https://paalpiret.github.io/farmagames-showcase/
+https://clinicalgames.fi (custom domain, live — the old https://paalpiret.github.io/farmagames-showcase/ still works and redirects there)
 
 ## Page name & identity
 - Browser tab title: **"Piret Paal — Interactive Nursing Projects"** and meta description "Piret Paal: interactive nursing projects and game prototypes." (not "FarmaGames" or "MediProjects" — both were dropped from these). The on-page `<h1>` itself stays just "Piret Paal" in both EN and FI — this "Interactive Nursing Projects" wording is tab-title/meta only, not visible page copy.
@@ -146,4 +146,4 @@ Each of the four games (FarmaRush, MediChain, MediLink, MyDay) has a small, unob
 
 ## Open / deferred items
 - [ ] Decide on screenshot cropping/framing treatment (square + tilted vs. current fixed-16:9 boxes)
-- [ ] Custom domain (optional, future) — just needs a `CNAME` file + DNS records + Pages settings once purchased; no rebuild required
+- [x] Custom domain — `clinicalgames.fi` is live (`CNAME` file, DNS, and Pages settings all done; see TECH-NOTES.md)

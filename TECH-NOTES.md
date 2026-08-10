@@ -8,22 +8,22 @@ A plain-language reference for the pieces behind the FarmaGames showcase site, s
 
 **GitHub Pages** — a free feature of GitHub that takes that folder and publishes it as an actual website. It watches the `main` branch; whenever it changes, the live site updates automatically (usually within a minute or two).
 
-**Live URL right now:** https://paalpiret.github.io/farmagames-showcase/
+**Live URL right now:** https://clinicalgames.fi (the old https://paalpiret.github.io/farmagames-showcase/ still works and redirects there)
 
 **Claude Code** (web version, at claude.ai/code) — the tool that actually edits the files in the repo, based on prompts. It reads/writes directly to GitHub on your behalf once connected via the Claude GitHub App.
 
 **No server, no database.** This is a fully "static" site — just files, no backend to maintain or break. That's why it's simple and free to run.
 
-## How a domain would fit in (not bought yet)
+## Custom domain (done, live)
 
-A custom domain (e.g. `piretpaal.com`) doesn't change where the site lives — it's just a nicer name that points at the same GitHub Pages folder. Steps, when ready:
+The site now runs on its own domain, **`clinicalgames.fi`**, instead of the default `github.io` address — it's just a nicer name pointing at the same GitHub Pages folder, nothing about how the site works changed. Setup steps, for reference:
 
-1. Buy the domain from an EU-based registrar (Hetzner, IONOS, OVHcloud, or one.com are good options)
-2. Add a `CNAME` file to the repo root containing just the domain name
-3. Point a couple of DNS records at the registrar toward GitHub's servers (GitHub's own docs give the exact values)
-4. Enter the domain under repo **Settings → Pages → Custom domain** — GitHub then handles HTTPS automatically
+1. ✅ Domain bought (`clinicalgames.fi`)
+2. ✅ `CNAME` file added to the repo root containing just `clinicalgames.fi`
+3. ✅ DNS records pointed at GitHub's servers with the registrar
+4. ✅ Domain entered under repo **Settings → Pages → Custom domain** — GitHub handles HTTPS automatically
 
-**Note:** the domain registrar can be EU-based, but the actual hosting (GitHub Pages) remains US infrastructure (GitHub/Microsoft) either way — a custom domain doesn't change that. Decided this is fine.
+**Note:** the domain registrar can be anywhere, but the actual hosting (GitHub Pages) remains US infrastructure (GitHub/Microsoft) either way — a custom domain doesn't change that. Decided this is fine.
 
 ## Contact form (Formspree)
 
@@ -42,7 +42,7 @@ The site's contact form doesn't have its own backend — it sends form submissio
 | Design/content decisions | `DESIGN.md` in the repo root |
 | This technical overview | `TECH-NOTES.md` in the repo root (this file) |
 | Contact form submissions | Formspree → forwarded to Gmail |
-| Domain (once bought) | EU registrar, DNS pointed at GitHub |
+| Domain | `clinicalgames.fi`, DNS pointed at GitHub, `CNAME` file in repo root |
 
 ## Useful GitHub navigation reminders
 
