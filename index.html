@@ -808,8 +808,11 @@
     });
   }
 
-  var savedLang = 'en';
-  try { savedLang = localStorage.getItem(LANG_KEY) || 'en'; } catch (e) {}
+  var savedLang = null;
+  try { savedLang = localStorage.getItem(LANG_KEY); } catch (e) {}
+  if (!savedLang) {
+    savedLang = location.hostname.indexOf('clinicalgames.fi') !== -1 ? 'fi' : 'en';
+  }
   applyLanguage(savedLang);
 
   // ── Image lightbox ──────────────────────────────────────
