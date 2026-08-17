@@ -10,7 +10,7 @@ https://clinicalgames.fi (custom domain, live — the old https://paalpiret.gith
 - Heading size: 50px, weight 700.
 - Small uppercase eyebrow label above the heading: "Clinical Games" (rendered `CLINICAL GAMES` via `text-transform: uppercase`), 13px, weight 600, `letter-spacing: 0.12em`, `rgba(255,255,255,0.7)` — matches the visual style of the `GAME 0X · [LANG]` labels elsewhere on the page. Not translated (proper noun, same as "Piret Paal" and the game names), and ties to the `clinicalgames.fi` domain.
 - No subtitle line anymore (the old "Nursing education game prototypes" line was dropped as redundant).
-- Tagline (italic, only supporting line under the name): "A portfolio of interactive projects exploring medication learning, clinical reasoning and nursing practice." FI: "Interaktiivisia oppimisprojekteja, jotka tekevät lääkeoppimisesta, kliinisestä päättelystä ja hoitotyön arjesta selkeämpää, kiinnostavampaa ja helpommin muistettavaa."
+- Tagline (italic, only supporting line under the name): "A portfolio of learning games and digital tools designed to make medication learning and nursing studies a little easier and more fun." FI: "Portfolio oppimispeleistä ja digitaalisista työkaluista, jotka tekevät lääkehoidon ja hoitotyön opiskelusta hieman helpompaa ja hauskempaa."
 - "Farma" was avoided as a page-level brand name since it originates from Piret's bachelor's thesis, co-authored with Christina Lindberg — not solely hers to brand with.
 
 ## Purpose
