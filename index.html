@@ -261,6 +261,14 @@
     justify-content: center;
   }
 
+  /* The usual 10%-accent tint (above) is a deliberate subtle design
+     choice for illustrated key-art. PleksusDiaries' image is a literal
+     screenshot, so its frame instead matches the photo's own background
+     color exactly (no dilution), or a seam shows at the image edges. */
+  .game-media-box.exact-bg {
+    background: var(--accent);
+  }
+
   .game-media-box img {
     display: block;
     width: 100%;
@@ -630,7 +638,7 @@
 <section class="band game-band bg-white" style="--accent: var(--accent-pleksus);">
   <div class="container game-flex reverse">
     <div class="game-media">
-      <div class="game-media-box">
+      <div class="game-media-box exact-bg">
         <img src="images/PleksusDiaries%20promo%20image.png" alt="PleksusDiaries landing page: 'Where everything you learn connects' with Write as you go, See what you know, and Think it through feature cards">
       </div>
     </div>
