@@ -34,6 +34,7 @@
     --accent-yellow-foreground: #2E1F0F;
     --accent-coral: #FF7A66;
     --accent-coral-foreground: #7A2E1F;
+    --accent-pleksus: #F472B6;
 
     /* Shape */
     --radius: 0.75rem;
@@ -275,6 +276,20 @@
      showing empty space on the sides. */
   .game-media-box img.fill-crop {
     object-fit: cover;
+  }
+
+  /* Temporary placeholder shown in a .game-media-box before real artwork
+     is supplied — replace with an <img> once the image is ready. */
+  .media-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--muted-foreground);
   }
 
   @media (max-width: 720px) {
@@ -626,7 +641,23 @@
   </div>
 </section>
 
-<section class="band why-band bg-white">
+<section class="band game-band bg-white" style="--accent: var(--accent-pleksus);">
+  <div class="container game-flex reverse">
+    <div class="game-media">
+      <div class="game-media-box">
+        <div class="media-placeholder" data-i18n="pleksusdiaries_placeholder">Image coming soon</div>
+      </div>
+    </div>
+    <div class="game-text">
+      <span class="game-label">Learning tool &middot; EN/FI</span>
+      <h2>PleksusDiaries</h2>
+      <p data-i18n="pleksusdiaries_desc">A new learning tool — full details coming soon.</p>
+      <a class="play-btn" href="https://pleksusdiaries.lovable.app/" target="_blank" rel="noopener noreferrer"><span data-i18n="pleksusdiaries_cta">Visit PleksusDiaries &rarr;</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="band why-band bg-tint">
   <div class="container">
     <h2 data-i18n="why_heading">Why</h2>
     <div class="why-grid">
@@ -651,7 +682,7 @@
   </div>
 </section>
 
-<section class="band about-band bg-tint">
+<section class="band about-band bg-white">
   <div class="container">
     <h2 data-i18n="about_heading">About Me</h2>
     <p data-i18n="about_text_1">I'm a nursing student with a particular interest in cardiology and pharmacology. Before nursing, I trained as a fashion designer at the Estonian Academy of Arts and spent some time working in software for design tools across Northern Europe.</p>
@@ -660,7 +691,7 @@
   </div>
 </section>
 
-<section class="band contact-band bg-white">
+<section class="band contact-band bg-tint">
   <div class="container">
     <h2 data-i18n="contact_heading">Contact</h2>
     <form class="contact-form" id="contact-form" action="https://formspree.io/f/xjgnavqw" method="POST">
@@ -683,7 +714,7 @@
   </div>
 </section>
 
-<footer class="bg-tint">
+<footer class="bg-white">
   &copy; 2026 Piret Paal
 </footer>
 
@@ -746,6 +777,10 @@
       fi: "Henkilökohtainen lääkepäiväkirja, johon kirjaat opinnoissa ja harjoitteluissa kohtaamasi lääkkeet. Testaa osaamistasi omiin merkintöihisi perustuvilla kysymyksillä ja seuraa, miten osaamisesi kehittyy ajan myötä."
     },
     farmadiary_cta: { en: "Visit FarmaDiary →" },
+
+    pleksusdiaries_desc: { en: "A new learning tool — full details coming soon." },
+    pleksusdiaries_cta: { en: "Visit PleksusDiaries →" },
+    pleksusdiaries_placeholder: { en: "Image coming soon", fi: "Kuva tulossa pian" },
 
     about_heading: { en: "About Me", fi: "Minusta" },
     about_text_1: {

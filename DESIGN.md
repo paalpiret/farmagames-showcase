@@ -45,10 +45,11 @@ Pulled directly from FarmaDiary's design system for visual consistency across th
 1. **Header/hero** — mesh-gradient banner, name, italic tagline, language toggle top-right (the project-names line that used to sit below the tagline, and the old subtitle line, were both removed)
 2. **Game sections** (×4, in this order: **FarmaRush, MyDay, MediChain, MediLink**) — alternating white/`#EAF3F0` backgrounds, image-beside-text layout alternating sides per section (left/right/left/right), image in a fixed 16:9 box with rounded corners, full-bleed section color with content in a centered `max-width: ~1000px` column, generous responsive padding (not fixed height).
 3. **FarmaDiary** — its own full section, same treatment as the game sections (sits directly after the four games)
-4. **Why** — three cards with research-based quotes + citations, plus a small full-citation reference list below the cards (see Content below) — sits after FarmaDiary, not before it
-5. **About Me** — full bio text, live (see Content below)
-6. **Contact** — form via Formspree, live (see Contact section below for the endpoint and confirmation-message details); **no LinkedIn button** (added once, then explicitly removed — do not re-add without being asked); no personal email ever displayed in visible content or source
-7. **Footer** — © 2026 Piret Paal, nothing else
+4. **PleksusDiaries** — new product section, same treatment as the game/FarmaDiary sections, sits directly after FarmaDiary. **Placeholder content as of now** — real description text and promo image are pending from Piret; see "PleksusDiaries (placeholder, pending real content)" under Content below.
+5. **Why** — three cards with research-based quotes + citations, plus a small full-citation reference list below the cards (see Content below) — sits after PleksusDiaries, not before it
+6. **About Me** — full bio text, live (see Content below)
+7. **Contact** — form via Formspree, live (see Contact section below for the endpoint and confirmation-message details); **no LinkedIn button** (added once, then explicitly removed — do not re-add without being asked); no personal email ever displayed in visible content or source
+8. **Footer** — © 2026 Piret Paal, nothing else
 
 ## Section label style
 No colored pill/chip badges anywhere on the page (including FarmaDiary's, which used to have a yellow pill). Small plain text label above each name, in `#167B65`:
@@ -57,6 +58,7 @@ No colored pill/chip badges anywhere on the page (including FarmaDiary's, which 
 - `Game 03 · FI` (MediChain)
 - `Game 04 · FI` (MediLink)
 - `Learning tool · EN` (FarmaDiary — intentionally not numbered as a "game"; this one has no FI translation yet)
+- `Learning tool · EN/FI` (PleksusDiaries — intentionally not numbered as a "game"; unlike FarmaDiary this one is bilingual, per Piret)
 
 In FI mode, the four numbered labels become `Peli 01 · FI/EN`, `Peli 02 · EN`, `Peli 03 · FI`, `Peli 04 · FI` ("Game" → "Peli"), and every "Play now" button becomes "Pelaa".
 
@@ -81,6 +83,14 @@ In FI mode, the four numbered labels become `Peli 01 · FI/EN`, `Peli 02 · EN`,
 - **MediChain**: "Rakenna mahdollisimman pitkä lääkeketju yhdistämällä lääkkeitä, joilla on sama käyttöaihe tai lääkeryhmä. Nopea tapa testata, miten hyvin lääkkeet ovat jääneet mieleen."
 - **MediLink**: "Yhdistä lääkkeet niiden vaikuttaviin aineisiin, käyttöaiheisiin ja lääkeryhmiin kortti kerrallaan. Peli auttaa hahmottamaan lääketiedon kokonaisuuksia ja eri käsitteiden välisiä yhteyksiä."
 - **FarmaDiary**: "Henkilökohtainen lääkepäiväkirja, johon kirjaat opinnoissa ja harjoitteluissa kohtaamasi lääkkeet. Testaa osaamistasi omiin merkintöihisi perustuvilla kysymyksillä ja seuraa, miten osaamisesi kehittyy ajan myötä."
+
+### PleksusDiaries (placeholder, pending real content)
+New product section, added 2026-10-10, sitting right after FarmaDiary. Built from Piret's brief (learning tool, available in EN and FI, link `https://pleksusdiaries.lovable.app/`) ahead of the real text/image, which Piret said she'd send shortly. Until then:
+- **Description (EN only, placeholder):** "A new learning tool — full details coming soon." No FI translation yet — replace both when real copy arrives, and add the FI description at that point (unlike FarmaDiary, this one is meant to have FI too).
+- **Image:** no artwork yet — the `.game-media-box` shows a dashed-free, softly tinted `.media-placeholder` div with the text "Image coming soon" / "Kuva tulossa pian" (this placeholder text *is* translated) instead of an `<img>`. Swap in a real `<img src="images/...">` (same pattern as the other sections) once Piret supplies the image, and delete the placeholder div/CSS reliance for this section.
+- **CTA button:** "Visit PleksusDiaries →", links out to `https://pleksusdiaries.lovable.app/` (`target="_blank" rel="noopener noreferrer"`, same as FarmaDiary's external link).
+- **Accent color:** new token `--accent-pleksus: #F472B6` (soft pink), used only for the media-box tint, same narrow purpose as the other per-game accent vars.
+- **Layout position:** image-right (`.game-flex.reverse`), `bg-white`, continuing the alternation after FarmaDiary (`bg-tint`). Adding this section shifted every section after it (Why onward) to the opposite background — see Layout structure above.
 
 ### Why section — card styling
 Statement text is regular weight (400) in the same muted gray (`#6B7280`) as every other body paragraph on the page (game descriptions, About Me, etc.) — it was originally semi-bold (600) and dark navy, which stood out as the only body text styled that way; fixed for consistency. Citation line below stays smaller, italic, same gray. Font is Inter throughout, no separate font-family for this section.
@@ -148,4 +158,5 @@ Each of the four games (FarmaRush, MyDay, MediChain, MediLink) has a small, unob
 
 ## Open / deferred items
 - [ ] Decide on screenshot cropping/framing treatment (square + tilted vs. current fixed-16:9 boxes)
+- [ ] **PleksusDiaries real content** — Piret to send final EN+FI description text and a promo image; section is live with placeholder copy/image in the meantime (see "PleksusDiaries (placeholder, pending real content)" above)
 - [x] Custom domain — `clinicalgames.fi` is live (`CNAME` file, DNS, and Pages settings all done; see TECH-NOTES.md)
