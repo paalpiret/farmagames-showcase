@@ -278,20 +278,6 @@
     object-fit: cover;
   }
 
-  /* Temporary placeholder shown in a .game-media-box before real artwork
-     is supplied — replace with an <img> once the image is ready. */
-  .media-placeholder {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    padding: 1rem;
-    text-align: center;
-    font-size: 0.9rem;
-    color: var(--muted-foreground);
-  }
-
   @media (max-width: 720px) {
     .game-flex,
     .game-flex.reverse {
@@ -645,7 +631,7 @@
   <div class="container game-flex reverse">
     <div class="game-media">
       <div class="game-media-box">
-        <div class="media-placeholder" data-i18n="pleksusdiaries_placeholder">Image coming soon</div>
+        <img src="images/PleksusDiaries%20promo%20image.png" alt="PleksusDiaries landing page: 'Where everything you learn connects' with Write as you go, See what you know, and Think it through feature cards">
       </div>
     </div>
     <div class="game-text">
@@ -783,7 +769,6 @@
       fi: "Henkilökohtainen oppimispäiväkirja hoitotyön opiskelijoille. Kirjaa päiväkirjaan, mitä opit koulussa ja harjoittelussa, ja liitä merkintöihin käsiteltyt teemat. Pohdi, miten eri teemat liittyvät toisiinsa. Kaikki merkinnät ja teemat löytyvät myöhemmin helposti."
     },
     pleksusdiaries_cta: { en: "Visit PleksusDiaries →" },
-    pleksusdiaries_placeholder: { en: "Image coming soon", fi: "Kuva tulossa pian" },
 
     about_heading: { en: "About Me", fi: "Minusta" },
     about_text_1: {

@@ -45,7 +45,7 @@ Pulled directly from FarmaDiary's design system for visual consistency across th
 1. **Header/hero** — mesh-gradient banner, name, italic tagline, language toggle top-right (the project-names line that used to sit below the tagline, and the old subtitle line, were both removed)
 2. **Game sections** (×4, in this order: **FarmaRush, MyDay, MediChain, MediLink**) — alternating white/`#EAF3F0` backgrounds, image-beside-text layout alternating sides per section (left/right/left/right), image in a fixed 16:9 box with rounded corners, full-bleed section color with content in a centered `max-width: ~1000px` column, generous responsive padding (not fixed height).
 3. **FarmaDiary** — its own full section, same treatment as the game sections (sits directly after the four games)
-4. **PleksusDiaries** — new product section, same treatment as the game/FarmaDiary sections, sits directly after FarmaDiary. **Image still pending** from Piret (description text is in); see "PleksusDiaries (image still pending)" under Content below.
+4. **PleksusDiaries** — new product section, same treatment as the game/FarmaDiary sections, sits directly after FarmaDiary (see "PleksusDiaries" under Content below).
 5. **Why** — three cards with research-based quotes + citations, plus a small full-citation reference list below the cards (see Content below) — sits after PleksusDiaries, not before it
 6. **About Me** — full bio text, live (see Content below)
 7. **Contact** — form via Formspree, live (see Contact section below for the endpoint and confirmation-message details); **no LinkedIn button** (added once, then explicitly removed — do not re-add without being asked); no personal email ever displayed in visible content or source
@@ -84,13 +84,13 @@ In FI mode, the four numbered labels become `Peli 01 · FI/EN`, `Peli 02 · EN`,
 - **MediLink**: "Yhdistä lääkkeet niiden vaikuttaviin aineisiin, käyttöaiheisiin ja lääkeryhmiin kortti kerrallaan. Peli auttaa hahmottamaan lääketiedon kokonaisuuksia ja eri käsitteiden välisiä yhteyksiä."
 - **FarmaDiary**: "Henkilökohtainen lääkepäiväkirja, johon kirjaat opinnoissa ja harjoitteluissa kohtaamasi lääkkeet. Testaa osaamistasi omiin merkintöihisi perustuvilla kysymyksillä ja seuraa, miten osaamisesi kehittyy ajan myötä."
 
-### PleksusDiaries (image still pending)
+### PleksusDiaries
 New product section, added 2026-10-10, sitting right after FarmaDiary. Link `https://pleksusdiaries.lovable.app/`.
 - **Description (EN, live):** "A personal learning diary for nursing students. Write down what you learn in your studies and placements and tag the topics behind it. Think about how different topics connect with each other. All your entries and topics are easy to find again later."
 - **Description (FI, live):** "Henkilökohtainen oppimispäiväkirja hoitotyön opiskelijoille. Kirjaa päiväkirjaan, mitä opit koulussa ja harjoittelussa, ja liitä merkintöihin käsiteltyt teemat. Pohdi, miten eri teemat liittyvät toisiinsa. Kaikki merkinnät ja teemat löytyvät myöhemmin helposti." (unlike FarmaDiary, this one has a real FI translation, per Piret's brief that it's bilingual)
-- **Image: still pending** — the `.game-media-box` shows a softly tinted `.media-placeholder` div with the text "Image coming soon" / "Kuva tulossa pian" (this placeholder text *is* translated) instead of an `<img>`. Swap in a real `<img src="images/...">` (same pattern as the other sections) once Piret supplies the image, and remove the placeholder div/CSS reliance for this section.
+- **Image (live):** `PleksusDiaries promo image.png` — a screenshot of the PleksusDiaries landing page itself ("Where everything you learn connects" hero + the Write as you go / See what you know / Think it through feature cards), unlike the other sections' illustrated key-art. Aspect ratio is narrower than the 16:9 frame (1.56:1), so it letterboxes slightly left/right into the pink accent tint — same `object-fit: contain` behavior as the other sections, no special-casing needed.
 - **CTA button:** "Visit PleksusDiaries →", links out to `https://pleksusdiaries.lovable.app/` (`target="_blank" rel="noopener noreferrer"`, same as FarmaDiary's external link).
-- **Accent color:** new token `--accent-pleksus: #F472B6` (soft pink), used only for the media-box tint, same narrow purpose as the other per-game accent vars.
+- **Accent color:** `--accent-pleksus: #F472B6` (soft pink), used only for the media-box tint, same narrow purpose as the other per-game accent vars.
 - **Layout position:** image-right (`.game-flex.reverse`), `bg-white`, continuing the alternation after FarmaDiary (`bg-tint`). Adding this section shifted every section after it (Why onward) to the opposite background — see Layout structure above.
 
 ### Why section — card styling
@@ -131,7 +131,7 @@ Note: the FI version splits into 4 paragraphs in Piret's original text; paragrap
 > Inspiroituin opinnäytetyöstäni ja aloin rakentamaan pelejä ja digitaalisia oppimistyökaluja aluksi vain itselleni, helpottaakseni omaa oppimistani. Kokeilin niin sanottua vibe coding -työskentelyä ja kehitin erilaisten aiheiden ympärille pelillisiä ideoita. Tällä sivulla pääset tutustumaan kehittämiini oppimispeleihin. Jokainen peli on tässä vaiheessa vielä prototyyppi, ei valmis tuote. Ne ovat yrityksiä tehdä farmakologiasta hieman vähemmän abstraktia ja helpommin muistettavaa sairaanhoitajaopiskelijoille.
 
 ## Images
-`/images/` holds exactly the 5 files actually referenced on the page — the original 13 raw screenshots (plus unused spares) were deleted once replaced.
+`/images/` holds exactly the 6 files actually referenced on the page — the original 13 raw screenshots (plus unused spares) were deleted once replaced.
 
 **In use (lead image per section, in page order):**
 - **FarmaRush** → `FarmaRush promo image.png` (key-art illustration: pharmacy chute, shelves, nurse)
@@ -139,6 +139,7 @@ Note: the FI version splits into 4 paragraphs in Piret's original text; paragrap
 - **MediChain** → `Medichain promo image.png` (illustrated chain-card diagram)
 - **MediLink** → `Medilink promo image.png` (chain-link logo + card-matching UI; filename stays lowercase "Medilink" — only the on-page display text was recapitalized to "MediLink")
 - **FarmaDiary** → `FarmaDiary promo image.png` (branded illustration: quiz cards + progress dashboard)
+- **PleksusDiaries** → `PleksusDiaries promo image.png` (screenshot of the PleksusDiaries landing page itself, not illustrated key-art — see Content above)
 
 **Frame treatment (live):** each image sits in a fixed 16:9 box, `border-radius: 20px`, `box-shadow: 0 8px 24px rgba(0,0,0,0.08)`. Fill is `object-fit: contain` (MyDay uses `cover` specifically — its illustration's aspect ratio didn't match the 16:9 frame and left pale bars on the sides), with the frame's background tinted in that game's accent color for any image that doesn't exactly fill the box.
 
@@ -159,5 +160,4 @@ Each of the four games (FarmaRush, MyDay, MediChain, MediLink) has a small, unob
 
 ## Open / deferred items
 - [ ] Decide on screenshot cropping/framing treatment (square + tilted vs. current fixed-16:9 boxes)
-- [ ] **PleksusDiaries image** — Piret to send a promo image; description text (EN+FI) is live, section shows a placeholder media box in the meantime (see "PleksusDiaries (image still pending)" above)
 - [x] Custom domain — `clinicalgames.fi` is live (`CNAME` file, DNS, and Pages settings all done; see TECH-NOTES.md)
