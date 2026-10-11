@@ -98,13 +98,13 @@ Statement text is regular weight (400) in the same muted gray (`#6B7280`) as eve
 
 ### Why section (EN)
 1. "Over half of surveyed nurses have caused a medication-related safety incident; half have given medicines without knowing their effects." — Luokkamäki et al., 2016
-2. "Nursing students often see pharmacology as a 'necessary evil' rather than essential knowledge." — Mauldin, 2021
+2. "Nursing students often see pharmacology as a 'necessary evil' rather than essential knowledge." — Mauldin, 2023
 3. "Online and gamified methods are among the most effective ways to teach pharmacology." — Gill et al., 2019
 
 ### Why section (FI — Piret's original thesis wording, live)
 Each statement's citation is stripped out of the sentence and shown as its own small gray line below (matching the English cards), not embedded inline:
 1. "Vuonna 2016 julkaistun tutkimuksen mukaan yli puolet tutkimukseen osallistuneet sairaanhoitajista ovat joskus aiheuttanut potilaalle lääkehoidon virheen takia vaaratilanteen ja puolet ovat antaneet lääkkeitä, joiden vaikutuksia he eivät tietäneet." — Luokkamäki ym. 2016
-2. "Tutkimuksen mukaan sairaanhoitajaopiskelijat ajattelevat farmakologiakurssin "pakollisena pahana" sen sijaan, että sen sisältö olisi tärkeä hallita." — Mauldin 2021
+2. "Tutkimuksen mukaan sairaanhoitajaopiskelijat ajattelevat farmakologiakurssin "pakollisena pahana" sen sijaan, että sen sisältö olisi tärkeä hallita." — Mauldin 2023
 3. "Vuonna 2019 tehdyn tutkimuksen mukaan on todettu online-menetelmien olevan yksi parhaimpia tapoja farmakologian opettamisessa opiskelijatyytyväisyyden ja tiedon hankinnan kannalta." — Gill ym. 2019
 
 ### Why section — full citations (small gray `#6B7280` text, below the cards, live, alphabetical order)
