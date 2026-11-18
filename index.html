@@ -316,14 +316,16 @@
     border-color: var(--amber);
   }
 
-  .why-references { margin-top: 1.25rem; }
-  .why-references p {
-    margin: 0 0 0.6rem;
+  /* Full reference for the quote on show, below a thin line
+     (same line style as above the arrows). */
+  .why-reference {
+    margin: 1.1rem 0 0;
+    padding-top: 1rem;
+    border-top: 1px solid var(--line-dark);
     font-size: 0.78rem;
     line-height: 1.7;
     color: var(--on-dark-soft);
   }
-  .why-references p:last-child { margin-bottom: 0; }
 
   /* ── Bands + section headings ───────────────────────────── */
   .band { padding: 4.5rem 0; }
@@ -621,19 +623,23 @@
             <div class="why-slide sizer" aria-hidden="true">
               <p class="why-statement" data-i18n="why1_statement"></p>
               <p class="why-citation" data-i18n="why1_citation"></p>
+              <p class="why-reference" data-i18n="ref_luokkamaki"></p>
             </div>
             <div class="why-slide sizer" aria-hidden="true">
               <p class="why-statement" data-i18n="why2_statement"></p>
               <p class="why-citation" data-i18n="why2_citation"></p>
+              <p class="why-reference" data-i18n="ref_mauldin"></p>
             </div>
             <div class="why-slide sizer" aria-hidden="true">
               <p class="why-statement" data-i18n="why3_statement"></p>
               <p class="why-citation" data-i18n="why3_citation"></p>
+              <p class="why-reference" data-i18n="ref_gill"></p>
             </div>
             <!-- The visible slide; the carousel script swaps its keys. -->
             <div class="why-slide" aria-live="polite" aria-atomic="true">
               <p class="why-statement" id="why-statement" data-i18n="why1_statement"></p>
               <p class="why-citation" id="why-citation" data-i18n="why1_citation"></p>
+              <p class="why-reference" id="why-reference" data-i18n="ref_luokkamaki"></p>
             </div>
           </div>
           <div class="why-controls">
@@ -649,11 +655,6 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
             </button>
           </div>
-        </div>
-        <div class="why-references">
-          <p data-i18n="ref_gill"></p>
-          <p data-i18n="ref_luokkamaki"></p>
-          <p data-i18n="ref_mauldin"></p>
         </div>
       </div>
     </div>
@@ -867,6 +868,9 @@
   var whyIndex = 0;
   var whyStatement = document.getElementById('why-statement');
   var whyCitation = document.getElementById('why-citation');
+  var whyReference = document.getElementById('why-reference');
+  // Full reference shown with each quote (quote 1 → Luokkamäki, 2 → Mauldin, 3 → Gill)
+  var WHY_REFS = ['ref_luokkamaki', 'ref_mauldin', 'ref_gill'];
   var whyCounter = document.getElementById('why-count');
   var whyDots = document.querySelectorAll('.why-dot');
 
@@ -878,6 +882,8 @@
     whyCitation.setAttribute('data-i18n', 'why' + n + '_citation');
     whyStatement.textContent = t('why' + n + '_statement', currentLang);
     whyCitation.textContent = t('why' + n + '_citation', currentLang);
+    whyReference.setAttribute('data-i18n', WHY_REFS[whyIndex]);
+    whyReference.textContent = t(WHY_REFS[whyIndex], currentLang);
     whyCounter.textContent = n + ' / ' + WHY_COUNT;
     for (var d = 0; d < whyDots.length; d++) {
       whyDots[d].setAttribute('aria-current', d === whyIndex ? 'true' : 'false');
