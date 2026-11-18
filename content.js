@@ -144,6 +144,10 @@ var translations = {
 
   // ── Contact ──
   contact_heading: { en: "Contact", fi: "Ota yhteyttä" },
+  contact_intro: {
+    en: "Interested in developing nurse training together? I’d love to hear from you.",
+    fi: "Haluaisitko kehittää sairaanhoitajien koulutusta yhdessä? Kuulisin sinusta mielelläni."
+  },
   label_name: { en: "Name", fi: "Nimi" },
   label_email: { en: "Email", fi: "Sähköposti" },
   label_message: { en: "Message", fi: "Viesti" },

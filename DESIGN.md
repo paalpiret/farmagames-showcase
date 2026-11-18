@@ -53,7 +53,7 @@ Built on the `redesign` branch; the live site keeps the old design until the red
 4. **Card games** (`#143A33`) — heading + subtitle "Quick drills for linking drugs, indications and drug classes"; MediChain and MediLink as white cards with a 6px coloured top border, heading `#0F2E28`, text `#4E5B58`, label + "Play now →" text link `#157565`.
 5. **Learning tools** (`#D8E9E5`) — heading + subtitle "Working apps for everyday studying and placements"; FarmaDiary and PleksusDiaries as white cards stacked vertically, image left / text right (stacking ≤720px); buttons filled `#157565`, white text ("Visit FarmaDiary →" → farmadiary.com, "Visit PleksusDiaries →").
 6. **About** (`#0F2E28`) — full existing heading + 3 paragraphs, text `#C9DDD7`, ~760px reading width.
-7. **Contact** (`#143A33`) — same Formspree form (endpoint, fields, AJAX, success/error messages unchanged); white labels, white fields with `#1A1A1A` text, amber focus ring, amber "Send message" button; success/error boxes on `#0F2E28`.
+7. **Contact** (`#143A33`) — heading, then one intro sentence (key `contact_intro`, same body style as About: Inter, `#C9DDD7`, max 760px wide) directly above the form; same Formspree form (endpoint, fields, AJAX, success/error messages unchanged); white labels, white fields with `#1A1A1A` text, amber focus ring, amber "Send message" button; success/error boxes on `#0F2E28`.
 8. **Footer** — existing "© 2026 Piret Paal", `#A9C4BC` on `#0F2E28`, thin top line.
 
 **Images:** every frame 16:9, rounded (`--radius` 0.75rem), **white background**, `object-fit: contain` so nothing is cropped — **except MyDay and PleksusDiaries**, which use `object-fit: cover` (their files are slightly narrower than 16:9 and would otherwise show white side strips). Click-to-enlarge lightbox kept on all six images, `cursor: zoom-in`. No "Demo" links, no video placeholders.
@@ -224,6 +224,7 @@ Each of the four games (FarmaRush, MyDay, MediChain, MediLink) has a small, unob
 - Error message (EN only so far, no FI requested yet): "Something went wrong — please try again, or reach out directly."
 - **No LinkedIn button.** One was added, then explicitly removed at Piret's request — don't re-add it unless asked again.
 - **Hard rule: never display Piret's personal email address anywhere in visible content or page source.**
+- **Intro sentence (redesign branch, EN + FI, added 2026-11):** directly under the heading, above the form — EN "Interested in developing nurse training together? I’d love to hear from you." / FI "Haluaisitko kehittää sairaanhoitajien koulutusta yhdessä? Kuulisin sinusta mielelläni."
 - **FI translation (live):** heading "Ota yhteyttä", labels "Nimi" / "Sähköposti" / "Viesti", submit button "Lähetä", confirmation message (see above).
 
 ## Open / deferred items

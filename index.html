@@ -477,6 +477,13 @@
     color: var(--white);
   }
 
+  /* Intro sentence under the heading — same body text style as About */
+  .contact-intro {
+    margin: 0 0 1.5rem;
+    max-width: 760px;
+    color: var(--on-dark);
+  }
+
   .contact-form {
     display: flex;
     flex-direction: column;
@@ -794,6 +801,7 @@
 <section id="contact" class="band band-raised">
   <div class="container contact-inner">
     <h2 data-i18n="contact_heading"></h2>
+    <p class="contact-intro" data-i18n="contact_intro"></p>
     <form class="contact-form" id="contact-form" action="https://formspree.io/f/xjgnavqw" method="POST">
       <div>
         <label for="contact-name" data-i18n="label_name"></label>
