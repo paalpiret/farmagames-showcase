@@ -105,7 +105,16 @@
   .btn-amber   { background: var(--amber); color: var(--ink); }
   .btn-outline { background: transparent; color: var(--white); border-color: var(--white); }
   .btn-outline:hover { background: rgba(255, 255, 255, 0.08); filter: none; }
-  .btn-ink     { background: var(--ink); color: var(--white); }
+
+  /* Hero buttons (design sketch) */
+  .hero-actions .btn {
+    padding: 15px 26px;
+    border-radius: 12px;
+    font-size: 16px;
+    border-width: 1px;
+  }
+  .hero-actions .btn-amber   { background: #FFB547; color: #1A1A1A; font-weight: 700; }
+  .hero-actions .btn-outline { background: transparent; border: 1px solid #4F7A70; color: #FFFFFF; font-weight: 600; }
   .btn-teal    { background: var(--teal-link); color: var(--white); }
 
   /* ── 1. Top menu ────────────────────────────────────────── */
@@ -398,10 +407,10 @@
   .game-label {
     display: block;
     margin-bottom: 0.45rem;
-    font-size: 0.72rem;
+    font-size: 13px;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.06em;
   }
 
   /* ── Image frames: all 16:9, white, never cropped (except .cover) ── */
@@ -430,7 +439,11 @@
     gap: 1.75rem;
   }
 
+  /* Tiles in a row are equal height (grid stretch); each is a flex
+     column so the Play link sits at the bottom of every tile. */
   .tile {
+    display: flex;
+    flex-direction: column;
     border-radius: var(--radius-lg);
     padding: 1.25rem 1.25rem 1.75rem;
     color: var(--ink);
@@ -438,10 +451,23 @@
   .tile-farmarush { background: var(--tile-farmarush); }
   .tile-myday     { background: var(--tile-myday); }
 
-  .tile-body { padding: 1.4rem 0.5rem 0; }
+  .tile-body { padding: 1.4rem 0.5rem 0; flex: 1 1 auto; display: flex; flex-direction: column; }
   .tile h3 { margin: 0 0 0.6rem; font-size: 1.85rem; color: var(--ink); }
   .tile p  { margin: 0 0 1.4rem; font-size: 1rem; color: var(--ink); }
   .tile .game-label { color: var(--ink); }
+
+  .tile-link {
+    margin-top: auto;
+    align-self: flex-start;
+    font-family: var(--font-sans);
+    font-size: 15px;
+    font-weight: 700;
+    color: #1A1A1A;
+    background: none;
+    border: none;
+    text-decoration: none;
+  }
+  .tile-link:hover { text-decoration: underline; text-underline-offset: 4px; }
 
   /* ── 4. Card games: white cards with a coloured top edge ── */
   .card-grid {
@@ -451,6 +477,8 @@
   }
 
   .card {
+    display: flex;
+    flex-direction: column;
     background: var(--white);
     border-radius: var(--radius-lg);
     border-top: 6px solid transparent;
@@ -459,14 +487,15 @@
   .card-medichain { border-top-color: var(--edge-medichain); }
   .card-medilink  { border-top-color: var(--edge-medilink); }
 
-  .card-body { padding: 1.25rem 0.35rem 0; }
-  .card h3 { margin: 0 0 0.5rem; font-size: 1.5rem; color: var(--heading-light); }
+  .card-body { padding: 1.25rem 0.35rem 0; flex: 1 1 auto; display: flex; flex-direction: column; }
+  .card h3 { margin: 0 0 0.5rem; font-size: 26px; color: var(--heading-light); }
+  .card .text-link { margin-top: auto; align-self: flex-start; }
   .card p  { margin: 0 0 1.1rem; font-size: 0.97rem; color: var(--text-light); }
   .card .game-label { color: var(--teal-link); }
 
   .text-link {
     color: var(--teal-link);
-    font-weight: 600;
+    font-weight: 700;
     text-decoration: none;
   }
   .text-link:hover { text-decoration: underline; text-underline-offset: 4px; }
@@ -480,17 +509,17 @@
 
   .tool-card {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
-    gap: 2rem;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 32px;
     align-items: center;
     background: var(--white);
-    border-radius: var(--radius-lg);
-    padding: 1.25rem;
+    border: 1px solid #DCE7E3;
+    border-radius: 20px;
+    padding: 24px;
   }
-  .tool-card .media-frame { border: 1px solid var(--mint); }
 
   .tool-body { padding: 0.5rem 0.75rem 0.5rem 0; }
-  .tool-card h3 { margin: 0 0 0.5rem; font-size: 1.5rem; color: var(--heading-light); }
+  .tool-card h3 { margin: 0 0 0.5rem; font-family: var(--font-display); font-size: 30px; color: var(--heading-light); }
   .tool-card p  { margin: 0 0 1.2rem; font-size: 0.97rem; color: var(--text-light); }
   .tool-card .game-label { color: var(--teal-link); }
 
@@ -733,7 +762,7 @@
           <span class="game-label" data-i18n="game_label_1"></span>
           <h3 data-i18n="farmarush_name"></h3>
           <p data-i18n="farmarush_desc"></p>
-          <a class="btn btn-ink" href="farmarush/"><span data-i18n="play_now"></span></a>
+          <a class="tile-link" href="farmarush/"><span data-i18n="play_now"></span></a>
         </div>
       </article>
       <article class="tile tile-myday">
@@ -744,7 +773,7 @@
           <span class="game-label" data-i18n="game_label_2"></span>
           <h3 data-i18n="myday_name"></h3>
           <p data-i18n="myday_desc"></p>
-          <a class="btn btn-ink" href="myday/"><span data-i18n="play_now"></span></a>
+          <a class="tile-link" href="myday/"><span data-i18n="play_now"></span></a>
         </div>
       </article>
     </div>
