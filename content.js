@@ -1,0 +1,131 @@
+// ─────────────────────────────────────────────────────────────
+// content.js — ALL visible page text for index.html (EN + FI)
+//
+// index.html holds only layout and styling; every sentence on the
+// page lives here, exactly once. Each HTML element that shows text
+// has a data-i18n="key" attribute (or data-i18n-alt="key" for image
+// alt text) pointing at an entry below.
+//
+// How to edit:
+//   • change a sentence  → edit its "en" / "fi" value here
+//   • add Finnish        → add an fi: "..." line to that entry
+//   • entries without "fi" show the English text in FI mode too
+//     (used on purpose for names, "Piret Paal", footer, references)
+//
+// Loaded by index.html with <script src="content.js"> before the
+// page's own script, so the text is in place before first paint.
+// ─────────────────────────────────────────────────────────────
+
+var translations = {
+  // ── Header ──
+  hero_eyebrow: { en: "Clinical Games" },
+  hero_name: { en: "Piret Paal" },
+  hero_tagline: {
+    en: "A portfolio of learning games and digital tools designed to make medication learning and nursing studies a little easier and more fun.",
+    fi: "Portfolio oppimispeleistä ja digitaalisista työkaluista, jotka tekevät lääkehoidon ja hoitotyön opiskelusta hieman helpompaa ja hauskempaa."
+  },
+
+  // ── Game & tool sections ──
+  // Names are proper nouns: same in both languages.
+  farmarush_name: { en: "FarmaRush" },
+  myday_name: { en: "MyDay" },
+  medichain_name: { en: "MediChain" },
+  medilink_name: { en: "MediLink" },
+  farmadiary_name: { en: "FarmaDiary" },
+  pleksusdiaries_name: { en: "PleksusDiaries" },
+  farmadiary_label: { en: "Learning tool · EN" },
+  pleksusdiaries_label: { en: "Learning tool · EN/FI" },
+
+  // Image alt text (screen readers / image descriptions)
+  farmarush_img_alt: { en: "FarmaRush promo illustration: pharmacy chute, medicine shelves, and a nurse on shift" },
+  myday_img_alt: { en: "MyDay nurse illustration with a medication checklist and ward supply cart" },
+  medichain_img_alt: { en: "MediChain illustration: linking medicine cards by indication and drug class" },
+  medilink_img_alt: { en: "MediLink illustration: chain-link logo and card-matching gameplay" },
+  farmadiary_img_alt: { en: "FarmaDiary promo illustration: digital medicine notebook with quiz cards and progress dashboard" },
+  pleksusdiaries_img_alt: { en: "PleksusDiaries landing page: 'Where everything you learn connects' with Write as you go, See what you know, and Think it through feature cards" },
+
+  myday_desc: {
+    en: "A day in the life of a nursing student on a cardiology ward — from morning handover to medication rounds to end-of-shift documentation. Built to capture the rhythm of a real shift, one room at a time.",
+    fi: "Päivä sairaanhoitajaopiskelijana kardiologian osastolla — aamuraportista lääkkeiden jakoon ja työvuoron päättävään kirjaamiseen. Peli etenee aidon työvuoron tavoin, yksi tehtävä kerrallaan."
+  },
+  farmarush_desc: {
+    en: "Medication requests arrive from hospital wards, one shift at a time. Catch the right drugs before they're dispatched — work fast, but don't let the wrong medication through.",
+    fi: "Eri osastoilta saapuu työvuoron aikana lääketilauksia. Kerää oikeat lääkkeet mahdollisimman nopeasti, mutta vältä vääriä valintoja."
+  },
+  medichain_desc: {
+    en: "Build the longest possible medicine chain by linking drugs that share an indication or drug class. A quick, focused way to test how well those connections actually stick.",
+    fi: "Rakenna mahdollisimman pitkä lääkeketju yhdistämällä lääkkeitä, joilla on sama käyttöaihe tai lääkeryhmä. Nopea tapa testata, miten hyvin lääkkeet ovat jääneet mieleen."
+  },
+  medilink_desc: {
+    en: "Match medicines to their active ingredients, indications, and drug classes — link by link. Built to reinforce the kind of pattern-recognition real prescribing depends on.",
+    fi: "Yhdistä lääkkeet niiden vaikuttaviin aineisiin, käyttöaiheisiin ja lääkeryhmiin kortti kerrallaan. Peli auttaa hahmottamaan lääketiedon kokonaisuuksia ja eri käsitteiden välisiä yhteyksiä."
+  },
+  play_now: { en: "Play now →", fi: "Pelaa →" },
+  game_label_1: { en: "Game 01 · FI/EN", fi: "Peli 01 · FI/EN" },
+  game_label_2: { en: "Game 02 · EN", fi: "Peli 02 · EN" },
+  game_label_3: { en: "Game 03 · FI", fi: "Peli 03 · FI" },
+  game_label_4: { en: "Game 04 · FI", fi: "Peli 04 · FI" },
+
+  // ── Why ──
+  why_heading: { en: "Why", fi: "Miksi" },
+  why1_statement: {
+    en: "“Over half of surveyed nurses have caused a medication-related safety incident; half have given medicines without knowing their effects.”",
+    fi: "“Vuonna 2016 julkaistun tutkimuksen mukaan yli puolet tutkimukseen osallistuneet sairaanhoitajista ovat joskus aiheuttanut potilaalle lääkehoidon virheen takia vaaratilanteen ja puolet ovat antaneet lääkkeitä, joiden vaikutuksia he eivät tietäneet.”"
+  },
+  why1_citation: { en: "— Luokkamäki et al., 2016", fi: "— Luokkamäki ym. 2016" },
+  why2_statement: {
+    en: "“Nursing students often see pharmacology as a ‘necessary evil’ rather than essential knowledge.”",
+    fi: "“Tutkimuksen mukaan sairaanhoitajaopiskelijat ajattelevat farmakologiakurssin \"pakollisena pahana\" sen sijaan, että sen sisältö olisi tärkeä hallita.”"
+  },
+  why2_citation: { en: "— Mauldin, 2023", fi: "— Mauldin 2023" },
+  why3_statement: {
+    en: "“Online and gamified methods are among the most effective ways to teach pharmacology.”",
+    fi: "“Vuonna 2019 tehdyn tutkimuksen mukaan on todettu online-menetelmien olevan yksi parhaimpia tapoja farmakologian opettamisessa opiskelijatyytyväisyyden ja tiedon hankinnan kannalta.”"
+  },
+  why3_citation: { en: "— Gill et al., 2019", fi: "— Gill ym. 2019" },
+
+  // Full references below the cards (same in both languages)
+  ref_gill: { en: "Gill, Manu & Andersen, Elizabeth & Hilsmann, Norma. 2019. Best practices for teaching pharmacology to undergraduate nursing students: A systematic review of the literature." },
+  ref_luokkamaki: { en: "Luokkamäki, Sanna & Vehviläinen-Julkunen, Katri & Saano, Susanna & Härkänen, Marja 2016. “Sairaanhoitajien lääkehoidon osaaminen heidän itsensä arvioimana”, Tutkiva Hoitotyö, vol. 14, no. 2, pp. 23–32." },
+  ref_mauldin: { en: "Mauldin, Betsy 2023. Bringing Clinical Context to the Classroom in Nursing Pharmacology: A Case Study." },
+
+  // ── FarmaDiary & PleksusDiaries ──
+  farmadiary_desc: {
+    en: "A personal medicine notebook — log the drugs you encounter on placement, quiz yourself on what you've logged, and watch your own knowledge base grow shift by shift.",
+    fi: "Henkilökohtainen lääkepäiväkirja, johon kirjaat opinnoissa ja harjoitteluissa kohtaamasi lääkkeet. Testaa osaamistasi omiin merkintöihisi perustuvilla kysymyksillä ja seuraa, miten osaamisesi kehittyy ajan myötä."
+  },
+  farmadiary_cta: { en: "Visit FarmaDiary →" },
+
+  pleksusdiaries_desc: {
+    en: "A personal learning diary for nursing students. Write down what you learn in your studies and placements and tag the topics behind it. Think about how different topics connect with each other. All your entries and topics are easy to find again later.",
+    fi: "Henkilökohtainen oppimispäiväkirja hoitotyön opiskelijoille. Kirjaa päiväkirjaan, mitä opit koulussa ja harjoittelussa, ja liitä merkintöihin käsiteltyt teemat. Pohdi, miten eri teemat liittyvät toisiinsa. Kaikki merkinnät ja teemat löytyvät myöhemmin helposti."
+  },
+  pleksusdiaries_cta: { en: "Visit PleksusDiaries →" },
+
+  // ── About Me ──
+  about_heading: { en: "About Me", fi: "Minusta" },
+  about_text_1: {
+    en: "I'm a nursing student with a particular interest in cardiology and pharmacology. Before nursing, I trained as a fashion designer at the Estonian Academy of Arts and spent some time working in software for design tools across Northern Europe.",
+    fi: "Olen sairaanhoitajaopiskelija ja erikoisaloista minua kiinnostavat erityisesti kardiologia ja farmakologia. Ennen hoitoalalle siirtymistä kouluttauduin vaatesuunnittelijaksi Eesti Kunstiakademiassa ja työskentelin muotiin liittyvien suunnitteluohjelmistojen parissa Pohjoismaissa."
+  },
+  about_text_2: {
+    en: "Somewhere along the way, design and healthcare started to overlap, and I've worked, for example, with researchers at the University of Helsinki on a service for parents navigating early childhood. In 2025, my bachelor's thesis looked at medication safety among student nurses — and found what research keeps finding: pharmacology is hard to teach, and harder to make stick.",
+    fi: "Jossain vaiheessa muotoilu ja terveydenhuolto alkoivat luontevasti yhdistyä tekemisessäni. Olen esimerkiksi työskennellyt Helsingin yliopiston tutkijoiden kanssa palvelun parissa, joka tukee vanhempia varhaislapsuuden haasteissa. Vuonna 2025 opinnäytetyöni käsitteli aihetta, miten sairaanhoitajaopiskelijat opiskelevat lääkehoitoa ja miten sitä kannattaisi opettaa. Opinnäytetyössä totesimme, että farmakologiaa on vaikea opettaa, ja vielä vaikeampaa on opiskelijan saada opittu tieto jäämään mieleen."
+  },
+  about_text_3: {
+    en: "That's what led me here — building games and digital learning tools instead of just writing about the problem. I started experimenting with vibe-coding and playing around with these subjects, and it grew from there — each one a focused prototype, not a finished product, but a genuine attempt to make pharmacology a little less abstract and a little more memorable, for students like me.",
+    fi: "Inspiroituin opinnäytetyöstäni ja aloin rakentamaan pelejä ja digitaalisia oppimistyökaluja aluksi vain itselleni, helpottaakseni omaa oppimistani. Kokeilin niin sanottua vibe coding -työskentelyä ja kehitin erilaisten aiheiden ympärille pelillisiä ideoita. Tällä sivulla pääset tutustumaan kehittämiini oppimispeleihin. Jokainen peli on tässä vaiheessa vielä prototyyppi, ei valmis tuote. Ne ovat yrityksiä tehdä farmakologiasta hieman vähemmän abstraktia ja helpommin muistettavaa sairaanhoitajaopiskelijoille."
+  },
+
+  // ── Contact ──
+  contact_heading: { en: "Contact", fi: "Ota yhteyttä" },
+  label_name: { en: "Name", fi: "Nimi" },
+  label_email: { en: "Email", fi: "Sähköposti" },
+  label_message: { en: "Message", fi: "Viesti" },
+  submit_btn: { en: "Send message", fi: "Lähetä" },
+  contact_success: { en: "Thank you for contacting me. I will get back to you soon.", fi: "Kiitos yhteydenotostasi. Vastaan sinulle pian" },
+  contact_error: { en: "Something went wrong — please try again, or reach out directly." },
+
+  // ── Footer ──
+  footer: { en: "© 2026 Piret Paal" }
+};

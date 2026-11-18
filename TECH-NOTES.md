@@ -14,6 +14,13 @@ A plain-language reference for the pieces behind the FarmaGames showcase site, s
 
 **No server, no database.** This is a fully "static" site — just files, no backend to maintain or break. That's why it's simple and free to run.
 
+## Text and layout are separate files
+
+- **`content.js`** holds every piece of text shown on the landing page, in English and Finnish, each written exactly once. To change wording or add a Finnish translation, edit only this file.
+- **`index.html`** holds the layout, colors and spacing. Its text spots are empty placeholders tagged with a key (e.g. `data-i18n="about_heading"`); when the page opens, a small script copies the matching text from `content.js` into each spot in the current language (FI by default on clinicalgames.fi, EN elsewhere, or whatever the visitor last picked).
+- Only the browser-tab title, the search-engine description, the `EN`/`FI` button letters and the `×` close icon stay inside `index.html`.
+- Both files must be published together — if `content.js` is missing, the page shows its layout with no text.
+
 ## Custom domain (done, live)
 
 The site now runs on its own domain, **`clinicalgames.fi`**, instead of the default `github.io` address — it's just a nicer name pointing at the same GitHub Pages folder, nothing about how the site works changed. Setup steps, for reference:
@@ -39,6 +46,8 @@ The site's contact form doesn't have its own backend — it sends form submissio
 |---|---|
 | Site code/files | GitHub repo `farmagames-showcase` |
 | Live published site | GitHub Pages (auto-deploys from `main`) |
+| All page text (EN + FI) | `content.js` in the repo root |
+| Page layout, styling, behaviour | `index.html` in the repo root |
 | Design/content decisions | `DESIGN.md` in the repo root |
 | This technical overview | `TECH-NOTES.md` in the repo root (this file) |
 | Contact form submissions | Formspree → forwarded to Gmail |
