@@ -227,6 +227,20 @@
     gap: 0.85rem;
   }
 
+  /* Two-column header: both columns share one height, the Why card
+     stretches to fill its column and the two buttons sit at the bottom
+     of theirs, so the buttons' bottom edge lines up with the card's
+     bottom edge (whichever side is taller sets the height). */
+  @media (min-width: 861px) {
+    .hero-grid { align-items: stretch; }
+    .hero-text { display: flex; flex-direction: column; }
+    .hero-actions { margin-top: auto; }
+    .hero-why,
+    .why-carousel { display: flex; flex-direction: column; height: 100%; }
+    .why-card { flex: 1 1 auto; display: flex; flex-direction: column; }
+    .why-stage { flex: 1 1 auto; }
+  }
+
   /* Why carousel */
   .why-label {
     margin: 0 0 0.6rem;
