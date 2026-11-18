@@ -6,7 +6,7 @@ This file tracks the design decisions, content, and status for this repo, so bot
 https://clinicalgames.fi (custom domain, live — the old https://paalpiret.github.io/farmagames-showcase/ still works and redirects there)
 
 ## Page name & identity
-> **Redesign:** tab title + meta description unchanged. The "Piret Paal" `<h1>`, the eyebrow styling and the italic tagline below are REPLACED — "Clinical Games" is now the name at the left of the top menu, and the header `<h1>` is the new headline (see "Redesign — new design").
+> **Redesign:** tab title + meta description unchanged. The "Piret Paal" `<h1>`, the eyebrow styling and the italic tagline below are REPLACED — the top-left of the menu is now the **clinicalgames** wordmark (see Top menu below), and the header `<h1>` is the new headline (see "Redesign — new design").
 
 - Browser tab title: **"Piret Paal — Interactive Nursing Projects"** and meta description "Piret Paal: interactive nursing projects and game prototypes." (not "FarmaGames" or "MediProjects" — both were dropped from these). The on-page `<h1>` itself stays just "Piret Paal" in both EN and FI — this "Interactive Nursing Projects" wording is tab-title/meta only, not visible page copy.
 - Heading size: 50px, weight 700.
@@ -23,7 +23,7 @@ Built on the `redesign` branch; the live site keeps the old design until the red
 
 **Removed in the redesign:** mesh-gradient hero blobs + glow, alternating white/tint bands, per-game accent tints inside image frames (incl. `.exact-bg` for PleksusDiaries), image-left/right alternating layout, the separate Why section further down the page (moved into the header), the "Piret Paal" `<h1>` and the italic tagline under it.
 
-**Fonts:** headings (`h1`–`h3`, the "Clinical Games" name in the menu) **Space Grotesk 700**; everything else **Inter** (both Google Fonts).
+**Fonts:** headings (`h1`–`h3`, the clinicalgames wordmark in the menu) **Space Grotesk 700**; everything else **Inter** (both Google Fonts).
 
 **Colours (CSS tokens in `index.html` `:root`):**
 
@@ -45,7 +45,7 @@ Built on the `redesign` branch; the live site keeps the old design until the red
 | `--error-on-dark` | `#FFB4A8` | contact error message |
 
 **Page order (one page; menu links scroll to sections, smooth scroll unless the visitor prefers reduced motion):**
-1. **Top menu** (dark) — "Clinical Games" left; right: Games · Card games · Learning tools · About · Contact, then the EN/FI toggle (moved here from its old fixed top-right pill; active language = white pill). Sticky at the top on screens wider than 720px; on phones it is not sticky and wraps onto extra lines.
+1. **Top menu** (dark) — **wordmark `clinicalgames`** left (design sketch): one word, all lowercase, no space; "clinical" `#FFFFFF` + "games" `#7BE3C6`; Space Grotesk `20px` / `700`, no letter-spacing, no uppercase. It is a logo, so it is the same in EN and FI (content.js keys `wordmark_clinical` + `wordmark_games`, EN only). It links to the very top of the page (`href="#top"`; the header no longer carries `id="top"`, so the browser scrolls to the page top instead of to the header below the menu). Replaces the earlier "Clinical Games" text (`hero_eyebrow`, kept unused in content.js). Menu right side: right: Games · Card games · Learning tools · About · Contact, then the EN/FI toggle (moved here from its old fixed top-right pill; active language = white pill). Sticky at the top on screens wider than 720px; on phones it is not sticky and wraps onto extra lines.
 2. **Header** (`#0F2E28`, two columns, stacking ≤860px)
    - Left: headline "Medication learning, played — not just memorised." (Space Grotesk, "played" in `#FFB547`), subline in `#C9DDD7`, buttons "Play the games" (amber fill, `#1A1A1A` text → Scenario games) and "See the learning tools" (white outline + white text → Learning tools).
    - Right: **Why carousel** — small label "Why this work exists · 1 / 3", card `#143A33` with `#2E5A50` border, one statement at a time with its short citation below (existing texts, EN + FI), then a thin `#2E5A50` line (same as the one above the arrows) and **that quote's own full reference** in small `#A9C4BC` text — quote 1 → Luokkamäki 2016, 2 → Mauldin 2023, 3 → Gill 2019. Previous/next arrow buttons + three dot buttons; moves **only when clicked** (no auto-slide), ←/→ keys also work when focus is inside it. All controls are real `<button>`s with aria-labels; the visible slide is an `aria-live="polite"` region. Invisible copies of all three slides keep the card the height of the longest one, so it doesn't jump. **Bottom alignment (two-column view, wider than 860px):** both header columns share one height — the Why card stretches to fill its column (extra space goes between the reference and the arrows, which stay at the card's bottom) and the two buttons sit at the bottom of the left column, so the buttons' bottom edge always lines up exactly with the card's bottom edge. Whichever side is taller sets the height: in EN the card is lengthened to meet the buttons; in FI (longer quotes) the buttons move down to meet the card. Phones (stacked) are unaffected. There is **no separate reference list under the card** any more (replaced — first version of the redesign listed all three references there).

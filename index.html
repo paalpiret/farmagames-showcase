@@ -125,13 +125,19 @@
     padding-bottom: 0.85rem;
   }
 
+  /* Wordmark "clinicalgames" (design sketch): one word, lowercase,
+     "clinical" white + "games" mint. Links to the very top of the page. */
   .brand {
     font-family: var(--font-display);
+    font-size: 20px;
     font-weight: 700;
-    font-size: 1.2rem;
+    letter-spacing: 0;
+    text-transform: none;
     color: var(--white);
     text-decoration: none;
   }
+  .brand-a { color: #FFFFFF; }
+  .brand-b { color: #7BE3C6; }
 
   .nav-right {
     display: flex;
@@ -617,7 +623,7 @@
 <!-- 1. Top menu -->
 <nav class="topnav" aria-label="Main">
   <div class="container nav-inner">
-    <a class="brand" href="#top" data-i18n="hero_eyebrow"></a>
+    <a class="brand" href="#top"><span class="brand-a" data-i18n="wordmark_clinical"></span><span class="brand-b" data-i18n="wordmark_games"></span></a>
     <div class="nav-right">
       <ul class="nav-links">
         <li><a href="#scenario-games" data-i18n="nav_games"></a></li>
@@ -635,7 +641,7 @@
 </nav>
 
 <!-- 2. Header: headline + Why carousel -->
-<header id="top" class="hero">
+<header class="hero">
   <div class="container hero-grid">
     <div class="hero-text">
       <h1 class="hero-headline"><span data-i18n="hero_headline_start"></span><span class="hl" data-i18n="hero_headline_highlight"></span><span data-i18n="hero_headline_end"></span></h1>

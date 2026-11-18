@@ -18,8 +18,10 @@
 
 var translations = {
   // ── Top menu ──
-  // hero_eyebrow is the "Clinical Games" name at the left of the menu.
-  hero_eyebrow: { en: "Clinical Games" },
+  // Wordmark "clinicalgames" at the left of the menu: one word, two colours.
+  // A logo, not translated — same text in EN and FI.
+  wordmark_clinical: { en: "clinical" },
+  wordmark_games: { en: "games" },
   nav_games: { en: "Games" },
   nav_card_games: { en: "Card games" },        // also the Card games section heading
   nav_learning_tools: { en: "Learning tools" }, // also the Learning tools section heading
@@ -43,7 +45,9 @@ var translations = {
   learning_tools_subtitle: { en: "Working apps for everyday studying and placements" },
 
   // ── Not shown in the current design (kept, with their Finnish, in case they return) ──
-  // hero_name, hero_tagline, why_heading
+  // hero_name, hero_tagline, why_heading,
+  // hero_eyebrow (the old "Clinical Games" menu name, replaced by the wordmark)
+  hero_eyebrow: { en: "Clinical Games" },
   hero_name: { en: "Piret Paal" },
   hero_tagline: {
     en: "A portfolio of learning games and digital tools designed to make medication learning and nursing studies a little easier and more fun.",
