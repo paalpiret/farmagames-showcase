@@ -33,8 +33,8 @@ Built on the `redesign` branch; the live site keeps the old design until the red
 | `--raised` | `#143A33` | Card games band, Contact band, Why card |
 | `--line-dark` | `#2E5A50` | thin borders on dark (Why card, menu line, footer line) |
 | `--mint` | `#D8E9E5` | Learning tools band |
-| `--on-dark` | `#C9DDD7` | body text on dark (subline, About, subtitles, menu links) |
-| `--on-dark-soft` | `#A9C4BC` | small print on dark (references, citations, footer) |
+| `--on-dark` | `#C9DDD7` | body text on dark (subline, About, Contact intro, menu links) |
+| `--on-dark-soft` | `#A9C4BC` | small print on dark (references, citations, footer) + section subtitles on dark |
 | `--heading-light` | `#0F2E28` | headings on white/mint cards |
 | `--text-light` | `#4E5B58` | body text on white/mint |
 | `--ink` | `#1A1A1A` | text on amber + on the coloured game tiles |
@@ -55,6 +55,8 @@ Built on the `redesign` branch; the live site keeps the old design until the red
 6. **About** (`#0F2E28`) — full existing heading + 3 paragraphs, text `#C9DDD7`, ~760px reading width.
 7. **Contact** (`#143A33`) — heading, then one intro sentence (key `contact_intro`, same body style as About: Inter, `#C9DDD7`, max 760px wide) directly above the form; same Formspree form (endpoint, fields, AJAX, success/error messages unchanged); white labels, white fields with `#1A1A1A` text, amber focus ring, amber "Send message" button; success/error boxes on `#0F2E28`.
 8. **Footer** — existing "© 2026 Piret Paal", `#A9C4BC` on `#0F2E28`, thin top line.
+
+**Section title rows (Scenario games, Card games, Learning tools — matches the design sketch):** heading and subtitle in one row — `display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 28px`. Heading `h2`: Space Grotesk, `40px`, `700`, `margin: 0`; white on the dark sections, `#0F2E28` in Learning tools. Subtitle: `15px`, `margin: 0`, at the **right end of the same line** on desktop; `#A9C4BC` on the dark sections, `#4E5B58` in Learning tools. On narrow screens (phones) the subtitle wraps under the heading by itself via `flex-wrap` — no extra rule. (Replaces the first redesign version: stacked heading `clamp(28–36px)` + 16px `#C9DDD7` subtitle below it, 36px gap to content.)
 
 **Images:** every frame 16:9, rounded (`--radius` 0.75rem), **white background**, `object-fit: contain` so nothing is cropped — **except MyDay and PleksusDiaries**, which use `object-fit: cover` (their files are slightly narrower than 16:9 and would otherwise show white side strips). Click-to-enlarge lightbox kept on all six images, `cursor: zoom-in`. No "Demo" links, no video placeholders.
 
