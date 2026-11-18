@@ -36,7 +36,8 @@ var translations = {
   hero_subline: { en: "Learning games and digital tools for nursing education, built by Piret Paal — registered nurse and designer." },
   hero_btn_games: { en: "Play the games" },
   hero_btn_tools: { en: "See the learning tools" },
-  why_carousel_label: { en: "Why this work exists" }, // followed by "· 1 / 3" counter
+  why_carousel_label: { en: "Why this work exists" }, // label on quote slides, followed by "· 1 / 4" counter
+  why_sources_label: { en: "Sources", fi: "Lähteet" },  // label on the 4th slide (all three references)
 
   // ── Section headings ──
   scenario_heading: { en: "Scenario games" },
@@ -101,17 +102,17 @@ var translations = {
     en: "“Over half of surveyed nurses have caused a medication-related safety incident; half have given medicines without knowing their effects.”",
     fi: "“Vuonna 2016 julkaistun tutkimuksen mukaan yli puolet tutkimukseen osallistuneet sairaanhoitajista ovat joskus aiheuttanut potilaalle lääkehoidon virheen takia vaaratilanteen ja puolet ovat antaneet lääkkeitä, joiden vaikutuksia he eivät tietäneet.”"
   },
-  why1_citation: { en: "— Luokkamäki et al., 2016", fi: "— Luokkamäki ym. 2016" },
+  why1_citation: { en: "Luokkamäki et al., 2016", fi: "Luokkamäki ym. 2016" },
   why2_statement: {
     en: "“Nursing students often see pharmacology as a ‘necessary evil’ rather than essential knowledge.”",
     fi: "“Tutkimuksen mukaan sairaanhoitajaopiskelijat ajattelevat farmakologiakurssin \"pakollisena pahana\" sen sijaan, että sen sisältö olisi tärkeä hallita.”"
   },
-  why2_citation: { en: "— Mauldin, 2023", fi: "— Mauldin 2023" },
+  why2_citation: { en: "Mauldin, 2023", fi: "Mauldin 2023" },
   why3_statement: {
     en: "“Online and gamified methods are among the most effective ways to teach pharmacology.”",
     fi: "“Vuonna 2019 tehdyn tutkimuksen mukaan on todettu online-menetelmien olevan yksi parhaimpia tapoja farmakologian opettamisessa opiskelijatyytyväisyyden ja tiedon hankinnan kannalta.”"
   },
-  why3_citation: { en: "— Gill et al., 2019", fi: "— Gill ym. 2019" },
+  why3_citation: { en: "Gill et al., 2019", fi: "Gill ym. 2019" },
 
   // Full references below the cards (same in both languages)
   ref_gill: { en: "Gill, Manu & Andersen, Elizabeth & Hilsmann, Norma. 2019. Best practices for teaching pharmacology to undergraduate nursing students: A systematic review of the literature." },
