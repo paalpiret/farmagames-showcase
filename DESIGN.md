@@ -6,6 +6,8 @@ This file tracks the design decisions, content, and status for this repo, so bot
 https://clinicalgames.fi (custom domain, live — the old https://paalpiret.github.io/farmagames-showcase/ still works and redirects there)
 
 ## Page name & identity
+> **Redesign:** tab title + meta description unchanged. The "Piret Paal" `<h1>`, the eyebrow styling and the italic tagline below are REPLACED — "Clinical Games" is now the name at the left of the top menu, and the header `<h1>` is the new headline (see "Redesign — new design").
+
 - Browser tab title: **"Piret Paal — Interactive Nursing Projects"** and meta description "Piret Paal: interactive nursing projects and game prototypes." (not "FarmaGames" or "MediProjects" — both were dropped from these). The on-page `<h1>` itself stays just "Piret Paal" in both EN and FI — this "Interactive Nursing Projects" wording is tab-title/meta only, not visible page copy.
 - Heading size: 50px, weight 700.
 - Small uppercase eyebrow label above the heading: "Clinical Games" (rendered `CLINICAL GAMES` via `text-transform: uppercase`), 13px, weight 600, `letter-spacing: 0.12em`, `rgba(255,255,255,0.7)` — matches the visual style of the `GAME 0X · [LANG]` labels elsewhere on the page. Not translated (proper noun, same as "Piret Paal" and the game names), and ties to the `clinicalgames.fi` domain.
@@ -16,7 +18,55 @@ https://clinicalgames.fi (custom domain, live — the old https://paalpiret.gith
 ## Purpose
 This page doubles as a **CV/portfolio piece** (Piret graduates as a nurse in November 2026), not just an internal demo hub. Tone should stay portfolio-grade: confident, curated, not utility-dashboard-like.
 
+## Redesign — new design (branch `redesign`, not live yet)
+Built on the `redesign` branch; the live site keeps the old design until the redesign is merged into the live branch. Preview: the private link in `CLAUDE.md`. Sections below marked **REPLACED** describe the old (still-live) design.
+
+**Removed in the redesign:** mesh-gradient hero blobs + glow, alternating white/tint bands, per-game accent tints inside image frames (incl. `.exact-bg` for PleksusDiaries), image-left/right alternating layout, the separate Why section further down the page (moved into the header), the "Piret Paal" `<h1>` and the italic tagline under it.
+
+**Fonts:** headings (`h1`–`h3`, the "Clinical Games" name in the menu) **Space Grotesk 700**; everything else **Inter** (both Google Fonts).
+
+**Colours (CSS tokens in `index.html` `:root`):**
+
+| Token | Hex | Use |
+|---|---|---|
+| `--deep` | `#0F2E28` | page base: menu, header, Scenario games, About, footer |
+| `--raised` | `#143A33` | Card games band, Contact band, Why card |
+| `--line-dark` | `#2E5A50` | thin borders on dark (Why card, menu line, footer line) |
+| `--mint` | `#D8E9E5` | Learning tools band |
+| `--on-dark` | `#C9DDD7` | body text on dark (subline, About, subtitles, menu links) |
+| `--on-dark-soft` | `#A9C4BC` | small print on dark (references, citations, footer) |
+| `--heading-light` | `#0F2E28` | headings on white/mint cards |
+| `--text-light` | `#4E5B58` | body text on white/mint |
+| `--ink` | `#1A1A1A` | text on amber + on the coloured game tiles |
+| `--amber` | `#FFB547` | the word "played", "Play the games" + "Send message" buttons, active carousel dot, focus ring on dark |
+| `--teal-link` | `#157565` | Card games links, labels on white cards, filled Learning-tools buttons |
+| `--tile-farmarush` / `--tile-myday` | `#FF9F1A` / `#A78BFA` | Scenario game tiles |
+| `--edge-medichain` / `--edge-medilink` | `#38BDF8` / `#3ED07A` | 6px top border of the Card game cards |
+| `--error-on-dark` | `#FFB4A8` | contact error message |
+
+**Page order (one page; menu links scroll to sections, smooth scroll unless the visitor prefers reduced motion):**
+1. **Top menu** (dark) — "Clinical Games" left; right: Games · Card games · Learning tools · About · Contact, then the EN/FI toggle (moved here from its old fixed top-right pill; active language = white pill). Sticky at the top on screens wider than 720px; on phones it is not sticky and wraps onto extra lines.
+2. **Header** (`#0F2E28`, two columns, stacking ≤860px)
+   - Left: headline "Medication learning, played — not just memorised." (Space Grotesk, "played" in `#FFB547`), subline in `#C9DDD7`, buttons "Play the games" (amber fill, `#1A1A1A` text → Scenario games) and "See the learning tools" (white outline + white text → Learning tools).
+   - Right: **Why carousel** — small label "Why this work exists · 1 / 3", card `#143A33` with `#2E5A50` border, one statement at a time with its citation below (existing texts, EN + FI). Previous/next arrow buttons + three dot buttons; moves **only when clicked** (no auto-slide), ←/→ keys also work when focus is inside it. All controls are real `<button>`s with aria-labels; the visible slide is an `aria-live="polite"` region. Invisible copies of all three slides keep the card the height of the longest one, so it doesn't jump. Directly under the card: the three full references, small, `#A9C4BC`.
+3. **Scenario games** (`#0F2E28`) — heading + subtitle "Story-based prototypes · play in your browser, no account"; FarmaRush (`#FF9F1A`) and MyDay (`#A78BFA`) as two large rounded tiles side by side, all text `#1A1A1A`. Tile: image, label, name, full description, "Play now →" as a dark `#1A1A1A` button.
+4. **Card games** (`#143A33`) — heading + subtitle "Quick drills for linking drugs, indications and drug classes"; MediChain and MediLink as white cards with a 6px coloured top border, heading `#0F2E28`, text `#4E5B58`, label + "Play now →" text link `#157565`.
+5. **Learning tools** (`#D8E9E5`) — heading + subtitle "Working apps for everyday studying and placements"; FarmaDiary and PleksusDiaries as white cards stacked vertically, image left / text right (stacking ≤720px); buttons filled `#157565`, white text ("Visit FarmaDiary →" → farmadiary.com, "Visit PleksusDiaries →").
+6. **About** (`#0F2E28`) — full existing heading + 3 paragraphs, text `#C9DDD7`, ~760px reading width.
+7. **Contact** (`#143A33`) — same Formspree form (endpoint, fields, AJAX, success/error messages unchanged); white labels, white fields with `#1A1A1A` text, amber focus ring, amber "Send message" button; success/error boxes on `#0F2E28`.
+8. **Footer** — existing "© 2026 Piret Paal", `#A9C4BC` on `#0F2E28`, thin top line.
+
+**Images:** every frame 16:9, rounded (`--radius` 0.75rem), **white background**, `object-fit: contain` so nothing is cropped — **except MyDay and PleksusDiaries**, which use `object-fit: cover` (their files are slightly narrower than 16:9 and would otherwise show white side strips). Click-to-enlarge lightbox kept on all six images, `cursor: zoom-in`. No "Demo" links, no video placeholders.
+
+**Labels:** same texts as before (`Game 0X · …` / `Peli 0X · …`, `Learning tool · …`), small uppercase; `#1A1A1A` on the tiles, `#157565` on white cards.
+
+**New texts (EN only, no FI yet) in `content.js`:** menu labels (`nav_*`; "Card games"/"Learning tools" also serve as those section headings), headline (split into three keys so "played" can be coloured), subline, the two header buttons, "Why this work exists", the three section subtitles + "Scenario games" heading. Still in `content.js` but not shown in this design: `hero_name`, `hero_tagline`, `why_heading` (kept with their Finnish in case they return). All other text is the existing wording, unchanged.
+
+**Accessibility / responsiveness (checked):** every text/background pair passes WCAG AA (lowest is 5.58:1, `#157565` on white; checked automatically on all visible text in EN and FI, incl. the contact success/error boxes). Visible keyboard focus ring everywhere (amber on dark, dark green on tiles/white cards). No sideways overflow at 390px or 320px.
+
 ## Color tokens
+> ⚠️ **REPLACED by the redesign** (see "Redesign — new design" above). This describes the design still on the live site until the redesign is published; kept for history.
+
 Pulled directly from FarmaDiary's design system for visual consistency across the "Farma" project family:
 
 | Token | Hex | Use |
@@ -35,13 +85,17 @@ Pulled directly from FarmaDiary's design system for visual consistency across th
 
 **Per-game accent colors still exist in one place:** the subtle background tint inside each game's screenshot frame (`.game-media-box`, `color-mix(... var(--accent) 10%, white)`), so portrait-shaped screenshots don't letterbox into plain white. This was an intentional, narrower exception — the accent variables (`--accent-myday`, `--accent-farmarush`, `--accent-medichain`, `--accent-medilink`) are still defined in `:root` for this purpose only.
 
-**Hero banner background (done):** mesh-gradient effect (not flat linear) — base `#167B65` with three blurred color blobs (`#2FC9A6` top-left, `#38BDF8` bottom-right, `#20A386` upper-right, varying opacity, `blur(60–80px)`), plus a soft white radial glow (`rgba(255,255,255,0.18)`, ellipse shape to avoid a hard-edge clipping bug) centered behind the "Piret Paal" heading. `header` uses `overflow: hidden` so blobs stay contained on small screens.
+**Hero banner background (REPLACED by the redesign — blobs removed):** mesh-gradient effect (not flat linear) — base `#167B65` with three blurred color blobs (`#2FC9A6` top-left, `#38BDF8` bottom-right, `#20A386` upper-right, varying opacity, `blur(60–80px)`), plus a soft white radial glow (`rgba(255,255,255,0.18)`, ellipse shape to avoid a hard-edge clipping bug) centered behind the "Piret Paal" heading. `header` uses `overflow: hidden` so blobs stay contained on small screens.
 
 ## Typography
+> ⚠️ **REPLACED by the redesign** (see "Redesign — new design" above). This describes the design still on the live site until the redesign is published; kept for history. New fonts: Space Grotesk 700 headings + Inter.
+
 - Font: **Inter** (headings + body)
 - Radius scale: `--radius: 0.75rem`, `--radius-lg: 1rem`
 
-## Layout structure (current, live)
+## Layout structure (old — still on the live site)
+> ⚠️ **REPLACED by the redesign** (see "Redesign — new design" above). This describes the design still on the live site until the redesign is published; kept for history.
+
 1. **Header/hero** — mesh-gradient banner, name, italic tagline, language toggle top-right (the project-names line that used to sit below the tagline, and the old subtitle line, were both removed)
 2. **Game sections** (×4, in this order: **FarmaRush, MyDay, MediChain, MediLink**) — alternating white/`#EAF3F0` backgrounds, image-beside-text layout alternating sides per section (left/right/left/right), image in a fixed 16:9 box with rounded corners, full-bleed section color with content in a centered `max-width: ~1000px` column, generous responsive padding (not fixed height).
 3. **FarmaDiary** — its own full section, same treatment as the game sections (sits directly after the four games)
@@ -52,6 +106,8 @@ Pulled directly from FarmaDiary's design system for visual consistency across th
 8. **Footer** — © 2026 Piret Paal, nothing else
 
 ## Section label style
+> Label **texts** below are unchanged in the redesign; their **colour** is replaced (`#1A1A1A` on game tiles, `#157565` on white cards).
+
 No colored pill/chip badges anywhere on the page (including FarmaDiary's, which used to have a yellow pill). Small plain text label above each name, in `#167B65`:
 - `Game 01 · FI/EN` (FarmaRush — the game itself has an in-game EN/FI toggle)
 - `Game 02 · EN` (MyDay)
@@ -72,6 +128,7 @@ In FI mode, the four numbered labels become `Peli 01 · FI/EN`, `Peli 02 · EN`,
 - The split was verified pixel-identical: full-page screenshots before/after (desktop 1280px and mobile 390px; EN default on other hosts, FI default on `clinicalgames.fi`, toggle clicks, saved choice after reload) matched exactly, as did page text, `lang` attribute and alt texts.
 
 ## Language (FI/EN)
+- **Redesign:** the toggle now sits inside the top menu (no longer a separate fixed pill); behaviour, default language and saved choice are unchanged.
 - **Current status: toggle is built and live.** Fixed pill top-right (`EN`/`FI`), active language bolded/highlighted, choice persists via `localStorage`, full text swap via JS with no reload.
 - **Default language depends on domain (live):** first-time visitors (no saved preference yet) get **FI** automatically on `clinicalgames.fi`, and **EN** everywhere else (e.g. the `paalpiret.github.io/farmagames-showcase/` fallback URL), based on `location.hostname`. Once someone clicks the toggle, their explicit choice is saved and always wins on later visits, regardless of domain.
 - **Real Finnish content exists for:** the hero tagline, the "Why"/"About Me" section headings ("Miksi"/"Minusta"), the Why section (Piret's own thesis wording — see below; each card's citation is its own small gray line below the quote, with no trailing page number, same structure as the English cards), the five section descriptions (FarmaRush, MyDay, MediChain, MediLink, FarmaDiary) plus the PleksusDiaries description, the "Game"/"Play now" → "Peli"/"Pelaa" swap on game labels and buttons, the Contact section (heading, field labels, submit button), and About Me.
@@ -99,10 +156,12 @@ New product section, added 2026-10-10, sitting right after FarmaDiary. Link `htt
 - **Description (FI, live):** "Henkilökohtainen oppimispäiväkirja hoitotyön opiskelijoille. Kirjaa päiväkirjaan, mitä opit koulussa ja harjoittelussa, ja liitä merkintöihin käsiteltyt teemat. Pohdi, miten eri teemat liittyvät toisiinsa. Kaikki merkinnät ja teemat löytyvät myöhemmin helposti." (unlike FarmaDiary, this one has a real FI translation, per Piret's brief that it's bilingual)
 - **Image (live):** `PleksusDiaries promo image.png` — a screenshot of the PleksusDiaries landing page itself ("Where everything you learn connects" hero + the Write as you go / See what you know / Think it through feature cards), unlike the other sections' illustrated key-art. Aspect ratio is narrower than the 16:9 frame (1.56:1), so it letterboxes slightly left/right into the pink accent tint — same `object-fit: contain` behavior as the other sections, no special-casing needed.
 - **CTA button:** "Visit PleksusDiaries →", links out to `https://pleksusdiaries.lovable.app/` (`target="_blank" rel="noopener noreferrer"`, same as FarmaDiary's external link).
-- **Accent color:** `--accent-pleksus: #F472B6` (soft pink), used only for the media-box tint, same narrow purpose as the other per-game accent vars.
-- **Layout position:** image-right (`.game-flex.reverse`), `bg-white`, continuing the alternation after FarmaDiary (`bg-tint`). Adding this section shifted every section after it (Why onward) to the opposite background — see Layout structure above.
+- **Accent color (REPLACED by the redesign — no frame tints):** `--accent-pleksus: #F472B6` (soft pink), used only for the media-box tint, same narrow purpose as the other per-game accent vars.
+- **Layout position (REPLACED by the redesign — now a stacked Learning tools card, image left):** image-right (`.game-flex.reverse`), `bg-white`, continuing the alternation after FarmaDiary (`bg-tint`). Adding this section shifted every section after it (Why onward) to the opposite background — see Layout structure above.
 
 ### Why section — card styling
+> ⚠️ **REPLACED by the redesign** (see "Redesign — new design" above). This describes the design still on the live site until the redesign is published; kept for history. In the redesign the Why statements are a click-only carousel in the header.
+
 Statement text is regular weight (400) in the same muted gray (`#6B7280`) as every other body paragraph on the page (game descriptions, About Me, etc.) — it was originally semi-bold (600) and dark navy, which stood out as the only body text styled that way; fixed for consistency. Citation line below stays smaller, italic, same gray. Font is Inter throughout, no separate font-family for this section.
 
 ### Why section (EN)
@@ -116,7 +175,7 @@ Each statement's citation is stripped out of the sentence and shown as its own s
 2. "Tutkimuksen mukaan sairaanhoitajaopiskelijat ajattelevat farmakologiakurssin "pakollisena pahana" sen sijaan, että sen sisältö olisi tärkeä hallita." — Mauldin 2023
 3. "Vuonna 2019 tehdyn tutkimuksen mukaan on todettu online-menetelmien olevan yksi parhaimpia tapoja farmakologian opettamisessa opiskelijatyytyväisyyden ja tiedon hankinnan kannalta." — Gill ym. 2019
 
-### Why section — full citations (small gray `#6B7280` text, below the cards, live, alphabetical order)
+### Why section — full citations (alphabetical; redesign: `#A9C4BC`, directly under the Why carousel card — old live site: gray `#6B7280` below the cards)
 Gill, Manu & Andersen, Elizabeth & Hilsmann, Norma. 2019. Best practices for teaching pharmacology to undergraduate nursing students: A systematic review of the literature.
 
 Luokkamäki, Sanna & Vehviläinen-Julkunen, Katri & Saano, Susanna & Härkänen, Marja 2016. "Sairaanhoitajien lääkehoidon osaaminen heidän itsensä arvioimana", Tutkiva Hoitotyö, vol. 14, no. 2, pp. 23–32.
@@ -150,7 +209,7 @@ Note: the FI version splits into 4 paragraphs in Piret's original text; paragrap
 - **FarmaDiary** → `FarmaDiary promo image.png` (branded illustration: quiz cards + progress dashboard)
 - **PleksusDiaries** → `PleksusDiaries promo image.png` (screenshot of the PleksusDiaries landing page itself, not illustrated key-art — see Content above)
 
-**Frame treatment (live):** each image sits in a fixed 16:9 box, `border-radius: 20px`, `box-shadow: 0 8px 24px rgba(0,0,0,0.08)`. Fill is `object-fit: contain` (MyDay uses `cover` specifically — its illustration's aspect ratio didn't match the 16:9 frame and left pale bars on the sides), with the frame's background tinted in that game's accent color for any image that doesn't exactly fill the box. That tint is normally a subtle 10%-accent blend toward white (`color-mix(in srgb, var(--accent) 10%, var(--card))`) — a deliberate design choice for the illustrated key-art. **PleksusDiaries is the exception:** its image is a literal screenshot, so a 10% tint left a faint off-white seam at the edges; its box instead uses a `.exact-bg` modifier (full-strength `var(--accent)`, no blending) with `--accent-pleksus` set to the image's own sampled background color (`#F9FBFA` / `rgb(249,251,250)`), so the frame matches exactly with no seam.
+**Frame treatment (REPLACED by the redesign — now white 16:9 frames, contain, cover only for MyDay + PleksusDiaries; no accent tints, no shadow):** each image sits in a fixed 16:9 box, `border-radius: 20px`, `box-shadow: 0 8px 24px rgba(0,0,0,0.08)`. Fill is `object-fit: contain` (MyDay uses `cover` specifically — its illustration's aspect ratio didn't match the 16:9 frame and left pale bars on the sides), with the frame's background tinted in that game's accent color for any image that doesn't exactly fill the box. That tint is normally a subtle 10%-accent blend toward white (`color-mix(in srgb, var(--accent) 10%, var(--card))`) — a deliberate design choice for the illustrated key-art. **PleksusDiaries is the exception:** its image is a literal screenshot, so a 10% tint left a faint off-white seam at the edges; its box instead uses a `.exact-bg` modifier (full-strength `var(--accent)`, no blending) with `--accent-pleksus` set to the image's own sampled background color (`#F9FBFA` / `rgb(249,251,250)`), so the frame matches exactly with no seam.
 
 **Click-to-enlarge (live):** every section image shows `cursor: zoom-in` and opens in a simple lightbox on click — dark overlay, image centered at up to 90% viewport width/height. Closes via background click, the × button, or Escape. No gallery/navigation between images.
 
@@ -168,5 +227,7 @@ Each of the four games (FarmaRush, MyDay, MediChain, MediLink) has a small, unob
 - **FI translation (live):** heading "Ota yhteyttä", labels "Nimi" / "Sähköposti" / "Viesti", submit button "Lähetä", confirmation message (see above).
 
 ## Open / deferred items
-- [ ] Decide on screenshot cropping/framing treatment (square + tilted vs. current fixed-16:9 boxes)
+- [x] Screenshot framing decided in the redesign: fixed 16:9 white frames (square + tilted idea dropped)
+- [ ] Finnish versions of the new redesign labels (menu, headline, subline, header buttons, section headings/subtitles, "Why this work exists")
+- [ ] Publish the redesign (merge `redesign` into the live branch, then update `CLAUDE.md`)
 - [x] Custom domain — `clinicalgames.fi` is live (`CNAME` file, DNS, and Pages settings all done; see TECH-NOTES.md)

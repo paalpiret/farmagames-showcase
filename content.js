@@ -17,8 +17,33 @@
 // ─────────────────────────────────────────────────────────────
 
 var translations = {
-  // ── Header ──
+  // ── Top menu ──
+  // hero_eyebrow is the "Clinical Games" name at the left of the menu.
   hero_eyebrow: { en: "Clinical Games" },
+  nav_games: { en: "Games" },
+  nav_card_games: { en: "Card games" },        // also the Card games section heading
+  nav_learning_tools: { en: "Learning tools" }, // also the Learning tools section heading
+  nav_about: { en: "About" },
+  nav_contact: { en: "Contact" },
+
+  // ── Header ──
+  // The headline is split in three so "played" can be coloured.
+  hero_headline_start: { en: "Medication learning, " },
+  hero_headline_highlight: { en: "played" },
+  hero_headline_end: { en: " — not just memorised." },
+  hero_subline: { en: "Learning games and digital tools for nursing education, built by Piret Paal — registered nurse and designer." },
+  hero_btn_games: { en: "Play the games" },
+  hero_btn_tools: { en: "See the learning tools" },
+  why_carousel_label: { en: "Why this work exists" }, // followed by "· 1 / 3" counter
+
+  // ── Section headings ──
+  scenario_heading: { en: "Scenario games" },
+  scenario_subtitle: { en: "Story-based prototypes · play in your browser, no account" },
+  card_games_subtitle: { en: "Quick drills for linking drugs, indications and drug classes" },
+  learning_tools_subtitle: { en: "Working apps for everyday studying and placements" },
+
+  // ── Not shown in the current design (kept, with their Finnish, in case they return) ──
+  // hero_name, hero_tagline, why_heading
   hero_name: { en: "Piret Paal" },
   hero_tagline: {
     en: "A portfolio of learning games and digital tools designed to make medication learning and nursing studies a little easier and more fun.",
