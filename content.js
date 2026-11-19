@@ -100,7 +100,7 @@ var translations = {
   why_heading: { en: "Why", fi: "Miksi" },
   why1_statement: {
     en: "“Over half of surveyed nurses have caused a medication-related safety incident; half have given medicines without knowing their effects.”",
-    fi: "“Vuonna 2016 julkaistun tutkimuksen mukaan yli puolet tutkimukseen osallistuneet sairaanhoitajista ovat joskus aiheuttanut potilaalle lääkehoidon virheen takia vaaratilanteen ja puolet ovat antaneet lääkkeitä, joiden vaikutuksia he eivät tietäneet.”"
+    fi: "“Yli puolet tutkimukseen osallistuneet sairaanhoitajista ovat joskus aiheuttanut potilaalle lääkehoidon virheen takia vaaratilanteen ja puolet ovat antaneet lääkkeitä, joiden vaikutuksia he eivät tietäneet.”"
   },
   why1_citation: { en: "Luokkamäki et al., 2016", fi: "Luokkamäki ym. 2016" },
   why2_statement: {
