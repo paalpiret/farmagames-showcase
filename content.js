@@ -22,11 +22,11 @@ var translations = {
   // A logo, not translated — same text in EN and FI.
   wordmark_clinical: { en: "clinical" },
   wordmark_games: { en: "games" },
-  nav_games: { en: "Games" },
-  nav_card_games: { en: "Card games", fi: "Korttipelit" },        // also the Card games section heading
-  nav_learning_tools: { en: "Learning tools", fi: "Oppimissovellukset" }, // also the Learning tools section heading
-  nav_about: { en: "About" },
-  nav_contact: { en: "Contact" },
+  // Menu links have their own keys (separate from the section headings).
+  nav_games: { en: "Games", fi: "Pelit" },          // → Scenario games (Card games follows below)
+  nav_tools: { en: "Tools", fi: "Sovellukset" },    // → Learning tools
+  nav_about: { en: "About", fi: "Minusta" },
+  nav_contact: { en: "Contact", fi: "Ota yhteyttä" },
 
   // ── Header ──
   // The headline is split in three so "played" can be coloured.
@@ -41,6 +41,8 @@ var translations = {
 
   // ── Section headings ──
   scenario_heading: { en: "Scenario games", fi: "Sairaalapelit" },
+  card_games_heading: { en: "Card games", fi: "Korttipelit" },
+  learning_tools_heading: { en: "Learning tools", fi: "Oppimissovellukset" },
   scenario_subtitle: { en: "Step into a nursing shift · no account needed", fi: "Astu sairaanhoitajan työvuoroon · ilman kirjautumista" },
   card_games_subtitle: { en: "Link medicines, indications and drug classes · no account needed", fi: "Yhdistä lääkkeet, käyttöaiheet ja lääkeryhmät · ilman kirjautumista" },
   learning_tools_subtitle: { en: "Apps for everyday studying and clinical placements", fi: "Sovelluksia opiskeluun ja kliinisiin harjoitteluihin" },
