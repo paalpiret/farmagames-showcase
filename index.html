@@ -543,6 +543,8 @@
   }
   .about-inner p { margin: 0 0 1.1rem; color: var(--on-dark); }
   .about-inner p:last-child { margin-bottom: 0; }
+  /* Thesis link inside About paragraph 2 (opens the PDF in a new tab) */
+  .about-link { color: #7BE3C6; text-decoration: underline; }
 
   /* ── 7. Contact ─────────────────────────────────────────── */
   .contact-inner h2 {
@@ -865,7 +867,7 @@
     <div class="about-inner">
       <h2 data-i18n="about_heading"></h2>
       <p data-i18n="about_text_1"></p>
-      <p data-i18n="about_text_2"></p>
+      <p><span data-i18n="about_text_2a"></span><a class="about-link" href="https://www.theseus.fi/server/api/core/bitstreams/6765a411-b504-465a-bc58-f826b8bec0fb/content" target="_blank" rel="noopener noreferrer" aria-describedby="thesis-link-hint" data-i18n="about_text_2_link"></a><span data-i18n="about_text_2b"></span><span id="thesis-link-hint" hidden data-i18n="about_text_2_link_hint"></span></p>
       <p data-i18n="about_text_3"></p>
     </div>
   </div>

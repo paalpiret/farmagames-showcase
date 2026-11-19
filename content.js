@@ -135,15 +135,24 @@ var translations = {
   // ── About Me ──
   about_heading: { en: "About Me", fi: "Minusta" },
   about_text_1: {
-    en: "I'm a nursing student with a particular interest in cardiology and pharmacology. Before nursing, I trained as a fashion designer at the Estonian Academy of Arts and spent some time working in software for design tools across Northern Europe.",
+    en: "I’m a newly registered nurse with a particular interest in cardiology and pharmacology. Before nursing, I trained as a fashion designer at the Estonian Academy of Arts and worked as a software specialist for fashion design and production tools across Northern Europe.",
     fi: "Olen sairaanhoitajaopiskelija ja erikoisaloista minua kiinnostavat erityisesti kardiologia ja farmakologia. Ennen hoitoalalle siirtymistä kouluttauduin vaatesuunnittelijaksi Eesti Kunstiakademiassa ja työskentelin muotiin liittyvien suunnitteluohjelmistojen parissa Pohjoismaissa."
   },
-  about_text_2: {
-    en: "Somewhere along the way, design and healthcare started to overlap, and I've worked, for example, with researchers at the University of Helsinki on a service for parents navigating early childhood. In 2025, my bachelor's thesis looked at medication safety among student nurses — and found what research keeps finding: pharmacology is hard to teach, and harder to make stick.",
+  // Paragraph 2 is split in three so "bachelor’s thesis" can be a link (the <a> is in index.html).
+  // FI: the whole existing Finnish paragraph 2 sits in about_text_2a; the link and after-link parts
+  // are empty in FI, so FI mode shows the old Finnish paragraph unchanged (no link yet).
+  about_text_2a: {
+    en: "Somewhere along the way, design and healthcare started to overlap. Before nursing, I worked with researchers at the University of Helsinki on a service for parents of young children. In 2023 I began my nursing studies at Metropolia University of Applied Sciences, and in 2025 my co-authored ",
     fi: "Jossain vaiheessa muotoilu ja terveydenhuolto alkoivat luontevasti yhdistyä tekemisessäni. Olen esimerkiksi työskennellyt Helsingin yliopiston tutkijoiden kanssa palvelun parissa, joka tukee vanhempia varhaislapsuuden haasteissa. Vuonna 2025 opinnäytetyöni käsitteli aihetta, miten sairaanhoitajaopiskelijat opiskelevat lääkehoitoa ja miten sitä kannattaisi opettaa. Opinnäytetyössä totesimme, että farmakologiaa on vaikea opettaa, ja vielä vaikeampaa on opiskelijan saada opittu tieto jäämään mieleen."
   },
+  about_text_2_link: { en: "bachelor’s thesis", fi: "" },
+  about_text_2_link_hint: { en: "PDF, opens in a new tab", fi: "" }, // screen-reader description of the link
+  about_text_2b: {
+    en: " looked at medication safety among student nurses. We found what research keeps finding: pharmacology is hard to teach, and harder to make stick.",
+    fi: ""
+  },
   about_text_3: {
-    en: "That's what led me here — building games and digital learning tools instead of just writing about the problem. I started experimenting with vibe-coding and playing around with these subjects, and it grew from there — each one a focused prototype, not a finished product, but a genuine attempt to make pharmacology a little less abstract and a little more memorable, for students like me.",
+    en: "That’s what led me here. I started experimenting with AI coding tools to make pharmacology, and nursing studies more broadly, easier and more fun to learn. I have built a few games and digital tools that help students, and nurses too, learn medicines, understand life on a ward, and reflect on how different nursing concepts connect. Try them out above, and tell me what you think!",
     fi: "Inspiroituin opinnäytetyöstäni ja aloin rakentamaan pelejä ja digitaalisia oppimistyökaluja aluksi vain itselleni, helpottaakseni omaa oppimistani. Kokeilin niin sanottua vibe coding -työskentelyä ja kehitin erilaisten aiheiden ympärille pelillisiä ideoita. Tällä sivulla pääset tutustumaan kehittämiini oppimispeleihin. Jokainen peli on tässä vaiheessa vielä prototyyppi, ei valmis tuote. Ne ovat yrityksiä tehdä farmakologiasta hieman vähemmän abstraktia ja helpommin muistettavaa sairaanhoitajaopiskelijoille."
   },
 
