@@ -17,6 +17,13 @@
 // ─────────────────────────────────────────────────────────────
 
 var translations = {
+  // ── Browser tab title (follows the EN/FI toggle) ──
+  // The static <title> in index.html is the Finnish one, for search engines.
+  page_title: {
+    en: "clinicalgames: learning games and tools for nursing studies",
+    fi: "clinicalgames: oppimispelejä ja -sovelluksia hoitotyön opiskeluun"
+  },
+
   // ── Top menu ──
   // Wordmark "clinicalgames" at the left of the menu: one word, two colours.
   // A logo, not translated — same text in EN and FI.

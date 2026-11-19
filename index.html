@@ -1,10 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Piret Paal — Interactive Nursing Projects</title>
-<meta name="description" content="Piret Paal: interactive nursing projects and game prototypes.">
+<!-- Static head is Finnish on purpose: search engines and link previews read it
+     without running JavaScript, and clinicalgames.fi is a Finnish site (FI is the
+     default there). The visible tab title still follows the EN/FI toggle
+     (page_title in content.js); description + og tags stay Finnish. -->
+<title>clinicalgames: oppimispelejä ja -sovelluksia hoitotyön opiskeluun</title>
+<meta name="description" content="Oppimispelejä ja digitaalisia työkaluja hoitotyön opiskeluun. Tekijänä Piret Paal, sairaanhoitaja ja suunnittelija. Kokeile prototyyppejä suoraan selaimessa.">
+<meta property="og:title" content="clinicalgames: oppimispelejä ja -sovelluksia hoitotyön opiskeluun">
+<meta property="og:description" content="Oppimispelejä ja digitaalisia työkaluja hoitotyön opiskeluun. Tekijänä Piret Paal, sairaanhoitaja ja suunnittelija. Kokeile prototyyppejä suoraan selaimessa.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://clinicalgames.fi/">
+<meta property="og:locale" content="fi_FI">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
@@ -942,6 +951,7 @@
       altNodes[a].setAttribute('alt', t(altNodes[a].getAttribute('data-i18n-alt'), lang));
     }
     document.documentElement.setAttribute('lang', lang);
+    document.title = t('page_title', lang);
     var buttons = document.querySelectorAll('.lang-btn');
     for (var j = 0; j < buttons.length; j++) {
       buttons[j].classList.toggle('active', buttons[j].getAttribute('data-lang') === lang);

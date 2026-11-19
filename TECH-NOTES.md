@@ -18,8 +18,15 @@ A plain-language reference for the pieces behind the FarmaGames showcase site, s
 
 - **`content.js`** holds every piece of text shown on the landing page, in English and Finnish, each written exactly once. To change wording or add a Finnish translation, edit only this file.
 - **`index.html`** holds the layout, colors and spacing. Its text spots are empty placeholders tagged with a key (e.g. `data-i18n="about_heading"`); when the page opens, a small script copies the matching text from `content.js` into each spot in the current language (FI by default on clinicalgames.fi, EN elsewhere, or whatever the visitor last picked).
-- Only the browser-tab title, the search-engine description, the `EN`/`FI` button letters and the `×` close icon stay inside `index.html`.
+- Only the Finnish page title / search-engine description / link-preview tags (see below), the `EN`/`FI` button letters and the `×` close icon stay inside `index.html`. The tab title visitors see is switched to EN or FI from `content.js`.
 - Both files must be published together — if `content.js` is missing, the page shows its layout with no text.
+
+## Page title and link previews (why the HTML head is Finnish)
+
+- The `<head>` of `index.html` — the page title, the search-engine description and the link-preview tags (`og:…`, used when the link is shared in WhatsApp, Slack, LinkedIn, Facebook etc.) — is written **in Finnish, directly in the HTML**.
+- Why: search engines and link previews read only the plain HTML; they don't run the page's language script and never click EN/FI. clinicalgames.fi is a Finnish site and shows Finnish by default, so that's what they should see.
+- The **browser tab title** is still bilingual for visitors: it comes from `page_title` in `content.js` and switches with the EN/FI toggle (also after a reload). The description and preview tags stay Finnish.
+- There is no preview image (`og:image`) yet — shared links show text only.
 
 ## Custom domain (done, live)
 
