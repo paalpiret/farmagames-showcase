@@ -36,7 +36,7 @@ var translations = {
   hero_subline: { en: "Hi, I’m Piret Paal. I qualified as a registered nurse in 2026, and before nursing I trained as a designer at the Estonian Academy of Arts. I’ve been building learning games and digital tools for nursing studies, from medications and ward routines to reflective learning. Here you can try them out as they are now: working prototypes that I keep developing." },
   hero_btn_games: { en: "Play the games" },
   hero_btn_tools: { en: "See the learning tools" },
-  why_carousel_label: { en: "Why this work exists" }, // label on quote slides, followed by "· 1 / 4" counter
+  why_carousel_label: { en: "Why this matters", fi: "Miksi tämä on tärkeää" }, // label on quote slides, followed by "· 1 / 4" counter
   why_sources_label: { en: "Sources", fi: "Lähteet" },  // label on the 4th slide (all three references)
 
   // ── Section headings ──

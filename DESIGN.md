@@ -50,7 +50,7 @@ Built on the `redesign` branch; the live site keeps the old design until the red
    - Left: headline "Medication learning, played — not just memorised." (Space Grotesk, "played" in `#FFB547`), subline in `#C9DDD7`, buttons (design sketch: `padding: 15px 26px; border-radius: 12px; font-size: 16px`, both with a 1px border so they are the same height) — "Play the games": fill `#FFB547`, text `#1A1A1A`, weight 700 (→ Scenario games); "See the learning tools": transparent, `1px solid #4F7A70` border, white text, weight 600 (→ Learning tools). (Replaced: 0.7rem/1.35rem padding, 0.75rem radius, weight 600, white 2px outline.) The contact form's "Send message" button keeps its own earlier style.
    - Right: **Why carousel card** (rebuilt to match the design sketch — values exactly as specified):
      - **Card:** background `#143A33`; border `1px solid #2E5A50`; radius `22px`; padding `36px`; shadow `0 24px 60px rgba(0,0,0,0.35)`; flex column, `justify-content: space-between`, `gap: 28px`. Height on desktop fits the tallest of the four slides (invisible copies of all slides share one grid cell, desktop only), so it never jumps when switching; on phones (≤860px) the height is auto.
-     - **1. Label** inside the card, top: `13px`, `700`, `letter-spacing: 0.08em`, uppercase, `#FFB547` — "Why this work exists · 1 / 4" (2 / 4, 3 / 4) on the quote slides, "Sources · 4 / 4" / "Lähteet · 4 / 4" on the 4th (`why_sources_label`).
+     - **1. Label** inside the card, top: `13px`, `700`, `letter-spacing: 0.08em`, uppercase, `#FFB547` — "Why this matters · 1 / 4" / FI "Miksi tämä on tärkeää · 1 / 4" (2 / 4, 3 / 4) on the quote slides (`why_carousel_label`, EN + FI; replaced "Why this work exists"), "Sources · 4 / 4" / "Lähteet · 4 / 4" on the 4th (`why_sources_label`).
      - **2. Quote:** Space Grotesk `28px`, line-height `1.3`, weight `500` (now loaded from Google Fonts alongside 700), `#FFFFFF`, not italic. Long words break inside the card instead of overflowing (`overflow-wrap: break-word`; Finnish also `hyphens: auto` where the browser has Finnish hyphenation — English is never auto-hyphenated).
      - **3. Citation line:** Inter `14px`, `#A9C4BC`, not italic, no leading dash (the "— " was removed from `why1/2/3_citation` in content.js, EN + FI). Quote and citation sit 28px apart (same as the card gap).
      - **4th slide "Sources":** instead of a quote, the three full references (Gill, Luokkamäki, Mauldin — alphabetical) as three paragraphs, Inter `14px`, line-height `1.55`, `#C9DDD7`, `gap: 12px`.
@@ -72,7 +72,7 @@ Built on the `redesign` branch; the live site keeps the old design until the red
 
 **Labels:** same texts as before (`Game 0X · …` / `Peli 0X · …`, `Learning tool · …`), uppercase, `13px`, weight 700, `letter-spacing: 0.06em` everywhere they appear (replaced 0.72rem / 0.08em); `#1A1A1A` on the tiles, `#157565` on white cards.
 
-**New texts (EN only, no FI yet) in `content.js`:** menu labels (`nav_*`; "Card games"/"Learning tools" also serve as those section headings), headline (split into three keys so "played" can be coloured), subline, the two header buttons, "Why this work exists", the three section subtitles + "Scenario games" heading. Still in `content.js` but not shown in this design: `hero_name`, `hero_tagline`, `why_heading` (kept with their Finnish in case they return). All other text is the existing wording, unchanged.
+**New texts (EN only, no FI yet) in `content.js`:** menu labels (`nav_*`; "Card games"/"Learning tools" also serve as those section headings), headline (split into three keys so "played" can be coloured), subline, the two header buttons, the three section subtitles + "Scenario games" heading. Still in `content.js` but not shown in this design: `hero_name`, `hero_tagline`, `why_heading` (kept with their Finnish in case they return). All other text is the existing wording, unchanged. The Why carousel label (`why_carousel_label`) now has both EN and FI: "Why this matters" / "Miksi tämä on tärkeää".
 
 **Accessibility / responsiveness (checked):** every text/background pair passes WCAG AA (lowest is 5.58:1, `#157565` on white; checked automatically on all visible text in EN and FI, incl. the contact success/error boxes). Visible keyboard focus ring everywhere (amber on dark, dark green on tiles/white cards). No sideways overflow at 390px or 320px.
 
@@ -241,7 +241,7 @@ Each of the four games (FarmaRush, MyDay, MediChain, MediLink) has a small, unob
 
 ## Open / deferred items
 - [x] Screenshot framing decided in the redesign: fixed 16:9 white frames (square + tilted idea dropped)
-- [ ] Finnish versions of the new redesign labels (menu, headline, subline, header buttons, section headings/subtitles, "Why this work exists")
+- [ ] Finnish versions of the new redesign labels (menu, headline, subline, header buttons, section headings/subtitles)
 - [ ] Decide: inactive carousel dots / previous-button border `#4F7A70` (2.59:1) vs. `#56867B` (3.03:1, passes WCAG non-text contrast)
 - [ ] Publish the redesign (merge `redesign` into the live branch, then update `CLAUDE.md`)
 - [x] Custom domain — `clinicalgames.fi` is live (`CNAME` file, DNS, and Pages settings all done; see TECH-NOTES.md)
