@@ -63,8 +63,8 @@ var translations = {
   medilink_name: { en: "MediLink" },
   farmadiary_name: { en: "FarmaDiary" },
   pleksusdiaries_name: { en: "PleksusDiaries" },
-  farmadiary_label: { en: "Learning tool · EN" },
-  pleksusdiaries_label: { en: "Learning tool · EN/FI" },
+  farmadiary_label: { en: "Learning tool · EN", fi: "Oppimissovellus · EN" },
+  pleksusdiaries_label: { en: "Learning tool · EN/FI", fi: "Oppimissovellus · EN/FI" },
 
   // Image alt text (screen readers / image descriptions)
   farmarush_img_alt: { en: "FarmaRush promo illustration: pharmacy chute, medicine shelves, and a nurse on shift" },
@@ -91,10 +91,10 @@ var translations = {
     fi: "Yhdistä lääkkeet niiden vaikuttaviin aineisiin, käyttöaiheisiin ja lääkeryhmiin kortti kerrallaan. Peli auttaa hahmottamaan lääketiedon kokonaisuuksia ja eri käsitteiden välisiä yhteyksiä."
   },
   play_now: { en: "Play now →", fi: "Pelaa →" },
-  game_label_1: { en: "Game 01 · FI/EN", fi: "Peli 01 · FI/EN" },
-  game_label_2: { en: "Game 02 · EN", fi: "Peli 02 · EN" },
-  game_label_3: { en: "Game 03 · FI", fi: "Peli 03 · FI" },
-  game_label_4: { en: "Game 04 · FI", fi: "Peli 04 · FI" },
+  game_label_1: { en: "Game · FI/EN", fi: "Peli · FI/EN" },
+  game_label_2: { en: "Game · EN", fi: "Peli · EN" },
+  game_label_3: { en: "Game · FI", fi: "Peli · FI" },
+  game_label_4: { en: "Game · FI", fi: "Peli · FI" },
 
   // ── Why ──
   why_heading: { en: "Why", fi: "Miksi" },

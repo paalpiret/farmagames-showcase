@@ -70,7 +70,7 @@ Built on the `redesign` branch; the live site keeps the old design until the red
 
 **Images:** every frame 16:9, rounded (`--radius` 0.75rem), **white background**, `object-fit: contain` so nothing is cropped — **except MyDay and PleksusDiaries**, which use `object-fit: cover` (their files are slightly narrower than 16:9 and would otherwise show white side strips). Click-to-enlarge lightbox kept on all six images, `cursor: zoom-in`. No "Demo" links, no video placeholders.
 
-**Labels:** same texts as before (`Game 0X · …` / `Peli 0X · …`, `Learning tool · …`), uppercase, `13px`, weight 700, `letter-spacing: 0.06em` everywhere they appear (replaced 0.72rem / 0.08em); `#1A1A1A` on the tiles, `#157565` on white cards.
+**Labels (texts changed 2026-11, numbers removed):** FarmaRush `Game · FI/EN` / FI `Peli · FI/EN`; MyDay `Game · EN` / `Peli · EN`; MediChain `Game · FI` / `Peli · FI`; MediLink `Game · FI` / `Peli · FI`; FarmaDiary `Learning tool · EN` / FI `Oppimissovellus · EN`; PleksusDiaries `Learning tool · EN/FI` / FI `Oppimissovellus · EN/FI` (the learning-tool labels now have Finnish; before they showed English in FI mode). All fit on one line in EN and FI down to 320px wide. Style: uppercase, `13px`, weight 700, `letter-spacing: 0.06em` everywhere they appear (replaced 0.72rem / 0.08em); `#1A1A1A` on the tiles, `#157565` on white cards.
 
 **New texts (EN only, no FI yet) in `content.js`:** menu labels (`nav_*`; "Card games"/"Learning tools" also serve as those section headings), headline (split into three keys so "played" can be coloured), subline, the two header buttons, the three section subtitles + "Scenario games" heading. Still in `content.js` but not shown in this design: `hero_name`, `hero_tagline`, `why_heading` (kept with their Finnish in case they return). All other text is the existing wording, unchanged. The Why carousel label (`why_carousel_label`) now has both EN and FI: "Why this matters" / "Miksi tämä on tärkeää".
 
@@ -118,7 +118,7 @@ Pulled directly from FarmaDiary's design system for visual consistency across th
 8. **Footer** — © 2026 Piret Paal, nothing else
 
 ## Section label style
-> Label **texts** below are unchanged in the redesign; their **colour** is replaced (`#1A1A1A` on game tiles, `#157565` on white cards).
+> ⚠️ **REPLACED by the redesign** — both the label **texts** (no more numbers; Finnish "Oppimissovellus" for the learning tools — see "Labels" in "Redesign — new design" above) and their **colour** (`#1A1A1A` on game tiles, `#157565` on white cards). The list below is the old live-site version, kept for history.
 
 No colored pill/chip badges anywhere on the page (including FarmaDiary's, which used to have a yellow pill). Small plain text label above each name, in `#167B65`:
 - `Game 01 · FI/EN` (FarmaRush — the game itself has an in-game EN/FI toggle)
