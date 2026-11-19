@@ -41,8 +41,8 @@ var translations = {
   hero_headline_highlight: { en: "played" },
   hero_headline_end: { en: " — not just memorised." },
   hero_subline: { en: "Hi, I’m Piret Paal. I qualified as a registered nurse in 2026, and before nursing I trained as a designer at the Estonian Academy of Arts. I’ve been building learning games and digital tools for nursing studies, from medications and ward routines to reflective learning. Here you can try them out as they are now: working prototypes that I keep developing." },
-  hero_btn_games: { en: "Play the games" },
-  hero_btn_tools: { en: "See the learning tools" },
+  hero_btn_games: { en: "Play the games", fi: "Pelaa pelejä" },
+  hero_btn_tools: { en: "See the learning tools", fi: "Tutustu sovelluksiin" },
   why_carousel_label: { en: "Why this matters", fi: "Miksi tämä on tärkeää" }, // label on quote slides, followed by "· 1 / 4" counter
   why_sources_label: { en: "Sources", fi: "Lähteet" },  // label on the 4th slide (all three references)
 
@@ -133,13 +133,13 @@ var translations = {
     en: "A personal medicine notebook — log the drugs you encounter on placement, quiz yourself on what you've logged, and watch your own knowledge base grow shift by shift.",
     fi: "Henkilökohtainen lääkepäiväkirja, johon kirjaat opinnoissa ja harjoitteluissa kohtaamasi lääkkeet. Testaa osaamistasi omiin merkintöihisi perustuvilla kysymyksillä ja seuraa, miten osaamisesi kehittyy ajan myötä."
   },
-  farmadiary_cta: { en: "Visit FarmaDiary →" },
+  farmadiary_cta: { en: "Visit FarmaDiary →", fi: "Avaa FarmaDiary →" },
 
   pleksusdiaries_desc: {
     en: "A personal learning diary for nursing students. Write down what you learn in your studies and placements and tag the topics behind it. Think about how different topics connect with each other. All your entries and topics are easy to find again later.",
     fi: "Henkilökohtainen oppimispäiväkirja hoitotyön opiskelijoille. Kirjaa päiväkirjaan, mitä opit koulussa ja harjoittelussa, ja liitä merkintöihin käsiteltyt teemat. Pohdi, miten eri teemat liittyvät toisiinsa. Kaikki merkinnät ja teemat löytyvät myöhemmin helposti."
   },
-  pleksusdiaries_cta: { en: "Visit PleksusDiaries →" },
+  pleksusdiaries_cta: { en: "Visit PleksusDiaries →", fi: "Avaa PleksusDiaries →" },
 
   // ── About Me ──
   about_heading: { en: "About Me", fi: "Minusta" },
@@ -176,7 +176,7 @@ var translations = {
   label_message: { en: "Message", fi: "Viesti" },
   submit_btn: { en: "Send message", fi: "Lähetä" },
   contact_success: { en: "Thank you for contacting me. I will get back to you soon.", fi: "Kiitos yhteydenotostasi. Vastaan sinulle pian" },
-  contact_error: { en: "Something went wrong — please try again, or reach out directly." },
+  contact_error: { en: "Something went wrong — please try again in a moment.", fi: "Jokin meni pieleen — yritä hetken päästä uudelleen." },
 
   // ── Footer ──
   footer: { en: "© 2026 Piret Paal" }
