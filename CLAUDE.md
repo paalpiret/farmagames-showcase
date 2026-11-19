@@ -14,7 +14,7 @@ WHAT WAS DONE (commit f5d538a on redesign)
 - DESIGN.md (new section "Where the page text lives"), TECH-NOTES.md and README.md updated to describe this.
 
 HOW TO PROMPT CHANGES NOW
-- Wording change / new Finnish translation → edit content.js only (add fi: "..." to an entry for Finnish).
+- Text workflow: English texts are finalised first; Finnish comes later. When an English text in content.js is changed, keep the existing fi value as it is until Piret gives new Finnish text. Texts with no fi show English in FI mode. Never invent Finnish translations.
 - New text → new key in content.js + empty tag with data-i18n="that_key" in index.html.
 - Design/layout change → index.html (CSS/HTML); text stays in content.js.
 
