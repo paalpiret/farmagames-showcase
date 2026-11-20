@@ -151,8 +151,8 @@ var translations = {
   // Paragraph 2 is split in three so the thesis words can be a link (the <a> is in index.html):
   // text before the link (ends with a space) + link text + text after the link (starts with a space).
   about_text_2a: {
-    en: "Somewhere along the way, design and healthcare started to overlap. Before nursing, I worked with researchers at the University of Helsinki on a service for parents of young children. In 2023 I began my nursing studies at Metropolia University of Applied Sciences, and in 2025 my co-authored ",
-    fi: "Ajan myötä muotoilu ja terveydenhuolto alkoivat kulkea tekemisessäni käsi kädessä. Ennen hoitoalaa työskentelin Helsingin yliopiston tutkijoiden kanssa palvelun parissa, joka tuki pienten lasten vanhempia. Aloitin sairaanhoitajaopinnot Metropolia Ammattikorkeakoulussa vuonna 2023, ja vuonna 2025 tekemämme "
+    en: "Somewhere along the way, design and healthcare started to overlap. Before I started my nursing studies, I worked with researchers at the University of Helsinki on a service that supported parents of young children. In 2023 I began my nursing studies at Metropolia University of Applied Sciences, and in 2025 my co-authored ",
+    fi: "Ajan myötä muotoilu ja terveydenhuolto alkoivat kulkea tekemisessäni käsi kädessä. Ennen kuin lähdin opiskelemaan hoitoalaa, työskentelin Helsingin yliopiston tutkijoiden kanssa palvelun parissa, joka tuki pienten lasten vanhempia. Aloitin sairaanhoitajaopinnot Metropolia Ammattikorkeakoulussa vuonna 2023, ja vuonna 2025 tekemämme "
   },
   about_text_2_link: { en: "bachelor’s thesis", fi: "opinnäytetyö" },
   about_text_2_link_hint: { en: "PDF, opens in a new tab", fi: "PDF, avautuu uuteen välilehteen" }, // screen-reader description of the link
