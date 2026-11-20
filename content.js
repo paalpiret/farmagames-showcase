@@ -145,24 +145,23 @@ var translations = {
   about_heading: { en: "About Me", fi: "Minusta" },
   about_text_1: {
     en: "I’m a newly registered nurse with a particular interest in cardiology and pharmacology. Before nursing, I trained as a fashion designer at the Estonian Academy of Arts and worked as a software specialist for fashion design and production tools across Northern Europe.",
-    fi: "Olen sairaanhoitajaopiskelija ja erikoisaloista minua kiinnostavat erityisesti kardiologia ja farmakologia. Ennen hoitoalalle siirtymistä kouluttauduin vaatesuunnittelijaksi Eesti Kunstiakademiassa ja työskentelin muotiin liittyvien suunnitteluohjelmistojen parissa Pohjoismaissa."
+    fi: "Olen vastavalmistunut sairaanhoitaja. Erikoisaloista minua kiinnostavat erityisesti kardiologia ja farmakologia. Ennen hoitoalalle siirtymistä kouluttauduin vaatesuunnittelijaksi Eesti Kunstiakademiassa ja työskentelin muotisuunnittelun ja tuotannon ohjelmistojen asiantuntijana Pohjois-Euroopassa."
   },
-  // Paragraph 2 is split in three so "bachelor’s thesis" can be a link (the <a> is in index.html).
-  // FI: the whole existing Finnish paragraph 2 sits in about_text_2a; the link and after-link parts
-  // are empty in FI, so FI mode shows the old Finnish paragraph unchanged (no link yet).
+  // Paragraph 2 is split in three so the thesis words can be a link (the <a> is in index.html):
+  // text before the link (ends with a space) + link text + text after the link (starts with a space).
   about_text_2a: {
     en: "Somewhere along the way, design and healthcare started to overlap. Before nursing, I worked with researchers at the University of Helsinki on a service for parents of young children. In 2023 I began my nursing studies at Metropolia University of Applied Sciences, and in 2025 my co-authored ",
-    fi: "Jossain vaiheessa muotoilu ja terveydenhuolto alkoivat luontevasti yhdistyä tekemisessäni. Olen esimerkiksi työskennellyt Helsingin yliopiston tutkijoiden kanssa palvelun parissa, joka tukee vanhempia varhaislapsuuden haasteissa. Vuonna 2025 opinnäytetyöni käsitteli aihetta, miten sairaanhoitajaopiskelijat opiskelevat lääkehoitoa ja miten sitä kannattaisi opettaa. Opinnäytetyössä totesimme, että farmakologiaa on vaikea opettaa, ja vielä vaikeampaa on opiskelijan saada opittu tieto jäämään mieleen."
+    fi: "Ajan myötä muotoilu ja terveydenhuolto alkoivat kulkea tekemisessäni käsi kädessä. Ennen hoitoalaa työskentelin Helsingin yliopiston tutkijoiden kanssa palvelun parissa, joka tuki pienten lasten vanhempia. Aloitin sairaanhoitajaopinnot Metropolia Ammattikorkeakoulussa vuonna 2023, ja vuonna 2025 tekemämme "
   },
-  about_text_2_link: { en: "bachelor’s thesis", fi: "" },
-  about_text_2_link_hint: { en: "PDF, opens in a new tab", fi: "" }, // screen-reader description of the link
+  about_text_2_link: { en: "bachelor’s thesis", fi: "opinnäytetyö" },
+  about_text_2_link_hint: { en: "PDF, opens in a new tab", fi: "PDF, avautuu uuteen välilehteen" }, // screen-reader description of the link
   about_text_2b: {
     en: " looked at how pharmacology is taught to student nurses, why it feels so hard to learn, and how teaching could be improved. We found what research keeps finding: pharmacology is hard to teach, and harder to make stick.",
-    fi: ""
+    fi: " tarkasteli, miten farmakologiaa opetetaan sairaanhoitajaopiskelijoille, miksi sen oppiminen koetaan vaikeaksi ja miten opetusta voisi kehittää. Totesimme saman kuin tutkimukset yleensäkin: farmakologiaa on vaikea opettaa, ja vielä vaikeampaa on saada opittu jäämään mieleen."
   },
   about_text_3: {
-    en: "That’s what led me here. I started experimenting with AI coding tools to make pharmacology, and nursing studies more broadly, easier and more fun to learn. I have built a few games and digital tools that help students, and nurses too, learn medicines, understand life on a ward, and reflect on how different nursing concepts connect. Try them out above, and tell me what you think!",
-    fi: "Inspiroituin opinnäytetyöstäni ja aloin rakentamaan pelejä ja digitaalisia oppimistyökaluja aluksi vain itselleni, helpottaakseni omaa oppimistani. Kokeilin niin sanottua vibe coding -työskentelyä ja kehitin erilaisten aiheiden ympärille pelillisiä ideoita. Tällä sivulla pääset tutustumaan kehittämiini oppimispeleihin. Jokainen peli on tässä vaiheessa vielä prototyyppi, ei valmis tuote. Ne ovat yrityksiä tehdä farmakologiasta hieman vähemmän abstraktia ja helpommin muistettavaa sairaanhoitajaopiskelijoille."
+    en: "Later, on a clinical placement, I noticed that my own medication learning wasn’t systematic enough. Around the same time, friends told me how you can build apps and websites with AI coding tools. I started exploring whether I could use them to bring more structure to my learning, and to make pharmacology, and nursing studies more broadly, easier and more fun to learn. I have built a few games and digital tools that help students, and nurses too, learn medicines, understand life on a ward, and reflect on how different nursing concepts connect. Try them out above, and tell me what you think!",
+    fi: "Myöhemmin harjoittelussa huomasin, ettei lääkehoidon opiskeluni ollut tarpeeksi järjestelmällistä. Samoihin aikoihin kuulin ystäviltäni, miten tekoälyn avulla voi rakentaa sovelluksia ja verkkosivuja. Aloin kokeilla, voisinko kehittää itselleni oppimisvälineitä, jotka auttaisivat minua oppimaan lisää lääkkeistä ja tekisivät farmakologian ja laajemminkin hoitotyön opiskelusta helpompaa ja hauskempaa. Näistä kokeiluista on syntynyt muutamia pelejä ja digitaalisia työkaluja, jotka auttavat opiskelijoita, ja miksei myös valmistuneita sairaanhoitajia, oppimaan farmakologiaa, ymmärtämään osastotyön arkea ja pohtimaan, miten hoitotyön eri käsitteet liittyvät toisiinsa. Kokeile niitä tällä sivulla ja kerro, mitä mieltä olet!"
   },
 
   // ── Contact ──
