@@ -100,6 +100,7 @@ var translations = {
     fi: "Yhdistä lääkkeet niiden vaikuttaviin aineisiin, käyttöaiheisiin ja lääkeryhmiin kortti kerrallaan. Peli auttaa hahmottamaan lääketiedon kokonaisuuksia ja eri käsitteiden välisiä yhteyksiä."
   },
   play_now: { en: "Play now →", fi: "Pelaa →" },
+  new_tab_hint: { en: "opens in a new tab", fi: "avautuu uuteen välilehteen" }, // screen-reader hint on the four Play now links
   game_label_1: { en: "Game · FI/EN", fi: "Peli · FI/EN" },
   game_label_2: { en: "Game · EN", fi: "Peli · EN" },
   game_label_3: { en: "Game · FI", fi: "Peli · FI" },

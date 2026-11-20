@@ -774,6 +774,8 @@
 </header>
 
 <main>
+<!-- Screen-reader hint for the game links (they open in a new tab); hidden on screen. -->
+<span id="new-tab-hint" hidden data-i18n="new_tab_hint"></span>
 <!-- 3. Scenario games -->
 <section id="scenario-games" class="band band-deep">
   <div class="container">
@@ -790,7 +792,7 @@
           <span class="game-label" data-i18n="game_label_1"></span>
           <h3 data-i18n="farmarush_name"></h3>
           <p data-i18n="farmarush_desc"></p>
-          <a class="tile-link" href="farmarush/"><span data-i18n="play_now"></span></a>
+          <a class="tile-link" href="farmarush/" target="_blank" rel="noopener noreferrer" aria-describedby="new-tab-hint"><span data-i18n="play_now"></span></a>
         </div>
       </article>
       <article class="tile tile-myday">
@@ -801,7 +803,7 @@
           <span class="game-label" data-i18n="game_label_2"></span>
           <h3 data-i18n="myday_name"></h3>
           <p data-i18n="myday_desc"></p>
-          <a class="tile-link" href="myday/"><span data-i18n="play_now"></span></a>
+          <a class="tile-link" href="myday/" target="_blank" rel="noopener noreferrer" aria-describedby="new-tab-hint"><span data-i18n="play_now"></span></a>
         </div>
       </article>
     </div>
@@ -824,7 +826,7 @@
           <span class="game-label" data-i18n="game_label_3"></span>
           <h3 data-i18n="medichain_name"></h3>
           <p data-i18n="medichain_desc"></p>
-          <a class="text-link" href="medichain/"><span data-i18n="play_now"></span></a>
+          <a class="text-link" href="medichain/" target="_blank" rel="noopener noreferrer" aria-describedby="new-tab-hint"><span data-i18n="play_now"></span></a>
         </div>
       </article>
       <article class="card card-medilink">
@@ -835,7 +837,7 @@
           <span class="game-label" data-i18n="game_label_4"></span>
           <h3 data-i18n="medilink_name"></h3>
           <p data-i18n="medilink_desc"></p>
-          <a class="text-link" href="medilink/"><span data-i18n="play_now"></span></a>
+          <a class="text-link" href="medilink/" target="_blank" rel="noopener noreferrer" aria-describedby="new-tab-hint"><span data-i18n="play_now"></span></a>
         </div>
       </article>
     </div>
