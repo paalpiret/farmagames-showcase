@@ -18,6 +18,7 @@ HOW TO PROMPT CHANGES NOW
 - Text workflow: English texts are finalised first; Finnish comes later. When an English text in content.js is changed, keep the existing fi value as it is until Piret gives new Finnish text. Texts with no fi show English in FI mode. Never invent Finnish translations.
 - New text → new key in content.js + empty tag with data-i18n="that_key" in index.html.
 - Design/layout change → index.html (CSS/HTML); text stays in content.js.
+- Game files (farmarush/, myday/, medichain/, medilink/ index.html): When Piret gives a new game .html, use it exactly as it is. Do not add a back link or any other extra elements to the games.
 
 PREVIEW
 - Private preview link of the redesign branch: https://claude.ai/artifact/WsAjjZgzLU9334HHfBsVaR
