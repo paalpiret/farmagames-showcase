@@ -696,7 +696,7 @@
 <body>
 
 <!-- 1. Top menu -->
-<nav class="topnav" aria-label="Main">
+<nav class="topnav" aria-label="Main" data-i18n-aria="aria_nav_main">
   <div class="container nav-inner">
     <a class="brand" href="#top"><span class="brand-a" data-i18n="wordmark_clinical"></span><span class="brand-b" data-i18n="wordmark_games"></span></a>
     <div class="nav-right">
@@ -706,7 +706,7 @@
         <li><a href="#about" data-i18n="nav_about"></a></li>
         <li><a href="#contact" data-i18n="nav_contact"></a></li>
       </ul>
-      <div class="lang-toggle" role="group" aria-label="Language">
+      <div class="lang-toggle" role="group" aria-label="Language" data-i18n-aria="aria_language">
         <button type="button" class="lang-btn" data-lang="en">EN</button>
         <button type="button" class="lang-btn" data-lang="fi">FI</button>
       </div>
@@ -758,14 +758,14 @@
         </div>
         <div class="why-controls">
           <div class="why-dots">
-            <button type="button" class="why-dot" data-slide="0" aria-label="Statement 1"></button>
-            <button type="button" class="why-dot" data-slide="1" aria-label="Statement 2"></button>
-            <button type="button" class="why-dot" data-slide="2" aria-label="Statement 3"></button>
-            <button type="button" class="why-dot" data-slide="3" aria-label="Sources"></button>
+            <button type="button" class="why-dot" data-slide="0" aria-label="Statement 1" data-i18n-aria="aria_why_dot_1"></button>
+            <button type="button" class="why-dot" data-slide="1" aria-label="Statement 2" data-i18n-aria="aria_why_dot_2"></button>
+            <button type="button" class="why-dot" data-slide="2" aria-label="Statement 3" data-i18n-aria="aria_why_dot_3"></button>
+            <button type="button" class="why-dot" data-slide="3" aria-label="Sources" data-i18n-aria="why_sources_label"></button>
           </div>
           <div class="why-buttons">
-            <button type="button" class="why-arrow why-prev" id="why-prev" aria-label="Previous slide">←</button>
-            <button type="button" class="why-arrow why-next" id="why-next" aria-label="Next slide">→</button>
+            <button type="button" class="why-arrow why-prev" id="why-prev" aria-label="Previous slide" data-i18n-aria="aria_why_prev">←</button>
+            <button type="button" class="why-arrow why-next" id="why-next" aria-label="Next slide" data-i18n-aria="aria_why_next">→</button>
           </div>
         </div>
       </div>
@@ -920,7 +920,7 @@
 <footer data-i18n="footer"></footer>
 
 <div id="lightbox" class="lightbox hidden">
-  <button type="button" class="lightbox-close" aria-label="Close">&times;</button>
+  <button type="button" class="lightbox-close" aria-label="Close" data-i18n-aria="aria_close">&times;</button>
   <img id="lightbox-img" src="" alt="">
 </div>
 
@@ -951,6 +951,10 @@
     var altNodes = document.querySelectorAll('[data-i18n-alt]');
     for (var a = 0; a < altNodes.length; a++) {
       altNodes[a].setAttribute('alt', t(altNodes[a].getAttribute('data-i18n-alt'), lang));
+    }
+    var ariaNodes = document.querySelectorAll('[data-i18n-aria]');
+    for (var r = 0; r < ariaNodes.length; r++) {
+      ariaNodes[r].setAttribute('aria-label', t(ariaNodes[r].getAttribute('data-i18n-aria'), lang));
     }
     document.documentElement.setAttribute('lang', lang);
     document.title = t('page_title', lang);

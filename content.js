@@ -57,16 +57,6 @@ var translations = {
   card_games_subtitle: { en: "Link medicines, indications and drug classes · no account needed", fi: "Yhdistä lääkkeet, käyttöaiheet ja lääkeryhmät · ilman kirjautumista" },
   learning_tools_subtitle: { en: "Apps for everyday studying and clinical placements", fi: "Sovelluksia opiskeluun ja kliinisiin harjoitteluihin" },
 
-  // ── Not shown in the current design (kept, with their Finnish, in case they return) ──
-  // hero_name, hero_tagline, why_heading,
-  // hero_eyebrow (the old "Clinical Games" menu name, replaced by the wordmark)
-  hero_eyebrow: { en: "Clinical Games" },
-  hero_name: { en: "Piret Paal" },
-  hero_tagline: {
-    en: "A portfolio of learning games and digital tools designed to make medication learning and nursing studies a little easier and more fun.",
-    fi: "Portfolio oppimispeleistä ja digitaalisista työkaluista, jotka tekevät lääkehoidon ja hoitotyön opiskelusta hieman helpompaa ja hauskempaa."
-  },
-
   // ── Game & tool sections ──
   // Names are proper nouns: same in both languages.
   farmarush_name: { en: "FarmaRush" },
@@ -79,12 +69,30 @@ var translations = {
   pleksusdiaries_label: { en: "Learning tool · EN/FI", fi: "Oppimissovellus · EN/FI" },
 
   // Image alt text (screen readers / image descriptions)
-  farmarush_img_alt: { en: "FarmaRush promo illustration: pharmacy chute, medicine shelves, and a nurse on shift" },
-  myday_img_alt: { en: "MyDay nurse illustration with a medication checklist and ward supply cart" },
-  medichain_img_alt: { en: "MediChain illustration: linking medicine cards by indication and drug class" },
-  medilink_img_alt: { en: "MediLink illustration: chain-link logo and card-matching gameplay" },
-  farmadiary_img_alt: { en: "FarmaDiary promo illustration: digital medicine notebook with quiz cards and progress dashboard" },
-  pleksusdiaries_img_alt: { en: "PleksusDiaries landing page: 'Where everything you learn connects' with Write as you go, See what you know, and Think it through feature cards" },
+  farmarush_img_alt: {
+    en: "FarmaRush promo illustration: pharmacy chute, medicine shelves, and a nurse on shift",
+    fi: "FarmaRush-pelin mainoskuva: apteekin lääkeluukku, lääkehyllyt ja vuorossa oleva sairaanhoitaja"
+  },
+  myday_img_alt: {
+    en: "MyDay nurse illustration with a medication checklist and ward supply cart",
+    fi: "MyDay-pelin kuvitus: sairaanhoitaja, lääkelista ja osaston tarvikekärry"
+  },
+  medichain_img_alt: {
+    en: "MediChain illustration: linking medicine cards by indication and drug class",
+    fi: "MediChain-pelin kuva: lääkekortteja yhdistetään käyttöaiheen ja lääkeryhmän mukaan"
+  },
+  medilink_img_alt: {
+    en: "MediLink illustration: chain-link logo and card-matching gameplay",
+    fi: "MediLink-pelin kuva: ketjulogo ja korttien yhdistämistä pelinäkymässä"
+  },
+  farmadiary_img_alt: {
+    en: "FarmaDiary promo illustration: digital medicine notebook with quiz cards and progress dashboard",
+    fi: "FarmaDiary-sovelluksen mainoskuva: digitaalinen lääkepäiväkirja, kysymyskortteja ja edistymisnäkymä"
+  },
+  pleksusdiaries_img_alt: {
+    en: "PleksusDiaries landing page: 'Where everything you learn connects' with Write as you go, See what you know, and Think it through feature cards",
+    fi: "PleksusDiaries-sovelluksen aloitussivu: otsikko “Where everything you learn connects” ja ominaisuuskortit Write as you go, See what you know ja Think it through"
+  },
 
   myday_desc: {
     en: "Curious what a day on a cardiology ward is really like? Test out ward life before your first placement! Practise the ISBAR handover and the medication task, and explore the game’s own patient record system. More tasks coming soon.",
@@ -110,7 +118,6 @@ var translations = {
   game_label_4: { en: "Game · FI", fi: "Peli · FI" },
 
   // ── Why ──
-  why_heading: { en: "Why", fi: "Miksi" },
   why1_statement: {
     en: "“Over half of surveyed nurses have caused a medication-related safety incident; half have given medicines without knowing their effects.”",
     fi: "“Yli puolet tutkimukseen osallistuneet sairaanhoitajista ovat joskus aiheuttanut potilaalle lääkehoidon virheen takia vaaratilanteen ja puolet ovat antaneet lääkkeitä, joiden vaikutuksia he eivät tietäneet.”"
@@ -180,6 +187,17 @@ var translations = {
   submit_btn: { en: "Send message", fi: "Lähetä" },
   contact_success: { en: "Thank you for contacting me. I will get back to you soon.", fi: "Kiitos yhteydenotostasi. Vastaan sinulle pian" },
   contact_error: { en: "Something went wrong — please try again in a moment.", fi: "Jokin meni pieleen — yritä hetken päästä uudelleen." },
+
+  // ── Screen-reader labels (aria-label), switched by data-i18n-aria in index.html ──
+  aria_nav_main: { en: "Main", fi: "Päävalikko" },
+  aria_language: { en: "Language", fi: "Kieli" },
+  aria_why_prev: { en: "Previous slide", fi: "Edellinen" },
+  aria_why_next: { en: "Next slide", fi: "Seuraava" },
+  aria_why_dot_1: { en: "Statement 1", fi: "Lainaus 1" },
+  aria_why_dot_2: { en: "Statement 2", fi: "Lainaus 2" },
+  aria_why_dot_3: { en: "Statement 3", fi: "Lainaus 3" },
+  // (the 4th dot "Sources" / "Lähteet" reuses why_sources_label)
+  aria_close: { en: "Close", fi: "Sulje" },
 
   // ── Footer ──
   footer: { en: "© 2026 Piret Paal" }
