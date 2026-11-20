@@ -37,9 +37,9 @@ var translations = {
 
   // ── Header ──
   // The headline is split in three so "played" can be coloured.
-  hero_headline_start: { en: "Medication learning, " },
-  hero_headline_highlight: { en: "played" },
-  hero_headline_end: { en: " — not just memorised." },
+  hero_headline_start: { en: "Learn nursing by ", fi: "Opi hoitotyötä " },
+  hero_headline_highlight: { en: "playing", fi: "pelaamalla" },
+  hero_headline_end: { en: ", not just reading.", fi: ", ei vain lukemalla." },
   hero_subline: {
     en: "Hi, I’m Piret Paal. I qualified as a registered nurse in 2026, and before nursing I trained as a designer at the Estonian Academy of Arts. I’ve been building learning games and digital tools for nursing studies, from medications and ward routines to reflective learning. Here you can try them out as they are now: working prototypes that I keep developing.",
     fi: "Hei, olen Piret Paal. Valmistuin sairaanhoitajaksi vuonna 2026. Ennen hoitoalaa kouluttauduin suunnittelijaksi Eesti Kunstiakademiassa. Olen kehittänyt oppimispelejä ja digitaalisia oppimisvälineitä hoitotyön opiskeluun: lääkehoitoon, osastotyön arkeen ja oman oppimisen pohtimiseen. Tällä sivulla voit kokeilla niitä sellaisina kuin ne ovat nyt: toimivina prototyyppeinä, joita kehitän jatkuvasti."
