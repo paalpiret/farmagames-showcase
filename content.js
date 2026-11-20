@@ -157,7 +157,7 @@ var translations = {
   about_text_2_link: { en: "bachelor’s thesis", fi: "" },
   about_text_2_link_hint: { en: "PDF, opens in a new tab", fi: "" }, // screen-reader description of the link
   about_text_2b: {
-    en: " looked at medication safety among student nurses. We found what research keeps finding: pharmacology is hard to teach, and harder to make stick.",
+    en: " looked at how pharmacology is taught to student nurses, why it feels so hard to learn, and how teaching could be improved. We found what research keeps finding: pharmacology is hard to teach, and harder to make stick.",
     fi: ""
   },
   about_text_3: {
