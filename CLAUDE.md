@@ -4,6 +4,7 @@ REPO & BRANCHES
 - Repo: paalpiret/farmagames-showcase (GitHub Pages, custom domain clinicalgames.fi)
 - LIVE branch: claude/farmagames-landing-page-pmzh69 — pushing here (or to main) publishes the live site. NEVER push there during the redesign, and never create a main branch.
 - WORK branch: redesign (created from the live branch). All redesign work happens only here. Pushing redesign does NOT change the live site (the deploy workflow only runs for main and the live branch).
+- BACKUP branch: old-site — a frozen copy of the live page as it was before the redesign (commit de305a4, deployed 2026-10-11, title "Piret Paal — Interactive Nursing Projects"). Saved 2026-11-20 so the old page can be viewed or restored after the redesign goes live. NEVER commit to, push to, rebase, merge into or delete old-site. Pushing it does not deploy. (A tag old-site-2026 was planned but tag pushes are blocked in Claude sessions; Piret may create it on GitHub via Releases.)
 
 WHAT WAS DONE (commit f5d538a on redesign)
 - All page text (EN + FI) moved out of index.html into a new file, content.js. Every sentence now exists exactly once.
