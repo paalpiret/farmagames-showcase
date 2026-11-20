@@ -84,20 +84,20 @@ var translations = {
   pleksusdiaries_img_alt: { en: "PleksusDiaries landing page: 'Where everything you learn connects' with Write as you go, See what you know, and Think it through feature cards" },
 
   myday_desc: {
-    en: "A day in the life of a nursing student on a cardiology ward — from morning handover to medication rounds to end-of-shift documentation. Built to capture the rhythm of a real shift, one room at a time.",
-    fi: "Päivä sairaanhoitajaopiskelijana kardiologian osastolla — aamuraportista lääkkeiden jakoon ja työvuoron päättävään kirjaamiseen. Peli etenee aidon työvuoron tavoin, yksi tehtävä kerrallaan."
+    en: "Curious what a day on a cardiology ward is really like? Test out ward life before your first placement! Practise the ISBAR handover and the medication task, and explore the game’s own patient record system. More tasks coming soon.",
+    fi: "Millainen on päivä kardiologian osastolla? Harjoittele ISBAR-raportointia ja lääkehoidon tehtävää ja tutustu pelin omaan potilastietojärjestelmään ennen ensimmäistä harjoitteluasi. Uusia tehtäviä on tulossa pian."
   },
   farmarush_desc: {
-    en: "Medication requests arrive from hospital wards, one shift at a time. Catch the right drugs before they're dispatched — work fast, but don't let the wrong medication through.",
-    fi: "Eri osastoilta saapuu työvuoron aikana lääketilauksia. Kerää oikeat lääkkeet mahdollisimman nopeasti, mutta vältä vääriä valintoja."
+    en: "Medication requests arrive from hospital wards, one shift at a time. Catch the right medicines as fast as you can, but watch out for the wrong ones.",
+    fi: "Eri osastot lähettävät työvuoron aikana lääketilauksia. Nappaa oikeat lääkkeet nopeasti, mutta varo, ettei mukaan tartu vääriä lääkkeitä."
   },
   medichain_desc: {
-    en: "Build the longest possible medicine chain by linking drugs that share an indication or drug class. A quick, focused way to test how well those connections actually stick.",
-    fi: "Rakenna mahdollisimman pitkä lääkeketju yhdistämällä lääkkeitä, joilla on sama käyttöaihe tai lääkeryhmä. Nopea tapa testata, miten hyvin lääkkeet ovat jääneet mieleen."
+    en: "Build the longest possible medicine chain by linking medicines that share an indication or drug class. A quick and focused way to learn how medicines connect and test your own knowledge.",
+    fi: "Rakenna mahdollisimman pitkä lääkeketju yhdistämällä lääkkeitä, joilla on sama käyttöaihe tai lääkeryhmä. Nopea ja keskittynyt tapa oppia lääkkeistä ja testata omaa osaamistasi."
   },
   medilink_desc: {
-    en: "Match medicines to their active ingredients, indications, and drug classes — link by link. Built to reinforce the kind of pattern-recognition real prescribing depends on.",
-    fi: "Yhdistä lääkkeet niiden vaikuttaviin aineisiin, käyttöaiheisiin ja lääkeryhmiin kortti kerrallaan. Peli auttaa hahmottamaan lääketiedon kokonaisuuksia ja eri käsitteiden välisiä yhteyksiä."
+    en: "Match medicines to their active ingredients, indications, and drug classes — link by link. A quick way to check what you know about each medicine, and learn what you don’t.",
+    fi: "Yhdistä lääkkeet niiden vaikuttaviin aineisiin, käyttöaiheisiin ja lääkeryhmiin kortti kerrallaan. Nopea tapa tarkistaa, mitä tiedät mistäkin lääkkeestä, ja oppia uutta."
   },
   play_now: { en: "Play now →", fi: "Pelaa →" },
   new_tab_hint: { en: "opens in a new tab", fi: "avautuu uuteen välilehteen" }, // screen-reader hint on the four Play now links
@@ -131,14 +131,14 @@ var translations = {
 
   // ── FarmaDiary & PleksusDiaries ──
   farmadiary_desc: {
-    en: "A personal medicine notebook — log the drugs you encounter on placement, quiz yourself on what you've logged, and watch your own knowledge base grow shift by shift.",
-    fi: "Henkilökohtainen lääkepäiväkirja, johon kirjaat opinnoissa ja harjoitteluissa kohtaamasi lääkkeet. Testaa osaamistasi omiin merkintöihisi perustuvilla kysymyksillä ja seuraa, miten osaamisesi kehittyy ajan myötä."
+    en: "A personal medicine notebook — log the medicines you encounter on placement, quiz yourself on what you’ve logged, and watch your own knowledge base grow. Try out FarmaDiary without an account to see how it works!",
+    fi: "Henkilökohtainen lääkepäiväkirja, johon kirjaat opinnoissa ja harjoitteluissa kohtaamasi lääkkeet. Testaa osaamistasi omiin merkintöihisi perustuvilla kysymyksillä ja seuraa, miten osaamisesi kehittyy ajan myötä. Kokeile FarmaDiarya kirjautumatta!"
   },
   farmadiary_cta: { en: "Visit FarmaDiary →", fi: "Avaa FarmaDiary →" },
 
   pleksusdiaries_desc: {
-    en: "A personal learning diary for nursing students. Write down what you learn in your studies and placements and tag the topics behind it. Think about how different topics connect with each other. All your entries and topics are easy to find again later.",
-    fi: "Henkilökohtainen oppimispäiväkirja hoitotyön opiskelijoille. Kirjaa päiväkirjaan, mitä opit koulussa ja harjoittelussa, ja liitä merkintöihin käsiteltyt teemat. Pohdi, miten eri teemat liittyvät toisiinsa. Kaikki merkinnät ja teemat löytyvät myöhemmin helposti."
+    en: "A personal learning diary for nursing students. Write down what you learn in your studies and placements and tag the topics behind it. Think about how the topics connect, and let PleksusDiaries turn your connections into a mind map.",
+    fi: "Henkilökohtainen oppimispäiväkirja hoitotyön opiskelijoille. Kirjaa päiväkirjaan, mitä opit koulussa ja harjoittelussa, ja liitä merkintöihin käsitellyt teemat. Pohdi, miten teemat liittyvät toisiinsa, ja anna PleksusDiary:lla koota yhteyksistäsi ajatuskartta."
   },
   pleksusdiaries_cta: { en: "Visit PleksusDiaries →", fi: "Avaa PleksusDiaries →" },
 

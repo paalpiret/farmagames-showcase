@@ -154,14 +154,30 @@ In FI mode, the four numbered labels become `Peli 01 · FI/EN`, `Peli 02 · EN`,
 
 ## Content — final/ready to use, all live on the page
 
-### Game descriptions (EN, live)
+### Game and tool descriptions (redesign branch, EN + FI, set 2026-11-21 — replace the older texts below, which are still on the live site)
+The Finnish word forms are Piret’s deliberate choices — keep them exactly as written.
+- **FarmaRush** — EN: "Medication requests arrive from hospital wards, one shift at a time. Catch the right medicines as fast as you can, but watch out for the wrong ones."
+  FI: "Eri osastot lähettävät työvuoron aikana lääketilauksia. Nappaa oikeat lääkkeet nopeasti, mutta varo, ettei mukaan tartu vääriä lääkkeitä."
+- **MyDay** — EN: "Curious what a day on a cardiology ward is really like? Test out ward life before your first placement! Practise the ISBAR handover and the medication task, and explore the game’s own patient record system. More tasks coming soon."
+  FI: "Millainen on päivä kardiologian osastolla? Harjoittele ISBAR-raportointia ja lääkehoidon tehtävää ja tutustu pelin omaan potilastietojärjestelmään ennen ensimmäistä harjoitteluasi. Uusia tehtäviä on tulossa pian."
+- **MediChain** — EN: "Build the longest possible medicine chain by linking medicines that share an indication or drug class. A quick and focused way to learn how medicines connect and test your own knowledge."
+  FI: "Rakenna mahdollisimman pitkä lääkeketju yhdistämällä lääkkeitä, joilla on sama käyttöaihe tai lääkeryhmä. Nopea ja keskittynyt tapa oppia lääkkeistä ja testata omaa osaamistasi."
+- **MediLink** — EN: "Match medicines to their active ingredients, indications, and drug classes — link by link. A quick way to check what you know about each medicine, and learn what you don’t."
+  FI: "Yhdistä lääkkeet niiden vaikuttaviin aineisiin, käyttöaiheisiin ja lääkeryhmiin kortti kerrallaan. Nopea tapa tarkistaa, mitä tiedät mistäkin lääkkeestä, ja oppia uutta."
+- **FarmaDiary** — EN: "A personal medicine notebook — log the medicines you encounter on placement, quiz yourself on what you’ve logged, and watch your own knowledge base grow. Try out FarmaDiary without an account to see how it works!"
+  FI: "Henkilökohtainen lääkepäiväkirja, johon kirjaat opinnoissa ja harjoitteluissa kohtaamasi lääkkeet. Testaa osaamistasi omiin merkintöihisi perustuvilla kysymyksillä ja seuraa, miten osaamisesi kehittyy ajan myötä. Kokeile FarmaDiarya kirjautumatta!"
+- **PleksusDiaries** — EN: "A personal learning diary for nursing students. Write down what you learn in your studies and placements and tag the topics behind it. Think about how the topics connect, and let PleksusDiaries turn your connections into a mind map."
+  FI: "Henkilökohtainen oppimispäiväkirja hoitotyön opiskelijoille. Kirjaa päiväkirjaan, mitä opit koulussa ja harjoittelussa, ja liitä merkintöihin käsitellyt teemat. Pohdi, miten teemat liittyvät toisiinsa, ja anna PleksusDiary:lla koota yhteyksistäsi ajatuskartta."
+Layout check with these lengths: tiles/cards in a row stay equal height and the "Play now" / "Pelaa" links share one line at every two-column width (880–1280px) in EN and FI; on phones each card stacks with its link at the bottom.
+
+### Game descriptions (EN, old — still on the live site)
 - **FarmaRush**: "Medication requests arrive from hospital wards, one shift at a time. Catch the right drugs before they're dispatched — work fast, but don't let the wrong medication through."
 - **MyDay**: "A day in the life of a nursing student on a cardiology ward — from morning handover to medication rounds to end-of-shift documentation. Built to capture the rhythm of a real shift, one room at a time."
 - **MediChain** (never call it "Mediketju" on the page — that name only exists as an internal image filename): "Build the longest possible medicine chain by linking drugs that share an indication or drug class. A quick, focused way to test how well those connections actually stick."
 - **MediLink**: "Match medicines to their active ingredients, indications, and drug classes — link by link. Built to reinforce the kind of pattern-recognition real prescribing depends on."
 - **FarmaDiary**: "A personal medicine notebook — log the drugs you encounter on placement, quiz yourself on what you've logged, and watch your own knowledge base grow shift by shift."
 
-### Game descriptions (FI, live)
+### Game descriptions (FI, old — still on the live site)
 - **FarmaRush**: "Eri osastoilta saapuu työvuoron aikana lääketilauksia. Kerää oikeat lääkkeet mahdollisimman nopeasti, mutta vältä vääriä valintoja."
 - **MyDay**: "Päivä sairaanhoitajaopiskelijana kardiologian osastolla — aamuraportista lääkkeiden jakoon ja työvuoron päättävään kirjaamiseen. Peli etenee aidon työvuoron tavoin, yksi tehtävä kerrallaan."
 - **MediChain**: "Rakenna mahdollisimman pitkä lääkeketju yhdistämällä lääkkeitä, joilla on sama käyttöaihe tai lääkeryhmä. Nopea tapa testata, miten hyvin lääkkeet ovat jääneet mieleen."
@@ -170,8 +186,8 @@ In FI mode, the four numbered labels become `Peli 01 · FI/EN`, `Peli 02 · EN`,
 
 ### PleksusDiaries
 New product section, added 2026-10-10, sitting right after FarmaDiary. Link `https://pleksusdiaries.lovable.app/`.
-- **Description (EN, live):** "A personal learning diary for nursing students. Write down what you learn in your studies and placements and tag the topics behind it. Think about how different topics connect with each other. All your entries and topics are easy to find again later."
-- **Description (FI, live):** "Henkilökohtainen oppimispäiväkirja hoitotyön opiskelijoille. Kirjaa päiväkirjaan, mitä opit koulussa ja harjoittelussa, ja liitä merkintöihin käsiteltyt teemat. Pohdi, miten eri teemat liittyvät toisiinsa. Kaikki merkinnät ja teemat löytyvät myöhemmin helposti." (unlike FarmaDiary, this one has a real FI translation, per Piret's brief that it's bilingual)
+- **Description (EN, old — live site; new text in "Game and tool descriptions" above):** "A personal learning diary for nursing students. Write down what you learn in your studies and placements and tag the topics behind it. Think about how different topics connect with each other. All your entries and topics are easy to find again later."
+- **Description (FI, old — live site; new text in "Game and tool descriptions" above):** "Henkilökohtainen oppimispäiväkirja hoitotyön opiskelijoille. Kirjaa päiväkirjaan, mitä opit koulussa ja harjoittelussa, ja liitä merkintöihin käsiteltyt teemat. Pohdi, miten eri teemat liittyvät toisiinsa. Kaikki merkinnät ja teemat löytyvät myöhemmin helposti." (unlike FarmaDiary, this one has a real FI translation, per Piret's brief that it's bilingual)
 - **Image (live):** `PleksusDiaries promo image.png` — a screenshot of the PleksusDiaries landing page itself ("Where everything you learn connects" hero + the Write as you go / See what you know / Think it through feature cards), unlike the other sections' illustrated key-art. Aspect ratio is narrower than the 16:9 frame (1.56:1), so it letterboxes slightly left/right into the pink accent tint — same `object-fit: contain` behavior as the other sections, no special-casing needed.
 - **CTA button:** "Visit PleksusDiaries →", links out to `https://pleksusdiaries.lovable.app/` (`target="_blank" rel="noopener noreferrer"`, same as FarmaDiary's external link).
 - **Accent color (REPLACED by the redesign — no frame tints):** `--accent-pleksus: #F472B6` (soft pink), used only for the media-box tint, same narrow purpose as the other per-game accent vars.
