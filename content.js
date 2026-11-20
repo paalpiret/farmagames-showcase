@@ -198,6 +198,7 @@ var translations = {
   aria_why_dot_3: { en: "Statement 3", fi: "Lainaus 3" },
   // (the 4th dot "Sources" / "Lähteet" reuses why_sources_label)
   aria_close: { en: "Close", fi: "Sulje" },
+  aria_carousel: { en: "carousel", fi: "karuselli" }, // aria-roledescription of the Why card (data-i18n-roledesc)
 
   // ── Footer ──
   footer: { en: "© 2026 Piret Paal" }

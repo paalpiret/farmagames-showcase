@@ -365,7 +365,7 @@
     padding: 0;
     border: none;
     border-radius: 999px;
-    background: #4F7A70;
+    background: #56867B;
     cursor: pointer;
   }
   .why-dot[aria-current="true"] {
@@ -391,7 +391,7 @@
     line-height: 1;
     cursor: pointer;
   }
-  .why-prev { background: transparent; border: 1px solid #4F7A70; color: #FFFFFF; }
+  .why-prev { background: transparent; border: 1px solid #56867B; color: #FFFFFF; }
   .why-next { background: #FFB547; border: none; color: #1A1A1A; }
 
   /* ── Bands + section headings ───────────────────────────── */
@@ -727,7 +727,7 @@
     </div>
 
     <div class="hero-why">
-      <div class="why-card" id="why-carousel" role="region" aria-roledescription="carousel" aria-labelledby="why-label">
+      <div class="why-card" id="why-carousel" role="region" aria-roledescription="carousel" data-i18n-roledesc="aria_carousel" aria-labelledby="why-label">
         <p class="why-label" id="why-label"><span id="why-label-text" data-i18n="why_carousel_label"></span> · <span id="why-count"></span></p>
         <div class="why-stage">
           <!-- Invisible copies of all four slides: keep the card as tall as the tallest one (desktop). -->
@@ -955,6 +955,10 @@
     var ariaNodes = document.querySelectorAll('[data-i18n-aria]');
     for (var r = 0; r < ariaNodes.length; r++) {
       ariaNodes[r].setAttribute('aria-label', t(ariaNodes[r].getAttribute('data-i18n-aria'), lang));
+    }
+    var roleNodes = document.querySelectorAll('[data-i18n-roledesc]');
+    for (var d = 0; d < roleNodes.length; d++) {
+      roleNodes[d].setAttribute('aria-roledescription', t(roleNodes[d].getAttribute('data-i18n-roledesc'), lang));
     }
     document.documentElement.setAttribute('lang', lang);
     document.title = t('page_title', lang);
