@@ -258,7 +258,7 @@ Note: the FI version splits into 4 paragraphs in Piret's original text; paragrap
 - Error message (changed 2026-11, now EN + FI): EN "Something went wrong — please try again in a moment." / FI "Jokin meni pieleen — yritä hetken päästä uudelleen." (replaced EN "Something went wrong — please try again, or reach out directly.")
 - **No LinkedIn button.** One was added, then explicitly removed at Piret's request — don't re-add it unless asked again.
 - **Hard rule: never display Piret's personal email address anywhere in visible content or page source.**
-- **Intro sentence (redesign branch, EN + FI, added 2026-11):** directly under the heading, above the form — EN "Interested in developing nurse training together? I’d love to hear from you." / FI "Haluaisitko kehittää sairaanhoitajien koulutusta yhdessä? Kuulisin sinusta mielelläni."
+- **Intro sentence (redesign branch, EN + FI, added 2026-11, reworded 2026-11-21):** directly under the heading, above the form — EN "Teaching nursing, developing training, or just tried one of the games? I’d love to hear from you." / FI "Opetatko hoitotyötä, kehitätkö koulutusta tai kokeilitko jotain peleistä? Kuulisin sinusta mielelläni."
 - **FI translation (live):** heading "Ota yhteyttä", labels "Nimi" / "Sähköposti" / "Viesti", submit button "Lähetä", confirmation message (see above).
 
 ## Open / deferred items

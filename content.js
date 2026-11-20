@@ -168,8 +168,8 @@ var translations = {
   // ── Contact ──
   contact_heading: { en: "Contact", fi: "Ota yhteyttä" },
   contact_intro: {
-    en: "Interested in developing nurse training together? I’d love to hear from you.",
-    fi: "Haluaisitko kehittää sairaanhoitajien koulutusta yhdessä? Kuulisin sinusta mielelläni."
+    en: "Teaching nursing, developing training, or just tried one of the games? I’d love to hear from you.",
+    fi: "Opetatko hoitotyötä, kehitätkö koulutusta tai kokeilitko jotain peleistä? Kuulisin sinusta mielelläni."
   },
   label_name: { en: "Name", fi: "Nimi" },
   label_email: { en: "Email", fi: "Sähköposti" },
