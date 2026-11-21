@@ -39,6 +39,25 @@ The site now runs on its own domain, **`clinicalgames.fi`**, instead of the defa
 3. ✅ DNS records pointed at GitHub's servers with the registrar
 4. ✅ Domain entered under repo **Settings → Pages → Custom domain** — GitHub handles HTTPS automatically
 
+### Domain details (checked 21 Nov 2026)
+
+- **Registrar:** Zoner. Managed at home.zoner.fi → Omat tuotteet → Verkkotunnukset → clinicalgames.fi.
+- **Subscription:** started 10 Aug 2026, 12 months, billed yearly, 30 days' notice. Next renewal around 10 Aug 2027.
+- **DNS records** (Zoner → clinicalgames.fi → DNS tab):
+
+| Name | Type | Value | Purpose |
+|---|---|---|---|
+| (domain) | A | 185.199.108.153 | GitHub Pages |
+| (domain) | A | 185.199.109.153 | GitHub Pages |
+| (domain) | A | 185.199.110.153 | GitHub Pages |
+| (domain) | A | 185.199.111.153 | GitHub Pages |
+| www | CNAME | paalpiret.github.io | GitHub Pages |
+| (domain) | MX | mx1.zoner.fi, mx2.zoner.fi | Zoner email |
+| (domain) | TXT | v=spf1 include:spf.zoner.fi ~all | Zoner email (SPF) |
+
+- Optional IPv6 (AAAA) records for GitHub Pages are not set. The site works without them.
+- If the site ever stops loading at clinicalgames.fi, check these three: the DNS records above in Zoner, the `CNAME` file in the repo root, and repo Settings → Pages → Custom domain.
+
 **Note:** the domain registrar can be anywhere, but the actual hosting (GitHub Pages) remains US infrastructure (GitHub/Microsoft) either way — a custom domain doesn't change that. Decided this is fine.
 
 ## Contact form (Formspree)
