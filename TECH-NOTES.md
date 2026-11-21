@@ -6,7 +6,9 @@ A plain-language reference for the pieces behind the FarmaGames showcase site, s
 
 **GitHub repo** (`farmagames-showcase`) — think of this as a folder living in the cloud. It contains `index.html`, images, and everything else that makes up the site. Editing the site = editing files in this folder.
 
-**GitHub Pages** — a free feature of GitHub that takes that folder and publishes it as an actual website. It watches the `main` branch; whenever it changes, the live site updates automatically (usually within a minute or two).
+**GitHub Pages** — a free feature of GitHub that takes that folder and publishes it as an actual website. It watches the live branch **`claude/farmagames-landing-page-pmzh69`** (there is no `main` branch, on purpose); whenever that branch changes, the live site updates automatically (usually within a minute or two).
+
+**If an update doesn't appear:** open the repo's **Actions** tab. A red X on the latest "Deploy GitHub Pages" run means the publish step failed — often a temporary GitHub problem (this happened on 2026-11-21). Click **"Deploy GitHub Pages" → Run workflow** to start it again; a green check means it's live.
 
 **Live URL right now:** https://clinicalgames.fi (the old https://paalpiret.github.io/farmagames-showcase/ still works and redirects there)
 
@@ -52,7 +54,8 @@ The site's contact form doesn't have its own backend — it sends form submissio
 | Thing | Where |
 |---|---|
 | Site code/files | GitHub repo `farmagames-showcase` |
-| Live published site | GitHub Pages (auto-deploys from `main`) |
+| Live published site | GitHub Pages (auto-deploys from the live branch `claude/farmagames-landing-page-pmzh69`) |
+| Backup of the old page (before 2026-11-21) | branch `old-site` — never change it |
 | All page text (EN + FI) | `content.js` in the repo root |
 | Page layout, styling, behaviour | `index.html` in the repo root |
 | Design/content decisions | `DESIGN.md` in the repo root |
@@ -64,4 +67,4 @@ The site's contact form doesn't have its own backend — it sends form submissio
 
 - **Add a file:** repo page → green "Add file" button → "Upload files"
 - **Check if something deployed:** repo page → **Actions** tab → look for a green checkmark (success) or red X (failed) on the latest run
-- **Branches vs. folders:** a *branch* is a parallel version of the whole codebase (usually just stay on `main`); a *folder* is just a subfolder inside the repo, like folders on a computer
+- **Branches vs. folders:** a *branch* is a parallel version of the whole codebase (the site lives on `claude/farmagames-landing-page-pmzh69`; `old-site` is a frozen backup; `redesign` is the finished redesign work); a *folder* is just a subfolder inside the repo, like folders on a computer

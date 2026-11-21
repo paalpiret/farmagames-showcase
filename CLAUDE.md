@@ -1,34 +1,31 @@
-CONTEXT: clinicalgames.fi redesign — status and how we work (Claude Code session)
+CONTEXT: clinicalgames.fi — how we work (Claude Code session)
 
 REPO & BRANCHES
-- Repo: paalpiret/farmagames-showcase (GitHub Pages, custom domain clinicalgames.fi)
-- LIVE branch: claude/farmagames-landing-page-pmzh69 — pushing here (or to main) publishes the live site. NEVER push there during the redesign, and never create a main branch.
-- WORK branch: redesign (created from the live branch). All redesign work happens only here. Pushing redesign does NOT change the live site (the deploy workflow only runs for main and the live branch).
-- BACKUP branch: old-site — a frozen copy of the live page as it was before the redesign (commit de305a4, deployed 2026-10-11, title "Piret Paal — Interactive Nursing Projects"). Saved 2026-11-20 so the old page can be viewed or restored after the redesign goes live. NEVER commit to, push to, rebase, merge into or delete old-site. Pushing it does not deploy. (A tag old-site-2026 was planned but tag pushes are blocked in Claude sessions; Piret may create it on GitHub via Releases.)
+- Repo: paalpiret/farmagames-showcase (GitHub Pages, custom domain clinicalgames.fi).
+- LIVE branch: claude/farmagames-landing-page-pmzh69. It publishes clinicalgames.fi: every push to it goes live straight away (deploy workflow .github/workflows/pages.yml). Work on this branch, and say the branch name before every push.
+- If a deployment fails at the deploy step (e.g. "No artifacts named github-pages were found" — a temporary GitHub problem seen on 2026-11-21), do not change the workflow. Piret can start it again herself: Actions tab → "Deploy GitHub Pages" → Run workflow.
+- Never create a main branch.
+- BACKUP branch: old-site — a frozen copy of the old page from before the redesign (commit de305a4). NEVER commit to, push to, rebase, merge into or delete old-site. (Tag pushes are blocked in Claude sessions; Piret may create a tag on GitHub via Releases.)
+- redesign: the finished redesign work branch, merged into the live branch on 2026-11-21. Kept as history; no new work there.
 
-WHAT WAS DONE (commit f5d538a on redesign)
-- All page text (EN + FI) moved out of index.html into a new file, content.js. Every sentence now exists exactly once.
-- index.html = layout, colors, spacing, behaviour only. Each text spot is an empty tag with data-i18n="key" (image alt texts use data-i18n-alt="key"). A script fills them from content.js in the chosen language.
-- content.js = one "translations" dictionary: key → { en: "...", fi: "..." }. Entries with only "en" show English in FI mode too (used on purpose for: "Clinical Games", "Piret Paal", game/tool names, "Learning tool · …" labels, references, footer, image alt texts, the contact error message).
-- Still in index.html on purpose: <title>, meta description (search engines/link previews need them without JS), the EN/FI button letters, the × lightbox close icon, aria-labels.
-- No wording, colors, spacing or layout changed. Verified pixel-identical before/after (desktop 1280px + mobile 390px, EN and FI, FI default on clinicalgames.fi, toggle + saved choice after reload).
-- DESIGN.md (new section "Where the page text lives"), TECH-NOTES.md and README.md updated to describe this.
+HOW THE SITE IS BUILT
+- index.html = layout, colors, spacing, behaviour only. Each text spot is an empty tag with data-i18n="key"; image alt texts use data-i18n-alt, aria-labels use data-i18n-aria, the Why card's role description uses data-i18n-roledesc. A script fills them from content.js in the chosen language.
+- content.js = all page text, one "translations" dictionary: key → { en: "...", fi: "..." }. Entries without fi show English in FI mode (on purpose for names such as the clinicalgames wordmark, game/tool names, the full references and the footer).
+- The static <head> of index.html is in Finnish on purpose (title, meta description, og: link-preview tags), because search engines and link previews don't run JavaScript. The visible tab title switches with the EN/FI toggle (page_title in content.js).
+- FI is the default language on clinicalgames.fi; elsewhere EN. A visitor's choice is saved.
+- Games: one folder each (farmarush/, myday/, medichain/, medilink/) with an index.html. The main page opens them in a new tab.
+- DESIGN.md = design and content decisions; TECH-NOTES.md = plain-language technical notes.
 
-HOW TO PROMPT CHANGES NOW
-- Text workflow: English texts are finalised first; Finnish comes later. When an English text in content.js is changed, keep the existing fi value as it is until Piret gives new Finnish text. Texts with no fi show English in FI mode. Never invent Finnish translations.
-- New text → new key in content.js + empty tag with data-i18n="that_key" in index.html.
-- Design/layout change → index.html (CSS/HTML); text stays in content.js.
-- Game files (farmarush/, myday/, medichain/, medilink/ index.html): When Piret gives a new game .html, use it exactly as it is. Do not add a back link or any other extra elements to the games.
-
-PREVIEW
-- Private preview link of the redesign branch: https://claude.ai/artifact/WsAjjZgzLU9334HHfBsVaR
-- Claude Code republishes the same link after each change. It opens in English (FI default only applies on clinicalgames.fi; the FI toggle works). The contact form may not send from the preview.
-- The live site stays unchanged until a deliberate decision to publish the redesign (that will be a separate, explicit step: merging redesign into the live branch).
+RULES
+- When an English text changes, keep the existing fi value until Piret gives new Finnish text. Texts with no fi show English in FI mode. Never invent Finnish.
+- When Piret gives a new game .html, use it exactly as it is. Do not add a back link or any other extra elements to the games.
+- Never put Piret's personal email address in any file. Grep for it before every commit.
+- New text → new key in content.js + empty tag with data-i18n="that_key" in index.html. Design/layout change → index.html (CSS/HTML); text stays in content.js.
 
 STANDING HABITS FOR EVERY SESSION
-- Work only on branch redesign; say the branch name before pushing.
+- Say the branch name before every push (every push to the live branch goes live).
 - Check JS syntax after edits (node --check).
-- Playwright screenshots before and after; compare them; test the EN/FI toggle and a mobile-width view before reporting done.
-- Grep for Piret's personal email before every commit — it must never appear in any file.
+- Playwright screenshots before and after; compare them; test the EN/FI toggle and a mobile-width view before pushing.
+- After pushing, check that the GitHub Pages deployment succeeded.
 - Keep DESIGN.md (and TECH-NOTES.md when relevant) in sync with every change.
-- Update the private preview link after changes.
+- Optional: for bigger changes, a private preview can be published first (https://claude.ai/artifact/WsAjjZgzLU9334HHfBsVaR) so Piret can look before it goes live. The games and the contact form don't work in the preview.

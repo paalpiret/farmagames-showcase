@@ -1,4 +1,4 @@
-# Piret Paal — Showcase Site: Design & Content Reference
+# clinicalgames.fi — Design & Content Reference
 
 This file tracks the design decisions, content, and status for this repo, so both Claude Code and Piret have one shared source of truth instead of re-explaining things each session.
 
@@ -12,9 +12,9 @@ https://clinicalgames.fi (custom domain, live — the old https://paalpiret.gith
 > - Link-preview (Open Graph) tags: `og:title` + `og:description` (same Finnish texts), `og:type` "website", `og:url` "https://clinicalgames.fi/", `og:locale` "fi_FI". No `og:image` yet.
 > - **The browser tab title follows the EN/FI toggle:** key `page_title` in content.js — EN "clinicalgames: learning games and tools for nursing studies", FI = same as the static title. The script sets `document.title` whenever the language is applied (first load, toggle click, saved choice after reload). The description and og tags stay Finnish in both modes (they're for search engines and previews, not visitors).
 >
-> The rest of the old head text (below) is REPLACED. The "Piret Paal" `<h1>`, the eyebrow styling and the italic tagline below are REPLACED — the top-left of the menu is now the **clinicalgames** wordmark (see Top menu below), and the header `<h1>` is the new headline (see "Redesign — new design").
+> The rest of the old head text (below) is REPLACED. The "Piret Paal" `<h1>`, the eyebrow styling and the italic tagline below are REPLACED — the top-left of the menu is now the **clinicalgames** wordmark (see Top menu below), and the header `<h1>` is the new headline (see "Current design").
 
-- (REPLACED on the redesign branch — see above; still on the live site) Browser tab title: **"Piret Paal — Interactive Nursing Projects"** and meta description "Piret Paal: interactive nursing projects and game prototypes." (not "FarmaGames" or "MediProjects" — both were dropped from these). The on-page `<h1>` itself stays just "Piret Paal" in both EN and FI — this "Interactive Nursing Projects" wording is tab-title/meta only, not visible page copy.
+- (HISTORY — before 2026-11-21) Browser tab title: **"Piret Paal — Interactive Nursing Projects"** and meta description "Piret Paal: interactive nursing projects and game prototypes." (not "FarmaGames" or "MediProjects" — both were dropped from these). The on-page `<h1>` itself stays just "Piret Paal" in both EN and FI — this "Interactive Nursing Projects" wording is tab-title/meta only, not visible page copy.
 - Heading size: 50px, weight 700.
 - Small uppercase eyebrow label above the heading: "Clinical Games" (rendered `CLINICAL GAMES` via `text-transform: uppercase`), 13px, weight 600, `letter-spacing: 0.12em`, `rgba(255,255,255,0.7)` — matches the visual style of the `GAME 0X · [LANG]` labels elsewhere on the page. Not translated (proper noun, same as "Piret Paal" and the game names), and ties to the `clinicalgames.fi` domain.
 - No subtitle line anymore (the old "Nursing education game prototypes" line was dropped as redundant).
@@ -24,8 +24,8 @@ https://clinicalgames.fi (custom domain, live — the old https://paalpiret.gith
 ## Purpose
 This page doubles as a **CV/portfolio piece** (Piret graduates as a nurse in November 2026), not just an internal demo hub. Tone should stay portfolio-grade: confident, curated, not utility-dashboard-like.
 
-## Redesign — new design (branch `redesign`, not live yet)
-Built on the `redesign` branch; the live site keeps the old design until the redesign is merged into the live branch. Preview: the private link in `CLAUDE.md`. Sections below marked **REPLACED** describe the old (still-live) design.
+## Current design (live since 2026-11-21)
+Built on the `redesign` branch and published on 2026-11-21 (merged into the live branch `claude/farmagames-landing-page-pmzh69`). Sections and notes marked **HISTORY** below describe the design and texts from before that date; the old page itself is kept on the backup branch `old-site` (commit `de305a4`).
 
 **Removed in the redesign:** mesh-gradient hero blobs + glow, alternating white/tint bands, per-game accent tints inside image frames (incl. `.exact-bg` for PleksusDiaries), image-left/right alternating layout, the separate Why section further down the page (moved into the header), the "Piret Paal" `<h1>` and the italic tagline under it.
 
@@ -68,7 +68,7 @@ Built on the `redesign` branch; the live site keeps the old design until the red
 3. **Scenario games** (`#0F2E28`) — heading "Scenario games" / FI "Sairaalapelit" + subtitle "Step into a nursing shift · no account needed" / FI "Astu sairaanhoitajan työvuoroon · ei vaadi kirjautumista"; FarmaRush (`#FF9F1A`) and MyDay (`#A78BFA`) as two large rounded tiles side by side, all text `#1A1A1A`. Tile: image, label, name, full description, "Play now →" as a **plain text link** (Inter `15px`, weight 700, `#1A1A1A`, no background/border, underline on hover — replaced the black filled button). **Games open in a new tab (2026-11):** the four "Play now →" links (FarmaRush, MyDay, MediChain, MediLink) have `target="_blank" rel="noopener noreferrer"`, like FarmaDiary and PleksusDiaries, so the main page stays open in its own tab. Screen readers get the description "opens in a new tab" / FI "avautuu uuteen välilehteen" (key `new_tab_hint`, one hidden `<span id="new-tab-hint">` referenced by `aria-describedby` on all four links); the links look exactly the same as before. **Link alignment:** the two tiles are equal height and each tile is a flex column with the link at `margin-top: auto`, so both links sit on the same line whatever the description length (checked at 880–1280px, EN + FI). On phones the tiles stack.
 4. **Card games** (`#143A33`) — heading "Card games" / FI "Korttipelit" (key `card_games_heading`) + subtitle "Link medicines, indications and drug classes · no account needed" / FI "Yhdistä lääkkeet, käyttöaiheet ja lääkeryhmät · ei vaadi kirjautumista"; MediChain and MediLink as white cards with a 6px coloured top border, heading `#0F2E28` at `26px`, text `#4E5B58`, label + "Play now →" text link `#157565`, weight 700. Same link alignment as the tiles: equal-height cards, link at the bottom (`margin-top: auto`), both links on one line.
 5. **Learning tools** (`#D8E9E5`) — heading "Learning tools" / FI "Oppimissovellukset" (key `learning_tools_heading`) + subtitle "Apps for everyday studying and clinical placements" / FI "Sovelluksia opiskeluun ja kliinisiin harjoitteluihin". (The phone overflow of "Oppimissovellukset" at 40px was fixed 2026-11 by the phone heading size — see "Section title rows".) FarmaDiary and PleksusDiaries as white cards stacked vertically (design sketch: `border: 1px solid #DCE7E3; border-radius: 20px; padding: 24px`), image left / text right in equal columns (`1fr 1fr`, `gap: 32px`), stacking ≤720px; headings Space Grotesk `30px`; no border around the image (the mint frame border was removed); buttons (design sketch): background `#157565`, white text, `padding: 12px 20px; border-radius: 10px; font-size: 15px; font-weight: 700`, no border ("Visit FarmaDiary →" / FI "Avaa FarmaDiary →" → farmadiary.com, "Visit PleksusDiaries →" / FI "Avaa PleksusDiaries →"). (Replaced: 0.7rem/1.35rem padding, 12px radius, 16px, weight 600, 2px transparent border.)
-6. **About** (`#0F2E28`) — heading + 3 paragraphs, text `#C9DDD7`, ~760px reading width. EN text replaced 2026-11 (see "About Me (EN, redesign branch)" below); FI unchanged. In paragraph 2 the words "bachelor’s thesis" link to the thesis PDF on theseus.fi (`https://www.theseus.fi/server/api/core/bitstreams/6765a411-b504-465a-bc58-f826b8bec0fb/content`), opening in a new tab (`target="_blank" rel="noopener noreferrer"`), styled `#7BE3C6`, underlined (`.about-link`). Screen readers get the description "PDF, opens in a new tab" (`aria-describedby` → hidden hint, key `about_text_2_link_hint`). Because texts are set with textContent, paragraph 2 is three keys — `about_text_2a` (before the link), `about_text_2_link`, `about_text_2b` (after) — with the `<a>` in index.html. **FI (new text 2026-11-21):** all three paragraphs have new Finnish text (see "About Me (FI, redesign branch)" below). Paragraph 2 is split the same way — `about_text_2a.fi` ends with "tekemämme " + link "opinnäytetyö" + `about_text_2b.fi` starting with " tarkasteli, …" — so the thesis link now works in FI mode too (same URL, new tab, same style), with the screen-reader description "PDF, avautuu uuteen välilehteen". Spaces: the text before the link ends with one space and the text after it starts with one space, in both languages.
+6. **About** (`#0F2E28`) — heading + 3 paragraphs, text `#C9DDD7`, ~760px reading width. EN text replaced 2026-11 (see "About Me (EN, current)" below); FI unchanged. In paragraph 2 the words "bachelor’s thesis" link to the thesis PDF on theseus.fi (`https://www.theseus.fi/server/api/core/bitstreams/6765a411-b504-465a-bc58-f826b8bec0fb/content`), opening in a new tab (`target="_blank" rel="noopener noreferrer"`), styled `#7BE3C6`, underlined (`.about-link`). Screen readers get the description "PDF, opens in a new tab" (`aria-describedby` → hidden hint, key `about_text_2_link_hint`). Because texts are set with textContent, paragraph 2 is three keys — `about_text_2a` (before the link), `about_text_2_link`, `about_text_2b` (after) — with the `<a>` in index.html. **FI (new text 2026-11-21):** all three paragraphs have new Finnish text (see "About Me (FI, current)" below). Paragraph 2 is split the same way — `about_text_2a.fi` ends with "tekemämme " + link "opinnäytetyö" + `about_text_2b.fi` starting with " tarkasteli, …" — so the thesis link now works in FI mode too (same URL, new tab, same style), with the screen-reader description "PDF, avautuu uuteen välilehteen". Spaces: the text before the link ends with one space and the text after it starts with one space, in both languages.
 7. **Contact** (`#143A33`) — heading, then one intro sentence (key `contact_intro`, same body style as About: Inter, `#C9DDD7`, max 760px wide) directly above the form; same Formspree form (endpoint, fields, AJAX, success/error messages unchanged); white labels, white fields with `#1A1A1A` text, amber focus ring, amber "Send message" button; success/error boxes on `#0F2E28`.
 8. **Footer** — existing "© 2026 Piret Paal", `#A9C4BC` on `#0F2E28`, thin top line.
 
@@ -83,7 +83,7 @@ Built on the `redesign` branch; the live site keeps the old design until the red
 **Accessibility / responsiveness (checked):** every text/background pair passes WCAG AA (lowest is 5.58:1, `#157565` on white; checked automatically on all visible text in EN and FI, incl. the contact success/error boxes). Visible keyboard focus ring everywhere (amber on dark, dark green on tiles/white cards). No sideways overflow at 390px or 320px.
 
 ## Color tokens
-> ⚠️ **REPLACED by the redesign** (see "Redesign — new design" above). This describes the design still on the live site until the redesign is published; kept for history.
+> 📜 **HISTORY** — replaced by the redesign on 2026-11-21 (see "Current design" above). Describes the old design (backup branch `old-site`).
 
 Pulled directly from FarmaDiary's design system for visual consistency across the "Farma" project family:
 
@@ -106,13 +106,13 @@ Pulled directly from FarmaDiary's design system for visual consistency across th
 **Hero banner background (REPLACED by the redesign — blobs removed):** mesh-gradient effect (not flat linear) — base `#167B65` with three blurred color blobs (`#2FC9A6` top-left, `#38BDF8` bottom-right, `#20A386` upper-right, varying opacity, `blur(60–80px)`), plus a soft white radial glow (`rgba(255,255,255,0.18)`, ellipse shape to avoid a hard-edge clipping bug) centered behind the "Piret Paal" heading. `header` uses `overflow: hidden` so blobs stay contained on small screens.
 
 ## Typography
-> ⚠️ **REPLACED by the redesign** (see "Redesign — new design" above). This describes the design still on the live site until the redesign is published; kept for history. New fonts: Space Grotesk 700 headings + Inter.
+> 📜 **HISTORY** — replaced by the redesign on 2026-11-21 (see "Current design" above). Describes the old design (backup branch `old-site`). New fonts: Space Grotesk 700 headings + Inter.
 
 - Font: **Inter** (headings + body)
 - Radius scale: `--radius: 0.75rem`, `--radius-lg: 1rem`
 
-## Layout structure (old — still on the live site)
-> ⚠️ **REPLACED by the redesign** (see "Redesign — new design" above). This describes the design still on the live site until the redesign is published; kept for history.
+## Layout structure (history — before 2026-11-21)
+> 📜 **HISTORY** — replaced by the redesign on 2026-11-21 (see "Current design" above). Describes the old design (backup branch `old-site`).
 
 1. **Header/hero** — mesh-gradient banner, name, italic tagline, language toggle top-right (the project-names line that used to sit below the tagline, and the old subtitle line, were both removed)
 2. **Game sections** (×4, in this order: **FarmaRush, MyDay, MediChain, MediLink**) — alternating white/`#EAF3F0` backgrounds, image-beside-text layout alternating sides per section (left/right/left/right), image in a fixed 16:9 box with rounded corners, full-bleed section color with content in a centered `max-width: ~1000px` column, generous responsive padding (not fixed height).
@@ -124,7 +124,7 @@ Pulled directly from FarmaDiary's design system for visual consistency across th
 8. **Footer** — © 2026 Piret Paal, nothing else
 
 ## Section label style
-> ⚠️ **REPLACED by the redesign** — both the label **texts** (no more numbers; Finnish "Oppimissovellus" for the learning tools — see "Labels" in "Redesign — new design" above) and their **colour** (`#1A1A1A` on game tiles, `#157565` on white cards). The list below is the old live-site version, kept for history.
+> 📜 **HISTORY (replaced 2026-11-21)** — both the label **texts** (no more numbers; Finnish "Oppimissovellus" for the learning tools — see "Labels" in "Current design" above) and their **colour** (`#1A1A1A` on game tiles, `#157565` on white cards). The list below is the old version (before 2026-11-21).
 
 No colored pill/chip badges anywhere on the page (including FarmaDiary's, which used to have a yellow pill). Small plain text label above each name, in `#167B65`:
 - `Game 01 · FI/EN` (FarmaRush — the game itself has an in-game EN/FI toggle)
@@ -153,9 +153,9 @@ In FI mode, the four numbered labels become `Peli 01 · FI/EN`, `Peli 02 · EN`,
 - **Real Finnish content exists for:** the hero tagline, the "Why"/"About Me" section headings ("Miksi"/"Minusta"), the Why section (Piret's own thesis wording — see below; each card's citation is its own small gray line below the quote, with no trailing page number, same structure as the English cards), the five section descriptions (FarmaRush, MyDay, MediChain, MediLink, FarmaDiary) plus the PleksusDiaries description, the "Game"/"Play now" → "Peli"/"Pelaa" swap on game labels and buttons, the Contact section (heading, field labels, submit button), and About Me.
 - **Everywhere else falls back to English automatically** when FI is selected (FarmaDiary's "Learning tool" label, footer) — the `translations` dictionary in `content.js` only has an `en` key for these, and the fallback logic shows English rather than blank text. Game names and "Piret Paal" are never translated (treated like proper nouns). Footer is intentionally identical in both languages, not a fallback gap.
 
-## Content — final/ready to use, all live on the page
+## Content — texts (current ones live since 2026-11-21; older ones marked as history)
 
-### Game and tool descriptions (redesign branch, EN + FI, set 2026-11-21 — replace the older texts below, which are still on the live site)
+### Game and tool descriptions (current, EN + FI, set 2026-11-21 — the older texts below are history)
 The Finnish word forms are Piret’s deliberate choices — keep them exactly as written.
 - **FarmaRush** — EN: "Medication requests arrive from hospital wards, one shift at a time. Catch the right medicines as fast as you can, but watch out for the wrong ones."
   FI: "Eri osastot lähettävät työvuoron aikana lääketilauksia. Nappaa oikeat lääkkeet nopeasti, mutta varo, ettei mukaan tartu vääriä lääkkeitä."
@@ -171,14 +171,14 @@ The Finnish word forms are Piret’s deliberate choices — keep them exactly as
   FI: "Henkilökohtainen oppimispäiväkirja hoitotyön opiskelijoille. Kirjaa päiväkirjaan, mitä opit koulussa ja harjoittelussa, ja liitä merkintöihin käsitellyt teemat. Pohdi, miten teemat liittyvät toisiinsa, ja anna PleksusDiary:lla koota yhteyksistäsi ajatuskartta."
 Layout check with these lengths: tiles/cards in a row stay equal height and the "Play now" / "Pelaa" links share one line at every two-column width (880–1280px) in EN and FI; on phones each card stacks with its link at the bottom.
 
-### Game descriptions (EN, old — still on the live site)
+### Game descriptions (EN, history — before 2026-11-21)
 - **FarmaRush**: "Medication requests arrive from hospital wards, one shift at a time. Catch the right drugs before they're dispatched — work fast, but don't let the wrong medication through."
 - **MyDay**: "A day in the life of a nursing student on a cardiology ward — from morning handover to medication rounds to end-of-shift documentation. Built to capture the rhythm of a real shift, one room at a time."
 - **MediChain** (never call it "Mediketju" on the page — that name only exists as an internal image filename): "Build the longest possible medicine chain by linking drugs that share an indication or drug class. A quick, focused way to test how well those connections actually stick."
 - **MediLink**: "Match medicines to their active ingredients, indications, and drug classes — link by link. Built to reinforce the kind of pattern-recognition real prescribing depends on."
 - **FarmaDiary**: "A personal medicine notebook — log the drugs you encounter on placement, quiz yourself on what you've logged, and watch your own knowledge base grow shift by shift."
 
-### Game descriptions (FI, old — still on the live site)
+### Game descriptions (FI, history — before 2026-11-21)
 - **FarmaRush**: "Eri osastoilta saapuu työvuoron aikana lääketilauksia. Kerää oikeat lääkkeet mahdollisimman nopeasti, mutta vältä vääriä valintoja."
 - **MyDay**: "Päivä sairaanhoitajaopiskelijana kardiologian osastolla — aamuraportista lääkkeiden jakoon ja työvuoron päättävään kirjaamiseen. Peli etenee aidon työvuoron tavoin, yksi tehtävä kerrallaan."
 - **MediChain**: "Rakenna mahdollisimman pitkä lääkeketju yhdistämällä lääkkeitä, joilla on sama käyttöaihe tai lääkeryhmä. Nopea tapa testata, miten hyvin lääkkeet ovat jääneet mieleen."
@@ -187,15 +187,15 @@ Layout check with these lengths: tiles/cards in a row stay equal height and the 
 
 ### PleksusDiaries
 New product section, added 2026-10-10, sitting right after FarmaDiary. Link `https://pleksusdiaries.lovable.app/`.
-- **Description (EN, old — live site; new text in "Game and tool descriptions" above):** "A personal learning diary for nursing students. Write down what you learn in your studies and placements and tag the topics behind it. Think about how different topics connect with each other. All your entries and topics are easy to find again later."
-- **Description (FI, old — live site; new text in "Game and tool descriptions" above):** "Henkilökohtainen oppimispäiväkirja hoitotyön opiskelijoille. Kirjaa päiväkirjaan, mitä opit koulussa ja harjoittelussa, ja liitä merkintöihin käsiteltyt teemat. Pohdi, miten eri teemat liittyvät toisiinsa. Kaikki merkinnät ja teemat löytyvät myöhemmin helposti." (unlike FarmaDiary, this one has a real FI translation, per Piret's brief that it's bilingual)
+- **Description (EN, history — before 2026-11-21; current text in "Game and tool descriptions" above):** "A personal learning diary for nursing students. Write down what you learn in your studies and placements and tag the topics behind it. Think about how different topics connect with each other. All your entries and topics are easy to find again later."
+- **Description (FI, history — before 2026-11-21; current text in "Game and tool descriptions" above):** "Henkilökohtainen oppimispäiväkirja hoitotyön opiskelijoille. Kirjaa päiväkirjaan, mitä opit koulussa ja harjoittelussa, ja liitä merkintöihin käsiteltyt teemat. Pohdi, miten eri teemat liittyvät toisiinsa. Kaikki merkinnät ja teemat löytyvät myöhemmin helposti." (unlike FarmaDiary, this one has a real FI translation, per Piret's brief that it's bilingual)
 - **Image (live):** `PleksusDiaries promo image.png` — a screenshot of the PleksusDiaries landing page itself ("Where everything you learn connects" hero + the Write as you go / See what you know / Think it through feature cards), unlike the other sections' illustrated key-art. Aspect ratio is narrower than the 16:9 frame (1.56:1), so it letterboxes slightly left/right into the pink accent tint — same `object-fit: contain` behavior as the other sections, no special-casing needed.
 - **CTA button:** "Visit PleksusDiaries →", links out to `https://pleksusdiaries.lovable.app/` (`target="_blank" rel="noopener noreferrer"`, same as FarmaDiary's external link).
 - **Accent color (REPLACED by the redesign — no frame tints):** `--accent-pleksus: #F472B6` (soft pink), used only for the media-box tint, same narrow purpose as the other per-game accent vars.
 - **Layout position (REPLACED by the redesign — now a stacked Learning tools card, image left):** image-right (`.game-flex.reverse`), `bg-white`, continuing the alternation after FarmaDiary (`bg-tint`). Adding this section shifted every section after it (Why onward) to the opposite background — see Layout structure above.
 
 ### Why section — card styling
-> ⚠️ **REPLACED by the redesign** (see "Redesign — new design" above). This describes the design still on the live site until the redesign is published; kept for history. In the redesign the Why statements are a click-only carousel in the header.
+> 📜 **HISTORY** — replaced by the redesign on 2026-11-21 (see "Current design" above). Describes the old design (backup branch `old-site`). In the redesign the Why statements are a click-only carousel in the header.
 
 Statement text is regular weight (400) in the same muted gray (`#6B7280`) as every other body paragraph on the page (game descriptions, About Me, etc.) — it was originally semi-bold (600) and dark navy, which stood out as the only body text styled that way; fixed for consistency. Citation line below stays smaller, italic, same gray. Font is Inter throughout, no separate font-family for this section.
 
@@ -210,21 +210,21 @@ Each statement's citation is stripped out of the sentence and shown as its own s
 2. "Tutkimuksen mukaan sairaanhoitajaopiskelijat ajattelevat farmakologiakurssin "pakollisena pahana" sen sijaan, että sen sisältö olisi tärkeä hallita." — Mauldin 2023
 3. "Vuonna 2019 tehdyn tutkimuksen mukaan on todettu online-menetelmien olevan yksi parhaimpia tapoja farmakologian opettamisessa opiskelijatyytyväisyyden ja tiedon hankinnan kannalta." — Gill ym. 2019
 
-### Why section — full citations (redesign: all three together on the carousel's 4th "Sources" slide, `#C9DDD7`, alphabetical — old live site: all three in gray `#6B7280` below the cards). Short citations in the carousel no longer start with "— ".
+### Why section — full citations (redesign: all three together on the carousel's 4th "Sources" slide, `#C9DDD7`, alphabetical — before 2026-11-21: all three in gray `#6B7280` below the cards). Short citations in the carousel no longer start with "— ".
 Gill, Manu & Andersen, Elizabeth & Hilsmann, Norma. 2019. Best practices for teaching pharmacology to undergraduate nursing students: A systematic review of the literature.
 
 Luokkamäki, Sanna & Vehviläinen-Julkunen, Katri & Saano, Susanna & Härkänen, Marja 2016. "Sairaanhoitajien lääkehoidon osaaminen heidän itsensä arvioimana", Tutkiva Hoitotyö, vol. 14, no. 2, pp. 23–32.
 
 Mauldin, Betsy 2023. Bringing Clinical Context to the Classroom in Nursing Pharmacology: A Case Study.
 
-### About Me (EN, redesign branch — replaces the text below on the live site)
+### About Me (EN, current)
 > I’m a newly registered nurse with a particular interest in cardiology and pharmacology. Before nursing, I trained as a fashion designer at the Estonian Academy of Arts and worked as a software specialist for fashion design and production tools across Northern Europe.
 >
 > Somewhere along the way, design and healthcare started to overlap. Before I started my nursing studies, I worked with researchers at the University of Helsinki on a service that supported parents of young children. In 2023 I began my nursing studies at Metropolia University of Applied Sciences, and in 2025 my co-authored [bachelor’s thesis](https://www.theseus.fi/server/api/core/bitstreams/6765a411-b504-465a-bc58-f826b8bec0fb/content) looked at how pharmacology is taught to student nurses, why it feels so hard to learn, and how teaching could be improved. We found what research keeps finding: pharmacology is hard to teach, and harder to make stick.
 >
 > Later, on a clinical placement, I noticed that my own medication learning wasn’t systematic enough. Around the same time, friends told me how you can build apps and websites with AI coding tools. I started exploring whether I could use them to bring more structure to my learning, and to make pharmacology, and nursing studies more broadly, easier and more fun to learn. I have built a few games and digital tools that help students, and nurses too, learn medicines, understand life on a ward, and reflect on how different nursing concepts connect. Try them out above, and tell me what you think!
 
-### About Me (EN, old — still on the live site)
+### About Me (EN, history — before 2026-11-21)
 Note: Piret is Estonian, not Finnish — the bio must never say "nursing student from Finland" or similar; it previously did and was corrected.
 > I'm a nursing student with a particular interest in cardiology and pharmacology. Before nursing, I trained as a fashion designer at the Estonian Academy of Arts and spent some time working in software for design tools across Northern Europe.
 >
@@ -232,14 +232,14 @@ Note: Piret is Estonian, not Finnish — the bio must never say "nursing student
 >
 > That's what led me here — building games and digital learning tools instead of just writing about the problem. I started experimenting with vibe-coding and playing around with these subjects, and it grew from there — each one a focused prototype, not a finished product, but a genuine attempt to make pharmacology a little less abstract and a little more memorable, for students like me.
 
-### About Me (FI, redesign branch — replaces the Finnish text below on the live site)
+### About Me (FI, current)
 > Olen vastavalmistunut sairaanhoitaja. Erikoisaloista minua kiinnostavat erityisesti kardiologia ja farmakologia. Ennen hoitoalalle siirtymistä kouluttauduin vaatesuunnittelijaksi Eesti Kunstiakademiassa ja työskentelin muotisuunnittelun ja tuotannon ohjelmistojen asiantuntijana Pohjois-Euroopassa.
 >
 > Ajan myötä muotoilu ja terveydenhuolto alkoivat kulkea tekemisessäni käsi kädessä. Ennen kuin lähdin opiskelemaan hoitoalaa, työskentelin Helsingin yliopiston tutkijoiden kanssa palvelun parissa, joka tuki pienten lasten vanhempia. Aloitin sairaanhoitajaopinnot Metropolia Ammattikorkeakoulussa vuonna 2023, ja vuonna 2025 tekemämme [opinnäytetyö](https://www.theseus.fi/server/api/core/bitstreams/6765a411-b504-465a-bc58-f826b8bec0fb/content) tarkasteli, miten farmakologiaa opetetaan sairaanhoitajaopiskelijoille, miksi sen oppiminen koetaan vaikeaksi ja miten opetusta voisi kehittää. Totesimme saman kuin tutkimukset yleensäkin: farmakologiaa on vaikea opettaa, ja vielä vaikeampaa on saada opittu jäämään mieleen.
 >
 > Myöhemmin harjoittelussa huomasin, ettei lääkehoidon opiskeluni ollut tarpeeksi järjestelmällistä. Samoihin aikoihin kuulin ystäviltäni, miten tekoälyn avulla voi rakentaa sovelluksia ja verkkosivuja. Aloin kokeilla, voisinko kehittää itselleni oppimisvälineitä, jotka auttaisivat minua oppimaan lisää lääkkeistä ja tekisivät farmakologian ja laajemminkin hoitotyön opiskelusta helpompaa ja hauskempaa. Näistä kokeiluista on syntynyt muutamia pelejä ja digitaalisia työkaluja, jotka auttavat opiskelijoita, ja miksei myös valmistuneita sairaanhoitajia, oppimaan farmakologiaa, ymmärtämään osastotyön arkea ja pohtimaan, miten hoitotyön eri käsitteet liittyvät toisiinsa. Kokeile niitä tällä sivulla ja kerro, mitä mieltä olet!
 
-### About Me (FI, old — still on the live site)
+### About Me (FI, history — before 2026-11-21)
 Note: the FI version splits into 4 paragraphs in Piret's original text; paragraphs 3 and 4 were merged into one on the page to keep the same 3-paragraph structure as the English version (no wording changed, just the paragraph break removed).
 > Olen sairaanhoitajaopiskelija ja erikoisaloista minua kiinnostavat erityisesti kardiologia ja farmakologia. Ennen hoitoalalle siirtymistä kouluttauduin vaatesuunnittelijaksi Eesti Kunstiakademiassa ja työskentelin muotiin liittyvien suunnitteluohjelmistojen parissa Pohjoismaissa.
 >
@@ -275,7 +275,7 @@ Note: the FI version splits into 4 paragraphs in Piret's original text; paragrap
 - Error message (changed 2026-11, now EN + FI): EN "Something went wrong — please try again in a moment." / FI "Jokin meni pieleen — yritä hetken päästä uudelleen." (replaced EN "Something went wrong — please try again, or reach out directly.")
 - **No LinkedIn button.** One was added, then explicitly removed at Piret's request — don't re-add it unless asked again.
 - **Hard rule: never display Piret's personal email address anywhere in visible content or page source.**
-- **Intro sentence (redesign branch, EN + FI, added 2026-11, reworded 2026-11-21):** directly under the heading, above the form — EN "Teaching nursing, developing training, or just tried one of the games? I’d love to hear from you." / FI "Opetatko hoitotyötä, kehitätkö koulutusta tai kokeilitko jotain peleistä? Kuulisin sinusta mielelläni."
+- **Intro sentence (EN + FI, added 2026-11, reworded 2026-11-21):** directly under the heading, above the form — EN "Teaching nursing, developing training, or just tried one of the games? I’d love to hear from you." / FI "Opetatko hoitotyötä, kehitätkö koulutusta tai kokeilitko jotain peleistä? Kuulisin sinusta mielelläni."
 - **FI translation (live):** heading "Ota yhteyttä", labels "Nimi" / "Sähköposti" / "Viesti", submit button "Lähetä", confirmation message (see above).
 
 ## Open / deferred items
@@ -285,5 +285,5 @@ Note: the FI version splits into 4 paragraphs in Piret's original text; paragrap
 - [x] Decided 2026-11-21: inactive carousel dots / previous-button border → `#56867B` (passes WCAG non-text contrast)
 - [ ] Finnish header gap (desktop, ~70px above "Pelaa pelejä" because the long first FI quote makes the Why card taller than the left column) — left as is for now; Piret checks it in the preview
 - [ ] Phase 2: link-preview image (`og:image`, ≈1200×630px) — not now
-- [ ] Publish the redesign (merge `redesign` into the live branch, then update `CLAUDE.md`)
+- [x] Published the redesign 2026-11-21 (merged `redesign` into the live branch; CLAUDE.md, DESIGN.md and README.md updated afterwards). Note: the first automatic deploys failed at GitHub’s deploy step ("No artifacts named github-pages") — a temporary GitHub problem; Piret re-ran the workflow from the Actions tab and it succeeded. The Pages actions were also updated to v5.
 - [x] Custom domain — `clinicalgames.fi` is live (`CNAME` file, DNS, and Pages settings all done; see TECH-NOTES.md)
