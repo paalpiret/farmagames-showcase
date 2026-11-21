@@ -53,8 +53,8 @@ var translations = {
   scenario_heading: { en: "Scenario games", fi: "Sairaalapelit" },
   card_games_heading: { en: "Card games", fi: "Korttipelit" },
   learning_tools_heading: { en: "Learning tools", fi: "Oppimissovellukset" },
-  scenario_subtitle: { en: "Step into a nursing shift · no account needed", fi: "Astu sairaanhoitajan työvuoroon · ilman kirjautumista" },
-  card_games_subtitle: { en: "Link medicines, indications and drug classes · no account needed", fi: "Yhdistä lääkkeet, käyttöaiheet ja lääkeryhmät · ilman kirjautumista" },
+  scenario_subtitle: { en: "Step into a nursing shift · no account needed", fi: "Astu sairaanhoitajan työvuoroon · ei vaadi kirjautumista" },
+  card_games_subtitle: { en: "Link medicines, indications and drug classes · no account needed", fi: "Yhdistä lääkkeet, käyttöaiheet ja lääkeryhmät · ei vaadi kirjautumista" },
   learning_tools_subtitle: { en: "Apps for everyday studying and clinical placements", fi: "Sovelluksia opiskeluun ja kliinisiin harjoitteluihin" },
 
   // ── Game & tool sections ──
@@ -120,7 +120,7 @@ var translations = {
   // ── Why ──
   why1_statement: {
     en: "“Over half of surveyed nurses have caused a medication-related safety incident; half have given medicines without knowing their effects.”",
-    fi: "“Yli puolet tutkimukseen osallistuneet sairaanhoitajista ovat joskus aiheuttanut potilaalle lääkehoidon virheen takia vaaratilanteen ja puolet ovat antaneet lääkkeitä, joiden vaikutuksia he eivät tietäneet.”"
+    fi: "“Yli puolet tutkimukseen osallistuneista sairaanhoitajista ovat joskus aiheuttaneet potilaalle lääkehoidon virheen takia vaaratilanteen, ja puolet ovat antaneet lääkkeitä, joiden vaikutuksia he eivät tietäneet.”"
   },
   why1_citation: { en: "Luokkamäki et al., 2016", fi: "Luokkamäki ym. 2016" },
   why2_statement: {
@@ -185,7 +185,7 @@ var translations = {
   label_email: { en: "Email", fi: "Sähköposti" },
   label_message: { en: "Message", fi: "Viesti" },
   submit_btn: { en: "Send message", fi: "Lähetä" },
-  contact_success: { en: "Thank you for contacting me. I will get back to you soon.", fi: "Kiitos yhteydenotostasi. Vastaan sinulle pian" },
+  contact_success: { en: "Thank you for contacting me. I will get back to you soon.", fi: "Kiitos yhteydenotostasi. Vastaan sinulle pian." },
   contact_error: { en: "Something went wrong — please try again in a moment.", fi: "Jokin meni pieleen — yritä hetken päästä uudelleen." },
 
   // ── Screen-reader labels (aria-label), switched by data-i18n-aria in index.html ──
