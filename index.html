@@ -229,6 +229,17 @@
     section[id] { scroll-margin-top: 4.5rem; }
   }
 
+  /* Phones: two rows — wordmark + EN/FI toggle on row 1 (toggle on the
+     right, both vertically centred), the menu links on row 2. The
+     .nav-right wrapper lets its two children join .nav-inner's own flex
+     layout, so no HTML changes are needed; desktop is untouched. */
+  @media (max-width: 720px) {
+    .nav-right { display: contents; }
+    .brand { order: 1; }
+    .lang-toggle { order: 2; margin-left: auto; }
+    .nav-links { order: 3; flex-basis: 100%; }
+  }
+
   /* ── 2. Header ──────────────────────────────────────────── */
   .hero {
     background: var(--deep);
