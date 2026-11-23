@@ -214,6 +214,39 @@
     #rotateHint small { font-weight:600; font-size:15px; color:var(--gray); max-width:280px; }
   }
   @keyframes rhTurn { 0%,20%{transform:rotate(0)} 60%,100%{transform:rotate(-90deg)} }
+  /* Compact stage (short phone screens): keep the cards + Begin Shift inside the panel */
+  @container gamewrap (max-height: 360px) {
+    #landingIntro { display:none !important; }
+    #startPanel { padding: 1.6% 3% 1% !important; }
+    #startPanel > div:nth-of-type(1) { gap: 2% 2% !important; }
+    #startPanel > div:nth-of-type(1) > div { padding: 1.2% 3% !important; border-radius:12px !important; }
+    #startPanel p { line-height:1.2 !important; font-size:clamp(6.5px, 1.6cqw, 9px) !important; }
+    #startPanel img { height:clamp(14px, 6cqh, 26px) !important; }
+    #startBtn { padding: 8px 26px !important; font-size: 11px !important; min-height:32px; }
+  }
+  /* Compact stage: mission modal */
+  @container gamewrap (max-height: 360px) {
+    #orderLevelBadge { font-size: 8px !important; padding: 0.25em 1em !important; }
+    #orderWard { font-size: 11px !important; }
+    #incomingOrderScreen > div:nth-child(3) { top:52.5% !important; height:9.5% !important; }
+    #incomingOrderScreen > div:nth-child(4) { top:63% !important; height:21.5% !important; padding:0 3% !important; }
+    #incomingOrderScreen > div:nth-child(5) { top:85.5% !important; height:12% !important; }
+    #incomingOrderScreen > div:nth-child(3) > div, #incomingOrderScreen > div:nth-child(4) > div { width:14% !important; }
+    #incomingOrderScreen > div:nth-child(3) img, #incomingOrderScreen > div:nth-child(4) img { height:clamp(12px, 6cqh, 22px) !important; }
+    #incomingOrderScreen > div:nth-child(3) p { font-size:8px !important; }
+    #incomingOrderScreen > div:nth-child(4) p { font-size:7px !important; line-height:1.2 !important; }
+    #readyBtn { padding: 8px 26px !important; font-size: 11px !important; min-height:32px; }
+  }
+  /* Compact stage: Level Complete */
+  @container gamewrap (max-height: 360px) {
+    #winScreen > div:nth-child(1) { top:60%; width:92%; }
+    #winMessage { display:inline !important; font-size:8px !important; }
+    #winMessage ~ p { display:inline !important; margin:0 0 0 8px !important; font-size:8px !important; }
+    #winPillGrid { top:70.5% !important; gap:2px 4px !important; width:94% !important; }
+    #winPillGrid .pillIconDark { min-width:0 !important; height:15px !important; padding:0 7px !important; font-size:6.5px !important; border-width:1.5px !important; box-shadow:0 2px 4px rgba(0,0,0,0.25) !important; }
+    #winScreen > div:nth-child(3) { top:86% !important; }
+    #nextBtn, #nextLevelBtn { padding:6px 20px !important; font-size:10px !important; min-height:30px; }
+  }
 </style>
 </head>
 <body>
@@ -920,11 +953,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const fsBtn = document.getElementById('fsBtn');
   const gameWrapEl = document.getElementById('gameWrap');
+  // iPhone Safari has no fullscreen API for pages: hide the button there instead of showing a dead one
+  const fsSupported = !!(gameWrapEl.requestFullscreen || gameWrapEl.webkitRequestFullscreen);
+  if (!fsSupported) fsBtn.style.display = 'none';
   fsBtn.addEventListener('click', () => {
-    if (!document.fullscreenElement) {
-      gameWrapEl.requestFullscreen().catch(() => {});
+    if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+      const req = gameWrapEl.requestFullscreen || gameWrapEl.webkitRequestFullscreen;
+      if (req) { const r = req.call(gameWrapEl); if (r && r.catch) r.catch(() => {}); }
     } else {
-      document.exitFullscreen();
+      (document.exitFullscreen || document.webkitExitFullscreen).call(document);
     }
   });
 });
