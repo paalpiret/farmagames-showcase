@@ -28,7 +28,8 @@
   }
   #gameWrap {
     position: relative;
-    width: calc(100vw - 24px);
+    width: min(calc(100vw - 24px), calc((100vh - 24px) * 1.8), 1400px);
+    width: min(calc(100vw - 24px), calc((100dvh - 24px) * 1.8), 1400px);
     max-width: 1400px;
     height: auto;
     margin: 12px auto;
@@ -199,10 +200,25 @@
     color: #16a673;
     white-space: nowrap;
   }
+  /* Phone portrait: stage is too small to play, ask to rotate */
+  #rotateHint { display:none; }
+  @media (orientation: portrait) and (max-width: 900px) {
+    #gameWrap { display:none; }
+    #rotateHint {
+      display:flex; position:fixed; inset:0; z-index:9999;
+      flex-direction:column; align-items:center; justify-content:center; gap:18px;
+      background:var(--page-bg); color:var(--navy); text-align:center; padding:24px;
+      font-weight:800; font-size:22px;
+    }
+    #rotateHint .rh-icon { font-size:64px; display:inline-block; animation: rhTurn 2.2s ease-in-out infinite; }
+    #rotateHint small { font-weight:600; font-size:15px; color:var(--gray); max-width:280px; }
+  }
+  @keyframes rhTurn { 0%,20%{transform:rotate(0)} 60%,100%{transform:rotate(-90deg)} }
 </style>
 </head>
 <body>
 
+<div id="rotateHint"><span class="rh-icon">📱</span><span>Turn your phone sideways</span><small>FarmaRush plays in landscape. Käännä puhelin vaakasuuntaan.</small></div>
 <div id="gameWrap">
   <div id="hud">
     <div class="hud-col"><div class="hud-label" id="hudLabelScore">Score</div><div class="hud-value" id="score">0</div></div>
