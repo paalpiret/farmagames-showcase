@@ -467,7 +467,11 @@ const STRINGS = {
   card3: { en: "\u2190 \u2192 Move. Hold Space to sprint.", fi: "\u2190 \u2192 Liiku. Pidä välilyöntiä pohjassa juostaksesi." },
   card4: { en: "Collect enough correct medicines to complete the shift.", fi: "Kerää tarpeeksi oikeita lääkkeitä vuoron suorittamiseksi." }
 };
-function t(key) { return STRINGS[key][currentLang]; }
+const STRINGS_TOUCH = { card3: { en: "Drag your finger sideways to move the nurse.", fi: "Vedä sormea sivuttain liikuttaaksesi sairaanhoitajaa." } };
+function t(key) {
+  if (key === 'card3' && typeof IS_TOUCH !== 'undefined' && IS_TOUCH) return STRINGS_TOUCH.card3[currentLang];
+  return STRINGS[key][currentLang];
+}
 
 // ---------- Level data ----------
 const LEVELS = [
@@ -533,6 +537,47 @@ document.addEventListener('keydown', e => {
   if (["ArrowLeft","ArrowRight"," "].includes(e.key)) e.preventDefault();
 });
 document.addEventListener('keyup', e => keys[e.key] = false);
+
+// ---------- Touch: drag a finger to move the nurse ----------
+// Touch/pen only (mouse keeps using the keyboard). The nurse follows the finger's
+// horizontal position but never faster than her sprint speed, so it stays a skill game.
+const IS_TOUCH = window.matchMedia('(pointer: coarse)').matches || ('ontouchstart' in window);
+let touchTargetX = null;      // nurse's wanted left edge, in canvas units (null = no finger down)
+let touchPointerId = null;
+(function setupTouchControl() {
+  const wrap = document.getElementById('gameWrap');
+  function toTarget(e) {
+    const r = canvas.getBoundingClientRect();
+    const cx = (e.clientX - r.left) / r.width * W;
+    touchTargetX = Math.max(0, Math.min(W - player.w, cx - player.w / 2));
+  }
+  wrap.addEventListener('pointerdown', e => {
+    if (e.pointerType === 'mouse' || !gameRunning) return;
+    if (e.target.closest('button')) return;
+    touchPointerId = e.pointerId;
+    try { wrap.setPointerCapture(e.pointerId); } catch (err) {}
+    toTarget(e);
+    e.preventDefault();
+  });
+  wrap.addEventListener('pointermove', e => {
+    if (e.pointerId !== touchPointerId) return;
+    toTarget(e);
+    e.preventDefault();
+  });
+  function release(e) {
+    if (e.pointerId !== touchPointerId) return;
+    touchPointerId = null; touchTargetX = null;
+  }
+  wrap.addEventListener('pointerup', release);
+  wrap.addEventListener('pointercancel', release);
+  wrap.style.touchAction = 'none';
+  // On touch screens the keyboard hint in the HUD is meaningless: hide it
+  if (IS_TOUCH) {
+    const col = document.getElementById('hudLabelControls').parentElement;
+    if (col.previousElementSibling) col.previousElementSibling.style.display = 'none';
+    col.style.display = 'none';
+  }
+})();
 
 // ---------- Pills ----------
 let pills = [];
@@ -736,6 +781,11 @@ function update(dt) {
   const currentSpeed = keys[' '] ? player.sprintSpeed : player.speed;
   if (keys['ArrowLeft']) { player.x -= currentSpeed; player.dir=-1; }
   if (keys['ArrowRight']) { player.x += currentSpeed; player.dir=1; }
+  if (touchTargetX !== null) {
+    const dx = touchTargetX - player.x;
+    const step = Math.min(Math.abs(dx), player.sprintSpeed);
+    if (step > 0.5) { player.x += Math.sign(dx) * step; player.dir = dx < 0 ? -1 : 1; }
+  }
   player.x = Math.max(0, Math.min(W - player.w, player.x));
 
   // spawn pills
@@ -886,6 +936,7 @@ function showIncomingOrder() {
 
 function startGameplay() {
   resetGame();
+  touchTargetX = null; touchPointerId = null;
   try { getAudioCtx().resume(); } catch(e) {}
   document.getElementById('incomingOrderScreen').classList.add('hidden');
   document.getElementById('loseScreen').classList.add('hidden');
